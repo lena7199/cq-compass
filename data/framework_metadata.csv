@@ -1,0 +1,24 @@
+Framework,Dimension,ScaleMin,ScaleMax,LabelMin,LabelMax,Description
+Karnauhova,TimeFocus,1,5,Monochronic,Polychronic,How the culture perceives and manages time from sequential scheduling to flexible multitasking
+Karnauhova,TimeOrientation,1,5,Past,Future,Whether the culture emphasizes tradition and history or innovation and future planning
+Karnauhova,Space,1,5,Private,Public,The degree to which personal boundaries and private space are maintained versus shared openly
+Karnauhova,Power,1,5,Equality,Hierarchy,How the culture handles authority status differences and decision-making structures
+Karnauhova,Structure,1,5,Individualism,Collectivism,Whether identity and loyalty center on individual achievement or group harmony
+Karnauhova,Competition,1,5,Cooperation,Competition,Whether success is achieved through collaborative effort or individual competitive drive
+Karnauhova,Communication,1,5,Low Context,High Context,How much meaning is embedded in the explicit words versus the situational context
+Karnauhova,Action,1,5,Being,Doing,Whether identity is defined by relationships and presence or by accomplishments and tasks
+GLOBE_Culture,PerformanceOrientation,1,7,,,Degree to which the collective rewards performance improvement and excellence
+GLOBE_Culture,Assertiveness,1,7,,,Degree of assertiveness and confrontation in relationships
+GLOBE_Culture,FutureOrientation,1,7,,,Extent of future-oriented behaviors like planning and investing
+GLOBE_Culture,HumaneOrientation,1,7,,,Degree of encouragement for fairness and generosity
+GLOBE_Culture,InstitutionalCollectivism,1,7,,,Degree of collective resource distribution and action
+GLOBE_Culture,InGroupCollectivism,1,7,,,Degree of pride and loyalty in organizations or families
+GLOBE_Culture,GenderEgalitarianism,1,7,,,Degree to which gender inequality is minimized
+GLOBE_Culture,PowerDistance,1,7,,,Extent of acceptance of authority and status privileges
+GLOBE_Culture,UncertaintyAvoidance,1,7,,,Reliance on norms and rules to alleviate unpredictability
+GLOBE_Leadership,CharismaticValueBased,1,7,,,Ability to inspire based on core values
+GLOBE_Leadership,TeamOriented,1,7,,,Emphasis on team building and common purpose
+GLOBE_Leadership,Participative,1,7,,,Degree of involving others in decisions
+GLOBE_Leadership,HumaneOriented,1,7,,,Supportive and considerate leadership
+GLOBE_Leadership,Autonomous,1,7,,,Independent and individualistic leadership
+GLOBE_Leadership,SelfProtective,1,7,,,Focus on safety and status enhancement
