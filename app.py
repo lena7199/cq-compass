@@ -927,7 +927,7 @@ def page_results():
                 "Your Personal Profile": label
             })
         
-        st.table(pd.DataFrame(score_data).set_index('Dimension'))
+        st.dataframe(pd.DataFrame(score_data), use_container_width=True, hide_index=True)
         
         # Create 3 columns to put buttons side-by-side on desktop
         col1, col2, col3 = st.columns(3)
