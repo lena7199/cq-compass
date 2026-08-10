@@ -1039,67 +1039,67 @@ def page_country_comparison():
             st.markdown("---")
             st.markdown(f"### 🧭 Cultural Navigation Brief for {target_country}")
 
+            if test_name == "Karnauhova":
+                rec_df = load_data('dimension_recommendations_karnauhova.csv')
+            elif test_name == "GLOBE_Culture":
+                rec_df = load_data('dimension_recommendations_globe_culture.csv')
+            else:
+                rec_df = load_data('dimension_recommendations_globe_leadership.csv')
+
+            user_scores = st.session_state.user_scores[test_name]
+            recommendations = []
+
+            for dimension, user_score in user_scores.items():
+                target_score = country_scores_df[
+                    (country_scores_df['Country'] == target_country) &
+                    (country_scores_df['Framework'] == test_name) &
+                    (country_scores_df['Dimension'] == dimension)
+                ]['Score'].values
+
+                if len(target_score) == 0: continue
+                target_score = target_score[0]
+                gap = abs(user_score - target_score)
+
                 if test_name == "Karnauhova":
-                    rec_df = load_data('dimension_recommendations_karnauhova.csv')
-                elif test_name == "GLOBE_Culture":
-                    rec_df = load_data('dimension_recommendations_globe_culture.csv')
+                    if gap >= 2.0: gap_category, urgency = "High", "Red"
+                    elif gap >= 1.0: gap_category, urgency = "Medium", "Yellow"
+                    else: gap_category, urgency = "Low", "Green"
                 else:
-                    rec_df = load_data('dimension_recommendations_globe_leadership.csv')
+                    if gap >= 2.5: gap_category, urgency = "High", "Red"
+                    elif gap >= 1.2: gap_category, urgency = "Medium", "Yellow"
+                    else: gap_category, urgency = "Low", "Green"
 
-                user_scores = st.session_state.user_scores[test_name]
-                recommendations = []
+                if user_score > target_score: direction = "UserHigher"
+                elif user_score < target_score: direction = "UserLower"
+                else: direction = "Aligned"
 
-                for dimension, user_score in user_scores.items():
-                    target_score = country_scores_df[
-                        (country_scores_df['Country'] == target_country) &
-                        (country_scores_df['Framework'] == test_name) &
-                        (country_scores_df['Dimension'] == dimension)
-                    ]['Score'].values
+                rec_row = rec_df[
+                    (rec_df['Dimension'] == dimension) &
+                    (rec_df['GapCategory'] == gap_category) &
+                    (rec_df['Direction'] == direction)
+                ]
 
-                    if len(target_score) == 0: continue
-                    target_score = target_score[0]
-                    gap = abs(user_score - target_score)
+                if len(rec_row) > 0:
+                    recommendations.append({
+                        "dimension": dimension, "urgency": urgency, "gap_category": gap_category,
+                        "text": rec_row.iloc[0]['RecommendationText'], "gap": gap
+                    })
 
-                    if test_name == "Karnauhova":
-                        if gap >= 2.0: gap_category, urgency = "High", "Red"
-                        elif gap >= 1.0: gap_category, urgency = "Medium", "Yellow"
-                        else: gap_category, urgency = "Low", "Green"
-                    else:
-                        if gap >= 2.5: gap_category, urgency = "High", "Red"
-                        elif gap >= 1.2: gap_category, urgency = "Medium", "Yellow"
-                        else: gap_category, urgency = "Low", "Green"
+            urgency_order = {"Red": 0, "Yellow": 1, "Green": 2}
+            recommendations.sort(key=lambda x: (urgency_order[x['urgency']], -x['gap']))
 
-                    if user_score > target_score: direction = "UserHigher"
-                    elif user_score < target_score: direction = "UserLower"
-                    else: direction = "Aligned"
+            for rec in recommendations:
+                urgency_class = f"recommendation-{rec['urgency'].lower()}"
+                urgency_badge_class = f"urgency-{rec['urgency'].lower()}"
+                badge_text = "🔴 High Urgency" if rec['urgency'] == "Red" else "🟡 Medium Urgency" if rec['urgency'] == "Yellow" else "🟢 Strength"
 
-                    rec_row = rec_df[
-                        (rec_df['Dimension'] == dimension) &
-                        (rec_df['GapCategory'] == gap_category) &
-                        (rec_df['Direction'] == direction)
-                    ]
-
-                    if len(rec_row) > 0:
-                        recommendations.append({
-                            "dimension": dimension, "urgency": urgency, "gap_category": gap_category,
-                            "text": rec_row.iloc[0]['RecommendationText'], "gap": gap
-                        })
-
-                urgency_order = {"Red": 0, "Yellow": 1, "Green": 2}
-                recommendations.sort(key=lambda x: (urgency_order[x['urgency']], -x['gap']))
-
-                for rec in recommendations:
-                    urgency_class = f"recommendation-{rec['urgency'].lower()}"
-                    urgency_badge_class = f"urgency-{rec['urgency'].lower()}"
-                    badge_text = "🔴 High Urgency" if rec['urgency'] == "Red" else "🟡 Medium Urgency" if rec['urgency'] == "Yellow" else "🟢 Strength"
-
-                    st.markdown(f"""
-                    <div class="recommendation-card {urgency_class}">
-                        <span class="urgency-badge {urgency_badge_class}">{badge_text}</span>
-                        <h4 style='color: #C9A96E; margin-top: 10px;'>{rec['dimension']}</h4>
-                        <p style='color: #F5F0E8; line-height: 1.6;'>{rec['text']}</p>
-                    </div>
-                    """, unsafe_allow_html=True)
+                st.markdown(f"""
+                <div class="recommendation-card {urgency_class}">
+                    <span class="urgency-badge {urgency_badge_class}">{badge_text}</span>
+                    <h4 style='color: #C9A96E; margin-top: 10px;'>{rec['dimension']}</h4>
+                    <p style='color: #F5F0E8; line-height: 1.6;'>{rec['text']}</p>
+                </div>
+                """, unsafe_allow_html=True)
 
 def page_gap_analysis():
     st.markdown(f"<h1 style='color: #C9A96E;'>Cultural Navigation Brief for {st.session_state.target_country}</h1>", unsafe_allow_html=True)
