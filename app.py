@@ -229,30 +229,43 @@ def create_radar_chart(scores, labels, title="Cultural Profile"):
     
     return fig
 
-def get_qualitative_label(score, scale_type):
-    """Convert numerical score to qualitative label"""
-    if scale_type == "karnauhova":  # 1-5 scale
-        if score <= 1.7:
-            return "Strongly Pole 1"
-        elif score <= 2.6:
-            return "Moderately Pole 1"
-        elif score <= 3.4:
-            return "Balanced"
-        elif score <= 4.2:
-            return "Moderately Pole 2"
-        else:
-            return "Strongly Pole 2"
-    else:  # 1-7 scale (GLOBE)
-        if score <= 2.2:
-            return "Low"
-        elif score <= 3.6:
-            return "Moderately Low"
-        elif score <= 4.4:
-            return "Moderate"
-        elif score <= 5.8:
-            return "Moderately High"
-        else:
-            return "High"
+def get_qualitative_label(score, scale_type, dimension=""):
+        """Convert numerical score to qualitative label"""
+        # Define Karnauhova poles with brief explanations
+        karnauhova_poles = {
+            "TimeFocus": ("Monochronic (Strict scheduling)", "Polychronic (Flexible flow)"),
+            "TimeOrientation": ("Past-oriented (Tradition)", "Future-oriented (Innovation)"),
+            "Space": ("Private (Boundaries)", "Public (Openness)"),
+            "Power": ("Egalitarian (Flat hierarchy)", "Hierarchical (Status-driven)"),
+            "Structure": ("Individualist (Self-reliant)", "Collectivist (Group-focused)"),
+            "Competition": ("Cooperative (Harmony)", "Competitive (Achievement)"),
+            "Communication": ("Low-context (Direct)", "High-context (Indirect)"),
+            "Action": ("Being-oriented (Relationships)", "Doing-oriented (Results)")
+        }
+
+        if scale_type == "karnauhova":  # 1-5 scale
+            pole1, pole2 = karnauhova_poles.get(dimension, ("Pole 1", "Pole 2"))
+            if score <= 1.7:
+                return f"Strongly {pole1}"
+            elif score <= 2.6:
+                return f"Moderately {pole1}"
+            elif score <= 3.4:
+                return "Balanced"
+            elif score <= 4.2:
+                return f"Moderately {pole2}"
+            else:
+                return f"Strongly {pole2}"
+        else:  # 1-7 scale (GLOBE)
+            if score <= 2.2:
+                return "Low"
+            elif score <= 3.6:
+                return "Moderately Low"
+            elif score <= 4.4:
+                return "Moderate"
+            elif score <= 5.8:
+                return "Moderately High"
+            else:
+                return "High"
 
 # Initialize session state
 if 'anonymous_id' not in st.session_state:
@@ -828,7 +841,7 @@ def page_results():
         score_data = []
         for dimension, score in user_scores.items():
             scale_type = "karnauhova" if test_name == "Karnauhova" else "globe"
-            label = get_qualitative_label(score, scale_type)
+            label = get_qualitative_label(score, scale_type, dimension)
             score_data.append({
                 "Dimension": dimension,
                 "Your Score": score,
