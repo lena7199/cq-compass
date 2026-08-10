@@ -1123,9 +1123,11 @@ def page_gap_analysis():
             """, unsafe_allow_html=True)
 
             st.markdown("---")
-            if st.button("← Back to Country Comparison", use_container_width=True):
-                st.session_state.current_page = 5
-                st.rerun()
+            if st.button(
+                "← Back to Country Comparison",
+                use_container_width=True,
+                key="back_to_country_comparison_gap_analysis"
+            ):
         
             if st.button("← Back to Test Selection", use_container_width=True):
                 st.session_state.current_page = 2
