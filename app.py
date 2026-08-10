@@ -78,6 +78,10 @@ p, li, span, label {
         div[data-baseweb="select"] > div > div > div {
             color: #F5F0E8 !important;
         }
+
+        div[data-baseweb="select"] div[role="option"][aria-selected="true"] {
+        color: #F5F0E8 !important;
+        }
         .stTextInput > div > div > input {
             background-color: #243447 !important;
             color: #F5F0E8 !important;
@@ -590,6 +594,11 @@ def page_welcome():
             ["Female", "Male", "Prefer not to say"],
             key="gender_select"
         )
+
+    st.markdown("---")
+    if st.button("Returning User? Enter your code", use_container_width=True):
+        st.session_state.current_page = 7
+        st.rerun()
     
     if st.button("Begin Assessment", use_container_width=True):
         st.session_state.anonymous_id = generate_anonymous_id()
@@ -850,6 +859,10 @@ def page_results():
             })
         
         st.dataframe(pd.DataFrame(score_data), use_container_width=True)
+
+    if st.button("← Back to Test Selection", use_container_width=True):
+        st.session_state.current_page = 2
+        st.rerun()
     
     if st.button("Compare with Another Culture →", use_container_width=True):
         st.session_state.current_page = 5
@@ -1057,6 +1070,15 @@ def page_gap_analysis():
                 <p style='color: #F5F0E8; line-height: 1.6;'>{rec['text']}</p>
             </div>
             """, unsafe_allow_html=True)
+
+             st.markdown("---")
+                if st.button("← Back to Country Comparison", use_container_width=True):
+                   st.session_state.current_page = 5
+                   st.rerun()
+    
+                if st.button("← Back to Test Selection", use_container_width=True):
+                   st.session_state.current_page = 2
+                   st.rerun()
 
 def page_profile_access():
     st.markdown("<h1 style='color: #C9A96E;'>Access Your Profile</h1>", unsafe_allow_html=True)
