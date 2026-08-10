@@ -262,7 +262,7 @@ def get_qualitative_label(score, scale_type, dimension=""):
             elif score <= 2.6:
                 return f"Moderately {pole1}"
             elif score <= 3.4:
-                return "Balanced"
+                return "Aligned"
             elif score <= 4.2:
                 return f"Moderately {pole2}"
             else:
@@ -338,7 +338,7 @@ KARNAUHOVA_QUESTIONS = {
          "options": [
              ("Historical monuments, museums, and sites showcasing our rich heritage.", 1),
              ("A mix of historical sites and meetings with established institutions.", 2),
-             ("A balanced program honoring past achievements while showcasing current developments.", 3),
+             ("A Aligned program honoring past achievements while showcasing current developments.", 3),
              ("Tours of innovation hubs, tech parks, and startups showing where our country is heading.", 4),
              ("Presentations on future megaprojects and emerging industries that don't exist yet.", 5)
          ]},
