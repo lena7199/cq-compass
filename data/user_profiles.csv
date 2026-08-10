@@ -1,6 +1,9 @@
 AnonymousID,Nationality,Gender,Framework,Dimension,Score,DateCompleted
-TEST-001,Prefer not to say,Prefer not to say,Sample Framework,Reading,75,2026-08-10
-TEST-001,Prefer not to say,Prefer not to say,Sample Framework,Listening,68,2026-08-10
-TEST-001,Prefer not to say,Prefer not to say,Sample Framework,Writing,81,2026-08-10
-TEST-002,Prefer not to say,Prefer not to say,Sample Framework,Reading,59,2026-08-09
-TEST-002,Prefer not to say,Prefer not to say,Sample Framework,Listening,63,2026-08-09
+CQ-1205-ANR,LatinAmerica,Female,Karnauhova,TimeFocus,1.7,2026-08-10
+CQ-1205-ANR,LatinAmerica,Female,Karnauhova,TimeOrientation,3.7,2026-08-10
+CQ-1205-ANR,LatinAmerica,Female,Karnauhova,Space,2.3,2026-08-10
+CQ-1205-ANR,LatinAmerica,Female,Karnauhova,Power,2.3,2026-08-10
+CQ-1205-ANR,LatinAmerica,Female,Karnauhova,Structure,2,2026-08-10
+CQ-1205-ANR,LatinAmerica,Female,Karnauhova,Competition,2.3,2026-08-10
+CQ-1205-ANR,LatinAmerica,Female,Karnauhova,Communication,3.7,2026-08-10
+CQ-1205-ANR,LatinAmerica,Female,Karnauhova,Action,2.7,2026-08-10
