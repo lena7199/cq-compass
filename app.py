@@ -1029,7 +1029,7 @@ def page_country_comparison():
                     bgcolor='#243447'
                 ),
                showlegend=True,
-                     legend=dict(orientation="h", yanchor="bottom", y=1.05, xanchor="right", x=1, font=dict(color='#F5F0E8', size=12)),
+                     legend=dict(orientation="h", yanchor="bottom", y=1.05, xanchor="right", x=1, font=dict(color='#C9A96E', size=12)),
                 plot_bgcolor='#1B2838',
                 paper_bgcolor='#1B2838'
             )
