@@ -1128,7 +1128,9 @@ def page_gap_analysis():
                 use_container_width=True,
                 key="back_to_country_comparison_gap_analysis"
             ):
-        
+                st.session_state.current_page = 5
+                st.rerun()
+            
             if st.button("← Back to Test Selection", use_container_width=True):
                 st.session_state.current_page = 2
                 st.rerun()
