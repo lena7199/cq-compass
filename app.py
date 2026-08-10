@@ -917,8 +917,30 @@ def page_results():
         st.rerun()
 
     if st.button("Save results"):
-        save_user_profile()
+    st.write("AnonymousID:", st.session_state.get("anonymous_id", "MISSING"))
+    st.write("user_scores:", st.session_state.get("user_scores", {}))
 
+    save_user_profile()
+
+    filepath = os.path.join("data", "user_profiles.csv")
+
+    st.write("CSV file path:", os.path.abspath(filepath))
+
+    if os.path.exists(filepath):
+        try:
+            saved_df = pd.read_csv(filepath)
+            st.write("Saved profiles:")
+            st.dataframe(saved_df)
+
+            if saved_df.empty:
+                st.warning("The CSV file exists, but it is empty.")
+            else:
+                st.success("The CSV file contains data.")
+        except Exception as e:
+            st.error(f"Could not read CSV file: {e}")
+    else:
+        st.error("CSV file not found.")
+        
 def page_country_comparison():
     st.markdown("<h1 style='color: #C9A96E;'>Compare with Another Culture</h1>", unsafe_allow_html=True)
     
