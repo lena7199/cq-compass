@@ -1037,7 +1037,7 @@ def page_country_comparison():
             st.plotly_chart(fig, use_container_width=True)
         
             st.markdown("---")
-                st.markdown(f"### 🧭 Cultural Navigation Brief for {target_country}")
+            st.markdown(f"### 🧭 Cultural Navigation Brief for {target_country}")
 
                 if test_name == "Karnauhova":
                     rec_df = load_data('dimension_recommendations_karnauhova.csv')
