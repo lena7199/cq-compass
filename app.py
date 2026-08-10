@@ -61,13 +61,21 @@ p, li, span, label {
     box-shadow: 0 6px 12px rgba(201, 169, 110, 0.3) !important;
 }
 
-/* Select boxes and inputs */
-.stSelectbox > div > div, .stTextInput > div > div > input {
-    background-color: #243447 !important;
-    color: #F5F0E8 !important;
-    border: 1px solid #3A4A5C !important;
-    border-radius: 8px !important;
-}
+/* Select boxes and inputs - Fixed for visibility */
+        div[data-baseweb="select"] > div {
+            background-color: #243447 !important;
+            border: 1px solid #3A4A5C !important;
+            border-radius: 8px !important;
+        }
+        div[data-baseweb="select"] > div > div > div {
+            color: #F5F0E8 !important;
+        }
+        .stTextInput > div > div > input {
+            background-color: #243447 !important;
+            color: #F5F0E8 !important;
+            border: 1px solid #3A4A5C !important;
+            border-radius: 8px !important;
+        }
 
 /* Radio buttons */
 .stRadio > div {
@@ -548,19 +556,19 @@ def page_welcome():
     
     col1, col2 = st.columns(2)
     
-    with col1:
-        nationality = st.selectbox(
-            "Select your nationality",
-            ["Peru", "Malaysia", "Russia"],
-            key="nationality_select"
-        )
-    
-    with col2:
-        gender = st.selectbox(
-            "Select your gender",
-            ["Female", "Male", "Non-binary", "Prefer not to say"],
-            key="gender_select"
-        )
+   with col1:
+            nationality = st.selectbox(
+                "Select your nationality",
+                ["LatinAmerica", "Malaysia", "Russia"],
+                key="nationality_select"
+            )
+        
+        with col2:
+            gender = st.selectbox(
+                "Select your gender",
+                ["Female", "Male", "Prefer not to say"],
+                key="gender_select"
+            )
     
     if st.button("Begin Assessment", use_container_width=True):
         st.session_state.anonymous_id = generate_anonymous_id()
