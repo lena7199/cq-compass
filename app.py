@@ -61,6 +61,14 @@ p, li, span, label {
     box-shadow: 0 6px 12px rgba(201, 169, 110, 0.3) !important;
 }
 
+/* Darken Plotly chart icons */
+    .modebar-btn path {
+        fill: #C9A96E !important;
+    }
+    .modebar-btn:hover path {
+        fill: #D4B87A !important;
+    }
+
 /* Select boxes and inputs - Fixed for visibility */
         div[data-baseweb="select"] > div {
             background-color: #243447 !important;
@@ -199,7 +207,7 @@ def create_radar_chart(scores, labels, title="Cultural Profile"):
         polar=dict(
             radialaxis=dict(
                 visible=True,
-                range=[0, 7],
+                range=[1, 7],
                 gridcolor='#3A4A5C',
                 tickfont=dict(color='#F5F0E8')
             ),
@@ -804,7 +812,7 @@ def page_results():
         
         fig.update_layout(
             polar=dict(
-                radialaxis=dict(visible=True, range=[0, 7]),
+                radialaxis=dict(visible=True, range=[1, 7]),
                 bgcolor='#243447'
             ),
             showlegend=True,
@@ -912,10 +920,11 @@ def page_country_comparison():
             
             fig.update_layout(
                 polar=dict(
-                    radialaxis=dict(visible=True, range=[0, 7]),
+                    radialaxis=dict(visible=True, range=[1, 7]),
                     bgcolor='#243447'
                 ),
-                showlegend=True,
+               showlegend=True,
+                     legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
                 plot_bgcolor='#1B2838',
                 paper_bgcolor='#1B2838'
             )
