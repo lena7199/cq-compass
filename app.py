@@ -77,19 +77,22 @@ p, li, span, label {
         fill: #D4B87A !important;
     }
 
-/* Fix Dataframe Toolbar (Detailed Scores table) */
-    div[data-testid="stDataFrameToolbar"] {
+/* Fix Dataframe Toolbar - Stronger Override */
+    [data-testid="stDataFrameToolbar"] {
         background-color: #243447 !important;
-        border-radius: 8px !important;
         border: 1px solid #3A4A5C !important;
     }
-    div[data-testid="stDataFrameToolbar"] button svg path {
-        fill: #C9A96E !important;
+    [data-testid="stDataFrameToolbar"] button {
+        background-color: transparent !important;
     }
-    div[data-testid="stDataFrameToolbar"] button svg {
+    [data-testid="stDataFrameToolbar"] svg {
+        fill: #C9A96E !important;
         color: #C9A96E !important;
     }
-
+    [data-testid="stDataFrameToolbar"] svg path {
+        fill: #C9A96E !important;
+    }
+    
 /* Select boxes and inputs - Fixed for visibility */
         div[data-baseweb="select"] > div {
             background-color: #243447 !important;
