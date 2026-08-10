@@ -76,22 +76,6 @@ p, li, span, label {
     .modebar-btn:hover path {
         fill: #D4B87A !important;
     }
-
-/* Fix Dataframe Toolbar - Stronger Override */
-    [data-testid="stDataFrameToolbar"] {
-        background-color: #243447 !important;
-        border: 1px solid #3A4A5C !important;
-    }
-    [data-testid="stDataFrameToolbar"] button {
-        background-color: transparent !important;
-    }
-    [data-testid="stDataFrameToolbar"] svg {
-        fill: #C9A96E !important;
-        color: #C9A96E !important;
-    }
-    [data-testid="stDataFrameToolbar"] svg path {
-        fill: #C9A96E !important;
-    }
     
 /* Select boxes and inputs - Fixed for visibility */
         div[data-baseweb="select"] > div {
@@ -943,7 +927,7 @@ def page_results():
                 "Your Personal Profile": label
             })
         
-        st.dataframe(pd.DataFrame(score_data), use_container_width=True, hide_index=True)
+        st.table(pd.DataFrame(score_data).set_index('Dimension'))
         
         # Create 3 columns to put buttons side-by-side on desktop
         col1, col2, col3 = st.columns(3)
