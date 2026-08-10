@@ -915,12 +915,12 @@ def page_results():
             score_data.append({
                 "Dimension": dimension,
                 "Your Score": score,
-                "National Average": national_scores[dimension],
-                "Interpretation": label
+                "National/Regional Average": national_scores[dimension],
+                "Your Personal Profile": label
             })
         
-        st.dataframe(pd.DataFrame(score_data), use_container_width=True)
-
+        st.dataframe(pd.DataFrame(score_data), use_container_width=True, hide_index=True)
+        
     if st.button("← Back to Test Selection", use_container_width=True):
         st.session_state.current_page = 2
         st.rerun()
