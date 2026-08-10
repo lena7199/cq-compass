@@ -889,6 +889,19 @@ def page_results():
             plot_bgcolor='#1B2838',
             paper_bgcolor='#1B2838'
         )
+
+        fig.update_layout(
+            showlegend=True,
+            legend=dict(
+                orientation="h",
+                yanchor="bottom",
+                y=1.05,
+                xanchor="center",
+                x=0.5,
+                bgcolor="rgba(0,0,0,0)",
+                font=dict(color="#D4AF37", size=14)
+            )
+        )
         
         st.plotly_chart(fig, use_container_width=True)
         
