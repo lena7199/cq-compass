@@ -1071,14 +1071,14 @@ def page_gap_analysis():
             </div>
             """, unsafe_allow_html=True)
 
-             st.markdown("---")
-                if st.button("← Back to Country Comparison", use_container_width=True):
-                   st.session_state.current_page = 5
-                   st.rerun()
-    
-                if st.button("← Back to Test Selection", use_container_width=True):
-                   st.session_state.current_page = 2
-                   st.rerun()
+            st.markdown("---")
+            if st.button("← Back to Country Comparison", use_container_width=True):
+                st.session_state.current_page = 5
+                st.rerun()
+        
+            if st.button("← Back to Test Selection", use_container_width=True):
+                st.session_state.current_page = 2
+                st.rerun()
 
 def page_profile_access():
     st.markdown("<h1 style='color: #C9A96E;'>Access Your Profile</h1>", unsafe_allow_html=True)
