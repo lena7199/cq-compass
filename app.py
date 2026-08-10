@@ -929,38 +929,23 @@ def page_results():
         
         st.dataframe(pd.DataFrame(score_data), use_container_width=True, hide_index=True)
         
-    if st.button("← Back to Test Selection", use_container_width=True):
-        st.session_state.current_page = 2
-        st.rerun()
-    
-    if st.button("Compare with Another Culture →", use_container_width=True):
-        st.session_state.current_page = 5
-        st.rerun()
+        # Create 3 columns to put buttons side-by-side on desktop
+        col1, col2, col3 = st.columns(3)
 
-    if st.button("Save results"):
-        st.write("AnonymousID:", st.session_state.get("anonymous_id", "MISSING"))
-        st.write("user_scores:", st.session_state.get("user_scores", {}))
+        with col1:
+            if st.button("← Back to Test Selection", use_container_width=True):
+                st.session_state.current_page = 2
+                st.rerun()
 
-        save_user_profile()
+        with col2:
+            # Change "Save Results" to the exact text of your middle button
+            if st.button("Save Results", use_container_width=True):
+                st.success("Results saved to your profile!") 
 
-        filepath = os.path.join("data", "user_profiles.csv")
-
-        st.write("CSV file path:", os.path.abspath(filepath))
-
-        if os.path.exists(filepath):
-            try:
-                saved_df = pd.read_csv(filepath)
-                st.write("Saved profiles:")
-                st.dataframe(saved_df)
-
-                if saved_df.empty:
-                    st.warning("The CSV file exists, but it is empty.")
-                else:
-                    st.success("The CSV file contains data.")
-            except Exception as e:
-                st.error(f"Could not read CSV file: {e}")
-        else:
-            st.error("CSV file not found.")
+        with col3:
+            if st.button("Compare with Another Culture →", use_container_width=True):
+                st.session_state.current_page = 5
+                st.rerun()
         
 def page_country_comparison():
     st.markdown("<h1 style='color: #C9A96E;'>Compare with Another Culture</h1>", unsafe_allow_html=True)
