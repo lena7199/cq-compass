@@ -6,6 +6,14 @@ import string
 from datetime import datetime
 import os
 
+import re
+
+def format_dimension_name(name):
+    """Convert names like TimeFocus or time_focus into Time Focus."""
+    name = str(name).replace("_", " ").replace("-", " ")
+    name = re.sub(r"(?<=\w)(?=[A-Z])", " ", name)
+    return name.strip().title()
+
 # Page configuration
 st.set_page_config(
     page_title="CQ Compass - Cultural Intelligence Assessment",
@@ -913,7 +921,7 @@ def page_results():
             scale_type = "karnauhova" if test_name == "Karnauhova" else "globe"
             label = get_qualitative_label(score, scale_type, dimension)
             score_data.append({
-                "Dimension": dimension,
+                "Dimension": format_dimension_name(dimension),
                 "Your Score": score,
                 "National/Regional Average": national_scores[dimension],
                 "Your Personal Profile": label
