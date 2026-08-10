@@ -542,7 +542,7 @@ GLOBE_LEADERSHIP_QUESTIONS = {
 def page_welcome():
     st.markdown("<h1 style='text-align: center; color: #C9A96E;'>🌍 CQ Compass</h1>", unsafe_allow_html=True)
     st.markdown("<h3 style='text-align: center; color: #F5F0E8;'>Cultural Intelligence Assessment & Development Platform</h3>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; font-size: 1.1em; margin-top: 30px;'>Discover your cultural profile. Compare it with any culture. Navigate differences with confidence.</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; font-size: 1.1em; margin-top: 30px;'>Discover your cultural profile. Compare it with other cultures. Navigate differences with confidence.</p>", unsafe_allow_html=True)
     
     st.markdown("---")
     
