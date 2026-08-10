@@ -555,20 +555,20 @@ def page_welcome():
     st.markdown("---")
     
     col1, col2 = st.columns(2)
-    
-   with col1:
-            nationality = st.selectbox(
-                "Select your nationality",
-                ["LatinAmerica", "Malaysia", "Russia"],
-                key="nationality_select"
-            )
-        
-        with col2:
-            gender = st.selectbox(
-                "Select your gender",
-                ["Female", "Male", "Prefer not to say"],
-                key="gender_select"
-            )
+
+    with col1:
+        nationality = st.selectbox(
+            "Select your nationality",
+            ["LatinAmerica", "Malaysia", "Russia"],
+            key="nationality_select"
+        )
+
+    with col2:
+        gender = st.selectbox(
+            "Select your gender",
+            ["Female", "Male", "Prefer not to say"],
+            key="gender_select"
+        )
     
     if st.button("Begin Assessment", use_container_width=True):
         st.session_state.anonymous_id = generate_anonymous_id()
