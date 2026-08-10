@@ -746,37 +746,85 @@ def page_test_administration():
                         )
                     
                     # Save to CSV
-                    save_user_profile()
-                    
+                    # save_user_profile()
+
                     st.session_state.current_page = 4
                     st.rerun()
 
 def save_user_profile():
-    """Save user profile to CSV"""
+    """Save user profile to CSV. Replaces previous results for the same AnonymousID and Framework."""
+
+    columns = [
+        "AnonymousID",
+        "Nationality",
+        "Gender",
+        "Framework",
+        "Dimension",
+        "Score",
+        "DateCompleted"
+    ]
+
+    filepath = os.path.join('data', 'user_profiles.csv')
+
+    # Make sure the data folder exists
+    os.makedirs(os.path.dirname(filepath), exist_ok=True)
+
+    # Make sure there is something to save
+    if not st.session_state.get("user_scores"):
+        st.warning("No assessment results found. Please complete the test before saving.")
+        return
+
+    if not st.session_state.get("anonymous_id"):
+        st.warning("No user ID found. Please start the assessment first.")
+        return
+
     profile_data = []
-    
+
     for test_name, scores in st.session_state.user_scores.items():
         for dimension, score in scores.items():
             profile_data.append({
                 "AnonymousID": st.session_state.anonymous_id,
-                "Nationality": st.session_state.nationality,
-                "Gender": st.session_state.gender,
+                "Nationality": st.session_state.get("nationality", ""),
+                "Gender": st.session_state.get("gender", ""),
                 "Framework": test_name,
                 "Dimension": dimension,
                 "Score": score,
                 "DateCompleted": datetime.now().strftime("%Y-%m-%d")
             })
-    
-    df = pd.DataFrame(profile_data)
-    
-    # Append to existing CSV or create new one
-    filepath = os.path.join('data', 'user_profiles.csv')
-    if os.path.exists(filepath):
-        existing_df = pd.read_csv(filepath)
-        df = pd.concat([existing_df, df], ignore_index=True)
-    
-    df.to_csv(filepath, index=False)
 
+    new_df = pd.DataFrame(profile_data, columns=columns)
+
+    if new_df.empty:
+        st.warning("No results were found to save.")
+        return
+
+    # Read existing CSV safely
+    if os.path.exists(filepath) and os.path.getsize(filepath) > 0:
+        try:
+            existing_df = pd.read_csv(filepath)
+            existing_df = existing_df.reindex(columns=columns, fill_value="")
+        except pd.errors.EmptyDataError:
+            existing_df = pd.DataFrame(columns=columns)
+    else:
+        existing_df = pd.DataFrame(columns=columns)
+
+    anonymous_id = str(st.session_state.anonymous_id).strip()
+    frameworks_to_replace = new_df["Framework"].astype(str).str.strip().unique()
+
+    # Remove old rows for the same user and same framework before saving new ones
+    existing_df = existing_df[
+        ~(
+            (existing_df["AnonymousID"].astype(str).str.strip() == anonymous_id) &
+            (existing_df["Framework"].astype(str).str.strip().isin(frameworks_to_replace))
+        )
+    ]
+
+    # Combine and save
+    final_df = pd.concat([existing_df, new_df], ignore_index=True)
+    final_df.to_csv(filepath, index=False)
+
+    st.success("Your results have been saved.")
+    
 def page_results():
     st.markdown("<h1 style='color: #C9A96E;'>Your Cultural Profile</h1>", unsafe_allow_html=True)
     st.markdown(f"<p>Anonymous ID: <span class='anonymous-id'>{st.session_state.anonymous_id}</span></p>", unsafe_allow_html=True)
@@ -867,6 +915,9 @@ def page_results():
     if st.button("Compare with Another Culture →", use_container_width=True):
         st.session_state.current_page = 5
         st.rerun()
+
+    if st.button("Save results"):
+        save_user_profile()
 
 def page_country_comparison():
     st.markdown("<h1 style='color: #C9A96E;'>Compare with Another Culture</h1>", unsafe_allow_html=True)
