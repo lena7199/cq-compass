@@ -941,20 +941,19 @@ def page_results():
         st.dataframe(pd.DataFrame(score_data), use_container_width=True, hide_index=True)
         
         # Create 3 columns to put buttons side-by-side on desktop
-        col1, col2, col3 = st.columns(3)
+        nav_col1, nav_col2, nav_col3 = st.columns(3)
 
-        with col1:
-            if st.button("← Back to Test Selection", use_container_width=True):
+        with nav_col1:
+            if st.button("← Back to Test Selection", use_container_width=True, key="nav_back_test"):
                 st.session_state.current_page = 2
                 st.rerun()
 
-        with col2:
-            # Change "Save Results" to the exact text of your middle button
-            if st.button("Save Results", use_container_width=True):
+        with nav_col2:
+            if st.button("Save Results", use_container_width=True, key="nav_save_results"):
                 st.success("Results saved to your profile!") 
 
-        with col3:
-            if st.button("Compare with Another Culture →", use_container_width=True):
+        with nav_col3:
+            if st.button("Compare with Another Culture →", use_container_width=True, key="nav_compare"):
                 st.session_state.current_page = 5
                 st.rerun()
         
@@ -1197,56 +1196,6 @@ def page_gap_analysis():
             # Get recommendation
             rec_row = rec_df[
                 (rec_df['Dimension'] == dimension) &
-                (rec_df['GapCategory'] == gap_category) &
-                (rec_df['Direction'] == direction)
-            ]
-            
-            if len(rec_row) > 0:
-                rec_text = rec_row.iloc[0]['RecommendationText']
-                recommendations.append({
-                    "dimension": dimension,
-                    "urgency": urgency,
-                    "gap_category": gap_category,
-                    "text": rec_text,
-                    "gap": gap
-                })
-        
-        # Sort by urgency (Red first, then Yellow, then Green)
-        urgency_order = {"Red": 0, "Yellow": 1, "Green": 2}
-        recommendations.sort(key=lambda x: (urgency_order[x['urgency']], -x['gap']))
-        
-        # Display recommendations
-        for rec in recommendations:
-            urgency_class = f"recommendation-{rec['urgency'].lower()}"
-            urgency_badge_class = f"urgency-{rec['urgency'].lower()}"
-            
-            if rec['urgency'] == "Red":
-                badge_text = "🔴 Crucial"
-            elif rec['urgency'] == "Yellow":
-                badge_text = "🟡 Important"
-            else:
-                badge_text = "🟢 Strength"
-            
-            st.markdown(f"""
-            <div class="recommendation-card {urgency_class}">
-                <span class="urgency-badge {urgency_badge_class}">{badge_text}</span>
-                <h4 style='color: #C9A96E; margin-top: 10px;'>{rec['dimension']}</h4>
-                <p style='color: #F5F0E8; line-height: 1.6;'>{rec['text']}</p>
-            </div>
-            """, unsafe_allow_html=True)
-
-            st.markdown("---")
-            if st.button(
-                "← Back to Country Comparison",
-                use_container_width=True,
-                key="back_to_country_comparison_gap_analysis"
-            ):
-                st.session_state.current_page = 5
-                st.rerun()
-            
-            if st.button("← Back to Test Selection", use_container_width=True):
-                st.session_state.current_page = 2
-                st.rerun()
 
 def page_profile_access():
     st.markdown("<h1 style='color: #C9A96E;'>Access Your Profile</h1>", unsafe_allow_html=True)
