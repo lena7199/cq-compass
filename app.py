@@ -245,7 +245,7 @@ def get_qualitative_label(score, scale_type, dimension=""):
         """Convert numerical score to qualitative label"""
         # Define Karnauhova poles with brief explanations
         karnauhova_poles = {
-            "TimeFocus": ("Monochronic (Strict scheduling)", "Polychronic (Flexible flow)"),
+            "Time Focus": ("Monochronic (Strict scheduling)", "Polychronic (Flexible flow)"),
             "TimeOrientation": ("Past-oriented (Tradition)", "Future-oriented (Innovation)"),
             "Space": ("Private (Boundaries)", "Public (Openness)"),
             "Power": ("Egalitarian (Flat hierarchy)", "Hierarchical (Status-driven)"),
@@ -299,7 +299,7 @@ if 'user_scores' not in st.session_state:
 
 # Define all test questions
 KARNAUHOVA_QUESTIONS = {
-    "TimeFocus": [
+    "Time Focus": [
         {"q": "You are leading a project meeting with an international team. The agenda has 5 items, but the first topic sparks a rich, unexpected discussion. The scheduled time has passed. What do you do?",
          "options": [
              ("Politely interrupt and move to the next agenda item. The schedule must be respected.", 1),
