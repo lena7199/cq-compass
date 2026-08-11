@@ -590,16 +590,19 @@ def page_welcome():
     col1, col2 = st.columns(2)
 
     with col1:
-        nationality = st.selectbox(
+        nationality_display = st.selectbox(
             "Select your nationality",
-            ["LatinAmerica", "Malaysia", "Russia"],
+            ["Select country/region", "Latin America", "Malaysia", "Russia"],
             key="nationality_select"
         )
+        # Map the two-word display name to the one-word CSV name
+        country_map = {"Latin America": "LatinAmerica", "Malaysia": "Malaysia", "Russia": "Russia"}
+        nationality = country_map.get(nationality_display, None)
 
     with col2:
         gender = st.selectbox(
             "Select your gender",
-            ["Female", "Male", "Prefer not to say"],
+            ["Select", "Female", "Male", "Prefer not to say"],
             key="gender_select"
         )
 
@@ -608,7 +611,13 @@ def page_welcome():
         st.session_state.current_page = 7
         st.rerun()
     
-    if st.button("Begin Assessment", use_container_width=True):
+    # Check if placeholders are still selected
+    is_ready = (nationality is not None) and (gender != "Select")
+    
+    if not is_ready:
+        st.warning("Please select your nationality and gender to continue.")
+        
+    if st.button("Begin Assessment", use_container_width=True, disabled=not is_ready):
         st.session_state.anonymous_id = generate_anonymous_id()
         st.session_state.nationality = nationality
         st.session_state.gender = gender
