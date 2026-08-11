@@ -246,7 +246,7 @@ def get_qualitative_label(score, scale_type, dimension=""):
         # Define Karnauhova poles with brief explanations
         karnauhova_poles = {
             "Time Focus": ("Monochronic (Strict scheduling)", "Polychronic (Flexible flow)"),
-            "TimeOrientation": ("Past-oriented (Tradition)", "Future-oriented (Innovation)"),
+            "Time Orientation": ("Past-oriented (Tradition)", "Future-oriented (Innovation)"),
             "Space": ("Private (Boundaries)", "Public (Openness)"),
             "Power": ("Egalitarian (Flat hierarchy)", "Hierarchical (Status-driven)"),
             "Structure": ("Individualist (Self-reliant)", "Collectivist (Group-focused)"),
@@ -325,7 +325,7 @@ KARNAUHOVA_QUESTIONS = {
              ("No schedule at all. People arrive when they arrive, eat when hungry, leave when ready.", 5)
          ]}
     ],
-    "TimeOrientation": [
+    "Time Orientation": [
         {"q": "Your organization is considering a major strategic change. What type of argument do you find most persuasive?",
          "options": [
              ("This approach has been tested for decades and has a proven track record.", 1),
@@ -514,7 +514,7 @@ KARNAUHOVA_QUESTIONS = {
 # For now, we'll create placeholder questions
 
 GLOBE_CULTURE_QUESTIONS = {
-    "PerformanceOrientation": [
+    "Performance Orientation": [
         {"q": "Placeholder GLOBE question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]},
         {"q": "Placeholder GLOBE question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]}
     ],
@@ -522,11 +522,11 @@ GLOBE_CULTURE_QUESTIONS = {
         {"q": "Placeholder GLOBE question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]},
         {"q": "Placeholder GLOBE question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]}
     ],
-    "FutureOrientation": [
+    "Future Orientation": [
         {"q": "Placeholder GLOBE question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]},
         {"q": "Placeholder GLOBE question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]}
     ],
-    "HumaneOrientation": [
+    "Humane Orientation": [
         {"q": "Placeholder GLOBE question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]},
         {"q": "Placeholder GLOBE question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]}
     ],
@@ -534,30 +534,30 @@ GLOBE_CULTURE_QUESTIONS = {
         {"q": "Placeholder GLOBE question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]},
         {"q": "Placeholder GLOBE question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]}
     ],
-    "InGroupCollectivism": [
+    "In-group Collectivism": [
         {"q": "Placeholder GLOBE question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]},
         {"q": "Placeholder GLOBE question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]}
     ],
-    "GenderEgalitarianism": [
+    "Gender Egalitarianism": [
         {"q": "Placeholder GLOBE question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]},
         {"q": "Placeholder GLOBE question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]}
     ],
-    "PowerDistance": [
+    "Power Distance": [
         {"q": "Placeholder GLOBE question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]},
         {"q": "Placeholder GLOBE question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]}
     ],
-    "UncertaintyAvoidance": [
+    "Uncertainty Avoidance": [
         {"q": "Placeholder GLOBE question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]},
         {"q": "Placeholder GLOBE question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]}
     ]
 }
 
 GLOBE_LEADERSHIP_QUESTIONS = {
-    "CharismaticValueBased": [
+    "Charisma": [
         {"q": "Placeholder GLOBE Leadership question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]},
         {"q": "Placeholder GLOBE Leadership question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]}
     ],
-    "TeamOriented": [
+    "Team Oriented": [
         {"q": "Placeholder GLOBE Leadership question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]},
         {"q": "Placeholder GLOBE Leadership question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]}
     ],
@@ -565,7 +565,7 @@ GLOBE_LEADERSHIP_QUESTIONS = {
         {"q": "Placeholder GLOBE Leadership question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]},
         {"q": "Placeholder GLOBE Leadership question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]}
     ],
-    "HumaneOriented": [
+    "Humane Oriented": [
         {"q": "Placeholder GLOBE Leadership question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]},
         {"q": "Placeholder GLOBE Leadership question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]}
     ],
@@ -573,7 +573,7 @@ GLOBE_LEADERSHIP_QUESTIONS = {
         {"q": "Placeholder GLOBE Leadership question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]},
         {"q": "Placeholder GLOBE Leadership question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]}
     ],
-    "SelfProtective": [
+    "Self-protective": [
         {"q": "Placeholder GLOBE Leadership question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]},
         {"q": "Placeholder GLOBE Leadership question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]}
     ]
