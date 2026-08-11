@@ -9,28 +9,8 @@ import os
 import re
 
 def format_dimension_name(name):
-    """Map backend names to beautiful display names."""
-    display_names = {
-        "TimeOrientation": "Time Orientation",
-        "TimeFocus": "Time Focus",
-        "SelfProtective": "Self-protective",
-        "CharismaticValueBased": "Charisma",
-        "HumaneOrientation": "Humane Orientation",
-        "FutureOrientation": "Future",
-        "PerformanceOrientation": "Performance Orientation",
-        "FutureOrientation": "Future Orientation",
-        "InstitutionalCollectivism": "Institutional Collectivism",
-        "InGroupCollectivism": "In-group Collectivism",
-        "GenderEgalitarianism": "Gender Egalitarianism",
-        "PowerDistance": "Power Distance",
-        "UncertaintyAvoidance": "Uncertainty Avoidance",
-        "TeamOriented": "Team Oriented",
-        # Add any other dimensions here if needed!
-    }
-    
-    # If the name is already pretty (from your CSV), just return it.
-    # If it's an old backend ID, map it to the pretty name.
-    return display_names.get(name, name)
+    """Simply return the name exactly as it is in the CSV."""
+    return str(name)
 
 # Page configuration
 st.set_page_config(
