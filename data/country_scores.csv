@@ -12,7 +12,7 @@ LatinAmerica,GLOBE_Culture,Assertiveness,3.5,Practice,Latin America
 LatinAmerica,GLOBE_Culture,FutureOrientation,3.9,Practice,Latin America
 LatinAmerica,GLOBE_Culture,HumaneOrientation,4.5,Practice,Latin America
 LatinAmerica,GLOBE_Culture,InstitutionalCollectivism,3.6,Practice,Latin America
-LatinAmerica,GLOBE_Culture,In-group Collectivism,4.8,Practice,Latin America
+LatinAmerica,GLOBE_Culture,InGroupCollectivism,4.8,Practice,Latin America
 LatinAmerica,GLOBE_Culture,GenderEgalitarianism,3.4,Practice,Latin America
 LatinAmerica,GLOBE_Culture,PowerDistance,4.7,Practice,Latin America
 LatinAmerica,GLOBE_Culture,UncertaintyAvoidance,4.2,Practice,Latin America
@@ -35,7 +35,7 @@ Malaysia,GLOBE_Culture,Assertiveness,3.2,Practice,Southern Asia
 Malaysia,GLOBE_Culture,FutureOrientation,4.3,Practice,Southern Asia
 Malaysia,GLOBE_Culture,HumaneOrientation,4.4,Practice,Southern Asia
 Malaysia,GLOBE_Culture,InstitutionalCollectivism,4.0,Practice,Southern Asia
-Malaysia,GLOBE_Culture,In-group Collectivism,4.6,Practice,Southern Asia
+Malaysia,GLOBE_Culture,InGroupCollectivism,4.6,Practice,Southern Asia
 Malaysia,GLOBE_Culture,GenderEgalitarianism,3.1,Practice,Southern Asia
 Malaysia,GLOBE_Culture,PowerDistance,5.3,Practice,Southern Asia
 Malaysia,GLOBE_Culture,UncertaintyAvoidance,4.0,Practice,Southern Asia
@@ -58,7 +58,7 @@ Russia,GLOBE_Culture,Assertiveness,4.1,Practice,Eastern Europe
 Russia,GLOBE_Culture,FutureOrientation,3.6,Practice,Eastern Europe
 Russia,GLOBE_Culture,HumaneOrientation,3.8,Practice,Eastern Europe
 Russia,GLOBE_Culture,InstitutionalCollectivism,3.7,Practice,Eastern Europe
-Russia,GLOBE_Culture,In-group Collectivism,4.2,Practice,Eastern Europe
+Russia,GLOBE_Culture,InGroupCollectivism,4.2,Practice,Eastern Europe
 Russia,GLOBE_Culture,GenderEgalitarianism,3.3,Practice,Eastern Europe
 Russia,GLOBE_Culture,PowerDistance,5.1,Practice,Eastern Europe
 Russia,GLOBE_Culture,UncertaintyAvoidance,4.5,Practice,Eastern Europe
