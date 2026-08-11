@@ -914,7 +914,7 @@ def page_results():
             legend=dict(
                 orientation="h",
                 yanchor="bottom",
-                y=1.05,
+                y=1.20,
                 xanchor="center",
                 x=0.5,
                 bgcolor="rgba(0,0,0,0)",
@@ -1040,7 +1040,7 @@ def page_country_comparison():
                     bgcolor='#243447'
                 ),
                showlegend=True,
-                     legend=dict(orientation="h", yanchor="bottom", y=1.15, xanchor="center", x=0.5, font=dict(color='#C9A96E', size=12)),
+                     legend=dict(orientation="h", yanchor="bottom", y=1.20, xanchor="center", x=0.5, font=dict(color='#C9A96E', size=12)),
                 plot_bgcolor='#1B2838',
                 paper_bgcolor='#1B2838'
             )
