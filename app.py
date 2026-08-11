@@ -1026,7 +1026,7 @@ def page_country_comparison():
             user_values = list(user_scores.values()) + [list(user_scores.values())[0]]
             fig.add_trace(go.Scatterpolar(
                 r=user_values,
-                theta=labels_closed,
+                theta=[format_dimension_name(l) for l in labels_closed],
                 fill='toself',
                 name='Your Profile',
                 line_color='#C9A96E',
@@ -1037,9 +1037,9 @@ def page_country_comparison():
             national_values = list(national_scores.values()) + [list(national_scores.values())[0]]
             fig.add_trace(go.Scatterpolar(
                 r=national_values,
-                theta=labels_closed,
+                theta=[format_dimension_name(l) for l in labels_closed],
                 fill='toself',
-                name=f'{st.session_state.nationality} Average',
+                name=f'{st.session_state.nationality.replace("LatinAmerica", "Latin America")} Average',
                 line_color='#7A9E7E',
                 fillcolor='rgba(122, 158, 126, 0.2)'
             ))
@@ -1048,9 +1048,9 @@ def page_country_comparison():
             target_values = list(target_scores.values()) + [list(target_scores.values())[0]]
             fig.add_trace(go.Scatterpolar(
                 r=target_values,
-                theta=labels_closed,
+                theta=[format_dimension_name(l) for l in labels_closed],
                 fill='toself',
-                name=f'{target_country} Average',
+                name=f'{target_country.replace("LatinAmerica", "Latin America")} Average',
                 line_color='#C75B3A',
                 fillcolor='rgba(199, 91, 58, 0.2)'
             ))
@@ -1138,7 +1138,7 @@ def page_country_comparison():
                 st.markdown(f"""
                 <div class="recommendation-card {urgency_class}">
                     <span class="urgency-badge {urgency_badge_class}">{badge_text}</span>
-                    <h4 style='color: #C9A96E; margin-top: 10px;'>{rec['dimension']}</h4>
+                    <h4 style='color: #C9A96E; margin-top: 10px;'>{format_dimension_name(rec['dimension'])}</h4>
                     <p style='color: #F5F0E8; line-height: 1.6;'>{rec['text']}</p>
                 </div>
                 """, unsafe_allow_html=True)
