@@ -1196,6 +1196,9 @@ def page_gap_analysis():
             # Get recommendation
             rec_row = rec_df[
                 (rec_df['Dimension'] == dimension) &
+                (rec_df['GapCategory'] == gap_category) &
+                (rec_df['Direction'] == direction)
+            ]
 
 def page_profile_access():
     st.markdown("<h1 style='color: #C9A96E;'>Access Your Profile</h1>", unsafe_allow_html=True)
