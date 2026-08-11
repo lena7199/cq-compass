@@ -9,8 +9,25 @@ import os
 import re
 
 def format_dimension_name(name):
-    """Simply return the name exactly as it is in the CSV."""
-    return str(name)
+    """Translates ugly backend names into pretty display names."""
+    name = str(name)
+    pretty_names = {
+        "TimeFocus": "Time Focus",
+        "TimeOrientation": "Time Orientation",
+        "PerformanceOrientation": "Performance Orientation",
+        "FutureOrientation": "FutureOrientation",
+        "HumaneOrientation": "Humane Orientation",
+        "InstitutionalCollectivism": "Institutional Collectivism",
+        "InGroupCollectivism": "In-group Collectivism",
+        "GenderEgalitarianism": "Gender Egalitarianism",
+        "PowerDistance": "Power Distance",
+        "UncertaintyAvoidance": "Uncertainty avoidance",
+        "CharismaticValueBased": "Charisma",
+        "TeamOriented": "Team oriented",
+        "HumaneOriented": "Humane Oriented",
+        "SelfProtective": "Self-protective"
+    }
+    return pretty_names.get(name, name)
 
 # Page configuration
 st.set_page_config(
@@ -297,7 +314,7 @@ if 'user_scores' not in st.session_state:
 
 # Define all test questions
 KARNAUHOVA_QUESTIONS = {
-    "Time Focus": [
+    "TimeFocus": [
         {"q": "You are leading a project meeting with an international team. The agenda has 5 items, but the first topic sparks a rich, unexpected discussion. The scheduled time has passed. What do you do?",
          "options": [
              ("Politely interrupt and move to the next agenda item. The schedule must be respected.", 1),
@@ -323,7 +340,7 @@ KARNAUHOVA_QUESTIONS = {
              ("No schedule at all. People arrive when they arrive, eat when hungry, leave when ready.", 5)
          ]}
     ],
-    "Time Orientation": [
+    "TimeOrientation": [
         {"q": "Your organization is considering a major strategic change. What type of argument do you find most persuasive?",
          "options": [
              ("This approach has been tested for decades and has a proven track record.", 1),
@@ -512,7 +529,7 @@ KARNAUHOVA_QUESTIONS = {
 # For now, we'll create placeholder questions
 
 GLOBE_CULTURE_QUESTIONS = {
-    "Performance Orientation": [
+    "PerformanceOrientation": [
         {"q": "Placeholder GLOBE question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]},
         {"q": "Placeholder GLOBE question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]}
     ],
@@ -520,42 +537,42 @@ GLOBE_CULTURE_QUESTIONS = {
         {"q": "Placeholder GLOBE question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]},
         {"q": "Placeholder GLOBE question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]}
     ],
-    "Future Orientation": [
+    "FutureOrientation": [
         {"q": "Placeholder GLOBE question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]},
         {"q": "Placeholder GLOBE question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]}
     ],
-    "Humane Orientation": [
+    "HumaneOrientation": [
         {"q": "Placeholder GLOBE question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]},
         {"q": "Placeholder GLOBE question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]}
     ],
-    "Institutional Collectivism": [
+    "InstitutionalCollectivism": [
         {"q": "Placeholder GLOBE question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]},
         {"q": "Placeholder GLOBE question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]}
     ],
-    "In-group Collectivism": [
+    "InGroupCollectivism": [
         {"q": "Placeholder GLOBE question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]},
         {"q": "Placeholder GLOBE question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]}
     ],
-    "Gender Egalitarianism": [
+    "GenderEgalitarianism": [
         {"q": "Placeholder GLOBE question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]},
         {"q": "Placeholder GLOBE question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]}
     ],
-    "Power Distance": [
+    "PowerDistance": [
         {"q": "Placeholder GLOBE question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]},
         {"q": "Placeholder GLOBE question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]}
     ],
-    "Uncertainty Avoidance": [
+    "UncertaintyAvoidance": [
         {"q": "Placeholder GLOBE question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]},
         {"q": "Placeholder GLOBE question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]}
     ]
 }
 
 GLOBE_LEADERSHIP_QUESTIONS = {
-    "Charisma": [
+    "CharismaticValueBased": [
         {"q": "Placeholder GLOBE Leadership question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]},
         {"q": "Placeholder GLOBE Leadership question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]}
     ],
-    "Team Oriented": [
+    "TeamOriented": [
         {"q": "Placeholder GLOBE Leadership question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]},
         {"q": "Placeholder GLOBE Leadership question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]}
     ],
@@ -563,7 +580,7 @@ GLOBE_LEADERSHIP_QUESTIONS = {
         {"q": "Placeholder GLOBE Leadership question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]},
         {"q": "Placeholder GLOBE Leadership question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]}
     ],
-    "Humane Oriented": [
+    "HumaneOriented": [
         {"q": "Placeholder GLOBE Leadership question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]},
         {"q": "Placeholder GLOBE Leadership question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]}
     ],
@@ -571,7 +588,7 @@ GLOBE_LEADERSHIP_QUESTIONS = {
         {"q": "Placeholder GLOBE Leadership question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]},
         {"q": "Placeholder GLOBE Leadership question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]}
     ],
-    "Self-protective": [
+    "SelfProtective": [
         {"q": "Placeholder GLOBE Leadership question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]},
         {"q": "Placeholder GLOBE Leadership question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]}
     ]
