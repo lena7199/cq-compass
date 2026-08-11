@@ -612,20 +612,22 @@ def page_welcome():
         st.rerun()
     
     # Check if placeholders are still selected
-        is_ready = (nationality is not None) and (gender != "Select")
+    is_ready = (nationality is not None) and (gender != "Select")
 
-        # Create 3 columns to center the buttons
-        col1, col2, col3 = st.columns(3)
+    st.markdown("---")
 
-        with col1:
-            if st.button("Returning User? Enter your code", use_container_width=True):
-                st.session_state.current_page = 7
-                st.rerun()
+    # Create 3 columns to center the buttons
+    btn_col1, btn_col2, btn_col3 = st.columns(3)
 
-        with col3:
-            if st.button("Begin Assessment", use_container_width=True, disabled=not is_ready):
-                st.session_state.current_page = 2
-                st.rerun()
+    with btn_col1:
+        if st.button("Returning User? Enter your code", use_container_width=True):
+            st.session_state.current_page = 7
+            st.rerun()
+
+    with btn_col3:
+        if st.button("Begin Assessment", use_container_width=True, disabled=not is_ready):
+            st.session_state.current_page = 2
+            st.rerun()
 
 def page_test_selection():
     st.markdown("<h1 style='color: #C9A96E;'>Select Your Assessment</h1>", unsafe_allow_html=True)
