@@ -1,12 +1,12 @@
 Country,Framework,Dimension,Score,DataType,Cluster
-LatinAmerica,Karnauhova,TimeFocus,4.2,Practice,Latin America
-LatinAmerica,Karnauhova,TimeOrientation,3.5,Practice,Latin America
+LatinAmerica,Karnauhova,TimeFocus,3.6,Practice,Latin America
+LatinAmerica,Karnauhova,TimeOrientation,2.8,Practice,Latin America
 LatinAmerica,Karnauhova,Space,4.0,Practice,Latin America
-LatinAmerica,Karnauhova,Power,4.3,Practice,Latin America
+LatinAmerica,Karnauhova,Power,4.1,Practice,Latin America
 LatinAmerica,Karnauhova,Structure,4.1,Practice,Latin America
-LatinAmerica,Karnauhova,Competition,2.3,Practice,Latin America
-LatinAmerica,Karnauhova,Communication,4.0,Practice,Latin America
-LatinAmerica,Karnauhova,Action,2.5,Practice,Latin America
+LatinAmerica,Karnauhova,Competition,2.8,Practice,Latin America
+LatinAmerica,Karnauhova,Communication,3.7,Practice,Latin America
+LatinAmerica,Karnauhova,Action,2.6,Practice,Latin America
 LatinAmerica,GLOBE_Culture,PerformanceOrientation,3.85,Practice,Latin America
 LatinAmerica,GLOBE_Culture,Assertiveness,4.15,Practice,Latin America
 LatinAmerica,GLOBE_Culture,FutureOrientation,3.54,Practice,Latin America
