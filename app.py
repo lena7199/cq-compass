@@ -1100,6 +1100,16 @@ def page_country_comparison():
                         "text": rec_row.iloc[0]['RecommendationText'], "gap": gap
                     })
 
+                else:
+                # Fallback for Strengths/Aligned dimensions
+                recommendations.append({
+                    "dimension": dimension,
+                    "urgency": "Green",
+                    "gap_category": "Low",
+                    "text": f"You are naturally aligned with {target_country} in this area. This is a core strength that will help you connect easily!",
+                    "gap": gap
+                })
+
             urgency_order = {"Red": 0, "Yellow": 1, "Green": 2}
             recommendations.sort(key=lambda x: (urgency_order[x['urgency']], -x['gap']))
 
