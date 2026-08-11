@@ -922,7 +922,7 @@ def page_results():
             )
         )
         
-        st.plotly_chart(fig, use_container_width=True, config={'editable': False})
+        st.plotly_chart(fig, use_container_width=True, config={'staticPlot': True})
         
         # Display score table
         st.markdown("### Detailed Scores")
@@ -1048,7 +1048,7 @@ def page_country_comparison():
                 paper_bgcolor='#1B2838'
             )
             
-            st.plotly_chart(fig, use_container_width=True, config={'editable': False})
+            st.plotly_chart(fig, use_container_width=True, config={'staticPlot': True})
         
             st.markdown("---")
             st.markdown(f"### 🧭 Cultural Navigation Brief for {target_country}")
