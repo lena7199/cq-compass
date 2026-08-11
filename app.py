@@ -1243,41 +1243,46 @@ def page_profile_access():
     
     anonymous_id = st.text_input("Enter your Anonymous ID")
     
-    if st.button("Load Profile", use_container_width=True):
-        # Load user profiles
-        profiles_df = load_data('user_profiles.csv')
-        
-        user_data = profiles_df[profiles_df['AnonymousID'] == anonymous_id]
-        
-        if len(user_data) > 0:
-            st.session_state.anonymous_id = anonymous_id
-            st.session_state.nationality = user_data.iloc[0]['Nationality']
-            st.session_state.gender = user_data.iloc[0]['Gender']
-            
-            # Reconstruct user scores
-            st.session_state.user_scores = {}
-            st.session_state.selected_tests = []
-            
-            for _, row in user_data.iterrows():
-                test_name = row['Framework']
-                dimension = row['Dimension']
-                score = row['Score']
-                
-                if test_name not in st.session_state.user_scores:
-                    st.session_state.user_scores[test_name] = {}
-                    if test_name not in st.session_state.selected_tests:
-                        st.session_state.selected_tests.append(test_name)
-                
-                st.session_state.user_scores[test_name][dimension] = score
-            
-            st.session_state.current_page = 4
-            st.rerun()
-        else:
-            st.error("Profile not found. Please check your ID or take a new assessment.")
+    # Create 4 columns to center the buttons
+    p_col1, p_col2, p_col3, p_col4 = st.columns(4)
 
-    if st.button("← Back to Home", use_container_width=True):
-        st.session_state.current_page = 1
-        st.rerun()
+    with p_col2:
+        if st.button("Load Profile", use_container_width=True, key="load_profile_btn"):
+            # Load user profiles
+            profiles_df = load_data('user_profiles.csv')
+            
+            user_data = profiles_df[profiles_df['AnonymousID'] == anonymous_id]
+            
+            if len(user_data) > 0:
+                st.session_state.anonymous_id = anonymous_id
+                st.session_state.nationality = user_data.iloc[0]['Nationality']
+                st.session_state.gender = user_data.iloc[0]['Gender']
+                
+                # Reconstruct user scores
+                st.session_state.user_scores = {}
+                st.session_state.selected_tests = []
+                
+                for _, row in user_data.iterrows():
+                    test_name = row['Framework']
+                    dimension = row['Dimension']
+                    score = row['Score']
+                    
+                    if test_name not in st.session_state.user_scores:
+                        st.session_state.user_scores[test_name] = {}
+                        if test_name not in st.session_state.selected_tests:
+                            st.session_state.selected_tests.append(test_name)
+                    
+                    st.session_state.user_scores[test_name][dimension] = score
+                
+                st.session_state.current_page = 4
+                st.rerun()
+            else:
+                st.error("Profile not found. Please check your ID or take a new assessment.")
+
+    with p_col3:
+        if st.button("← Back to Home", use_container_width=True, key="back_home_profile_btn"):
+            st.session_state.current_page = 1
+            st.rerun()
 
 # Main app logic
 def main():
