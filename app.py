@@ -215,13 +215,12 @@ def calculate_dimension_score(answers, questions_per_dimension):
 
 def create_radar_chart(scores, labels, title="Cultural Profile"):
     """Create a radar/spider chart using Plotly"""
-    # Close the radar chart by repeating the first value
     # Apply the pretty names to the labels
-       formatted_labels = [format_dimension_name(label) for label in labels]
-       
-       # Close the radar chart by repeating the first value
-       values = list(scores.values()) + [list(scores.values())[0]]
-       labels_closed = formatted_labels + [formatted_labels[0]]
+    formatted_labels = [format_dimension_name(label) for label in labels]
+    
+    # Close the radar chart by repeating the first value
+    values = list(scores.values()) + [list(scores.values())[0]]
+    labels_closed = formatted_labels + [formatted_labels[0]]
     
     fig = go.Figure()
     
