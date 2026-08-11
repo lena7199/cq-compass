@@ -898,7 +898,7 @@ def page_results():
         
         fig.add_trace(go.Scatterpolar(
             r=user_values,
-            theta=user_labels,
+            theta=[format_dimension_name(l) for l in labels_closed],
             fill='toself',
             name='Your Profile',
             line_color='#C9A96E',
