@@ -297,9 +297,10 @@ def get_qualitative_label(score, scale_type, dimension=""):
             else:
                 return "High"
 
-# Initialize session state
-if 'anonymous_id' not in st.session_state:
-    st.session_state.anonymous_id = None
+# Initialize session state and generate a new ID for new sessions
+if 'anonymous_id' not in st.session_state or st.session_state.anonymous_id is None:
+    import uuid
+    st.session_state.anonymous_id = str(uuid.uuid4())[:8]
 if 'nationality' not in st.session_state:
     st.session_state.nationality = None
 if 'gender' not in st.session_state:
