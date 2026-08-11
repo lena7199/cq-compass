@@ -966,7 +966,11 @@ def page_country_comparison():
     available_countries = country_scores_df['Country'].unique()
     available_countries = [c for c in available_countries if c != st.session_state.nationality]
     
-    target_country = st.selectbox("Select target country", available_countries)
+    target_country = st.selectbox("Select target country", ["Select a country to compare..."] + list(available_countries))
+
+    if target_country == "Select a country to compare...":
+        st.info("👆 Please select a country from the dropdown above to see your comparison.")
+        st.stop()
     
     if target_country:
         # Display comparison for each test
