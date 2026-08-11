@@ -9,10 +9,20 @@ import os
 import re
 
 def format_dimension_name(name):
-    """Convert names like TimeFocus or time_focus into Time Focus."""
-    name = str(name).replace("_", " ").replace("-", " ")
-    name = re.sub(r"(?<=\w)(?=[A-Z])", " ", name)
-    return name.strip().title()
+    """Map backend names to beautiful display names."""
+    display_names = {
+        "TimeOrientation": "Time Orientation",
+        "TimeFocus": "Time Focus",
+        "SelfProtective": "Self-protective",
+        "CharismaticValueBased": "Charisma",
+        "HumaneOrientation": "Humane",
+        "FutureOrientation": "Future",
+        # Add any other dimensions here if needed!
+    }
+    
+    # If the name is already pretty (from your CSV), just return it.
+    # If it's an old backend ID, map it to the pretty name.
+    return display_names.get(name, name)
 
 # Page configuration
 st.set_page_config(
@@ -530,7 +540,7 @@ GLOBE_CULTURE_QUESTIONS = {
         {"q": "Placeholder GLOBE question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]},
         {"q": "Placeholder GLOBE question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]}
     ],
-    "InstitutionalCollectivism": [
+    "Institutional Collectivism": [
         {"q": "Placeholder GLOBE question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]},
         {"q": "Placeholder GLOBE question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(7)]}
     ],
