@@ -15,8 +15,16 @@ def format_dimension_name(name):
         "TimeFocus": "Time Focus",
         "SelfProtective": "Self-protective",
         "CharismaticValueBased": "Charisma",
-        "HumaneOrientation": "Humane",
+        "HumaneOrientation": "Humane Orientation",
         "FutureOrientation": "Future",
+        "PerformanceOrientation": "Performance Orientation",
+        "FutureOrientation": "Future Orientation",
+        "InstitutionalCollectivism": "Institutional Collectivism",
+        "InGroupCollectivism": "In-group Collectivism",
+        "GenderEgalitarianism": "Gender Egalitarianism",
+        "PowerDistance": "Power Distance",
+        "UncertaintyAvoidance": "Uncertainty Avoidance",
+        "TeamOriented": "Team Oriented",
         # Add any other dimensions here if needed!
     }
     
