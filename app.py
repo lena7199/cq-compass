@@ -1236,10 +1236,6 @@ def page_gap_analysis():
 
 def page_profile_access():
     st.markdown("<h1 style='color: #C9A96E;'>Access Your Profile</h1>", unsafe_allow_html=True)
-
-    if st.button("← Back to Home", use_container_width=True):
-        st.session_state.current_page = 1
-        st.rerun()
     
     anonymous_id = st.text_input("Enter your Anonymous ID")
     
@@ -1274,6 +1270,10 @@ def page_profile_access():
             st.rerun()
         else:
             st.error("Profile not found. Please check your ID or take a new assessment.")
+
+    if st.button("← Back to Home", use_container_width=True):
+        st.session_state.current_page = 1
+        st.rerun()
 
 # Main app logic
 def main():
