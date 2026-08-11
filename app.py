@@ -607,9 +607,6 @@ def page_welcome():
         )
 
     st.markdown("---")
-    if st.button("Returning User? Enter your code", use_container_width=True):
-        st.session_state.current_page = 7
-        st.rerun()
     
     # Check if placeholders are still selected
     is_ready = (nationality is not None) and (gender != "Select")
