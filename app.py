@@ -614,7 +614,7 @@ def page_welcome():
     st.markdown("---")
 
     # Create 4 columns to cluster buttons in the center
-        c1, c2, c3, c4 = st.columns(4)
+    c1, c2, c3, c4 = st.columns(4)
 
         with c2:
             if st.button("Returning User? Enter your code", use_container_width=True, key="returning_user_btn"):
