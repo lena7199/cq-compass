@@ -1106,7 +1106,7 @@ def page_country_comparison():
             for rec in recommendations:
                 urgency_class = f"recommendation-{rec['urgency'].lower()}"
                 urgency_badge_class = f"urgency-{rec['urgency'].lower()}"
-                badge_text = "🔴 Crucial" if rec['urgency'] == "Red" else "🟡 Medium Urgency" if rec['urgency'] == "Yellow" else "🟢 Strength"
+                badge_text = "🔴 Crucial" if rec['urgency'] == "Red" else "🟡 Important" if rec['urgency'] == "Yellow" else "🟢 Strength"
 
                 st.markdown(f"""
                 <div class="recommendation-card {urgency_class}">
@@ -1213,7 +1213,7 @@ def page_gap_analysis():
             if rec['urgency'] == "Red":
                 badge_text = "🔴 Crucial"
             elif rec['urgency'] == "Yellow":
-                badge_text = "🟡 Medium Urgency"
+                badge_text = "🟡 Important"
             else:
                 badge_text = "🟢 Strength"
             
