@@ -1271,6 +1271,11 @@ def page_profile_access():
         else:
             st.error("Profile not found. Please check your ID or take a new assessment.")
 
+            st.markdown("---")
+            if st.button("← Back to Home", use_container_width=True):
+                st.session_state.current_page = 1
+                st.rerun()
+
 # Main app logic
 def main():
     if st.session_state.current_page == 1:
