@@ -613,18 +613,18 @@ def page_welcome():
 
     st.markdown("---")
 
-    # Create 3 columns to center the buttons
-    btn_col1, btn_col2, btn_col3 = st.columns(3)
+    # Create 4 columns to cluster buttons in the center
+        c1, c2, c3, c4 = st.columns(4)
 
-    with btn_col1:
-        if st.button("Returning User? Enter your code", use_container_width=True):
-            st.session_state.current_page = 7
-            st.rerun()
+        with c2:
+            if st.button("Returning User? Enter your code", use_container_width=True, key="returning_user_btn"):
+                st.session_state.current_page = 7
+                st.rerun()
 
-    with btn_col3:
-        if st.button("Begin Assessment", use_container_width=True, disabled=not is_ready):
-            st.session_state.current_page = 2
-            st.rerun()
+        with c3:
+            if st.button("Begin Assessment", use_container_width=True, disabled=not is_ready, key="begin_assessment_btn"):
+                st.session_state.current_page = 2
+                st.rerun()
 
 def page_test_selection():
     st.markdown("<h1 style='color: #C9A96E;'>Select Your Assessment</h1>", unsafe_allow_html=True)
