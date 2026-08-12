@@ -1051,12 +1051,17 @@ def page_country_comparison():
            # National scores (Toggle to show/hide)
             national_values = list(national_scores.values()) + [list(national_scores.values())[0]]
             
-            # Custom CSS to make the toggle visible and gold
+            # CSS to make the toggle Gold and highly visible
             st.markdown("""
                 <style>
+                /* Makes the track Gold */
                 div[data-baseweb="toggle"] > div {
                     background-color: #C9A96E !important;
-                    opacity: 0.9 !important;
+                    opacity: 1 !important;
+                }
+                /* Makes the knob match your dark background */
+                div[data-baseweb="toggle"] > div > div {
+                    background-color: #1B2838 !important;
                 }
                 </style>
             """, unsafe_allow_html=True)
