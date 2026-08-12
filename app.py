@@ -1056,7 +1056,7 @@ def page_country_comparison():
             if show_national:
                 fig.add_trace(go.Scatterpolar(
                     r=national_values,
-                    theta=[format_dimension_name(l) for l in user_labels],
+                    theta=[format_dimension_name(l) for l in labels_closed],
                     fill='toself',
                     name=f'{(st.session_state.nationality or "National").replace("LatinAmerica", "Latin America")} Average',
                     line_color='#7A9E7E',
