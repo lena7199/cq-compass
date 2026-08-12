@@ -867,6 +867,14 @@ def save_user_profile():
     st.success("Your results have been saved.")
     
 def page_results():
+    # Mandatory Nationality Check
+    if not st.session_state.get('nationality'):
+        st.warning("⚠️ Please select your nationality on the Home page to see your results.")
+        if st.button("Go back to Home"):
+            st.session_state.current_page = 1
+            st.rerun()
+        return
+        
     st.markdown("<h1 style='color: #C9A96E;'>Your Cultural Profile</h1>", unsafe_allow_html=True)
     st.markdown(f"<p>Anonymous ID: <span class='anonymous-id'>{st.session_state.anonymous_id}</span></p>", unsafe_allow_html=True)
     
