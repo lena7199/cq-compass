@@ -1051,20 +1051,30 @@ def page_country_comparison():
            # National scores (Toggle to show/hide)
             national_values = list(national_scores.values()) + [list(national_scores.values())[0]]
             
-            # CSS to make the toggle Gold and highly visible
-            st.markdown("""
-                <style>
-                /* Makes the track Gold */
-                div[data-baseweb="toggle"] > div {
-                    background-color: #C9A96E !important;
-                    opacity: 1 !important;
-                }
-                /* Makes the knob match your dark background */
-                div[data-baseweb="toggle"] > div > div {
-                    background-color: #1B2838 !important;
-                }
-                </style>
-            """, unsafe_allow_html=True)
+            # National scores (Show/Hide with button)
+            national_values = list(national_scores.values()) + [list(national_scores.values())[0]]
+            
+            # Initialize session state for toggle if not exists
+            if 'show_national_avg' not in st.session_state:
+                st.session_state.show_national_avg = False
+            
+            # Create a button that acts as a toggle
+            col_toggle1, col_toggle2, col_toggle3 = st.columns([1, 2, 1])
+            with col_toggle2:
+                toggle_text = "Hide Home Country Average" if st.session_state.show_national_avg else "Show Home Country Average"
+                if st.button(toggle_text, use_container_width=True, key="national_toggle_btn"):
+                    st.session_state.show_national_avg = not st.session_state.show_national_avg
+                    st.rerun()
+
+            if st.session_state.show_national_avg:
+                fig.add_trace(go.Scatterpolar(
+                    r=national_values,
+                    theta=[format_dimension_name(l) for l in labels_closed],
+                    fill='toself',
+                    name=f'{(st.session_state.nationality or "National").replace("LatinAmerica", "Latin America")} Average',
+                    line_color='#7A9E7E',
+                    fillcolor='rgba(122, 158, 126, 0.2)'
+                ))
             
             show_national = st.toggle("Show my home country's average", value=False)
 
