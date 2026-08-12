@@ -645,6 +645,9 @@ def page_welcome():
 
     with c3:
         if st.button("Begin Assessment", use_container_width=True, disabled=not is_ready, key="begin_assessment_btn"):
+            # SAVE THE NATIONALITY HERE! 
+            st.session_state.nationality = selected_country  # <-- Change 'selected_country' to whatever your dropdown variable is named!
+            
             st.session_state.current_page = 2
             st.rerun()
 
