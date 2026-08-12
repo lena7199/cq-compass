@@ -882,6 +882,7 @@ def page_results():
         # Get national scores
         national_scores = {}
         for dimension in user_scores.keys():
+            st.write(f" Looking for: Country='{st.session_state.nationality}', Framework='{test_name}', Dimension='{dimension}'")
             national_score = country_scores_df[
                 (country_scores_df['Country'] == st.session_state.nationality) &
                 (country_scores_df['Framework'] == test_name) &
