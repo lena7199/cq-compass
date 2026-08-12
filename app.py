@@ -1051,6 +1051,16 @@ def page_country_comparison():
            # National scores (Toggle to show/hide)
             national_values = list(national_scores.values()) + [list(national_scores.values())[0]]
             
+            # Custom CSS to make the toggle visible and gold
+            st.markdown("""
+                <style>
+                div[data-baseweb="toggle"] > div {
+                    background-color: #C9A96E !important;
+                    opacity: 0.9 !important;
+                }
+                </style>
+            """, unsafe_allow_html=True)
+            
             show_national = st.toggle("Show my home country's average", value=False)
 
             if show_national:
