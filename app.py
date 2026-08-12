@@ -1054,31 +1054,49 @@ def page_country_comparison():
             # National scores (Show/Hide with button)
             national_values = list(national_scores.values()) + [list(national_scores.values())[0]]
             
-            # Initialize session state for toggle if not exists
+            # National scores (Show/Hide with styled button)
+            national_values = list(national_scores.values()) + [list(national_scores.values())[0]]
+            
+            # Initialize session state for the button if not exists
             if 'show_national_avg' not in st.session_state:
                 st.session_state.show_national_avg = False
-            
-            # Create a button that acts as a toggle
-            col_toggle1, col_toggle2, col_toggle3 = st.columns([1, 2, 1])
-            with col_toggle2:
-                toggle_text = "Hide Home Country Average" if st.session_state.show_national_avg else "Show Home Country Average"
-                if st.button(toggle_text, use_container_width=True, key="national_toggle_btn"):
+
+            # CSS to style the button with golden border and white text
+            st.markdown("""
+                <style>
+                /* Style the button */
+                div[data-testid="stButton"] button[kind="secondary"] {
+                    background-color: transparent !important;
+                    color: #FFFFFF !important;
+                    border: 1px solid #C9A96E !important;
+                    border-radius: 6px !important;
+                    padding: 8px 16px !important;
+                    font-weight: 500 !important;
+                    transition: all 0.3s ease !important;
+                }
+                /* Hover effect */
+                div[data-testid="stButton"] button[kind="secondary"]:hover {
+                    background-color: rgba(201, 169, 110, 0.15) !important;
+                    box-shadow: 0 0 10px rgba(201, 169, 110, 0.4) !important;
+                }
+                </style>
+            """, unsafe_allow_html=True)
+
+            # Center the button
+            col_btn1, col_btn2, col_btn3 = st.columns([1, 2, 1])
+            with col_btn2:
+                # Change icon and text based on state
+                if st.session_state.show_national_avg:
+                    btn_text = "🙈 Hide Home Country Average"
+                else:
+                    btn_text = "👁️ Show Home Country Average"
+                
+                if st.button(btn_text, use_container_width=True, key="national_toggle_btn", type="secondary"):
                     st.session_state.show_national_avg = not st.session_state.show_national_avg
                     st.rerun()
 
+            # Draw the chart line if the button is "ON"
             if st.session_state.show_national_avg:
-                fig.add_trace(go.Scatterpolar(
-                    r=national_values,
-                    theta=[format_dimension_name(l) for l in labels_closed],
-                    fill='toself',
-                    name=f'{(st.session_state.nationality or "National").replace("LatinAmerica", "Latin America")} Average',
-                    line_color='#7A9E7E',
-                    fillcolor='rgba(122, 158, 126, 0.2)'
-                ))
-            
-            show_national = st.toggle("Show my home country's average", value=False)
-
-            if show_national:
                 fig.add_trace(go.Scatterpolar(
                     r=national_values,
                     theta=[format_dimension_name(l) for l in labels_closed],
