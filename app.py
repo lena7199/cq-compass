@@ -1040,7 +1040,7 @@ def page_country_comparison():
                 r=national_values,
                 theta=[format_dimension_name(l) for l in labels_closed],
                 fill='toself',
-                name=f'{st.session_state.nationality.replace("LatinAmerica", "Latin America")} Average',
+                name=f'{(st.session_state.nationality or "National").replace("LatinAmerica", "Latin America")} Average',
                 line_color='#7A9E7E',
                 fillcolor='rgba(122, 158, 126, 0.2)'
             ))
