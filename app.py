@@ -911,7 +911,7 @@ def page_results():
         
         fig.add_trace(go.Scatterpolar(
             r=national_values,
-            theta=user_labels,
+            theta=[format_dimension_name(l) for l in user_labels],
             fill='toself',
             name=f'{(st.session_state.nationality or "National").replace("LatinAmerica", "Latin America")} Average',
             line_color='#7A9E7E',
