@@ -299,9 +299,11 @@ def get_qualitative_label(score, scale_type, dimension=""):
 
 # Initialize session state and generate a new ID for new sessions
 if 'anonymous_id' not in st.session_state or st.session_state.anonymous_id is None:
-    import uuid
-    uid = str(uuid.uuid4()).replace('-', '')[:7]
-    st.session_state.anonymous_id = f"CQ-{uid[:4]}-{uid[4:]}"
+    import random
+    import string
+    numbers = ''.join(random.choices(string.digits, k=4))
+    letters = ''.join(random.choices(string.ascii_lowercase, k=3))
+    st.session_state.anonymous_id = f"CQ-{numbers}-{letters}"
 if 'nationality' not in st.session_state:
     st.session_state.nationality = None
 if 'gender' not in st.session_state:
