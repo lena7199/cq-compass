@@ -1048,16 +1048,20 @@ def page_country_comparison():
                 fillcolor='rgba(201, 169, 110, 0.3)'
             ))
             
-            # National scores
+           # National scores (Toggle to show/hide)
             national_values = list(national_scores.values()) + [list(national_scores.values())[0]]
-            fig.add_trace(go.Scatterpolar(
-                r=national_values,
-                theta=[format_dimension_name(l) for l in labels_closed],
-                fill='toself',
-                name=f'{(st.session_state.nationality or "National").replace("LatinAmerica", "Latin America")} Average',
-                line_color='#7A9E7E',
-                fillcolor='rgba(122, 158, 126, 0.2)'
-            ))
+            
+            show_national = st.toggle("Show my home country's average", value=False)
+
+            if show_national:
+                fig.add_trace(go.Scatterpolar(
+                    r=national_values,
+                    theta=[format_dimension_name(l) for l in user_labels],
+                    fill='toself',
+                    name=f'{(st.session_state.nationality or "National").replace("LatinAmerica", "Latin America")} Average',
+                    line_color='#7A9E7E',
+                    fillcolor='rgba(122, 158, 126, 0.2)'
+                ))
             
             # Target scores
             target_values = list(target_scores.values()) + [list(target_scores.values())[0]]
