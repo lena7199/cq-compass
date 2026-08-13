@@ -1275,23 +1275,6 @@ def page_country_comparison():
                 """, unsafe_allow_html=True)
 
             st.markdown("---")
-        
-            # Create 3 columns to center the navigation buttons
-            nav_col1, nav_col2, nav_col3 = st.columns(3)
-
-            with nav_col1:
-                if st.button("← Back to Personal Profile", use_container_width=True, key="comp_back_profile"):
-                    st.session_state.current_page = 4
-                    st.rerun()
-
-            with nav_col2:
-                if st.button("Save Results", use_container_width=True, key="comp_save_results"):
-                    st.success("Results saved to your profile!")
-
-            with nav_col3:
-                if st.button("← Back to Home", use_container_width=True, key="comp_back_home"):
-                    st.session_state.current_page = 1
-                    st.rerun()
 
 def page_gap_analysis():
     st.markdown(f"<h1 style='color: #C9A96E;'>Cultural Navigation Brief for {st.session_state.target_country}</h1>", unsafe_allow_html=True)
