@@ -1397,7 +1397,16 @@ def main():
     # --- GLOBAL CSS FIXES FOR SIDEBAR & MOBILE TRIGGERS ---
     st.markdown("""
         <style>
-        /* 1. SIDEBAR BUTTONS (The style you liked: Gold border, white text, transparent bg) */
+        /* 1. SIDEBAR BACKGROUND (Forces the dark navy blue) */
+        section[data-testid="stSidebar"] {
+            background-color: #1B2838 !important;
+        }
+        /* Makes the small text (like copyright) white */
+        section[data-testid="stSidebar"] p, section[data-testid="stSidebar"] div {
+            color: #FFFFFF !important;
+        }
+
+        /* 2. SIDEBAR BUTTONS (Gold border, white text, transparent bg) */
         section[data-testid="stSidebar"] button {
             background-color: transparent !important; 
             color: #FFFFFF !important; 
@@ -1409,28 +1418,24 @@ def main():
             margin: 8px 0 !important;
             transition: all 0.3s ease !important;
         }
-        /* Hover effect for sidebar buttons */
         section[data-testid="stSidebar"] button:hover {
-            background-color: rgba(201, 169, 110, 0.2) !important; /* Subtle gold glow */
+            background-color: rgba(201, 169, 110, 0.2) !important; 
             box-shadow: 0 0 10px rgba(201, 169, 110, 0.4) !important;
         }
 
-        /* 2. MOBILE TRIGGER (The button to open the menu) */
-        /* Make the button itself gold so it's visible on the white bar */
+        /* 3. MOBILE TRIGGER (The button to open the menu) */
         [data-testid="stSidebarCollapsedControl"] button {
             background-color: #C9A96E !important;
             border-radius: 50% !important;
             width: 40px !important;
             height: 40px !important;
         }
-        /* Force the icon inside to be dark for contrast */
         [data-testid="stSidebarCollapsedControl"] button svg {
             color: #1B2838 !important;
             fill: #1B2838 !important;
         }
 
-        /* 3. CLOSE BUTTON (The 'X' inside the sidebar) */
-        /* Force the close icon to be bright gold */
+        /* 4. CLOSE BUTTON (The 'X' inside the sidebar) */
         button[kind="icon"][data-testid="stSidebarCloseButton"] {
             color: #C9A96E !important;
         }
@@ -1439,7 +1444,7 @@ def main():
             fill: #C9A96E !important;
         }
         
-        /* Sidebar Title */
+        /* 5. Sidebar Title */
         section[data-testid="stSidebar"] h2 {
             color: #C9A96E !important;
             text-align: center !important;
