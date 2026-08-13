@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components #
 import pandas as pd
 import plotly.graph_objects as go
 import random
@@ -1394,47 +1395,51 @@ def page_profile_access():
 
 # Main app logic
 def main():
-    # --- CUSTOM FLOATING MENU BUTTON ---
-    st.markdown("""
-        <style>
-            /* Hide the broken native Streamlit toggle completely */
-            div[data-testid="stSidebarCollapsedControl"] {
-                display: none !important;
-            }
+    # --- CUSTOM FLOATING MENU BUTTON (Using components.html) ---
+    
+    fab_html = """
+    <style>
+        /* Hide the broken native Streamlit toggle completely */
+        div[data-testid="stSidebarCollapsedControl"] {
+            display: none !important;
+        }
 
-            /* Style our custom Floating Action Button */
-            .cq-compass-fab {
-                position: fixed;
-                bottom: 30px;
-                right: 30px;
-                background-color: #C9A96E;
-                color: #1B2838;
-                border: none;
-                border-radius: 30px;
-                padding: 12px 24px;
-                font-size: 16px;
-                font-weight: 800;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-                cursor: pointer;
-                z-index: 99999;
-                transition: all 0.3s ease;
-                display: flex;
-                align-items: center;
-                gap: 8px;
-                font-family: sans-serif;
-            }
-            .cq-compass-fab:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 6px 20px rgba(201, 169, 110, 0.6);
-                background-color: #dcb97a;
-            }
-        </style>
+        /* Style our custom Floating Action Button */
+        .cq-compass-fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #C9A96E;
+            color: #1B2838;
+            border: none;
+            border-radius: 30px;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 800;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            cursor: pointer;
+            z-index: 99999;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: sans-serif;
+        }
+        .cq-compass-fab:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(201, 169, 110, 0.6);
+            background-color: #dcb97a;
+        }
+    </style>
 
-        <!-- The Floating Button -->
-        <button class="cq-compass-fab" onclick="document.querySelector('div[data-testid=\"stSidebarCollapsedControl\"] button').click();">
-            ☰ MENU
-        </button>
-    """, unsafe_allow_html=True)
+    <!-- The Floating Button -->
+    <button class="cq-compass-fab" onclick="document.querySelector('div[data-testid="stSidebarCollapsedControl"] button').click();">
+        ☰ MENU
+    </button>
+    """
+
+    # Render using components.html (this bypasses Streamlit's sandbox)
+    components.html(fab_html, height=0)
 
     # --- YOUR SIDEBAR NAVIGATION ---
     with st.sidebar:
