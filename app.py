@@ -672,9 +672,6 @@ def page_welcome():
             
             st.session_state.current_page = 2
             st.rerun()
-            
-    #Add navigation at the bottom
-    render_navigation()
 
 def page_test_selection():
     st.markdown("<h1 style='color: #C9A96E;'>Select Your Assessment</h1>", unsafe_allow_html=True)
