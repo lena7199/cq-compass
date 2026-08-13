@@ -1151,13 +1151,12 @@ def page_country_comparison():
 
             # 1. Closest Match Button (Placeholder)
             with col_match:
-                st.markdown("<br>", unsafe_allow_html=True) # Consistent spacing
-                if st.button(" Closest Match", use_container_width=True, key="closest_match_btn"):
-                    st.info("Coming soon! This will show your best cultural fit.")
+                if st.button("🎯 Closest Match", use_container_width=True, key="closest_match_btn"):
+                    st.toast("Coming soon! This will show your best cultural fit.", icon="🎯")
 
-            # 2. Show/Hide Toggle (YOUR EXACT CODE)
+            # 2. Show/Hide Toggle
             with col_toggle:
-                # CSS to style the narrow, elegant button
+                # CSS to style the buttons uniformly
                 st.markdown("""
                     <style>
                     div[data-testid="stButton"] button[kind="secondary"] {
@@ -1165,11 +1164,10 @@ def page_country_comparison():
                         color: #FFFFFF !important;
                         border: 1px solid #C9A96E !important;
                         border-radius: 6px !important;
-                        padding: 6px 20px !important;
+                        padding: 8px 16px !important;
                         font-weight: 500 !important;
-                        font-size: 13px !important;
+                        font-size: 14px !important;
                         transition: all 0.3s ease !important;
-                        min-width: 220px !important; 
                     }
                     div[data-testid="stButton"] button[kind="secondary"]:hover {
                         background-color: rgba(201, 169, 110, 0.15) !important;
@@ -1178,34 +1176,26 @@ def page_country_comparison():
                     </style>
                 """, unsafe_allow_html=True)
 
-                # Center the button (Removed the margin so it aligns perfectly)
-                st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
-                st.markdown("<br>", unsafe_allow_html=True) # Added consistent spacing
-                
-                # Elegant Unicode icons
                 if st.session_state.show_national_avg:
                     btn_text = "◉ Hide Home Country Average"
                 else:
                     btn_text = "◎ Show Home Country Average"
                 
-                if st.button(btn_text, use_container_width=False, key="national_toggle_btn", type="secondary"):
+                if st.button(btn_text, use_container_width=True, key="national_toggle_btn", type="secondary"):
                     st.session_state.show_national_avg = not st.session_state.show_national_avg
                     st.rerun()
-                
-                st.markdown("</div>", unsafe_allow_html=True)
 
             # 3. Save Results Button
             with col_save:
-                st.markdown("<br>", unsafe_allow_html=True) # Consistent spacing
-                
-                if st.button(" Save Results", use_container_width=True, key="save_results_btn"):
+                if st.button("💾 Save Results", use_container_width=True, key="save_results_btn"):
                     st.session_state.profile_saved = True
                     st.rerun()
                 
+                # Only show if it was just saved, then immediately clear the flag
                 if st.session_state.get('profile_saved', False):
                     st.success("✅ Profile saved!")
-                    st.caption(f"Your unique code is: **{st.session_state.anonymous_id}**")
-                    st.caption("Keep this code to access your results later.")
+                    st.caption(f"Your unique code: **{st.session_state.anonymous_id}**")
+                    st.session_state.profile_saved = False # Clears it so it doesn't show on next interaction
             
             st.markdown("</div>", unsafe_allow_html=True)
             
