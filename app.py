@@ -1394,50 +1394,66 @@ def page_profile_access():
 
 # Main app logic
 def main():
-    # --- GLOBAL CSS FIXES FOR SIDEBAR ---
+    # --- FORCE VISIBLE SIDEBAR STYLING ---
     st.markdown("""
         <style>
-        /* Make the sidebar toggle icon visible (Gold) */
+        /* Make sidebar toggle button VISIBLE (gold background) */
+        [data-testid="stSidebarCollapsedControl"] {
+            background-color: #C9A96E !important;
+            border-radius: 50% !important;
+        }
         [data-testid="stSidebarCollapsedControl"] button {
+            color: #1B2838 !important;
+            font-weight: bold !important;
+        }
+        
+        /* Sidebar container */
+        section[data-testid="stSidebar"] {
+            background-color: #1B2838 !important;
+        }
+        
+        /* Sidebar buttons - DARK text on LIGHT gold background */
+        section[data-testid="stSidebar"] button {
+            color: #1B2838 !important; 
+            background-color: #C9A96E !important; 
+            border: 2px solid #C9A96E !important;
+            font-weight: 700 !important;
+            font-size: 15px !important;
+            padding: 12px !important;
+            margin: 8px 0 !important;
+        }
+        /* Hover effect - invert colors */
+        section[data-testid="stSidebar"] button:hover {
+            background-color: #1B2838 !important;
             color: #C9A96E !important;
         }
         
-        /* Fix sidebar buttons so they are readable (Dark text, light gold bg) */
-        section[data-testid="stSidebar"] button {
-            color: #1B2838 !important; 
-            background-color: rgba(201, 169, 110, 0.1) !important; 
-            border: 1px solid #C9A96E !important;
-            font-weight: 600 !important;
-        }
-        /* Make sidebar buttons turn solid gold on hover */
-        section[data-testid="stSidebar"] button:hover {
-            background-color: #C9A96E !important;
-            color: #FFFFFF !important;
+        /* Sidebar title */
+        section[data-testid="stSidebar"] h2 {
+            color: #C9A96E !important;
+            font-weight: bold !important;
         }
         </style>
     """, unsafe_allow_html=True)
 
     # --- SIDEBAR NAVIGATION ---
     with st.sidebar:
-        # App Title in Sidebar
-        st.markdown("<h2 style='color: #C9A96E; text-align: center;'>CQ Compass</h2>", unsafe_allow_html=True)
-        st.markdown("---")
+        st.markdown("<h2 style='text-align: center; margin-bottom: 20px;'> CQ Compass Menu</h2>", unsafe_allow_html=True)
         
-        # Navigation Buttons (with unique "sb_" keys to prevent clashes)
-        if st.button(" Home", use_container_width=True, key="sb_nav_home"):
+        if st.button("🏠 Home", use_container_width=True, key="sb_home"):
             st.session_state.current_page = 1
             st.rerun()
             
-        if st.button("📝 Take Assessment", use_container_width=True, key="sb_nav_assessment"):
-            st.session_state.current_page = 2 
+        if st.button("📝 Take Assessment", use_container_width=True, key="sb_assessment"):
+            st.session_state.current_page = 2
             st.rerun()
             
-        if st.button("📊 Your Cultural Profile", use_container_width=True, key="sb_nav_profile"):
-            st.session_state.current_page = 4 
+        if st.button("📊 Your Cultural Profile", use_container_width=True, key="sb_profile"):
+            st.session_state.current_page = 4
             st.rerun()
             
-        if st.button("🌍 Intercultural Comparison", use_container_width=True, key="sb_nav_compare"):
-            st.session_state.current_page = 5 
+        if st.button("🌍 Intercultural Comparison", use_container_width=True, key="sb_compare"):
+            st.session_state.current_page = 5
             st.rerun()
             
         st.markdown("---")
