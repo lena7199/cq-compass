@@ -15,15 +15,15 @@ def format_dimension_name(name):
         "TimeFocus": "Time Focus",
         "TimeOrientation": "Time Orientation",
         "PerformanceOrientation": "Performance Orientation",
-        "FutureOrientation": "FutureOrientation",
+        "FutureOrientation": "Future Orientation",
         "HumaneOrientation": "Humane Orientation",
         "InstitutionalCollectivism": "Institutional Collectivism",
         "InGroupCollectivism": "In-group Collectivism",
         "GenderEgalitarianism": "Gender Egalitarianism",
         "PowerDistance": "Power Distance",
-        "UncertaintyAvoidance": "Uncertainty avoidance",
+        "UncertaintyAvoidance": "Uncertainty Avoidance",
         "CharismaticValueBased": "Charisma",
-        "TeamOriented": "Team oriented",
+        "TeamOriented": "Team Oriented",
         "HumaneOriented": "Humane Oriented",
         "SelfProtective": "Self-protective"
     }
