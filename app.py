@@ -1000,8 +1000,6 @@ def page_results():
         with nav_col2:
             if st.button("Save Results", use_container_width=True, key="nav_save_results"):
                 st.success("Results saved to your profile!") 
-
-        with nav_col3:
         
 def page_country_comparison():
     st.markdown("<h1 style='color: #C9A96E;'>Compare with Another Culture</h1>", unsafe_allow_html=True)
