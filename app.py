@@ -1061,7 +1061,7 @@ def page_country_comparison():
             # User scores
             user_values = list(user_scores.values()) + [list(user_scores.values())[0]]
             fig.add_trace(go.Scatterpolar(
-     "           r=user_values,
+                r=user_values,
                 theta=[format_dimension_name(l) for l in labels_closed],
                 fill='toself',
                 name='Your Profile',
