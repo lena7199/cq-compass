@@ -1421,59 +1421,47 @@ def main():
             box-shadow: 0 0 10px rgba(201, 169, 110, 0.4) !important;
         }
 
-        /* 3. AGGRESSIVE FIX FOR THE TOGGLE BUTTON */
-        /* Method 1: Hide ALL spans inside the toggle button */
-        [data-testid="stSidebarCollapsedControl"] button span,
-        [data-testid="stSidebarCollapsedControl"] button div,
-        [data-testid="stSidebarCollapsedControl"] button::after,
-        [data-testid="stSidebarCollapsedControl"] button::before {
-            display: none !important;
-            visibility: hidden !important;
-            opacity: 0 !important;
-        }
-        
-        /* Method 2: Hide by class name if it exists */
-        .stSidebarCollapsedControl button span {
-            display: none !important;
-        }
-        
-        /* Method 3: Hide any text nodes */
+        /* 3. NUCLEAR FIX FOR THE MOBILE/DESKTOP TRIGGER */
+        /* Hide the container text completely */
         [data-testid="stSidebarCollapsedControl"] {
+            color: transparent !important;
             font-size: 0 !important;
             line-height: 0 !important;
         }
         
-        /* Method 4: Force the button to be a clean gold circle */
+        /* Style the button into a solid Gold Square */
         [data-testid="stSidebarCollapsedControl"] button {
             background-color: #C9A96E !important;
-            border-radius: 50% !important;
+            color: transparent !important;
+            font-size: 0 !important;
             width: 45px !important;
             height: 45px !important;
-            border: 2px solid #C9A96E !important;
+            border-radius: 8px !important; /* Rounded square, easier to tap than a circle */
+            border: none !important;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.3) !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
-            font-size: 0 !important;
-            color: transparent !important;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.3) !important;
             position: relative !important;
-            z-index: 9999 !important;
         }
         
-        /* Force the SVG icon to be visible and dark */
-        [data-testid="stSidebarCollapsedControl"] button svg,
-        [data-testid="stSidebarCollapsedControl"] button i {
-            color: #1B2838 !important;
-            fill: #1B2838 !important;
-            width: 24px !important;
-            height: 24px !important;
-            font-size: 24px !important;
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
+        /* Hide any broken SVG icons */
+        [data-testid="stSidebarCollapsedControl"] button svg {
+            display: none !important;
         }
 
-        /* 4. CLOSE BUTTON */
+        /* FORCE a real Hamburger icon (☰) to appear */
+        [data-testid="stSidebarCollapsedControl"] button::after {
+            content: "☰" !important;
+            color: #1B2838 !important; /* Dark color for contrast */
+            font-size: 28px !important;
+            font-weight: bold !important;
+            display: block !important;
+            line-height: 1 !important;
+            margin-top: -5px !important; /* Fine-tune centering */
+        }
+
+        /* 4. CLOSE BUTTON (The 'X' inside the sidebar) */
         button[kind="icon"][data-testid="stSidebarCloseButton"] {
             color: #C9A96E !important;
         }
