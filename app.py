@@ -1428,6 +1428,30 @@ def render_navigation():
 
 # Main app logic
 def main():
+    # --- GLOBAL BUTTON STYLING ---
+    st.markdown("""
+        <style>
+        /* Target all standard buttons in the app */
+        div[data-testid="stButton"] button {
+            background-color: transparent !important;
+            color: #F8F9FA !important; /* Very light grey/white text */
+            border: 1px solid #C9A96E !important; /* Golden border */
+            border-radius: 6px !important;
+            padding: 8px 16px !important;
+            font-weight: 500 !important;
+            font-size: 14px !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        /* Elegant hover effect */
+        div[data-testid="stButton"] button:hover {
+            background-color: rgba(201, 169, 110, 0.15) !important; /* Subtle gold glow */
+            color: #C9A96E !important; /* Text turns gold on hover */
+            box-shadow: 0 0 10px rgba(201, 169, 110, 0.3) !important;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
     # --- YOUR EXISTING PAGE ROUTING ---
     if st.session_state.current_page == 1:
         page_welcome()
