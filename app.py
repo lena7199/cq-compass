@@ -1394,94 +1394,52 @@ def page_profile_access():
 
 # Main app logic
 def main():
-    # --- GLOBAL CSS FIXES FOR SIDEBAR & MOBILE TRIGGERS ---
+    # --- CUSTOM FLOATING MENU BUTTON ---
     st.markdown("""
         <style>
-        /* 1. SIDEBAR BACKGROUND */
-        section[data-testid="stSidebar"] {
-            background-color: #1B2838 !important;
-        }
-        section[data-testid="stSidebar"] p, section[data-testid="stSidebar"] div {
-            color: #FFFFFF !important;
-        }
+            /* Hide the broken native Streamlit toggle completely */
+            div[data-testid="stSidebarCollapsedControl"] {
+                display: none !important;
+            }
 
-        /* 2. SIDEBAR BUTTONS */
-        section[data-testid="stSidebar"] button {
-            background-color: transparent !important; 
-            color: #FFFFFF !important; 
-            border: 1px solid #C9A96E !important;
-            border-radius: 6px !important;
-            font-weight: 500 !important;
-            font-size: 14px !important;
-            padding: 10px !important;
-            margin: 8px 0 !important;
-        }
-        section[data-testid="stSidebar"] button:hover {
-            background-color: rgba(201, 169, 110, 0.2) !important; 
-            box-shadow: 0 0 10px rgba(201, 169, 110, 0.4) !important;
-        }
-
-        /* 3. NUCLEAR FIX FOR THE MOBILE/DESKTOP TRIGGER */
-        /* Hide the container text completely */
-        [data-testid="stSidebarCollapsedControl"] {
-            color: transparent !important;
-            font-size: 0 !important;
-            line-height: 0 !important;
-        }
-        
-        /* Style the button into a solid Gold Square */
-        [data-testid="stSidebarCollapsedControl"] button {
-            background-color: #C9A96E !important;
-            color: transparent !important;
-            font-size: 0 !important;
-            width: 45px !important;
-            height: 45px !important;
-            border-radius: 8px !important; /* Rounded square, easier to tap than a circle */
-            border: none !important;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.3) !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            position: relative !important;
-        }
-        
-        /* Hide any broken SVG icons */
-        [data-testid="stSidebarCollapsedControl"] button svg {
-            display: none !important;
-        }
-
-        /* FORCE a real Hamburger icon (☰) to appear */
-        [data-testid="stSidebarCollapsedControl"] button::after {
-            content: "☰" !important;
-            color: #1B2838 !important; /* Dark color for contrast */
-            font-size: 28px !important;
-            font-weight: bold !important;
-            display: block !important;
-            line-height: 1 !important;
-            margin-top: -5px !important; /* Fine-tune centering */
-        }
-
-        /* 4. CLOSE BUTTON (The 'X' inside the sidebar) */
-        button[kind="icon"][data-testid="stSidebarCloseButton"] {
-            color: #C9A96E !important;
-        }
-        button[kind="icon"][data-testid="stSidebarCloseButton"] svg {
-            color: #C9A96E !important;
-            fill: #C9A96E !important;
-        }
-        
-        /* 5. Sidebar Title */
-        section[data-testid="stSidebar"] h2 {
-            color: #C9A96E !important;
-            text-align: center !important;
-            margin-bottom: 20px !important;
-        }
+            /* Style our custom Floating Action Button */
+            .cq-compass-fab {
+                position: fixed;
+                bottom: 30px;
+                right: 30px;
+                background-color: #C9A96E;
+                color: #1B2838;
+                border: none;
+                border-radius: 30px;
+                padding: 12px 24px;
+                font-size: 16px;
+                font-weight: 800;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+                cursor: pointer;
+                z-index: 99999;
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-family: sans-serif;
+            }
+            .cq-compass-fab:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 6px 20px rgba(201, 169, 110, 0.6);
+                background-color: #dcb97a;
+            }
         </style>
+
+        <!-- The Floating Button -->
+        <button class="cq-compass-fab" onclick="document.querySelector('div[data-testid="stSidebarCollapsedControl"] button').click();">
+            ☰ MENU
+        </button>
     """, unsafe_allow_html=True)
 
-    # --- SIDEBAR NAVIGATION ---
+    # --- YOUR SIDEBAR NAVIGATION ---
     with st.sidebar:
-        st.markdown("<h2> CQ Compass Menu</h2>", unsafe_allow_html=True)
+        st.markdown("<h2 style='color: #C9A96E; text-align: center;'>CQ Compass Menu</h2>", unsafe_allow_html=True)
+        st.markdown("---")
         
         if st.button("🏠 Home", use_container_width=True, key="sb_home"):
             st.session_state.current_page = 1
