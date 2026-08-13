@@ -1395,21 +1395,21 @@ def main():
         st.markdown("<h2 style='color: #C9A96E; text-align: center;'>CQ Compass</h2>", unsafe_allow_html=True)
         st.markdown("---")
         
-        # Navigation Buttons
-        if st.button("🏠 Home", use_container_width=True, key="nav_home"):
+        # Navigation Buttons (with unique "sb_" keys to prevent clashes)
+        if st.button(" Home", use_container_width=True, key="sb_nav_home"):
             st.session_state.current_page = 1
             st.rerun()
             
-        if st.button("📝 Take Assessment", use_container_width=True, key="nav_assessment"):
-            st.session_state.current_page = 2 # Goes to Test Selection
+        if st.button("📝 Take Assessment", use_container_width=True, key="sb_nav_assessment"):
+            st.session_state.current_page = 2 
             st.rerun()
             
-        if st.button(" Your Cultural Profile", use_container_width=True, key="nav_profile"):
-            st.session_state.current_page = 4 # Goes to Results
+        if st.button("📊 Your Cultural Profile", use_container_width=True, key="sb_nav_profile"):
+            st.session_state.current_page = 4 
             st.rerun()
             
-        if st.button("🌍 Intercultural Comparison", use_container_width=True, key="nav_compare"):
-            st.session_state.current_page = 5 # Goes to Comparison
+        if st.button("🌍 Intercultural Comparison", use_container_width=True, key="sb_nav_compare"):
+            st.session_state.current_page = 5 
             st.rerun()
             
         st.markdown("---")
