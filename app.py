@@ -1394,51 +1394,64 @@ def page_profile_access():
 
 # Main app logic
 def main():
-    # --- FORCE VISIBLE SIDEBAR STYLING ---
+    def main():
+    # --- GLOBAL CSS FIXES FOR SIDEBAR & MOBILE TRIGGERS ---
     st.markdown("""
         <style>
-        /* Make sidebar toggle button VISIBLE (gold background) */
-        [data-testid="stSidebarCollapsedControl"] {
+        /* 1. SIDEBAR BUTTONS (The style you liked: Gold border, white text, transparent bg) */
+        section[data-testid="stSidebar"] button {
+            background-color: transparent !important; 
+            color: #FFFFFF !important; 
+            border: 1px solid #C9A96E !important;
+            border-radius: 6px !important;
+            font-weight: 500 !important;
+            font-size: 14px !important;
+            padding: 10px !important;
+            margin: 8px 0 !important;
+            transition: all 0.3s ease !important;
+        }
+        /* Hover effect for sidebar buttons */
+        section[data-testid="stSidebar"] button:hover {
+            background-color: rgba(201, 169, 110, 0.2) !important; /* Subtle gold glow */
+            box-shadow: 0 0 10px rgba(201, 169, 110, 0.4) !important;
+        }
+
+        /* 2. MOBILE TRIGGER (The button to open the menu) */
+        /* Make the button itself gold so it's visible on the white bar */
+        [data-testid="stSidebarCollapsedControl"] button {
             background-color: #C9A96E !important;
             border-radius: 50% !important;
+            width: 40px !important;
+            height: 40px !important;
         }
-        [data-testid="stSidebarCollapsedControl"] button {
+        /* Force the icon inside to be dark for contrast */
+        [data-testid="stSidebarCollapsedControl"] button svg {
             color: #1B2838 !important;
-            font-weight: bold !important;
+            fill: #1B2838 !important;
         }
-        
-        /* Sidebar container */
-        section[data-testid="stSidebar"] {
-            background-color: #1B2838 !important;
-        }
-        
-        /* Sidebar buttons - DARK text on LIGHT gold background */
-        section[data-testid="stSidebar"] button {
-            color: #1B2838 !important; 
-            background-color: #C9A96E !important; 
-            border: 2px solid #C9A96E !important;
-            font-weight: 700 !important;
-            font-size: 15px !important;
-            padding: 12px !important;
-            margin: 8px 0 !important;
-        }
-        /* Hover effect - invert colors */
-        section[data-testid="stSidebar"] button:hover {
-            background-color: #1B2838 !important;
+
+        /* 3. CLOSE BUTTON (The 'X' inside the sidebar) */
+        /* Force the close icon to be bright gold */
+        button[kind="icon"][data-testid="stSidebarCloseButton"] {
             color: #C9A96E !important;
         }
+        button[kind="icon"][data-testid="stSidebarCloseButton"] svg {
+            color: #C9A96E !important;
+            fill: #C9A96E !important;
+        }
         
-        /* Sidebar title */
+        /* Sidebar Title */
         section[data-testid="stSidebar"] h2 {
             color: #C9A96E !important;
-            font-weight: bold !important;
+            text-align: center !important;
+            margin-bottom: 20px !important;
         }
         </style>
     """, unsafe_allow_html=True)
 
     # --- SIDEBAR NAVIGATION ---
     with st.sidebar:
-        st.markdown("<h2 style='text-align: center; margin-bottom: 20px;'> CQ Compass Menu</h2>", unsafe_allow_html=True)
+        st.markdown("<h2> CQ Compass Menu</h2>", unsafe_allow_html=True)
         
         if st.button("🏠 Home", use_container_width=True, key="sb_home"):
             st.session_state.current_page = 1
