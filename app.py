@@ -995,11 +995,16 @@ def page_results():
         st.dataframe(pd.DataFrame(score_data), use_container_width=True, hide_index=True)
         
         # Create 3 columns to put buttons side-by-side on desktop
-        nav_col1, nav_col2, nav_col3 = st.columns(3)
+        nav_col1, nav_col2, nav_col3, nav_col4 = st.columns(4)
 
         with nav_col2:
             if st.button("Save Results", use_container_width=True, key="nav_save_results"):
                 st.success("Results saved to your profile!") 
+
+        with nav_col3:
+            if st.button("Compare with Another Culture", use_container_width=True, key="btn_compare_from_profile"):
+                st.session_state.current_page = 5 # Takes them to the Comparison page
+                st.rerun()
         
 def page_country_comparison():
     st.markdown("<h1 style='color: #C9A96E;'>Compare with Another Culture</h1>", unsafe_allow_html=True)
@@ -1389,6 +1394,29 @@ def page_profile_access():
 
 # Main app logic
 def main():
+    # --- GLOBAL CSS FIXES FOR SIDEBAR ---
+    st.markdown("""
+        <style>
+        /* Make the sidebar toggle icon visible (Gold) */
+        [data-testid="stSidebarCollapsedControl"] button {
+            color: #C9A96E !important;
+        }
+        
+        /* Fix sidebar buttons so they are readable (Dark text, light gold bg) */
+        section[data-testid="stSidebar"] button {
+            color: #1B2838 !important; 
+            background-color: rgba(201, 169, 110, 0.1) !important; 
+            border: 1px solid #C9A96E !important;
+            font-weight: 600 !important;
+        }
+        /* Make sidebar buttons turn solid gold on hover */
+        section[data-testid="stSidebar"] button:hover {
+            background-color: #C9A96E !important;
+            color: #FFFFFF !important;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
     # --- SIDEBAR NAVIGATION ---
     with st.sidebar:
         # App Title in Sidebar
