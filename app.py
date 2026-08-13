@@ -1416,6 +1416,33 @@ def page_profile_access():
 
 # Main app logic
 def main():
+    # --- SIDEBAR NAVIGATION ---
+    with st.sidebar:
+        # App Title in Sidebar
+        st.markdown("<h2 style='color: #C9A96E; text-align: center;'>CQ Compass</h2>", unsafe_allow_html=True)
+        st.markdown("---")
+        
+        # Navigation Buttons
+        if st.button("🏠 Home", use_container_width=True, key="nav_home"):
+            st.session_state.current_page = 1
+            st.rerun()
+            
+        if st.button("📝 Take Assessment", use_container_width=True, key="nav_assessment"):
+            st.session_state.current_page = 2 # Goes to Test Selection
+            st.rerun()
+            
+        if st.button(" Your Cultural Profile", use_container_width=True, key="nav_profile"):
+            st.session_state.current_page = 4 # Goes to Results
+            st.rerun()
+            
+        if st.button("🌍 Intercultural Comparison", use_container_width=True, key="nav_compare"):
+            st.session_state.current_page = 5 # Goes to Comparison
+            st.rerun()
+            
+        st.markdown("---")
+        st.caption("© 2026 CQ Compass")
+
+    # --- YOUR EXISTING PAGE ROUTING ---
     if st.session_state.current_page == 1:
         page_welcome()
     elif st.session_state.current_page == 2:
