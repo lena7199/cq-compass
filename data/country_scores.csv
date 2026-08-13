@@ -1,27 +1,142 @@
 Country,Framework,Dimension,Score,DataType,Cluster
-LatinAmerica,Karnauhova,TimeFocus,3.6,Practice,Latin America
-LatinAmerica,Karnauhova,TimeOrientation,2.8,Practice,Latin America
-LatinAmerica,Karnauhova,Space,4.0,Practice,Latin America
-LatinAmerica,Karnauhova,Power,4.1,Practice,Latin America
-LatinAmerica,Karnauhova,Structure,4.1,Practice,Latin America
-LatinAmerica,Karnauhova,Competition,2.8,Practice,Latin America
-LatinAmerica,Karnauhova,Communication,3.7,Practice,Latin America
-LatinAmerica,Karnauhova,Action,2.6,Practice,Latin America
-LatinAmerica,GLOBE_Culture,PerformanceOrientation,3.85,Practice,Latin America
-LatinAmerica,GLOBE_Culture,Assertiveness,4.15,Practice,Latin America
-LatinAmerica,GLOBE_Culture,FutureOrientation,3.54,Practice,Latin America
-LatinAmerica,GLOBE_Culture,HumaneOrientation,4.03,Practice,Latin America
-LatinAmerica,GLOBE_Culture,InstitutionalCollectivism,3.86,Practice,Latin America
-LatinAmerica,GLOBE_Culture,InGroupCollectivism,5.52,Practice,Latin America
-LatinAmerica,GLOBE_Culture,GenderEgalitarianism,3.41,Practice,Latin America
-LatinAmerica,GLOBE_Culture,PowerDistance,5.33,Practice,Latin America
-LatinAmerica,GLOBE_Culture,UncertaintyAvoidance,3.62,Practice,Latin America
-LatinAmerica,GLOBE_Leadership,CharismaticValueBased,5.99,Practice,Latin America
-LatinAmerica,GLOBE_Leadership,TeamOriented,5.96,Practice,Latin America
-LatinAmerica,GLOBE_Leadership,Participative,5.42,Practice,Latin America
-LatinAmerica,GLOBE_Leadership,HumaneOriented,4.85,Practice,Latin America
-LatinAmerica,GLOBE_Leadership,Autonomous,3.51,Practice,Latin America
-LatinAmerica,GLOBE_Leadership,SelfProtective,3.62,Practice,Latin America
+Brazil,Karnauhova,TimeFocus,3.2,Practice,Latin America
+Brazil,Karnauhova,TimeOrientation,2.6,Practice,Latin America
+Brazil,Karnauhova,Space,3.5,Practice,Latin America
+Brazil,Karnauhova,Power,3.9,Practice,Latin America
+Brazil,Karnauhova,Structure,3.4,Practice,Latin America
+Brazil,Karnauhova,Competition,3.1,Practice,Latin America
+Brazil,Karnauhova,Communication,3.0,Practice,Latin America
+Brazil,Karnauhova,Action,3.0,Practice,Latin America
+Brazil,GLOBE_Culture,PerformanceOrientation,4.04,Practice,Latin America
+Brazil,GLOBE_Culture,Assertiveness,4.2,Practice,Latin America
+Brazil,GLOBE_Culture,FutureOrientation,3.81,Practice,Latin America
+Brazil,GLOBE_Culture,HumaneOrientation,3.66,Practice,Latin America
+Brazil,GLOBE_Culture,InstitutionalCollectivism,3.83,Practice,Latin America
+Brazil,GLOBE_Culture,InGroupCollectivism,5.18,Practice,Latin America
+Brazil,GLOBE_Culture,GenderEgalitarianism,3.31,Practice,Latin America
+Brazil,GLOBE_Culture,PowerDistance,5.33,Practice,Latin America
+Brazil,GLOBE_Culture,UncertaintyAvoidance,3.6,Practice,Latin America
+Brazil,GLOBE_Leadership,CharismaticValueBased,6.0,Practice,Latin America
+Brazil,GLOBE_Leadership,TeamOriented,6.17,Practice,Latin America
+Brazil,GLOBE_Leadership,Participative,6.06,Practice,Latin America
+Brazil,GLOBE_Leadership,HumaneOriented,4.84,Practice,Latin America
+Brazil,GLOBE_Leadership,Autonomous,2.27,Practice,Latin America
+Brazil,GLOBE_Leadership,SelfProtective,3.49,Practice,Latin America
+China,Karnauhova,TimeFocus,2.7,Practice,Confucian Asia
+China,Karnauhova,TimeOrientation,2.5,Practice,Confucian Asia
+China,Karnauhova,Space,3.9,Practice,Confucian Asia
+China,Karnauhova,Power,3.7,Practice,Confucian Asia
+China,Karnauhova,Structure,3.9,Practice,Confucian Asia
+China,Karnauhova,Competition,3.0,Practice,Confucian Asia
+China,Karnauhova,Communication,3.1,Practice,Confucian Asia
+China,Karnauhova,Action,3.0,Practice,Confucian Asia
+China,GLOBE_Culture,PerformanceOrientation,4.45,Practice,Confucian Asia
+China,GLOBE_Culture,Assertiveness,3.76,Practice,Confucian Asia
+China,GLOBE_Culture,FutureOrientation,3.75,Practice,Confucian Asia
+China,GLOBE_Culture,HumaneOrientation,4.36,Practice,Confucian Asia
+China,GLOBE_Culture,InstitutionalCollectivism,4.77,Practice,Confucian Asia
+China,GLOBE_Culture,InGroupCollectivism,5.8,Practice,Confucian Asia
+China,GLOBE_Culture,GenderEgalitarianism,3.05,Practice,Confucian Asia
+China,GLOBE_Culture,PowerDistance,5.04,Practice,Confucian Asia
+China,GLOBE_Culture,UncertaintyAvoidance,4.94,Practice,Confucian Asia
+China,GLOBE_Leadership,CharismaticValueBased,5.56,Practice,Confucian Asia
+China,GLOBE_Leadership,TeamOriented,5.57,Practice,Confucian Asia
+China,GLOBE_Leadership,Participative,5.04,Practice,Confucian Asia
+China,GLOBE_Leadership,HumaneOriented,5.19,Practice,Confucian Asia
+China,GLOBE_Leadership,Autonomous,4.07,Practice,Confucian Asia
+China,GLOBE_Leadership,SelfProtective,3.8,Practice,Confucian Asia
+Egypt,Karnauhova,TimeFocus,3.0,Practice,Middle East
+Egypt,Karnauhova,TimeOrientation,2.5,Practice,Middle East
+Egypt,Karnauhova,Space,3.8,Practice,Middle East
+Egypt,Karnauhova,Power,3.6,Practice,Middle East
+Egypt,Karnauhova,Structure,3.8,Practice,Middle East
+Egypt,Karnauhova,Competition,3.0,Practice,Middle East
+Egypt,Karnauhova,Communication,3.1,Practice,Middle East
+Egypt,Karnauhova,Action,2.9,Practice,Middle East
+Egypt,GLOBE_Culture,PerformanceOrientation,4.27,Practice,Middle East
+Egypt,GLOBE_Culture,Assertiveness,3.91,Practice,Middle East
+Egypt,GLOBE_Culture,FutureOrientation,3.86,Practice,Middle East
+Egypt,GLOBE_Culture,HumaneOrientation,4.73,Practice,Middle East
+Egypt,GLOBE_Culture,InstitutionalCollectivism,4.5,Practice,Middle East
+Egypt,GLOBE_Culture,InGroupCollectivism,5.64,Practice,Middle East
+Egypt,GLOBE_Culture,GenderEgalitarianism,2.81,Practice,Middle East
+Egypt,GLOBE_Culture,PowerDistance,4.92,Practice,Middle East
+Egypt,GLOBE_Culture,UncertaintyAvoidance,4.06,Practice,Middle East
+Egypt,GLOBE_Leadership,CharismaticValueBased,5.57,Practice,Middle East
+Egypt,GLOBE_Leadership,TeamOriented,5.55,Practice,Middle East
+Egypt,GLOBE_Leadership,Participative,4.69,Practice,Middle East
+Egypt,GLOBE_Leadership,HumaneOriented,5.15,Practice,Middle East
+Egypt,GLOBE_Leadership,Autonomous,4.49,Practice,Middle East
+Egypt,GLOBE_Leadership,SelfProtective,4.21,Practice,Middle East
+India,Karnauhova,TimeFocus,2.9,Practice,Southern Asia
+India,Karnauhova,TimeOrientation,2.6,Practice,Southern Asia
+India,Karnauhova,Space,3.9,Practice,Southern Asia
+India,Karnauhova,Power,4.0,Practice,Southern Asia
+India,Karnauhova,Structure,3.9,Practice,Southern Asia
+India,Karnauhova,Competition,2.9,Practice,Southern Asia
+India,Karnauhova,Communication,3.2,Practice,Southern Asia
+India,Karnauhova,Action,3.0,Practice,Southern Asia
+India,GLOBE_Culture,PerformanceOrientation,4.25,Practice,Southern Asia
+India,GLOBE_Culture,Assertiveness,3.73,Practice,Southern Asia
+India,GLOBE_Culture,FutureOrientation,4.19,Practice,Southern Asia
+India,GLOBE_Culture,HumaneOrientation,4.57,Practice,Southern Asia
+India,GLOBE_Culture,InstitutionalCollectivism,4.38,Practice,Southern Asia
+India,GLOBE_Culture,InGroupCollectivism,5.92,Practice,Southern Asia
+India,GLOBE_Culture,GenderEgalitarianism,2.9,Practice,Southern Asia
+India,GLOBE_Culture,PowerDistance,5.47,Practice,Southern Asia
+India,GLOBE_Culture,UncertaintyAvoidance,4.15,Practice,Southern Asia
+India,GLOBE_Leadership,CharismaticValueBased,5.85,Practice,Southern Asia
+India,GLOBE_Leadership,TeamOriented,5.72,Practice,Southern Asia
+India,GLOBE_Leadership,Participative,4.99,Practice,Southern Asia
+India,GLOBE_Leadership,HumaneOriented,5.26,Practice,Southern Asia
+India,GLOBE_Leadership,Autonomous,3.85,Practice,Southern Asia
+India,GLOBE_Leadership,SelfProtective,3.77,Practice,Southern Asia
+Iran,Karnauhova,TimeFocus,3.2,Practice,Middle East
+Iran,Karnauhova,TimeOrientation,2.3,Practice,Middle East
+Iran,Karnauhova,Space,3.8,Practice,Middle East
+Iran,Karnauhova,Power,4.0,Practice,Middle East
+Iran,Karnauhova,Structure,3.8,Practice,Middle East
+Iran,Karnauhova,Competition,3.1,Practice,Middle East
+Iran,Karnauhova,Communication,3.0,Practice,Middle East
+Iran,Karnauhova,Action,3.0,Practice,Middle East
+Iran,GLOBE_Culture,PerformanceOrientation,4.58,Practice,Middle East
+Iran,GLOBE_Culture,Assertiveness,4.04,Practice,Middle East
+Iran,GLOBE_Culture,FutureOrientation,3.7,Practice,Middle East
+Iran,GLOBE_Culture,HumaneOrientation,4.23,Practice,Middle East
+Iran,GLOBE_Culture,InstitutionalCollectivism,3.88,Practice,Middle East
+Iran,GLOBE_Culture,InGroupCollectivism,6.03,Practice,Middle East
+Iran,GLOBE_Culture,GenderEgalitarianism,2.99,Practice,Middle East
+Iran,GLOBE_Culture,PowerDistance,5.43,Practice,Middle East
+Iran,GLOBE_Culture,UncertaintyAvoidance,3.67,Practice,Middle East
+Iran,GLOBE_Leadership,CharismaticValueBased,5.81,Practice,Middle East
+Iran,GLOBE_Leadership,TeamOriented,5.9,Practice,Middle East
+Iran,GLOBE_Leadership,Participative,4.97,Practice,Middle East
+Iran,GLOBE_Leadership,HumaneOriented,5.75,Practice,Middle East
+Iran,GLOBE_Leadership,Autonomous,3.85,Practice,Middle East
+Iran,GLOBE_Leadership,SelfProtective,4.34,Practice,Middle East
+Japan,Karnauhova,TimeFocus,2.9,Practice,Confucian Asia
+Japan,Karnauhova,TimeOrientation,2.9,Practice,Confucian Asia
+Japan,Karnauhova,Space,3.6,Practice,Confucian Asia
+Japan,Karnauhova,Power,3.7,Practice,Confucian Asia
+Japan,Karnauhova,Structure,3.6,Practice,Confucian Asia
+Japan,Karnauhova,Competition,2.9,Practice,Confucian Asia
+Japan,Karnauhova,Communication,3.4,Practice,Confucian Asia
+Japan,Karnauhova,Action,3.1,Practice,Confucian Asia
+Japan,GLOBE_Culture,PerformanceOrientation,4.22,Practice,Confucian Asia
+Japan,GLOBE_Culture,Assertiveness,3.59,Practice,Confucian Asia
+Japan,GLOBE_Culture,FutureOrientation,4.29,Practice,Confucian Asia
+Japan,GLOBE_Culture,HumaneOrientation,4.3,Practice,Confucian Asia
+Japan,GLOBE_Culture,InstitutionalCollectivism,5.19,Practice,Confucian Asia
+Japan,GLOBE_Culture,InGroupCollectivism,4.63,Practice,Confucian Asia
+Japan,GLOBE_Culture,GenderEgalitarianism,3.19,Practice,Confucian Asia
+Japan,GLOBE_Culture,PowerDistance,5.11,Practice,Confucian Asia
+Japan,GLOBE_Culture,UncertaintyAvoidance,4.07,Practice,Confucian Asia
+Japan,GLOBE_Leadership,CharismaticValueBased,5.49,Practice,Confucian Asia
+Japan,GLOBE_Leadership,TeamOriented,5.56,Practice,Confucian Asia
+Japan,GLOBE_Leadership,Participative,5.07,Practice,Confucian Asia
+Japan,GLOBE_Leadership,HumaneOriented,4.68,Practice,Confucian Asia
+Japan,GLOBE_Leadership,Autonomous,3.67,Practice,Confucian Asia
+Japan,GLOBE_Leadership,SelfProtective,3.6,Practice,Confucian Asia
 Malaysia,Karnauhova,TimeFocus,2.5,Practice,Southern Asia
 Malaysia,Karnauhova,TimeOrientation,2.8,Practice,Southern Asia
 Malaysia,Karnauhova,Space,3.8,Practice,Southern Asia
@@ -45,6 +160,29 @@ Malaysia,GLOBE_Leadership,Participative,5.12,Practice,Southern Asia
 Malaysia,GLOBE_Leadership,HumaneOriented,5.24,Practice,Southern Asia
 Malaysia,GLOBE_Leadership,Autonomous,4.03,Practice,Southern Asia
 Malaysia,GLOBE_Leadership,SelfProtective,3.49,Practice,Southern Asia
+Nigeria,Karnauhova,TimeFocus,2.9,Practice,Sub-Saharan Africa
+Nigeria,Karnauhova,TimeOrientation,2.5,Practice,Sub-Saharan Africa
+Nigeria,Karnauhova,Space,3.7,Practice,Sub-Saharan Africa
+Nigeria,Karnauhova,Power,4.2,Practice,Sub-Saharan Africa
+Nigeria,Karnauhova,Structure,3.7,Practice,Sub-Saharan Africa
+Nigeria,Karnauhova,Competition,3.0,Practice,Sub-Saharan Africa
+Nigeria,Karnauhova,Communication,2.8,Practice,Sub-Saharan Africa
+Nigeria,Karnauhova,Action,3.0,Practice,Sub-Saharan Africa
+Nigeria,GLOBE_Culture,PerformanceOrientation,3.92,Practice,Sub-Saharan Africa
+Nigeria,GLOBE_Culture,Assertiveness,4.79,Practice,Sub-Saharan Africa
+Nigeria,GLOBE_Culture,FutureOrientation,4.09,Practice,Sub-Saharan Africa
+Nigeria,GLOBE_Culture,HumaneOrientation,4.1,Practice,Sub-Saharan Africa
+Nigeria,GLOBE_Culture,InstitutionalCollectivism,4.14,Practice,Sub-Saharan Africa
+Nigeria,GLOBE_Culture,InGroupCollectivism,5.55,Practice,Sub-Saharan Africa
+Nigeria,GLOBE_Culture,GenderEgalitarianism,3.01,Practice,Sub-Saharan Africa
+Nigeria,GLOBE_Culture,PowerDistance,5.8,Practice,Sub-Saharan Africa
+Nigeria,GLOBE_Culture,UncertaintyAvoidance,4.29,Practice,Sub-Saharan Africa
+Nigeria,GLOBE_Leadership,CharismaticValueBased,5.76,Practice,Sub-Saharan Africa
+Nigeria,GLOBE_Leadership,TeamOriented,5.65,Practice,Sub-Saharan Africa
+Nigeria,GLOBE_Leadership,Participative,5.18,Practice,Sub-Saharan Africa
+Nigeria,GLOBE_Leadership,HumaneOriented,5.49,Practice,Sub-Saharan Africa
+Nigeria,GLOBE_Leadership,Autonomous,5.62,Practice,Sub-Saharan Africa
+Nigeria,GLOBE_Leadership,SelfProtective,3.89,Practice,Sub-Saharan Africa
 Russia,Karnauhova,TimeFocus,3.8,Practice,Eastern Europe
 Russia,Karnauhova,TimeOrientation,2.4,Practice,Eastern Europe
 Russia,Karnauhova,Space,3.8,Practice,Eastern Europe
@@ -68,3 +206,210 @@ Russia,GLOBE_Leadership,Participative,4.67,Practice,Eastern Europe
 Russia,GLOBE_Leadership,HumaneOriented,4.08,Practice,Eastern Europe
 Russia,GLOBE_Leadership,Autonomous,4.63,Practice,Eastern Europe
 Russia,GLOBE_Leadership,SelfProtective,3.69,Practice,Eastern Europe
+USA,Karnauhova,TimeFocus,2.9,Practice,Anglo
+USA,Karnauhova,TimeOrientation,3.0,Practice,Anglo
+USA,Karnauhova,Space,3.2,Practice,Anglo
+USA,Karnauhova,Power,3.6,Practice,Anglo
+USA,Karnauhova,Structure,3.2,Practice,Anglo
+USA,Karnauhova,Competition,3.3,Practice,Anglo
+USA,Karnauhova,Communication,2.9,Practice,Anglo
+USA,Karnauhova,Action,3.1,Practice,Anglo
+USA,GLOBE_Culture,PerformanceOrientation,4.49,Practice,Anglo
+USA,GLOBE_Culture,Assertiveness,4.55,Practice,Anglo
+USA,GLOBE_Culture,FutureOrientation,4.15,Practice,Anglo
+USA,GLOBE_Culture,HumaneOrientation,4.17,Practice,Anglo
+USA,GLOBE_Culture,InstitutionalCollectivism,4.2,Practice,Anglo
+USA,GLOBE_Culture,InGroupCollectivism,4.25,Practice,Anglo
+USA,GLOBE_Culture,GenderEgalitarianism,3.34,Practice,Anglo
+USA,GLOBE_Culture,PowerDistance,4.88,Practice,Anglo
+USA,GLOBE_Culture,UncertaintyAvoidance,4.15,Practice,Anglo
+USA,GLOBE_Leadership,CharismaticValueBased,6.12,Practice,Anglo
+USA,GLOBE_Leadership,TeamOriented,5.8,Practice,Anglo
+USA,GLOBE_Leadership,Participative,5.93,Practice,Anglo
+USA,GLOBE_Leadership,HumaneOriented,5.21,Practice,Anglo
+USA,GLOBE_Leadership,Autonomous,3.75,Practice,Anglo
+USA,GLOBE_Leadership,SelfProtective,3.15,Practice,Anglo
+Anglo,Karnauhova,TimeFocus,2.8,Practice,Anglo
+Anglo,Karnauhova,TimeOrientation,3.0,Practice,Anglo
+Anglo,Karnauhova,Space,3.3,Practice,Anglo
+Anglo,Karnauhova,Power,3.6,Practice,Anglo
+Anglo,Karnauhova,Structure,3.2,Practice,Anglo
+Anglo,Karnauhova,Competition,3.1,Practice,Anglo
+Anglo,Karnauhova,Communication,3.0,Practice,Anglo
+Anglo,Karnauhova,Action,3.1,Practice,Anglo
+Anglo,GLOBE_Culture,PerformanceOrientation,4.37,Practice,Anglo
+Anglo,GLOBE_Culture,Assertiveness,4.14,Practice,Anglo
+Anglo,GLOBE_Culture,FutureOrientation,4.08,Practice,Anglo
+Anglo,GLOBE_Culture,HumaneOrientation,4.2,Practice,Anglo
+Anglo,GLOBE_Culture,InstitutionalCollectivism,4.46,Practice,Anglo
+Anglo,GLOBE_Culture,InGroupCollectivism,4.3,Practice,Anglo
+Anglo,GLOBE_Culture,GenderEgalitarianism,3.4,Practice,Anglo
+Anglo,GLOBE_Culture,PowerDistance,4.97,Practice,Anglo
+Anglo,GLOBE_Culture,UncertaintyAvoidance,4.42,Practice,Anglo
+Anglo,GLOBE_Leadership,CharismaticValueBased,6.05,Practice,Anglo
+Anglo,GLOBE_Leadership,TeamOriented,5.74,Practice,Anglo
+Anglo,GLOBE_Leadership,Participative,5.73,Practice,Anglo
+Anglo,GLOBE_Leadership,HumaneOriented,5.08,Practice,Anglo
+Anglo,GLOBE_Leadership,Autonomous,3.82,Practice,Anglo
+Anglo,GLOBE_Leadership,SelfProtective,3.08,Practice,Anglo
+ConfucianAsia,Karnauhova,TimeFocus,2.8,Practice,Confucian Asia
+ConfucianAsia,Karnauhova,TimeOrientation,2.7,Practice,Confucian Asia
+ConfucianAsia,Karnauhova,Space,3.8,Practice,Confucian Asia
+ConfucianAsia,Karnauhova,Power,3.8,Practice,Confucian Asia
+ConfucianAsia,Karnauhova,Structure,3.8,Practice,Confucian Asia
+ConfucianAsia,Karnauhova,Competition,3.2,Practice,Confucian Asia
+ConfucianAsia,Karnauhova,Communication,3.1,Practice,Confucian Asia
+ConfucianAsia,Karnauhova,Action,3.2,Practice,Confucian Asia
+ConfucianAsia,GLOBE_Culture,PerformanceOrientation,4.58,Practice,Confucian Asia
+ConfucianAsia,GLOBE_Culture,Assertiveness,4.09,Practice,Confucian Asia
+ConfucianAsia,GLOBE_Culture,FutureOrientation,4.18,Practice,Confucian Asia
+ConfucianAsia,GLOBE_Culture,HumaneOrientation,3.99,Practice,Confucian Asia
+ConfucianAsia,GLOBE_Culture,InstitutionalCollectivism,4.8,Practice,Confucian Asia
+ConfucianAsia,GLOBE_Culture,InGroupCollectivism,5.42,Practice,Confucian Asia
+ConfucianAsia,GLOBE_Culture,GenderEgalitarianism,3.18,Practice,Confucian Asia
+ConfucianAsia,GLOBE_Culture,PowerDistance,5.15,Practice,Confucian Asia
+ConfucianAsia,GLOBE_Culture,UncertaintyAvoidance,4.42,Practice,Confucian Asia
+ConfucianAsia,GLOBE_Leadership,CharismaticValueBased,5.63,Practice,Confucian Asia
+ConfucianAsia,GLOBE_Leadership,TeamOriented,5.61,Practice,Confucian Asia
+ConfucianAsia,GLOBE_Leadership,Participative,4.99,Practice,Confucian Asia
+ConfucianAsia,GLOBE_Leadership,HumaneOriented,5.04,Practice,Confucian Asia
+ConfucianAsia,GLOBE_Leadership,Autonomous,4.04,Practice,Confucian Asia
+ConfucianAsia,GLOBE_Leadership,SelfProtective,3.72,Practice,Confucian Asia
+EasternEurope,Karnauhova,TimeFocus,3.4,Practice,Eastern Europe
+EasternEurope,Karnauhova,TimeOrientation,2.3,Practice,Eastern Europe
+EasternEurope,Karnauhova,Space,3.7,Practice,Eastern Europe
+EasternEurope,Karnauhova,Power,3.8,Practice,Eastern Europe
+EasternEurope,Karnauhova,Structure,3.6,Practice,Eastern Europe
+EasternEurope,Karnauhova,Competition,3.0,Practice,Eastern Europe
+EasternEurope,Karnauhova,Communication,3.0,Practice,Eastern Europe
+EasternEurope,Karnauhova,Action,2.8,Practice,Eastern Europe
+EasternEurope,GLOBE_Culture,PerformanceOrientation,3.73,Practice,Eastern Europe
+EasternEurope,GLOBE_Culture,Assertiveness,4.33,Practice,Eastern Europe
+EasternEurope,GLOBE_Culture,FutureOrientation,3.38,Practice,Eastern Europe
+EasternEurope,GLOBE_Culture,HumaneOrientation,3.85,Practice,Eastern Europe
+EasternEurope,GLOBE_Culture,InstitutionalCollectivism,4.1,Practice,Eastern Europe
+EasternEurope,GLOBE_Culture,InGroupCollectivism,5.53,Practice,Eastern Europe
+EasternEurope,GLOBE_Culture,GenderEgalitarianism,3.84,Practice,Eastern Europe
+EasternEurope,GLOBE_Culture,PowerDistance,5.26,Practice,Eastern Europe
+EasternEurope,GLOBE_Culture,UncertaintyAvoidance,3.56,Practice,Eastern Europe
+EasternEurope,GLOBE_Leadership,CharismaticValueBased,5.74,Practice,Eastern Europe
+EasternEurope,GLOBE_Leadership,TeamOriented,5.88,Practice,Eastern Europe
+EasternEurope,GLOBE_Leadership,Participative,5.08,Practice,Eastern Europe
+EasternEurope,GLOBE_Leadership,HumaneOriented,4.76,Practice,Eastern Europe
+EasternEurope,GLOBE_Leadership,Autonomous,4.2,Practice,Eastern Europe
+EasternEurope,GLOBE_Leadership,SelfProtective,3.67,Practice,Eastern Europe
+GermanicEurope,Karnauhova,TimeFocus,2.5,Practice,Germanic Europe
+GermanicEurope,Karnauhova,TimeOrientation,3.1,Practice,Germanic Europe
+GermanicEurope,Karnauhova,Space,3.2,Practice,Germanic Europe
+GermanicEurope,Karnauhova,Power,3.6,Practice,Germanic Europe
+GermanicEurope,Karnauhova,Structure,3.1,Practice,Germanic Europe
+GermanicEurope,Karnauhova,Competition,3.3,Practice,Germanic Europe
+GermanicEurope,Karnauhova,Communication,2.7,Practice,Germanic Europe
+GermanicEurope,Karnauhova,Action,3.3,Practice,Germanic Europe
+GermanicEurope,GLOBE_Culture,PerformanceOrientation,4.41,Practice,Germanic Europe
+GermanicEurope,GLOBE_Culture,Assertiveness,4.55,Practice,Germanic Europe
+GermanicEurope,GLOBE_Culture,FutureOrientation,4.4,Practice,Germanic Europe
+GermanicEurope,GLOBE_Culture,HumaneOrientation,3.55,Practice,Germanic Europe
+GermanicEurope,GLOBE_Culture,InstitutionalCollectivism,4.03,Practice,Germanic Europe
+GermanicEurope,GLOBE_Culture,InGroupCollectivism,4.21,Practice,Germanic Europe
+GermanicEurope,GLOBE_Culture,GenderEgalitarianism,3.14,Practice,Germanic Europe
+GermanicEurope,GLOBE_Culture,PowerDistance,4.95,Practice,Germanic Europe
+GermanicEurope,GLOBE_Culture,UncertaintyAvoidance,5.12,Practice,Germanic Europe
+GermanicEurope,GLOBE_Leadership,CharismaticValueBased,5.93,Practice,Germanic Europe
+GermanicEurope,GLOBE_Leadership,TeamOriented,5.62,Practice,Germanic Europe
+GermanicEurope,GLOBE_Leadership,Participative,5.86,Practice,Germanic Europe
+GermanicEurope,GLOBE_Leadership,HumaneOriented,4.71,Practice,Germanic Europe
+GermanicEurope,GLOBE_Leadership,Autonomous,4.16,Practice,Germanic Europe
+GermanicEurope,GLOBE_Leadership,SelfProtective,3.03,Practice,Germanic Europe
+LatinAmerica,Karnauhova,TimeFocus,3.6,Practice,Latin America
+LatinAmerica,Karnauhova,TimeOrientation,2.8,Practice,Latin America
+LatinAmerica,Karnauhova,Space,4.0,Practice,Latin America
+LatinAmerica,Karnauhova,Power,4.1,Practice,Latin America
+LatinAmerica,Karnauhova,Structure,4.1,Practice,Latin America
+LatinAmerica,Karnauhova,Competition,2.8,Practice,Latin America
+LatinAmerica,Karnauhova,Communication,3.7,Practice,Latin America
+LatinAmerica,Karnauhova,Action,2.6,Practice,Latin America
+LatinAmerica,GLOBE_Culture,PerformanceOrientation,3.85,Practice,Latin America
+LatinAmerica,GLOBE_Culture,Assertiveness,4.15,Practice,Latin America
+LatinAmerica,GLOBE_Culture,FutureOrientation,3.54,Practice,Latin America
+LatinAmerica,GLOBE_Culture,HumaneOrientation,4.03,Practice,Latin America
+LatinAmerica,GLOBE_Culture,InstitutionalCollectivism,3.86,Practice,Latin America
+LatinAmerica,GLOBE_Culture,InGroupCollectivism,5.52,Practice,Latin America
+LatinAmerica,GLOBE_Culture,GenderEgalitarianism,3.41,Practice,Latin America
+LatinAmerica,GLOBE_Culture,PowerDistance,5.33,Practice,Latin America
+LatinAmerica,GLOBE_Culture,UncertaintyAvoidance,3.62,Practice,Latin America
+LatinAmerica,GLOBE_Leadership,CharismaticValueBased,5.99,Practice,Latin America
+LatinAmerica,GLOBE_Leadership,TeamOriented,5.96,Practice,Latin America
+LatinAmerica,GLOBE_Leadership,Participative,5.42,Practice,Latin America
+LatinAmerica,GLOBE_Leadership,HumaneOriented,4.85,Practice,Latin America
+LatinAmerica,GLOBE_Leadership,Autonomous,3.51,Practice,Latin America
+LatinAmerica,GLOBE_Leadership,SelfProtective,3.62,Practice,Latin America
+LatinEurope,Karnauhova,TimeFocus,3.0,Practice,Latin Europe
+LatinEurope,Karnauhova,TimeOrientation,2.7,Practice,Latin Europe
+LatinEurope,Karnauhova,Space,3.4,Practice,Latin Europe
+LatinEurope,Karnauhova,Power,3.8,Practice,Latin Europe
+LatinEurope,Karnauhova,Structure,3.3,Practice,Latin Europe
+LatinEurope,Karnauhova,Competition,3.0,Practice,Latin Europe
+LatinEurope,Karnauhova,Communication,3.0,Practice,Latin Europe
+LatinEurope,Karnauhova,Action,2.9,Practice,Latin Europe
+LatinEurope,GLOBE_Culture,PerformanceOrientation,3.94,Practice,Latin Europe
+LatinEurope,GLOBE_Culture,Assertiveness,3.99,Practice,Latin Europe
+LatinEurope,GLOBE_Culture,FutureOrientation,3.68,Practice,Latin Europe
+LatinEurope,GLOBE_Culture,HumaneOrientation,3.71,Practice,Latin Europe
+LatinEurope,GLOBE_Culture,InstitutionalCollectivism,4.01,Practice,Latin Europe
+LatinEurope,GLOBE_Culture,InGroupCollectivism,4.8,Practice,Latin Europe
+LatinEurope,GLOBE_Culture,GenderEgalitarianism,3.36,Practice,Latin Europe
+LatinEurope,GLOBE_Culture,PowerDistance,5.21,Practice,Latin Europe
+LatinEurope,GLOBE_Culture,UncertaintyAvoidance,4.18,Practice,Latin Europe
+LatinEurope,GLOBE_Leadership,CharismaticValueBased,5.78,Practice,Latin Europe
+LatinEurope,GLOBE_Leadership,TeamOriented,5.73,Practice,Latin Europe
+LatinEurope,GLOBE_Leadership,Participative,5.37,Practice,Latin Europe
+LatinEurope,GLOBE_Leadership,HumaneOriented,4.45,Practice,Latin Europe
+LatinEurope,GLOBE_Leadership,Autonomous,3.66,Practice,Latin Europe
+LatinEurope,GLOBE_Leadership,SelfProtective,3.19,Practice,Latin Europe
+SouthernAsia,Karnauhova,TimeFocus,3.0,Practice,Southern Asia
+SouthernAsia,Karnauhova,TimeOrientation,2.5,Practice,Southern Asia
+SouthernAsia,Karnauhova,Space,3.9,Practice,Southern Asia
+SouthernAsia,Karnauhova,Power,3.9,Practice,Southern Asia
+SouthernAsia,Karnauhova,Structure,3.8,Practice,Southern Asia
+SouthernAsia,Karnauhova,Competition,3.0,Practice,Southern Asia
+SouthernAsia,Karnauhova,Communication,3.1,Practice,Southern Asia
+SouthernAsia,Karnauhova,Action,3.0,Practice,Southern Asia
+SouthernAsia,GLOBE_Culture,PerformanceOrientation,4.33,Practice,Southern Asia
+SouthernAsia,GLOBE_Culture,Assertiveness,3.86,Practice,Southern Asia
+SouthernAsia,GLOBE_Culture,FutureOrientation,3.98,Practice,Southern Asia
+SouthernAsia,GLOBE_Culture,HumaneOrientation,4.71,Practice,Southern Asia
+SouthernAsia,GLOBE_Culture,InstitutionalCollectivism,4.35,Practice,Southern Asia
+SouthernAsia,GLOBE_Culture,InGroupCollectivism,5.87,Practice,Southern Asia
+SouthernAsia,GLOBE_Culture,GenderEgalitarianism,3.28,Practice,Southern Asia
+SouthernAsia,GLOBE_Culture,PowerDistance,5.39,Practice,Southern Asia
+SouthernAsia,GLOBE_Culture,UncertaintyAvoidance,4.1,Practice,Southern Asia
+SouthernAsia,GLOBE_Leadership,CharismaticValueBased,5.97,Practice,Southern Asia
+SouthernAsia,GLOBE_Leadership,TeamOriented,5.86,Practice,Southern Asia
+SouthernAsia,GLOBE_Leadership,Participative,5.06,Practice,Southern Asia
+SouthernAsia,GLOBE_Leadership,HumaneOriented,5.38,Practice,Southern Asia
+SouthernAsia,GLOBE_Leadership,Autonomous,3.99,Practice,Southern Asia
+SouthernAsia,GLOBE_Leadership,SelfProtective,3.83,Practice,Southern Asia
+SubSaharanAfrica,Karnauhova,TimeFocus,2.9,Practice,Sub-Saharan Africa
+SubSaharanAfrica,Karnauhova,TimeOrientation,2.6,Practice,Sub-Saharan Africa
+SubSaharanAfrica,Karnauhova,Space,3.7,Practice,Sub-Saharan Africa
+SubSaharanAfrica,Karnauhova,Power,3.8,Practice,Sub-Saharan Africa
+SubSaharanAfrica,Karnauhova,Structure,3.6,Practice,Sub-Saharan Africa
+SubSaharanAfrica,Karnauhova,Competition,3.0,Practice,Sub-Saharan Africa
+SubSaharanAfrica,Karnauhova,Communication,3.0,Practice,Sub-Saharan Africa
+SubSaharanAfrica,Karnauhova,Action,3.0,Practice,Sub-Saharan Africa
+SubSaharanAfrica,GLOBE_Culture,PerformanceOrientation,4.13,Practice,Sub-Saharan Africa
+SubSaharanAfrica,GLOBE_Culture,Assertiveness,4.24,Practice,Sub-Saharan Africa
+SubSaharanAfrica,GLOBE_Culture,FutureOrientation,3.92,Practice,Sub-Saharan Africa
+SubSaharanAfrica,GLOBE_Culture,HumaneOrientation,4.42,Practice,Sub-Saharan Africa
+SubSaharanAfrica,GLOBE_Culture,InstitutionalCollectivism,4.28,Practice,Sub-Saharan Africa
+SubSaharanAfrica,GLOBE_Culture,InGroupCollectivism,5.31,Practice,Sub-Saharan Africa
+SubSaharanAfrica,GLOBE_Culture,GenderEgalitarianism,3.29,Practice,Sub-Saharan Africa
+SubSaharanAfrica,GLOBE_Culture,PowerDistance,5.24,Practice,Sub-Saharan Africa
+SubSaharanAfrica,GLOBE_Culture,UncertaintyAvoidance,4.27,Practice,Sub-Saharan Africa
+SubSaharanAfrica,GLOBE_Leadership,CharismaticValueBased,5.79,Practice,Sub-Saharan Africa
+SubSaharanAfrica,GLOBE_Leadership,TeamOriented,5.7,Practice,Sub-Saharan Africa
+SubSaharanAfrica,GLOBE_Leadership,Participative,5.31,Practice,Sub-Saharan Africa
+SubSaharanAfrica,GLOBE_Leadership,HumaneOriented,5.16,Practice,Sub-Saharan Africa
+SubSaharanAfrica,GLOBE_Leadership,Autonomous,3.63,Practice,Sub-Saharan Africa
+SubSaharanAfrica,GLOBE_Leadership,SelfProtective,3.55,Practice,Sub-Saharan Africa
