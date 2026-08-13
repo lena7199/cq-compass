@@ -1431,7 +1431,7 @@ def main():
         </style>
 
         <!-- The Floating Button -->
-        <button class="cq-compass-fab" onclick="document.querySelector('div[data-testid="stSidebarCollapsedControl"] button').click();">
+        <button class="cq-compass-fab" onclick="document.querySelector('div[data-testid=\"stSidebarCollapsedControl\"] button').click();">
             ☰ MENU
         </button>
     """, unsafe_allow_html=True)
