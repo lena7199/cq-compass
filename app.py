@@ -1397,7 +1397,7 @@ def main():
     # --- GLOBAL CSS FIXES FOR SIDEBAR & MOBILE TRIGGERS ---
     st.markdown("""
         <style>
-        /* 1. SIDEBAR BACKGROUND (Forces the dark navy blue) */
+        /* 1. SIDEBAR BACKGROUND */
         section[data-testid="stSidebar"] {
             background-color: #1B2838 !important;
         }
@@ -1405,7 +1405,7 @@ def main():
             color: #FFFFFF !important;
         }
 
-        /* 2. SIDEBAR BUTTONS (Gold border, white text, transparent bg) */
+        /* 2. SIDEBAR BUTTONS */
         section[data-testid="stSidebar"] button {
             background-color: transparent !important; 
             color: #FFFFFF !important; 
@@ -1415,41 +1415,65 @@ def main():
             font-size: 14px !important;
             padding: 10px !important;
             margin: 8px 0 !important;
-            transition: all 0.3s ease !important;
         }
         section[data-testid="stSidebar"] button:hover {
             background-color: rgba(201, 169, 110, 0.2) !important; 
             box-shadow: 0 0 10px rgba(201, 169, 110, 0.4) !important;
         }
 
-        /* 3. MOBILE TRIGGER & DESKTOP TOGGLE (The button to open/close menu) */
-        /* Hide the leaked text "keyboard_double_arrow_right" */
-        div[data-testid="stSidebarCollapsedControl"] button span {
-            display: none !important; 
+        /* 3. AGGRESSIVE FIX FOR THE TOGGLE BUTTON */
+        /* Method 1: Hide ALL spans inside the toggle button */
+        [data-testid="stSidebarCollapsedControl"] button span,
+        [data-testid="stSidebarCollapsedControl"] button div,
+        [data-testid="stSidebarCollapsedControl"] button::after,
+        [data-testid="stSidebarCollapsedControl"] button::before {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
         }
         
-        /* Style the trigger button itself to be a bright gold circle */
-        div[data-testid="stSidebarCollapsedControl"] button {
+        /* Method 2: Hide by class name if it exists */
+        .stSidebarCollapsedControl button span {
+            display: none !important;
+        }
+        
+        /* Method 3: Hide any text nodes */
+        [data-testid="stSidebarCollapsedControl"] {
+            font-size: 0 !important;
+            line-height: 0 !important;
+        }
+        
+        /* Method 4: Force the button to be a clean gold circle */
+        [data-testid="stSidebarCollapsedControl"] button {
             background-color: #C9A96E !important;
             border-radius: 50% !important;
-            width: 40px !important;
-            height: 40px !important;
-            border: none !important;
+            width: 45px !important;
+            height: 45px !important;
+            border: 2px solid #C9A96E !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2) !important;
+            font-size: 0 !important;
+            color: transparent !important;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.3) !important;
+            position: relative !important;
+            z-index: 9999 !important;
         }
         
-        /* Force the icon inside to be dark for high contrast */
-        div[data-testid="stSidebarCollapsedControl"] button svg {
+        /* Force the SVG icon to be visible and dark */
+        [data-testid="stSidebarCollapsedControl"] button svg,
+        [data-testid="stSidebarCollapsedControl"] button i {
             color: #1B2838 !important;
             fill: #1B2838 !important;
-            width: 20px !important;
-            height: 20px !important;
+            width: 24px !important;
+            height: 24px !important;
+            font-size: 24px !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
         }
 
-        /* 4. CLOSE BUTTON (The 'X' inside the sidebar) */
+        /* 4. CLOSE BUTTON */
         button[kind="icon"][data-testid="stSidebarCloseButton"] {
             color: #C9A96E !important;
         }
