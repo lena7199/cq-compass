@@ -1149,13 +1149,13 @@ def page_country_comparison():
 # Create 3 columns for the action buttons
             col_match, col_toggle, col_save = st.columns(3)
 
-            # Closest Match Button (Placeholder)
+            # 1. Closest Match Button (Placeholder)
             with col_match:
-                st.markdown("<br>", unsafe_allow_html=True) # Adds a little space to align with the toggle
+                st.markdown("<br>", unsafe_allow_html=True) # Consistent spacing
                 if st.button(" Closest Match", use_container_width=True, key="closest_match_btn"):
                     st.info("Coming soon! This will show your best cultural fit.")
 
-            # Show/Hide Toggle
+            # 2. Show/Hide Toggle (YOUR EXACT CODE)
             with col_toggle:
                 # CSS to style the narrow, elegant button
                 st.markdown("""
@@ -1169,7 +1169,7 @@ def page_country_comparison():
                         font-weight: 500 !important;
                         font-size: 13px !important;
                         transition: all 0.3s ease !important;
-                        min-width: 220px !important; /* Keeps it narrow but readable */
+                        min-width: 220px !important; 
                     }
                     div[data-testid="stButton"] button[kind="secondary"]:hover {
                         background-color: rgba(201, 169, 110, 0.15) !important;
@@ -1178,10 +1178,11 @@ def page_country_comparison():
                     </style>
                 """, unsafe_allow_html=True)
 
-                # Center the button below the chart
-                st.markdown("<div style='text-align: center; margin: 15px 0;'>", unsafe_allow_html=True)
+                # Center the button (Removed the margin so it aligns perfectly)
+                st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
+                st.markdown("<br>", unsafe_allow_html=True) # Added consistent spacing
                 
-                # Elegant Unicode icons (◎ = empty circle, ◉ = filled circle)
+                # Elegant Unicode icons
                 if st.session_state.show_national_avg:
                     btn_text = "◉ Hide Home Country Average"
                 else:
@@ -1195,14 +1196,12 @@ def page_country_comparison():
 
             # 3. Save Results Button
             with col_save:
-                st.markdown("<br>", unsafe_allow_html=True) # Aligns with the toggle
+                st.markdown("<br>", unsafe_allow_html=True) # Consistent spacing
                 
-                if st.button("💾 Save Results", use_container_width=True, key="save_results_btn"):
-                    # Placeholder logic until we connect the database
+                if st.button(" Save Results", use_container_width=True, key="save_results_btn"):
                     st.session_state.profile_saved = True
                     st.rerun()
                 
-                # Show a nice confirmation message if they just clicked it
                 if st.session_state.get('profile_saved', False):
                     st.success("✅ Profile saved!")
                     st.caption(f"Your unique code is: **{st.session_state.anonymous_id}**")
