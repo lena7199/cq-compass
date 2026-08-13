@@ -614,11 +614,32 @@ def page_welcome():
     with col1:
         nationality_display = st.selectbox(
             "Select your nationality",
-            ["Select country/region", "Latin America", "Malaysia", "Russia"],
+            ["Select country/region", "Brazil", "China", "Egypt", "India", "Iran", "Japan", "Malaysia", "Nigeria", "Russia", "USA", "Anglo", "Confucian Asia", "Eastern Europe", "Germanic Europe", "Latin America", "Latin Europe", "Middle East", "Nordic Europe", "Southern Asia", "Sub-Saharan Africa"],
             key="nationality_select"
         )
         # Map the two-word display name to the one-word CSV name
-        country_map = {"Latin America": "LatinAmerica", "Malaysia": "Malaysia", "Russia": "Russia"}
+        country_map = {
+            "Brazil": "Brazil", 
+            "China": "China", 
+            "Egypt": "Egypt", 
+            "India": "India", 
+            "Iran": "Iran", 
+            "Japan": "Japan", 
+            "Malaysia": "Malaysia", 
+            "Nigeria": "Nigeria", 
+            "Russia": "Russia", 
+            "USA": "USA", 
+            "Anglo": "Anglo", 
+            "Confucian Asia": "ConfucianAsia", 
+            "Eastern Europe": "EasternEurope", 
+            "Germanic Europe": "GermanicEurope", 
+            "Latin America": "LatinAmerica", 
+            "Latin Europe": "LatinEurope", 
+            "Middle East": "MiddleEast", 
+            "Nordic Europe": "NordicEurope", 
+            "Southern Asia": "SouthernAsia", 
+            "Sub-Saharan Africa": "SubSaharanAfrica"
+        }
         nationality = country_map.get(nationality_display, None)
 
     with col2:
