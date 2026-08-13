@@ -1145,40 +1145,68 @@ def page_country_comparison():
             )
             
             st.plotly_chart(fig, use_container_width=True, config={'staticPlot': True})
-            
-            # CSS to style the narrow, elegant button
-            st.markdown("""
-                <style>
-                div[data-testid="stButton"] button[kind="secondary"] {
-                    background-color: transparent !important;
-                    color: #FFFFFF !important;
-                    border: 1px solid #C9A96E !important;
-                    border-radius: 6px !important;
-                    padding: 6px 20px !important;
-                    font-weight: 500 !important;
-                    font-size: 13px !important;
-                    transition: all 0.3s ease !important;
-                    min-width: 220px !important; /* Keeps it narrow but readable */
-                }
-                div[data-testid="stButton"] button[kind="secondary"]:hover {
-                    background-color: rgba(201, 169, 110, 0.15) !important;
-                    box-shadow: 0 0 10px rgba(201, 169, 110, 0.4) !important;
-                }
-                </style>
-            """, unsafe_allow_html=True)
 
-            # Center the button below the chart
-            st.markdown("<div style='text-align: center; margin: 15px 0;'>", unsafe_allow_html=True)
-            
-            # Elegant Unicode icons (◎ = empty circle, ◉ = filled circle)
-            if st.session_state.show_national_avg:
-                btn_text = "◉ Hide Home Country Average"
-            else:
-                btn_text = "◎ Show Home Country Average"
-            
-            if st.button(btn_text, use_container_width=False, key="national_toggle_btn", type="secondary"):
-                st.session_state.show_national_avg = not st.session_state.show_national_avg
-                st.rerun()
+# Create 3 columns for the action buttons
+            col_match, col_toggle, col_save = st.columns(3)
+
+            # Closest Match Button (Placeholder)
+            with col_match:
+                st.markdown("<br>", unsafe_allow_html=True) # Adds a little space to align with the toggle
+                if st.button(" Closest Match", use_container_width=True, key="closest_match_btn"):
+                    st.info("Coming soon! This will show your best cultural fit.")
+
+            # Show/Hide Toggle
+            with col_toggle:
+                # CSS to style the narrow, elegant button
+                st.markdown("""
+                    <style>
+                    div[data-testid="stButton"] button[kind="secondary"] {
+                        background-color: transparent !important;
+                        color: #FFFFFF !important;
+                        border: 1px solid #C9A96E !important;
+                        border-radius: 6px !important;
+                        padding: 6px 20px !important;
+                        font-weight: 500 !important;
+                        font-size: 13px !important;
+                        transition: all 0.3s ease !important;
+                        min-width: 220px !important; /* Keeps it narrow but readable */
+                    }
+                    div[data-testid="stButton"] button[kind="secondary"]:hover {
+                        background-color: rgba(201, 169, 110, 0.15) !important;
+                        box-shadow: 0 0 10px rgba(201, 169, 110, 0.4) !important;
+                    }
+                    </style>
+                """, unsafe_allow_html=True)
+
+                # Center the button below the chart
+                st.markdown("<div style='text-align: center; margin: 15px 0;'>", unsafe_allow_html=True)
+                
+                # Elegant Unicode icons (◎ = empty circle, ◉ = filled circle)
+                if st.session_state.show_national_avg:
+                    btn_text = "◉ Hide Home Country Average"
+                else:
+                    btn_text = "◎ Show Home Country Average"
+                
+                if st.button(btn_text, use_container_width=False, key="national_toggle_btn", type="secondary"):
+                    st.session_state.show_national_avg = not st.session_state.show_national_avg
+                    st.rerun()
+                
+                st.markdown("</div>", unsafe_allow_html=True)
+
+            # 3. Save Results Button
+            with col_save:
+                st.markdown("<br>", unsafe_allow_html=True) # Aligns with the toggle
+                
+                if st.button("💾 Save Results", use_container_width=True, key="save_results_btn"):
+                    # Placeholder logic until we connect the database
+                    st.session_state.profile_saved = True
+                    st.rerun()
+                
+                # Show a nice confirmation message if they just clicked it
+                if st.session_state.get('profile_saved', False):
+                    st.success("✅ Profile saved!")
+                    st.caption(f"Your unique code is: **{st.session_state.anonymous_id}**")
+                    st.caption("Keep this code to access your results later.")
             
             st.markdown("</div>", unsafe_allow_html=True)
             
