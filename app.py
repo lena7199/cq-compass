@@ -1277,7 +1277,10 @@ def page_country_comparison():
                 """, unsafe_allow_html=True)
 
             st.markdown("---")
-
+            
+    #Add navigation at the bottom
+    render_navigation()
+    
 def page_gap_analysis():
     st.markdown(f"<h1 style='color: #C9A96E;'>Cultural Navigation Brief for {st.session_state.target_country}</h1>", unsafe_allow_html=True)
     
