@@ -672,6 +672,9 @@ def page_welcome():
             
             st.session_state.current_page = 2
             st.rerun()
+            
+    #Add navigation at the bottom
+    render_navigation()
 
 def page_test_selection():
     st.markdown("<h1 style='color: #C9A96E;'>Select Your Assessment</h1>", unsafe_allow_html=True)
@@ -1006,7 +1009,10 @@ def page_results():
             if st.button("Compare with Another Culture", use_container_width=True, key="btn_compare_from_profile"):
                 st.session_state.current_page = 5 # Takes them to the Comparison page
                 st.rerun()
-        
+
+     #Add navigation at the bottom
+    render_navigation()
+
 def page_country_comparison():
     st.markdown("<h1 style='color: #C9A96E;'>Compare with Another Culture</h1>", unsafe_allow_html=True)
     
@@ -1392,79 +1398,33 @@ def page_profile_access():
         if st.button("← Back to Home", use_container_width=True, key="back_home_profile_btn"):
             st.session_state.current_page = 1
             st.rerun()
+            
+# --- NAVIGATION FUNCTION ---
+def render_navigation():
+    """Creates a simple, reliable navigation bar at the bottom of the page."""
+    st.markdown("---")  # Horizontal line above the nav
+    
+    col1, col2, col3, col4 = st.columns(4)
+    
+    with col1:
+        if st.button("🏠 Home", use_container_width=True, key="nav_home"):
+            st.session_state.current_page = 1
+            st.rerun()
+    with col2:
+        if st.button("📝 Assessment", use_container_width=True, key="nav_assess"):
+            st.session_state.current_page = 2
+            st.rerun()
+    with col3:
+        if st.button("📊 Profile", use_container_width=True, key="nav_profile"):
+            st.session_state.current_page = 4
+            st.rerun()
+    with col4:
+        if st.button("🌍 Compare", use_container_width=True, key="nav_compare"):
+            st.session_state.current_page = 5
+            st.rerun()
 
 # Main app logic
 def main():
-    # --- CUSTOM FLOATING MENU BUTTON (Using components.html) ---
-    
-    fab_html = """
-    <style>
-        /* Hide the broken native Streamlit toggle completely */
-        div[data-testid="stSidebarCollapsedControl"] {
-            display: none !important;
-        }
-
-        /* Style our custom Floating Action Button */
-        .cq-compass-fab {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #C9A96E;
-            color: #1B2838;
-            border: none;
-            border-radius: 30px;
-            padding: 12px 24px;
-            font-size: 16px;
-            font-weight: 800;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-            cursor: pointer;
-            z-index: 99999;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-family: sans-serif;
-        }
-        .cq-compass-fab:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(201, 169, 110, 0.6);
-            background-color: #dcb97a;
-        }
-    </style>
-
-    <!-- The Floating Button -->
-    <button class="cq-compass-fab" onclick="document.querySelector('div[data-testid="stSidebarCollapsedControl"] button').click();">
-        ☰ MENU
-    </button>
-    """
-
-    # Render using components.html (this bypasses Streamlit's sandbox)
-    components.html(fab_html, height=0)
-
-    # --- YOUR SIDEBAR NAVIGATION ---
-    with st.sidebar:
-        st.markdown("<h2 style='color: #C9A96E; text-align: center;'>CQ Compass Menu</h2>", unsafe_allow_html=True)
-        st.markdown("---")
-        
-        if st.button("🏠 Home", use_container_width=True, key="sb_home"):
-            st.session_state.current_page = 1
-            st.rerun()
-            
-        if st.button("📝 Take Assessment", use_container_width=True, key="sb_assessment"):
-            st.session_state.current_page = 2
-            st.rerun()
-            
-        if st.button("📊 Your Cultural Profile", use_container_width=True, key="sb_profile"):
-            st.session_state.current_page = 4
-            st.rerun()
-            
-        if st.button("🌍 Intercultural Comparison", use_container_width=True, key="sb_compare"):
-            st.session_state.current_page = 5
-            st.rerun()
-            
-        st.markdown("---")
-        st.caption("© 2026 CQ Compass")
-
     # --- YOUR EXISTING PAGE ROUTING ---
     if st.session_state.current_page == 1:
         page_welcome()
