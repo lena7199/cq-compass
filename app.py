@@ -1146,7 +1146,27 @@ def page_country_comparison():
             
             st.plotly_chart(fig, use_container_width=True, config={'staticPlot': True})
 
-# Create 3 columns for the action buttons
+# Move the CSS ABOVE the columns so it doesn't push the middle button down
+            st.markdown("""
+                <style>
+                div[data-testid="stButton"] button[kind="secondary"] {
+                    background-color: transparent !important;
+                    color: #FFFFFF !important;
+                    border: 1px solid #C9A96E !important;
+                    border-radius: 6px !important;
+                    padding: 8px 16px !important;
+                    font-weight: 500 !important;
+                    font-size: 14px !important;
+                    transition: all 0.3s ease !important;
+                }
+                div[data-testid="stButton"] button[kind="secondary"]:hover {
+                    background-color: rgba(201, 169, 110, 0.15) !important;
+                    box-shadow: 0 0 10px rgba(201, 169, 110, 0.4) !important;
+                }
+                </style>
+            """, unsafe_allow_html=True)
+
+            # Create 3 columns for the action buttons
             col_match, col_toggle, col_save = st.columns(3)
 
             # 1. Closest Match Button (Placeholder)
@@ -1156,26 +1176,6 @@ def page_country_comparison():
 
             # 2. Show/Hide Toggle
             with col_toggle:
-                # CSS to style the buttons uniformly
-                st.markdown("""
-                    <style>
-                    div[data-testid="stButton"] button[kind="secondary"] {
-                        background-color: transparent !important;
-                        color: #FFFFFF !important;
-                        border: 1px solid #C9A96E !important;
-                        border-radius: 6px !important;
-                        padding: 8px 16px !important;
-                        font-weight: 500 !important;
-                        font-size: 14px !important;
-                        transition: all 0.3s ease !important;
-                    }
-                    div[data-testid="stButton"] button[kind="secondary"]:hover {
-                        background-color: rgba(201, 169, 110, 0.15) !important;
-                        box-shadow: 0 0 10px rgba(201, 169, 110, 0.4) !important;
-                    }
-                    </style>
-                """, unsafe_allow_html=True)
-
                 if st.session_state.show_national_avg:
                     btn_text = "◉ Hide Home Country Average"
                 else:
@@ -1195,7 +1195,7 @@ def page_country_comparison():
                 if st.session_state.get('profile_saved', False):
                     st.success("✅ Profile saved!")
                     st.caption(f"Your unique code: **{st.session_state.anonymous_id}**")
-                    st.session_state.profile_saved = False # Clears it so it doesn't show on next interaction
+                    st.session_state.profile_saved = False
             
             st.markdown("</div>", unsafe_allow_html=True)
             
