@@ -1064,11 +1064,6 @@ def page_country_comparison():
         # Display comparison for each test
         for test_name in st.session_state.selected_tests:
             st.markdown(f"## {test_name.replace('_', ' ')} Comparison")
-    
-    if target_country:
-        # Display comparison for each test
-        for test_name in st.session_state.selected_tests:
-            st.markdown(f"## {test_name.replace('_', ' ')} Comparison")
             
             user_scores = st.session_state.user_scores[test_name]
             
