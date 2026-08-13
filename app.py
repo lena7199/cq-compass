@@ -1394,7 +1394,6 @@ def page_profile_access():
 
 # Main app logic
 def main():
-    def main():
     # --- GLOBAL CSS FIXES FOR SIDEBAR & MOBILE TRIGGERS ---
     st.markdown("""
         <style>
