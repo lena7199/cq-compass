@@ -1019,11 +1019,51 @@ def page_country_comparison():
     available_countries = country_scores_df['Country'].unique()
     available_countries = [c for c in available_countries if c != st.session_state.nationality]
     
-    target_country = st.selectbox("Select target country", ["Select a country to compare..."] + list(available_countries))
+    # Map raw CSV names to pretty display names (ADD YOUR NEW COUNTRIES HERE!)
+    country_name_map = {
+        "Brazil": "Brazil",
+        "China": "China",
+        "Egypt": "Egypt",
+        "India": "India",
+        "Iran": "Iran",
+        "Japan": "Japan",
+        "Malaysia": "Malaysia",
+        "Nigeria": "Nigeria",
+        "Russia": "Russia",
+        "USA": "USA",
+        "Anglo": "Anglo",
+        "ConfucianAsia": "Confucian Asia",
+        "EasternEurope": "Eastern Europe",
+        "GermanicEurope": "Germanic Europe",
+        "LatinAmerica": "Latin America",
+        "LatinEurope": "Latin Europe",
+        "MiddleEast": "Middle East",
+        "NordicEurope": "Nordic Europe",
+        "SouthernAsia": "Southern Asia",
+        "SubSaharanAfrica": "Sub-Saharan Africa"
+        # Add any other countries you've added to the CSV here
+    }
+    
+    # Create a list of pretty names for the dropdown
+    available_countries_pretty = [country_name_map.get(c, c) for c in available_countries]
+    
+    target_country_pretty = st.selectbox(
+        "Select target country", 
+        ["Select a country to compare..."] + available_countries_pretty
+    )
 
-    if target_country == "Select a country to compare...":
+    if target_country_pretty == "Select a country to compare...":
         st.info("👆 Please select a country from the dropdown above to see your comparison.")
         st.stop()
+    
+    # Reverse map the pretty name back to the raw CSV name for data lookup
+    reverse_country_map = {v: k for k, v in country_name_map.items()}
+    target_country = reverse_country_map.get(target_country_pretty, target_country_pretty)
+
+    if target_country:
+        # Display comparison for each test
+        for test_name in st.session_state.selected_tests:
+            st.markdown(f"## {test_name.replace('_', ' ')} Comparison")
     
     if target_country:
         # Display comparison for each test
