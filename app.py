@@ -997,11 +997,6 @@ def page_results():
         # Create 3 columns to put buttons side-by-side on desktop
         nav_col1, nav_col2, nav_col3 = st.columns(3)
 
-        with nav_col1:
-            if st.button("← Back to Test Selection", use_container_width=True, key="nav_back_test"):
-                st.session_state.current_page = 2
-                st.rerun()
-
         with nav_col2:
             if st.button("Save Results", use_container_width=True, key="nav_save_results"):
                 st.success("Results saved to your profile!") 
