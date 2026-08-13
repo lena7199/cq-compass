@@ -1061,18 +1061,7 @@ def page_country_comparison():
             # User scores
             user_values = list(user_scores.values()) + [list(user_scores.values())[0]]
             fig.add_trace(go.Scatterpolar(
-                r=user_values,
-                theta=[format_dimension_name(l) for l in labels_closed],
-                fill='toself',
-                name='Your Profile',
-                line_color='#C9A96E',
-                fillcolor='rgba(201, 169, 110, 0.3)'
-            ))
-            
-            # User scores
-            user_values = list(user_scores.values()) + [list(user_scores.values())[0]]
-            fig.add_trace(go.Scatterpolar(
-                r=user_values,
+     "           r=user_values,
                 theta=[format_dimension_name(l) for l in labels_closed],
                 fill='toself',
                 name='Your Profile',
@@ -1109,30 +1098,19 @@ def page_country_comparison():
                 fillcolor='rgba(199, 91, 58, 0.2)'
             ))
             
-            # Target scores
-            target_values = list(target_scores.values()) + [list(target_scores.values())[0]]
-            fig.add_trace(go.Scatterpolar(
-                r=target_values,
-                theta=[format_dimension_name(l) for l in labels_closed],
-                fill='toself',
-                name=f'{target_country.replace("LatinAmerica", "Latin America")} Average',
-                line_color='#C75B3A',
-                fillcolor='rgba(199, 91, 58, 0.2)'
-            ))
-            
             fig.update_layout(
                 polar=dict(
                     radialaxis=dict(visible=True, range=[1, 7]),
                     bgcolor='#243447'
                 ),
-               showlegend=True,
-                     legend=dict(orientation="h", yanchor="bottom", y=1.20, xanchor="center", x=0.5, font=dict(color='#C9A96E', size=12)),
+                showlegend=True,
+                legend=dict(orientation="h", yanchor="bottom", y=1.20, xanchor="center", x=0.5, font=dict(color='#C9A96E', size=12)),
                 plot_bgcolor='#1B2838',
                 paper_bgcolor='#1B2838'
             )
             
             st.plotly_chart(fig, use_container_width=True, config={'staticPlot': True})
-
+            
             # CSS to style the narrow, elegant button
             st.markdown("""
                 <style>
