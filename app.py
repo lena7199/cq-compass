@@ -1002,9 +1002,6 @@ def page_results():
                 st.success("Results saved to your profile!") 
 
         with nav_col3:
-            if st.button("Compare with Another Culture →", use_container_width=True, key="nav_compare"):
-                st.session_state.current_page = 5
-                st.rerun()
         
 def page_country_comparison():
     st.markdown("<h1 style='color: #C9A96E;'>Compare with Another Culture</h1>", unsafe_allow_html=True)
