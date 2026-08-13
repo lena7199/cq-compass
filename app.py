@@ -1401,7 +1401,6 @@ def main():
         section[data-testid="stSidebar"] {
             background-color: #1B2838 !important;
         }
-        /* Makes the small text (like copyright) white */
         section[data-testid="stSidebar"] p, section[data-testid="stSidebar"] div {
             color: #FFFFFF !important;
         }
@@ -1423,16 +1422,31 @@ def main():
             box-shadow: 0 0 10px rgba(201, 169, 110, 0.4) !important;
         }
 
-        /* 3. MOBILE TRIGGER (The button to open the menu) */
-        [data-testid="stSidebarCollapsedControl"] button {
+        /* 3. MOBILE TRIGGER & DESKTOP TOGGLE (The button to open/close menu) */
+        /* Hide the leaked text "keyboard_double_arrow_right" */
+        div[data-testid="stSidebarCollapsedControl"] button span {
+            display: none !important; 
+        }
+        
+        /* Style the trigger button itself to be a bright gold circle */
+        div[data-testid="stSidebarCollapsedControl"] button {
             background-color: #C9A96E !important;
             border-radius: 50% !important;
             width: 40px !important;
             height: 40px !important;
+            border: none !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2) !important;
         }
-        [data-testid="stSidebarCollapsedControl"] button svg {
+        
+        /* Force the icon inside to be dark for high contrast */
+        div[data-testid="stSidebarCollapsedControl"] button svg {
             color: #1B2838 !important;
             fill: #1B2838 !important;
+            width: 20px !important;
+            height: 20px !important;
         }
 
         /* 4. CLOSE BUTTON (The 'X' inside the sidebar) */
