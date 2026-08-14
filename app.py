@@ -17,15 +17,15 @@ def init_supabase():
 supabase: Client = init_supabase()
 
 def save_user_profile(anonymous_id, nationality, framework, scores, comparison_type, comparison_country=None):
-    """Saves the user's test results to the Supabase database with full context."""
+    """Saves the user's test results to the Supabase database."""
     try:
         data = {
             "anonymous_id": anonymous_id,
             "nationality": nationality,
-            "test_type": framework,  # Maps to your existing 'test_type' column
+            "test_type": framework,  # Maps to your existing 'test_type' column in Supabase
             "scores": scores,
-            "comparison_type": comparison_type,  # "National" or "Specific_Country"
-            "comparison_country": comparison_country  # e.g., "Japan" (or None)
+            "comparison_type": comparison_type,
+            "comparison_country": comparison_country
         }
         supabase.table("user_profiles").insert(data).execute()
         return True
