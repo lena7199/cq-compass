@@ -1,13 +1,46 @@
 import streamlit as st
-import streamlit.components.v1 as components #
+import streamlit.components.v1 as components
 import pandas as pd
 import plotly.graph_objects as go
 import random
 import string
 from datetime import datetime
 import os
-
 import re
+from supabase import create_client, Client
+
+# Initialize Supabase client (cached so it doesn't reconnect on every click)
+@st.cache_resource
+def init_supabase():
+    return create_client(st.secrets["supabase"]["url"], st.secrets["supabase"]["key"])
+
+supabase: Client = init_supabase()
+
+def save_user_profile(anonymous_id, nationality, test_type, scores_dict):
+    """Saves the user's test results to the Supabase database."""
+    try:
+        data = {
+            "anonymous_id": anonymous_id,
+            "nationality": nationality,
+            "test_type": test_type,
+            "scores": scores_dict
+        }
+        supabase.table("user_profiles").insert(data).execute()
+        return True
+    except Exception as e:
+        st.error(f"Error saving profile: {e}")
+        return False
+
+def load_user_profile(anonymous_id):
+    """Loads a user's profile from the database using their anonymous ID."""
+    try:
+        response = supabase.table("user_profiles").select("*").eq("anonymous_id", anonymous_id).execute()
+        if response.data:
+            return response.data[0]
+        return None
+    except Exception as e:
+        st.error(f"Error loading profile: {e}")
+        return None
 
 def format_dimension_name(name):
     """Translates ugly backend names into pretty display names."""
@@ -205,6 +238,35 @@ def load_data(filename):
     else:
         st.error(f"File not found: {filepath}")
         return pd.DataFrame()
+
+def save_user_profile(anonymous_id, nationality, test_type, scores_dict):
+    """Saves the user's test results to the Supabase database."""
+    try:
+        data = {
+            "anonymous_id": anonymous_id,
+            "nationality": nationality,
+            "test_type": test_type,
+            "scores": scores_dict  # This maps to the 'jsonb' column we created
+        }
+        # Insert the data into the 'user_profiles' table
+        supabase.table("user_profiles").insert(data).execute()
+        return True
+    except Exception as e:
+        st.error(f"Error saving profile: {e}")
+        return False
+
+def load_user_profile(anonymous_id):
+    """Loads a user's profile from the database using their anonymous ID."""
+    try:
+        # Query the database for a matching anonymous_id
+        response = supabase.table("user_profiles").select("*").eq("anonymous_id", anonymous_id).execute()
+        
+        if response.data:
+            return response.data[0]  # Return the first matching record
+        return None
+    except Exception as e:
+        st.error(f"Error loading profile: {e}")
+        return None
 
 def calculate_dimension_score(answers, questions_per_dimension):
     """Calculate average score for each dimension"""
@@ -817,80 +879,6 @@ def page_test_administration():
 
                     st.session_state.current_page = 4
                     st.rerun()
-
-def save_user_profile():
-    """Save user profile to CSV. Replaces previous results for the same AnonymousID and Framework."""
-
-    columns = [
-        "AnonymousID",
-        "Nationality",
-        "Gender",
-        "Framework",
-        "Dimension",
-        "Score",
-        "DateCompleted"
-    ]
-
-    filepath = os.path.join('data', 'user_profiles.csv')
-
-    # Make sure the data folder exists
-    os.makedirs(os.path.dirname(filepath), exist_ok=True)
-
-    # Make sure there is something to save
-    if not st.session_state.get("user_scores"):
-        st.warning("No assessment results found. Please complete the test before saving.")
-        return
-
-    if not st.session_state.get("anonymous_id"):
-        st.warning("No user ID found. Please start the assessment first.")
-        return
-
-    profile_data = []
-
-    for test_name, scores in st.session_state.user_scores.items():
-        for dimension, score in scores.items():
-            profile_data.append({
-                "AnonymousID": st.session_state.anonymous_id,
-                "Nationality": st.session_state.get("nationality", ""),
-                "Gender": st.session_state.get("gender", ""),
-                "Framework": test_name,
-                "Dimension": dimension,
-                "Score": score,
-                "DateCompleted": datetime.now().strftime("%Y-%m-%d")
-            })
-
-    new_df = pd.DataFrame(profile_data, columns=columns)
-
-    if new_df.empty:
-        st.warning("No results were found to save.")
-        return
-
-    # Read existing CSV safely
-    if os.path.exists(filepath) and os.path.getsize(filepath) > 0:
-        try:
-            existing_df = pd.read_csv(filepath)
-            existing_df = existing_df.reindex(columns=columns, fill_value="")
-        except pd.errors.EmptyDataError:
-            existing_df = pd.DataFrame(columns=columns)
-    else:
-        existing_df = pd.DataFrame(columns=columns)
-
-    anonymous_id = str(st.session_state.anonymous_id).strip()
-    frameworks_to_replace = new_df["Framework"].astype(str).str.strip().unique()
-
-    # Remove old rows for the same user and same framework before saving new ones
-    existing_df = existing_df[
-        ~(
-            (existing_df["AnonymousID"].astype(str).str.strip() == anonymous_id) &
-            (existing_df["Framework"].astype(str).str.strip().isin(frameworks_to_replace))
-        )
-    ]
-
-    # Combine and save
-    final_df = pd.concat([existing_df, new_df], ignore_index=True)
-    final_df.to_csv(filepath, index=False)
-
-    st.success("Your results have been saved.")
     
 def page_results():
     # Mandatory Nationality Check
