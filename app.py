@@ -752,9 +752,9 @@ def page_test_administration():
     st.markdown("---")
     
     # Display question
-        pretty_name = format_dimension_name(current_item['dimension'])
-        st.markdown(f"### {pretty_name}")
-        st.markdown(f"**{current_item['question']['q']}**")
+    pretty_name = format_dimension_name(current_item['dimension'])
+    st.markdown(f"### {pretty_name}")
+    st.markdown(f"**{current_item['question']['q']}**")
     
     # Display options
     current_answer = st.session_state.test_answers[current_item['test']].get(current_item['dimension'], [])
