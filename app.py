@@ -20,15 +20,6 @@ def save_user_profile(anonymous_id, nationality, test_type, scores_dict):
     """Saves the user's test results to the Supabase database."""
     try:
         data = {
-            "anonymous_id": anonymous_id,
-            return create_client(st.secrets["supabase"]["url"], st.secrets["supabase"]["key"])
-
-supabase: Client = init_supabase()
-
-def save_user_profile(anonymous_id, nationality, test_type, scores_dict):
-    """Saves the user's test results to the Supabase database."""
-    try:
-        data = {
             "anonymous_id"
         
 def load_user_profile(anonymous_id):
