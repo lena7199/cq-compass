@@ -34,7 +34,17 @@ def save_user_profile(anonymous_id, nationality, test_type, scores_dict):
 def load_user_profile(anonymous_id):
     """Loads a user's profile from the database using their anonymous ID."""
     try:
+       
+        # Debug: Show what we're querying
+        st.write(f"🔍 DB Query: Looking for anonymous_id = '{anonymous_id}'")
+        
         response = supabase.table("user_profiles").select("*").eq("anonymous_id", anonymous_id).execute()
+        
+        # Debug: Show what we got back
+        st.write(f"📊 DB Response: Found {len(response.data)} records")
+        if response.data:
+            st.write(f"✅ Data: {response.data[0]}")
+        
         if response.data:
             return response.data[0]
         return None
