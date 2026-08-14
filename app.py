@@ -1199,29 +1199,29 @@ def page_country_comparison():
             # 3. Save Results Button
             with col_save:
                 if st.button("💾 Save Results", use_container_width=True, key="save_comparison_btn"):
-                with st.spinner("Saving your comparison to the database..."):
-                    user_id = st.session_state.get("anonymous_id", "UNKNOWN")
-                    user_nationality = st.session_state.get("nationality", "Unknown")
-                    user_framework = st.session_state.get("selected_tests", "Unknown")
-                    user_scores = st.session_state.get("user_scores", {})
+                    with st.spinner("Saving your comparison to the database..."):
+                        user_id = st.session_state.get("anonymous_id", "UNKNOWN")
+                        user_nationality = st.session_state.get("nationality", "Unknown")
+                        user_framework = st.session_state.get("selected_tests", "Unknown")
+                        user_scores = st.session_state.get("user_scores", {})
                     
-                    # Use the exact variable from your dropdown code!
-                    comparison_country = target_country 
+                        # Use the exact variable from your dropdown code!
+                        comparison_country = target_country 
                     
-                    # Save as SPECIFIC COUNTRY comparison
-                    success = save_user_profile(
-                        anonymous_id=user_id,
-                        nationality=user_nationality,
-                        framework=user_framework,
-                        scores=user_scores,
-                        comparison_type="Specific_Country",
-                        comparison_country=comparison_country
-                    )
+                        # Save as SPECIFIC COUNTRY comparison
+                        success = save_user_profile(
+                            anonymous_id=user_id,
+                            nationality=user_nationality,
+                            framework=user_framework,
+                            scores=user_scores,
+                            comparison_type="Specific_Country",
+                            comparison_country=comparison_country
+                        )
                     
-                    if success:
-                        st.session_state.profile_saved = True
-                        st.success("Comparison saved successfully!")
-                        st.rerun()
+                        if success:
+                            st.session_state.profile_saved = True
+                            st.success("Comparison saved successfully!")
+                            st.rerun()
                 
                 # Only show if it was just saved, then immediately clear the flag
                 if st.session_state.get('profile_saved', False):
