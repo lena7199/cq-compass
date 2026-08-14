@@ -1375,8 +1375,8 @@ def page_profile_access():
 
     with p_col2:
         if st.button("Load Profile", use_container_width=True, key="load_profile_btn"):
-            # Get the ID from the text input (make sure "profile_access_id" matches your text input key)
-            anonymous_id = st.session_state.get("profile_access_id", "").strip()
+            # Use the variable directly (it's already captured above)
+            anonymous_id = anonymous_id.strip()
                 
             # Debug line
             st.write(f"DEBUG: Searching for ID -> '{anonymous_id}'")
