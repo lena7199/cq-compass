@@ -7,6 +7,7 @@ import string
 from datetime import datetime
 import os
 import re
+import json
 from supabase import create_client, Client
 
 # Initialize Supabase client (cached so it doesn't reconnect on every click)
@@ -19,14 +20,18 @@ supabase: Client = init_supabase()
 def save_user_profile(anonymous_id, nationality, framework, scores, comparison_type, comparison_country=None):
     """Saves the user's test results to the Supabase database."""
     try:
+        # Magic trick: Converts special calculation numbers into standard Python numbers for Supabase
+        clean_scores = json.loads(json.dumps(scores))
+
         data = {
-            "anonymous_id": anonymous_id,
-            "nationality": nationality,
-            "test_type": framework,  # Maps to your existing 'test_type' column in Supabase
-            "scores": scores,
-            "comparison_type": comparison_type,
-            "comparison_country": comparison_country
+            "anonymous_id": str(anonymous_id),
+            "nationality": str(nationality),
+            "test_type": str(framework),
+            "scores": clean_scores,
+            "comparison_type": str(comparison_type),
+            "comparison_country": str(comparison_country) if comparison_country else None
         }
+        
         supabase.table("user_profiles").insert(data).execute()
         return True
     except Exception as e:
@@ -242,22 +247,6 @@ def load_data(filename):
     else:
         st.error(f"File not found: {filepath}")
         return pd.DataFrame()
-
-def save_user_profile(anonymous_id, nationality, test_type, scores_dict):
-    """Saves the user's test results to the Supabase database."""
-    try:
-        data = {
-            "anonymous_id": anonymous_id,
-            "nationality": nationality,
-            "test_type": test_type,
-            "scores": scores_dict  # This maps to the 'jsonb' column we created
-        }
-        # Insert the data into the 'user_profiles' table
-        supabase.table("user_profiles").insert(data).execute()
-        return True
-    except Exception as e:
-        st.error(f"Error saving profile: {e}")
-        return False
 
 def load_user_profile(anonymous_id):
     """Loads a user's profile from the database using their anonymous ID."""
