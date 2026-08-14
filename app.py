@@ -21,16 +21,25 @@ def save_user_profile(anonymous_id, nationality, test_type, scores_dict):
     try:
         data = {
             "anonymous_id": anonymous_id,
-            "nationality": nationality,
-            "test_type": test_type,
-            "scores": scores_dict
-        }
-        supabase.table("user_profiles").insert(data).execute()
-        return True
-    except Exception as e:
-        st.error(f"Error saving profile: {e}")
-        return False
+            "nrets["supabase"]["url"], st.secrets["supabase"]["key"])
 
+supabase: Client = init_supabase()
+
+def save_user_profile(anonymous_id, nationality, test_type, scores_dict):
+    """Saves the user's test results to the Supabase database."""
+    try:
+        data = {
+            "anonymous_id"
+            
+# Get the ID from the user input
+        anonymous_id = st.session_state.get("profile_access_id", "").strip()
+        
+        # DEBUG: Show what we're searching for
+        st.write(f" Searching for ID: '{anonymous_id}'")
+        
+        # Try to load the profile
+        profile = load_user_profile(anonymous_id)
+        
 def load_user_profile(anonymous_id):
     """Loads a user's profile from the database using their anonymous ID."""
     try:
