@@ -996,8 +996,11 @@ def page_results():
                 st.session_state.current_page = 5 # Takes them to the Comparison page
                 st.rerun()
 
-     #Add navigation at the bottom
+    #Add navigation at the bottom
     render_navigation()
+
+    # TEMPORARY DEBUGGING LINE
+    st.write("Current Session State Keys:", list(st.session_state.keys()))
 
 def page_country_comparison():
     st.markdown("<h1 style='color: #C9A96E;'>Compare with Another Culture</h1>", unsafe_allow_html=True)
