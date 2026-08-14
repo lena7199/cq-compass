@@ -20,7 +20,16 @@ def save_user_profile(anonymous_id, nationality, test_type, scores_dict):
     """Saves the user's test results to the Supabase database."""
     try:
         data = {
-            "anonymous_id"
+            "anonymous_id": anonymous_id,
+            "nationality": nationality,
+            "test_type": test_type,
+            "scores": scores_dict
+        }
+        supabase.table("user_profiles").insert(data).execute()
+        return True
+    except Exception as e:
+        st.error(f"Error saving profile: {e}")
+        return False
         
 def load_user_profile(anonymous_id):
     """Loads a user's profile from the database using their anonymous ID."""
