@@ -1188,19 +1188,19 @@ def page_country_comparison():
             # 3. Save Results Button
             with col_save:
                 if st.button("💾 Save Results", use_container_width=True, key="save_results_btn"):
-                with st.spinner("Saving your profile to the database..."):
-                    # These match your debug list perfectly!
-                    user_id = st.session_state.get("anonymous_id", "UNKNOWN")
-                    user_nationality = st.session_state.get("nationality", "Unknown")
-                    user_test_type = str(st.session_state.get("selected_tests", "Unknown"))
-                    user_scores = st.session_state.get("user_scores", {})
+                    with st.spinner("Saving your profile to the database..."):
+                        # These match your debug list perfectly!
+                        user_id = st.session_state.get("anonymous_id", "UNKNOWN")
+                        user_nationality = st.session_state.get("nationality", "Unknown")
+                        user_test_type = str(st.session_state.get("selected_tests", "Unknown"))
+                        user_scores = st.session_state.get("user_scores", {})
                     
-                    # This calls the function we put at the top of the file
-                    success = save_user_profile(user_id, user_nationality, user_test_type, user_scores)
+                        # This calls the function we put at the top of the file
+                        success = save_user_profile(user_id, user_nationality, user_test_type, user_scores)
                     
-                    if success:
-                        st.session_state.profile_saved = True
-                        st.rerun()
+                        if success:
+                            st.session_state.profile_saved = True
+                            st.rerun()
                 
                 # Only show if it was just saved, then immediately clear the flag
                 if st.session_state.get('profile_saved', False):
