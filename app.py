@@ -1373,26 +1373,26 @@ def page_profile_access():
     # Create 4 columns to center the buttons
     p_col1, p_col2, p_col3, p_col4 = st.columns(4)
 
-   with p_col2:
-            if st.button("Load Profile", use_container_width=True, key="load_profile_btn"):
-                # Get the ID from the text input (make sure "profile_access_id" matches your text input key)
-                anonymous_id = st.session_state.get("profile_access_id", "").strip()
+    with p_col2:
+        if st.button("Load Profile", use_container_width=True, key="load_profile_btn"):
+            # Get the ID from the text input (make sure "profile_access_id" matches your text input key)
+            anonymous_id = st.session_state.get("profile_access_id", "").strip()
                 
-                # Debug line
-                st.write(f"DEBUG: Searching for ID -> '{anonymous_id}'")
+            # Debug line
+            st.write(f"DEBUG: Searching for ID -> '{anonymous_id}'")
                 
-                # Load from Supabase
-                profile = load_user_profile(anonymous_id)
+            # Load from Supabase
+            profile = load_user_profile(anonymous_id)
                 
-                if profile:
-                    st.session_state.anonymous_id = profile['anonymous_id']
-                    st.session_state.nationality = profile['nationality']
-                    st.session_state.user_scores = profile['scores']
+            if profile:
+                st.session_state.anonymous_id = profile['anonymous_id']
+                st.session_state.nationality = profile['nationality']
+                st.session_state.user_scores = profile['scores']
                     
-                    st.success("Profile loaded successfully!")
-                    st.rerun()
-                else:
-                    st.warning("Profile not found. Please check your ID or take a new assessment.")
+                st.success("Profile loaded successfully!")
+                st.rerun()
+            else:
+                st.warning("Profile not found. Please check your ID or take a new assessment.")
                 
     with p_col3:
         if st.button("← Back to Home", use_container_width=True, key="back_home_profile_btn"):
