@@ -871,9 +871,9 @@ def page_test_administration():
                     st.rerun()
     
 def page_results():
-    # Mandatory Nationality Check
-    if not st.session_state.get('nationality'):
-        st.warning("⚠️ Please select your nationality on the Home page to see your results.")
+    # Mandatory Nationality Check (Bypassed if user is loading a saved profile)
+    if not st.session_state.get('nationality') and not st.session_state.get('returning_user'):
+        st.warning("️ Please select your nationality on the Home page to see your results.")
         if st.button("Go back to Home"):
             st.session_state.current_page = 1
             st.rerun()
@@ -1421,6 +1421,8 @@ def page_profile_access():
                     
                     # Navigate to the Profile/Results page
                     st.session_state.current_page = 4 
+                    st.session_state.nav_profile = True
+                    st.session_state.returning_user = True
                     
                     st.success("Profile loaded successfully! Redirecting...")
                     st.rerun()
