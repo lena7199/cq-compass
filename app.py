@@ -1011,7 +1011,7 @@ def page_results():
     st.markdown("<h3 style='color: #C9A96E;'>Your Personal Interpretations</h3>", unsafe_allow_html=True)
     
     # 1. Load the interpretations CSV
-    interpretations_df = pd.read_csv('interpretations.csv') 
+    interpretations_df = load_data('interpretations.csv') 
     
     # 2. Loop through the user's scores to find the matching text
     for dimension, score in user_scores.items():
