@@ -7,6 +7,7 @@ import string
 from datetime import datetime
 import os
 import re
+import ast
 import json
 from supabase import create_client, Client
 
@@ -1411,12 +1412,14 @@ def page_profile_access():
                     st.session_state.nationality = selected_profile['nationality']
                     st.session_state.user_scores = selected_profile['scores']
                     
-                    # CRITICAL FIX 1: Tell the app which framework to draw!
-                    # (This restores the test type so the charts know what to show)
-                    st.session_state.selected_tests = selected_profile['test_type']
+                    # MAGIC FIX: Turn the text string back into a real list!
+                    raw_test_type = selected_profile['test_type']
+                    try:
+                        st.session_state.selected_tests = ast.literal_eval(raw_test_type)
+                    except:
+                        st.session_state.selected_tests = [raw_test_type]
                     
-                    # CRITICAL FIX 2: Navigate to the Profile/Results page!
-                    # (Assuming 4 is your Profile page, just like in your old code)
+                    # Navigate to the Profile/Results page
                     st.session_state.current_page = 4 
                     
                     st.success("Profile loaded successfully! Redirecting...")
