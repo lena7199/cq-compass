@@ -1437,7 +1437,6 @@ def page_profile_access():
             
             # Navigate to Results Page
             st.session_state.current_page = 4
-            st.session_state.nav_profile = True
             st.session_state.returning_user = True
             
             st.rerun()
