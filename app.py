@@ -775,7 +775,7 @@ def page_test_administration():
     <style>
         /* 1. Fix the overlap: Pull the bar up just a little bit, not 50px! */
         .stProgress {
-            margin-top: -15px !important;
+            margin-top: -10px !important;
             margin-bottom: -10px !important;
         }
         /* 2. Reduce space under the main title */
