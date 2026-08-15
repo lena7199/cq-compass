@@ -1028,19 +1028,19 @@ def page_results():
             interpretation_text = interpretations_df.loc[mask, 'Interpretation'].values[0]
             
             # Display as a beautiful card with a golden left border
-                st.markdown(f"""
-                <div style="
-                    background-color: #1a2639; 
-                    border-left: 5px solid #C9A96E; 
-                    padding: 20px; 
-                    border-radius: 8px; 
-                    margin-bottom: 20px;
-                    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-                ">
-                    <h3 style="color: #F5F0E8; margin-top: 0; margin-bottom: 10px; font-size: 1.5rem;">{dimension}</h3>
-                    <p style="color: #F5F0E8; margin: 0; font-size: 1.1rem; line-height: 1.6;">{interpretation_text}</p>
-                </div>
-                """, unsafe_allow_html=True)            
+            st.markdown(f"""
+            <div style="
+                background-color: #1a2639; 
+                border-left: 5px solid #C9A96E; 
+                padding: 20px; 
+                border-radius: 8px; 
+                margin-bottom: 20px;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            ">
+                <h3 style="color: #F5F0E8; margin-top: 0; margin-bottom: 10px; font-size: 1.5rem;">{dimension}</h3>
+                <p style="color: #F5F0E8; margin: 0; font-size: 1.1rem; line-height: 1.6;">{interpretation_text}</p>
+            </div>
+            """, unsafe_allow_html=True)            
     
     #Add navigation at the bottom
     render_navigation()
