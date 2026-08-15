@@ -1198,32 +1198,54 @@ def page_country_comparison():
 
             # 3. Save Results Button
             with col_save:
-                if st.button("💾 Save Results", use_container_width=True, key="save_comparison_btn"):
-                    with st.spinner("Saving your comparison to the database..."):
-                        user_id = st.session_state.get("anonymous_id", "UNKNOWN")
-                        user_nationality = st.session_state.get("nationality", "Unknown")
-                        user_framework = st.session_state.get("selected_tests", "Unknown")
-                        user_scores = st.session_state.get("user_scores", {})
-                    
-                        # Use the exact variable from your dropdown code!
-                        comparison_country = target_country 
-                    
-                        # Save as SPECIFIC COUNTRY comparison
-                        success = save_user_profile(
-                            anonymous_id=user_id,
-                            nationality=user_nationality,
-                            framework=user_framework,
-                            scores=user_scores,
-                            comparison_type="Specific_Country",
-                            comparison_country=comparison_country
-                        )
-                    
-                        if success:
-                            st.session_state.profile_saved = True
-                            st.success("Comparison saved successfully!")
+                # Get user data first so we can check for duplicates
+                user_id = st.session_state.get("anonymous_id", "UNKNOWN")
+                user_nationality = st.session_state.get("nationality", "Unknown")
+                
+                # Added str() to prevent the JSON crash we fixed earlier!
+                user_framework = str(st.session_state.get("selected_tests", "Unknown")) 
+                user_scores = st.session_state.get("user_scores", {})
+                comparison_country = target_country 
+
+                # 1. Check if this profile already exists
+                is_duplicate = check_duplicate_profile(user_id, user_framework, "Specific_Country", comparison_country)
+
+                if is_duplicate:
+                    # Show warning and overwrite button
+                    st.warning(f"⚠️ You already have a saved profile for **{user_framework} vs. {comparison_country}**.")
+                    st.info("The app allows only one saved profile per comparison type.")
+
+                    if st.button("🔄 Overwrite Old Profile with New Results", use_container_width=True, key="overwrite_country_btn"):
+                        with st.spinner("Updating your profile..."):
+                            # Delete the old one to keep the database clean
+                            supabase.table("user_profiles").delete().eq("anonymous_id", user_id).eq("test_type", user_framework).eq("comparison_type", "Specific_Country").eq("comparison_country", comparison_country).execute()
+                            
+                            # Save the new one
+                            save_user_profile(user_id, user_nationality, user_framework, user_scores, "Specific_Country", comparison_country)
+                            
+                            # Keep this flag so the success message below still shows!
+                            st.session_state.profile_saved = True 
                             st.rerun()
+                else:
+                    # Normal save button for new profiles
+                    if st.button("💾 Save Results", use_container_width=True, key="save_comparison_btn"):
+                        with st.spinner("Saving your comparison to the database..."):
+                            # Save as SPECIFIC COUNTRY comparison
+                            success = save_user_profile(
+                                anonymous_id=user_id,
+                                nationality=user_nationality,
+                                framework=user_framework,
+                                scores=user_scores,
+                                comparison_type="Specific_Country",
+                                comparison_country=comparison_country
+                            )
+                        
+                            if success:
+                                st.session_state.profile_saved = True
+                                st.rerun()
                 
                 # Only show if it was just saved, then immediately clear the flag
+                # (This part stays exactly the same as your original code!)
                 if st.session_state.get('profile_saved', False):
                     st.success("✅ Profile saved!")
                     st.caption(f"Your unique code: **{st.session_state.anonymous_id}**")
