@@ -1390,8 +1390,10 @@ def page_profile_access():
             else:
                 st.warning("No profiles found for this ID. Please check the ID or take a new assessment.")
                 st.session_state.show_profile_menu = False
+        else:
+            st.warning("Please enter an ID first.")
 
-    # 2. The Menu and "Load" Button (Now safely OUTSIDE the first button's block)
+    # 2. The Menu and "Load" Button (Safely OUTSIDE the first button's block)
     if st.session_state.get('show_profile_menu') and st.session_state.get('found_profiles'):
         profiles = st.session_state.found_profiles
         
@@ -1439,10 +1441,7 @@ def page_profile_access():
             st.session_state.returning_user = True
             
             st.rerun()
-                    
-            else:
-                st.warning("No profiles found for this ID. Please check the ID or take a new assessment.")
-    
+            
 # --- NAVIGATION FUNCTION ---
 def render_navigation():
     """Creates a simple, reliable navigation bar at the bottom of the page."""
