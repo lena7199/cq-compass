@@ -1009,60 +1009,59 @@ def page_results():
     render_navigation()
 
 def page_country_comparison():
-    st.markdown("<h1 style='color: #C9A96E;'>Compare with Another Culture</h1>", unsafe_allow_html=True)
-    
-    # Load country scores
+    st.markdown("<h1 style='color: #C9A96E;'>Country Comparison</h1>", unsafe_allow_html=True)
+
+    # 1. Always load the country data first
     country_scores_df = load_data('country_scores.csv')
     available_countries = country_scores_df['Country'].unique()
     available_countries = [c for c in available_countries if c != st.session_state.nationality]
     
-    # Map raw CSV names to pretty display names (ADD YOUR NEW COUNTRIES HERE!)
     country_name_map = {
-        "Brazil": "Brazil",
-        "China": "China",
-        "Egypt": "Egypt",
-        "India": "India",
-        "Iran": "Iran",
-        "Japan": "Japan",
-        "Malaysia": "Malaysia",
-        "Nigeria": "Nigeria",
-        "Russia": "Russia",
-        "USA": "USA",
-        "Anglo": "Anglo",
-        "ConfucianAsia": "Confucian Asia",
-        "EasternEurope": "Eastern Europe",
-        "GermanicEurope": "Germanic Europe",
-        "LatinAmerica": "Latin America",
-        "LatinEurope": "Latin Europe",
-        "MiddleEast": "Middle East",
-        "NordicEurope": "Nordic Europe",
-        "SouthernAsia": "Southern Asia",
-        "SubSaharanAfrica": "Sub-Saharan Africa"
-        # Add any other countries you've added to the CSV here
+        "Brazil": "Brazil", "China": "China", "Egypt": "Egypt", "India": "India",
+        "Iran": "Iran", "Japan": "Japan", "Malaysia": "Malaysia", "Nigeria": "Nigeria",
+        "Russia": "Russia", "USA": "USA", "Anglo": "Anglo", "ConfucianAsia": "Confucian Asia",
+        "EasternEurope": "Eastern Europe", "GermanicEurope": "Germanic Europe",
+        "LatinAmerica": "Latin America", "LatinEurope": "Latin Europe", "MiddleEast": "Middle East",
+        "NordicEurope": "Nordic Europe", "SouthernAsia": "Southern Asia", "SubSaharanAfrica": "Sub-Saharan Africa"
     }
     
-    # Create a list of pretty names for the dropdown
     available_countries_pretty = [country_name_map.get(c, c) for c in available_countries]
-    
-    target_country_pretty = st.selectbox(
-        "Select target country", 
-        ["Select a country to compare..."] + available_countries_pretty
-    )
-
-    if target_country_pretty == "Select a country to compare...":
-        st.info("👆 Please select a country from the dropdown above to see your comparison.")
-        st.stop()
-    
-    # Reverse map the pretty name back to the raw CSV name for data lookup
     reverse_country_map = {v: k for k, v in country_name_map.items()}
-    target_country = reverse_country_map.get(target_country_pretty, target_country_pretty)
 
+    # 2. SMART RETURNING USER CHECK
+    if st.session_state.get('comparison_country') and st.session_state.get('returning_user'):
+        # We already know the country from the loaded profile! Skip the dropdown.
+        target_country = st.session_state.comparison_country
+        pretty_name = country_name_map.get(target_country, target_country)
+        st.info(f"📂 Viewing saved comparison with **{pretty_name}**.")
+        
+        # Add a button to let them clear this and pick a new country if they want
+        if st.button("Compare with a different country", key="clear_comparison_btn"):
+            st.session_state.returning_user = False
+            st.session_state.comparison_country = None
+            st.rerun()
+            
+    else:
+        # 3. NORMAL DROPDOWN CODE (Only shows if NOT a returning user)
+        target_country_pretty = st.selectbox(
+            "Select target country", 
+            ["Select a country to compare..."] + available_countries_pretty
+        )
+
+        if target_country_pretty == "Select a country to compare...":
+            st.info("👆 Please select a country from the dropdown above to see your comparison.")
+            st.stop()
+        
+        # Reverse map the pretty name back to the raw CSV name
+        target_country = reverse_country_map.get(target_country_pretty, target_country_pretty)
+
+    # 4. DRAWING THE CHARTS (Runs for BOTH returning users and new users!)
     if target_country:
         # Display comparison for each test
         for test_name in st.session_state.selected_tests:
             st.markdown(f"## {test_name.replace('_', ' ')} Comparison")
             
-            user_scores = st.session_state.user_scores[test_name]
+            user_scores = st.session_state.user_scores.get(test_name, {})
             
             # Get national and target scores
             national_scores = {}
