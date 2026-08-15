@@ -1005,7 +1005,31 @@ def page_results():
             if st.button("Compare with Another Culture", use_container_width=True, key="btn_compare_from_profile"):
                 st.session_state.current_page = 5 # Takes them to the Comparison page
                 st.rerun()
-
+    
+    # Display Interpretations
+    st.markdown("---") # Add a nice divider line
+    st.markdown("<h3 style='color: #C9A96E;'>Your Personal Interpretations</h3>", unsafe_allow_html=True)
+    
+    # 1. Load the interpretations CSV
+    interpretations_df = pd.read_csv('interpretations.csv') 
+    
+    # 2. Loop through the user's scores to find the matching text
+    for dimension, score in user_scores.items():
+        # Find the row in the CSV that matches the Framework, Dimension, and Score Range
+        mask = (
+            (interpretations_df['Framework'] == 'Karnauhova') & 
+            (interpretations_df['Dimension'] == dimension) & 
+            (score >= interpretations_df['Min_Score']) & 
+            (score <= interpretations_df['Max_Score'])
+        )
+        
+        # If we found a match, display it!
+        if not interpretations_df.loc[mask].empty:
+            interpretation_text = interpretations_df.loc[mask, 'Interpretation'].values[0]
+            
+            # Display it in a nice box
+            st.markdown(f"**{dimension}:** {interpretation_text}")            
+    
     #Add navigation at the bottom
     render_navigation()
 
