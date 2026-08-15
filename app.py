@@ -770,6 +770,31 @@ def page_test_selection():
         st.rerun()
 
 def page_test_administration():
+# --- CSS TO TIGHTEN SPACING AND MATCH THEME ---
+    st.markdown("""
+    <style>
+        /* Pull the progress bar up closer to the title */
+        .stProgress {
+            margin-top: -50px !important;
+            margin-bottom: -30px !important;
+        }
+        /* Reduce the massive space under the main title */
+        h1 {
+            margin-bottom: 10px !important;
+            padding-bottom: 0px !important;
+        }
+        /* Pull the "Question X of Y" text up closer to the bar */
+        .stMarkdown p {
+            margin-top: 5px !important;
+            margin-bottom: 5px !important;
+        }
+        /* BONUS: Change the blue progress bar to your Gold color! */
+        .stProgress > div > div > div > div {
+            background-color: #C9A96E !important;
+        }
+    </style>
+    """, unsafe_allow_html=True)    
+    
     st.markdown("<h1 style='color: #C9A96E;'>Assessment in Progress</h1>", unsafe_allow_html=True)
     
     # Calculate total questions and current position
@@ -801,8 +826,6 @@ def page_test_administration():
     progress = (current_idx + 1) / total_questions
     st.progress(progress)
     st.markdown(f"<p style='text-align: center; color: #C9A96E;'>Question {current_idx + 1} of {total_questions}</p>", unsafe_allow_html=True)
-    
-    st.markdown("---")
     
     # Display question
     pretty_name = format_dimension_name(current_item['dimension'])
