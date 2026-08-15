@@ -1442,26 +1442,33 @@ def page_profile_access():
             
 # --- NAVIGATION FUNCTION ---
 def render_navigation():
-    """Creates a simple, reliable navigation bar at the bottom of the page."""
-    st.markdown("---")  # Horizontal line above the nav
+    # --- GLOBAL BUTTON STYLING (Keep your existing CSS here if you have it) ---
     
-    col1, col2, col3, col4 = st.columns(4)
-    
-    with col1:
-        if st.button("🏠 Home", use_container_width=True, key="nav_home"):
+    # Create 4 columns for the bottom navigation
+    nav_col1, nav_col2, nav_col3, nav_col4 = st.columns(4)
+
+    with nav_col1:
+        if st.button("🏠 Home", use_container_width=True, key="nav_home_btn"):
             st.session_state.current_page = 1
             st.rerun()
-    with col2:
-        if st.button("📝 Assessment", use_container_width=True, key="nav_assess"):
+
+    with nav_col2:
+        # FIX FOR Q2: Renamed from "Assessment" to "Take a test"
+        if st.button("📝 Take a test", use_container_width=True, key="nav_assess_btn"):
             st.session_state.current_page = 2
             st.rerun()
-    with col3:
-        if st.button("📊 Profile", use_container_width=True, key="nav_profile"):
-            st.session_state.current_page = 4
-            st.rerun()
-    with col4:
-        if st.button("🌍 Compare", use_container_width=True, key="nav_compare"):
+
+    with nav_col3:
+        if st.button("🌍 Compare", use_container_width=True, key="nav_compare_btn"):
             st.session_state.current_page = 5
+            st.rerun()
+
+    with nav_col4:
+        # FIX FOR Q1: Routes to Page 7 (Access Your Profile)
+        # Note: We use "nav_profile_btn" as the key to avoid the crash we had earlier!
+        if st.button("📊 Profile", use_container_width=True, key="nav_profile_btn"):
+            st.session_state.current_page = 7
+            st.session_state.returning_user = False # Reset flags so the ID input box appears
             st.rerun()
 
 # Main app logic
