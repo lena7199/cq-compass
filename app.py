@@ -1468,7 +1468,6 @@ def render_navigation():
 
 # Main app logic
 def main():
-    st.write(f"DEBUG:main() sees current_page as:{st.session_state.get('current_page')}")
     # --- GLOBAL BUTTON STYLING ---
     st.markdown("""
         <style>
