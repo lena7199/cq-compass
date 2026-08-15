@@ -671,26 +671,36 @@ GLOBE_LEADERSHIP_QUESTIONS = {
 
 # Page functions
 def page_welcome():
-    # --- 1. THE HERO BANNER (Lighter overlay so image is visible) ---
+    # --- 1. CSS FOR GRADIENT AND SPACING ---
     st.markdown("""
-    <div style="
-        background: linear-gradient(rgba(13, 22, 35, 0.4), rgba(13, 22, 35, 0.6)), 
-                    url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80');
-        background-size: cover;
-        background-position: center;
-        padding: 80px 20px;
-        border-radius: 12px;
+    <style>
+    /* This creates the beautiful Dark Blue to Gold gradient background */
+    .hero-gradient-box {
+        background: linear-gradient(135deg, #0d1623 0%, #1a2639 60%, #8a7346 100%);
+        border-radius: 15px;
+        padding: 50px 20px;
         text-align: center;
-        margin-bottom: 20px;
-        box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-    ">
-        <h1 style='color: #C9A96E; font-size: 3rem; margin: 0 0 10px 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);'>🌍 CQ Compass</h1>
-        <h3 style='color: #F5F0E8; font-size: 1.5rem; margin: 0 0 20px 0;'>Cultural Intelligence Assessment & Development Platform</h3>
-        <p style='color: #F5F0E8; font-size: 1.1em; max-width: 800px; margin: 0 auto;'>Discover your cultural profile. Compare it with other cultures. Navigate differences with confidence.</p>
-    </div>
+        margin-bottom: 10px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    /* Add some breathing room between sections */
+    .spacer {
+        height: 30px; 
+    }
+    </style>
     """, unsafe_allow_html=True)
 
-    # --- 2. THE SELECTION BOXES (No negative margins, so they won't disappear) ---
+    # --- 2. THE GRADIENT HEADER (App Name, Title, Subtitle) ---
+    st.markdown('<div class="hero-gradient-box">', unsafe_allow_html=True)
+    st.markdown("<h1 style='color: #C9A96E; font-size: 3rem; margin: 0 0 10px 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);'>🌍 CQ Compass</h1>", unsafe_allow_html=True)
+    st.markdown("<h3 style='color: #F5F0E8; font-size: 1.5rem; margin: 0 0 20px 0;'>Cultural Intelligence Assessment & Development Platform</h3>", unsafe_allow_html=True)
+    st.markdown("<p style='color: #F5F0E8; font-size: 1.1em; max-width: 700px; margin: 0 auto;'>Discover your cultural profile. Compare it with other cultures. Navigate differences with confidence.</p>", unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
+
+    # --- 3. SPACER (Fixes Goal 1: Separates header from selects) ---
+    st.markdown('<div class="spacer"></div>', unsafe_allow_html=True)
+
+    # --- 4. THE SELECTION BOXES ---
     col1, col2 = st.columns(2)
 
     with col1:
@@ -716,7 +726,10 @@ def page_welcome():
             key="gender_select"
         )
 
-    # --- 3. THE BUTTONS (Removed the "---" lines to pull them up closer) ---
+    # --- 5. SPACER (Fixes Goal 1: Separates selects from buttons) ---
+    st.markdown('<div class="spacer"></div>', unsafe_allow_html=True)
+
+    # --- 6. THE BUTTONS ---
     c1, c2, c3, c4 = st.columns(4)
 
     with c2:
