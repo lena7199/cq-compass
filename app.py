@@ -773,22 +773,23 @@ def page_test_administration():
 # --- CSS TO TIGHTEN SPACING AND MATCH THEME ---
     st.markdown("""
     <style>
-        /* Pull the progress bar up closer to the title */
+        /* 1. Fix the overlap: Pull the bar up just a little bit, not 50px! */
         .stProgress {
-            margin-top: -50px !important;
-            margin-bottom: -30px !important;
+            margin-top: -15px !important;
+            margin-bottom: -10px !important;
         }
-        /* Reduce the massive space under the main title */
+        /* 2. Reduce space under the main title */
         h1 {
-            margin-bottom: 10px !important;
+            margin-bottom: 5px !important;
             padding-bottom: 0px !important;
         }
-        /* Pull the "Question X of Y" text up closer to the bar */
+        /* 3. Pull the "Question X of Y" text up closer to the bar */
         .stMarkdown p {
-            margin-top: 5px !important;
-            margin-bottom: 5px !important;
+            margin-top: 0px !important;
+            margin-bottom: 10px !important;
         }
-        /* BONUS: Change the blue progress bar to your Gold color! */
+        /* 4. BONUS: Force the Gold color using a stronger Streamlit selector! */
+        div[data-testid="stProgress"] > div > div > div > div,
         .stProgress > div > div > div > div {
             background-color: #C9A96E !important;
         }
