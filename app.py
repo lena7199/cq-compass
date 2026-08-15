@@ -47,7 +47,22 @@ def load_all_user_profiles(anonymous_id):
     except Exception as e:
         st.error(f"Error loading profiles: {e}")
         return []
+
+def check_duplicate_profile(anonymous_id, framework, comparison_type, comparison_country):
+    """Checks if a user already has a saved profile for this exact combination."""
+    try:
+        # Search for matching profiles
+        response = supabase.table("user_profiles").select("id").eq("anonymous_id", anonymous_id).eq("test_type", str(framework)).eq("comparison_type", comparison_type).execute()
         
+        # Check the results in Python to handle NULL countries safely
+        for row in response.data:
+            db_country = row.get('comparison_country')
+            if db_country == comparison_country:
+                return True # Found a match!
+        return False
+    except Exception as e:
+        return False
+
 def format_dimension_name(name):
     """Translates ugly backend names into pretty display names."""
     name = str(name)
