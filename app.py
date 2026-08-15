@@ -1375,57 +1375,70 @@ def page_gap_analysis():
 def page_profile_access():
     st.markdown("<h1 style='color: #C9A96E;'>Access Your Profile</h1>", unsafe_allow_html=True)
     
-    anonymous_id = st.text_input("Enter your Anonymous ID")
+    anonymous_id = st.text_input("Enter your Anonymous ID", key="access_id_input")
     
+    # 1. The "Find" Button
     if st.button("Find Profiles", use_container_width=True, key="find_profiles_btn"):
         if anonymous_id:
-            # 1. Search the database for ALL profiles with this ID
             profiles = load_all_user_profiles(anonymous_id.strip())
-            
             if profiles:
+                # Save the results to memory so we can use them after the refresh
+                st.session_state.found_profiles = profiles
+                st.session_state.show_profile_menu = True
                 st.success(f"Found {len(profiles)} saved profile(s)!")
+                st.rerun() # Refresh to show the menu cleanly
+            else:
+                st.warning("No profiles found for this ID. Please check the ID or take a new assessment.")
+                st.session_state.show_profile_menu = False
+
+    # 2. The Menu and "Load" Button (Now safely OUTSIDE the first button's block)
+    if st.session_state.get('show_profile_menu') and st.session_state.get('found_profiles'):
+        profiles = st.session_state.found_profiles
+        
+        # Create a clean list of options
+        profile_options = {}
+        for p in profiles:
+            framework = p.get('test_type', 'Unknown Framework')
+            comp_type = p.get('comparison_type', 'National')
+            comp_country = p.get('comparison_country', '')
+            
+            if comp_type == 'Specific_Country' and comp_country:
+                label = f"{framework} vs. {comp_country}"
+            else:
+                label = f"{framework} vs. National Average"
                 
-                # 2. Create a clean list of options for the user
-                profile_options = {}
-                for p in profiles:
-                    framework = p.get('test_type', 'Unknown Framework')
-                    comp_type = p.get('comparison_type', 'National')
-                    comp_country = p.get('comparison_country', '')
-                    
-                    # Create a pretty label like "Karnauhova vs. Japan"
-                    if comp_type == 'Specific_Country' and comp_country:
-                        label = f"{framework} vs. {comp_country}"
-                    else:
-                        label = f"{framework} vs. National Average"
-                        
-                    profile_options[label] = p # Map the pretty name to the actual database row
-                
-                # 3. Show the dropdown menu
-                selected_label = st.selectbox("Which profile would you like to view?", list(profile_options.keys()))
-                
-                # 4. Button to actually load the selected one
-                if st.button("Load Selected Profile", use_container_width=True, key="load_selected_btn"):
-                    selected_profile = profile_options[selected_label]
-                    
-                    # Load the data into session state
-                    st.session_state.anonymous_id = selected_profile['anonymous_id']
-                    st.session_state.nationality = selected_profile['nationality']
-                    st.session_state.user_scores = selected_profile['scores']
-                    
-                    # MAGIC FIX: Turn the text string back into a real list!
-                    raw_test_type = selected_profile['test_type']
-                    try:
-                        st.session_state.selected_tests = ast.literal_eval(raw_test_type)
-                    except:
-                        st.session_state.selected_tests = [raw_test_type]
-                    
-                    # Navigate to the Profile/Results page
-                    st.session_state.current_page = 4 
-                    st.session_state.nav_profile = True
-                    st.session_state.returning_user = True
-                    
-                    st.success("Profile loaded successfully! Redirecting...")
-                    st.rerun()
+            profile_options[label] = p 
+            
+        # Show the dropdown
+        selected_label = st.selectbox("Which profile would you like to view?", list(profile_options.keys()))
+        
+        # The "Load" Button
+        if st.button("Load Selected Profile", use_container_width=True, key="load_selected_btn"):
+            selected_profile = profile_options[selected_label]
+            
+            # Load data into session state
+            st.session_state.anonymous_id = selected_profile['anonymous_id']
+            
+            # Force nationality to pass the guard clause
+            db_nationality = selected_profile.get('nationality')
+            st.session_state.nationality = db_nationality if db_nationality else "Unknown"
+            
+            st.session_state.user_scores = selected_profile['scores']
+            
+            # Restore test type
+            raw_test_type = selected_profile['test_type']
+            try:
+                import ast
+                st.session_state.selected_tests = ast.literal_eval(raw_test_type)
+            except:
+                st.session_state.selected_tests = [raw_test_type]
+            
+            # Navigate to Results Page
+            st.session_state.current_page = 4
+            st.session_state.nav_profile = True
+            st.session_state.returning_user = True
+            
+            st.rerun()
                     
             else:
                 st.warning("No profiles found for this ID. Please check the ID or take a new assessment.")
