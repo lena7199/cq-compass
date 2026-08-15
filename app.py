@@ -1471,8 +1471,19 @@ def page_profile_access():
             except:
                 st.session_state.selected_tests = [raw_test_type]
             
-            # Navigate to Results Page
-            st.session_state.current_page = 4
+            # --- SMART NAVIGATION ---
+            # THIS IS THE CRITICAL PART!
+            comp_type = selected_profile.get('comparison_type', 'National')
+            comp_country = selected_profile.get('comparison_country', '')
+            
+            if comp_type == 'Specific_Country' and comp_country:
+                # If they saved a country comparison, send them to Page 5!
+                st.session_state.current_page = 5
+                st.session_state.comparison_country = comp_country # Tell Page 5 which country to use!
+            else:
+                # Otherwise, send them to the standard Personal Results (Page 4)
+                st.session_state.current_page = 4
+                
             st.session_state.returning_user = True
             
             st.rerun()
