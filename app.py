@@ -671,29 +671,26 @@ GLOBE_LEADERSHIP_QUESTIONS = {
 
 # Page functions
 def page_welcome():
-    # --- 1. THE FULL-SCREEN HERO BANNER ---
-    # We use a negative margin at the bottom to pull the Streamlit widgets UP into the banner
+    # --- 1. THE HERO BANNER (Lighter overlay so image is visible) ---
     st.markdown("""
     <div style="
-        background: linear-gradient(rgba(13, 22, 35, 0.85), rgba(13, 22, 35, 0.85)), 
+        background: linear-gradient(rgba(13, 22, 35, 0.4), rgba(13, 22, 35, 0.6)), 
                     url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80');
         background-size: cover;
         background-position: center;
-        padding: 60px 20px 120px 20px; /* Extra padding at bottom to cover the widgets */
+        padding: 80px 20px;
         border-radius: 12px;
         text-align: center;
-        margin-bottom: -80px; /* Pulls the select boxes up into the image */
-        position: relative;
-        z-index: 1;
+        margin-bottom: 20px;
         box-shadow: 0 8px 25px rgba(0,0,0,0.4);
     ">
-        <h1 style='text-align: center; color: #C9A96E; font-size: 3rem; margin-bottom: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.5);'>🌍 CQ Compass</h1>
-        <h3 style='text-align: center; color: #F5F0E8; font-size: 1.5rem; margin-bottom: 20px;'>Cultural Intelligence Assessment & Development Platform</h3>
-        <p style='text-align: center; font-size: 1.1em; color: #F5F0E8; max-width: 800px; margin: 0 auto;'>Discover your cultural profile. Compare it with other cultures. Navigate differences with confidence.</p>
+        <h1 style='color: #C9A96E; font-size: 3rem; margin: 0 0 10px 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);'>🌍 CQ Compass</h1>
+        <h3 style='color: #F5F0E8; font-size: 1.5rem; margin: 0 0 20px 0;'>Cultural Intelligence Assessment & Development Platform</h3>
+        <p style='color: #F5F0E8; font-size: 1.1em; max-width: 800px; margin: 0 auto;'>Discover your cultural profile. Compare it with other cultures. Navigate differences with confidence.</p>
     </div>
     """, unsafe_allow_html=True)
 
-    # --- 2. THE SELECTION BOXES (Now floating on the banner) ---
+    # --- 2. THE SELECTION BOXES (No negative margins, so they won't disappear) ---
     col1, col2 = st.columns(2)
 
     with col1:
@@ -719,10 +716,7 @@ def page_welcome():
             key="gender_select"
         )
 
-    # --- 3. THE BUTTONS (Pulled up closer to the boxes) ---
-    # We use a negative margin to remove the gap between the boxes and buttons
-    st.markdown('<div style="margin-top: -30px; position: relative; z-index: 2;">', unsafe_allow_html=True)
-    
+    # --- 3. THE BUTTONS (Removed the "---" lines to pull them up closer) ---
     c1, c2, c3, c4 = st.columns(4)
 
     with c2:
@@ -736,8 +730,6 @@ def page_welcome():
             st.session_state.nationality = nationality
             st.session_state.current_page = 2
             st.rerun()
-            
-    st.markdown('</div>', unsafe_allow_html=True)
     
 def page_test_selection():
     st.markdown("<h1 style='color: #C9A96E;'>Select Your Assessment</h1>", unsafe_allow_html=True)
