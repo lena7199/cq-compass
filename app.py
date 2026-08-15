@@ -37,20 +37,16 @@ def save_user_profile(anonymous_id, nationality, framework, scores, comparison_t
     except Exception as e:
         st.error(f"Error saving profile: {e}")
         return False
-        
-def load_user_profile(anonymous_id):
-    """Loads a user's profile from the database using their anonymous ID."""
-    try:
-       
-        response = supabase.table("user_profiles").select("*").eq("anonymous_id", anonymous_id).execute()
-        
-        if response.data:
-            return response.data[0]
-        return None
-    except Exception as e:
-        st.error(f"Error loading profile: {e}")
-        return None
 
+def load_all_user_profiles(anonymous_id):
+    """Loads ALL saved profiles for a specific user ID."""
+    try:
+        response = supabase.table("user_profiles").select("*").eq("anonymous_id", anonymous_id).execute()
+        return response.data # This returns a list of all matching rows
+    except Exception as e:
+        st.error(f"Error loading profiles: {e}")
+        return []
+        
 def format_dimension_name(name):
     """Translates ugly backend names into pretty display names."""
     name = str(name)
@@ -1380,32 +1376,50 @@ def page_profile_access():
     
     anonymous_id = st.text_input("Enter your Anonymous ID")
     
-    # Create 4 columns to center the buttons
-    p_col1, p_col2, p_col3, p_col4 = st.columns(4)
-
-    with p_col2:
-        if st.button("Load Profile", use_container_width=True, key="load_profile_btn"):
-            # Use the variable directly (it's already captured above)
-            anonymous_id = anonymous_id.strip()
-                
-            # Load from Supabase
-            profile = load_user_profile(anonymous_id)
-                
-            if profile:
-                st.session_state.anonymous_id = profile['anonymous_id']
-                st.session_state.nationality = profile['nationality']
-                st.session_state.user_scores = profile['scores']
-                    
-                st.success("Profile loaded successfully!")
-                st.rerun()
-            else:
-                st.warning("Profile not found. Please check your ID or take a new assessment.")
-                
-    with p_col3:
-        if st.button("← Back to Home", use_container_width=True, key="back_home_profile_btn"):
-            st.session_state.current_page = 1
-            st.rerun()
+    if st.button("Find Profiles", use_container_width=True, key="find_profiles_btn"):
+        if anonymous_id:
+            # 1. Search the database for ALL profiles with this ID
+            profiles = load_all_user_profiles(anonymous_id.strip())
             
+            if profiles:
+                st.success(f"Found {len(profiles)} saved profile(s)!")
+                
+                # 2. Create a clean list of options for the user
+                profile_options = {}
+                for p in profiles:
+                    framework = p.get('test_type', 'Unknown Framework')
+                    comp_type = p.get('comparison_type', 'National')
+                    comp_country = p.get('comparison_country', '')
+                    
+                    # Create a pretty label like "Karnauhova vs. Japan"
+                    if comp_type == 'Specific_Country' and comp_country:
+                        label = f"{framework} vs. {comp_country}"
+                    else:
+                        label = f"{framework} vs. National Average"
+                        
+                    profile_options[label] = p # Map the pretty name to the actual database row
+                
+                # 3. Show the dropdown menu
+                selected_label = st.selectbox("Which profile would you like to view?", list(profile_options.keys()))
+                
+                # 4. Button to actually load the selected one
+                if st.button("Load Selected Profile", use_container_width=True, key="load_selected_btn"):
+                    selected_profile = profile_options[selected_label]
+                    
+                    # Load the data into session state
+                    st.session_state.anonymous_id = selected_profile['anonymous_id']
+                    st.session_state.nationality = selected_profile['nationality']
+                    st.session_state.user_scores = selected_profile['scores']
+                    
+                    # Add any other session state variables your app needs here!
+                    # For example: st.session_state.gender = selected_profile.get('gender', '')
+                    
+                    st.success("Profile loaded successfully!")
+                    st.rerun()
+                    
+            else:
+                st.warning("No profiles found for this ID. Please check the ID or take a new assessment.")
+    
 # --- NAVIGATION FUNCTION ---
 def render_navigation():
     """Creates a simple, reliable navigation bar at the bottom of the page."""
