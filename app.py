@@ -671,12 +671,29 @@ GLOBE_LEADERSHIP_QUESTIONS = {
 
 # Page functions
 def page_welcome():
-    st.markdown("<h1 style='text-align: center; color: #C9A96E;'>🌍 CQ Compass</h1>", unsafe_allow_html=True)
-    st.markdown("<h3 style='text-align: center; color: #F5F0E8;'>Cultural Intelligence Assessment & Development Platform</h3>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; font-size: 1.1em; margin-top: 30px;'>Discover your cultural profile. Compare it with other cultures. Navigate differences with confidence.</p>", unsafe_allow_html=True)
-    
-    st.markdown("---")
-    
+    # --- 1. THE FULL-SCREEN HERO BANNER ---
+    # We use a negative margin at the bottom to pull the Streamlit widgets UP into the banner
+    st.markdown("""
+    <div style="
+        background: linear-gradient(rgba(13, 22, 35, 0.85), rgba(13, 22, 35, 0.85)), 
+                    url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80');
+        background-size: cover;
+        background-position: center;
+        padding: 60px 20px 120px 20px; /* Extra padding at bottom to cover the widgets */
+        border-radius: 12px;
+        text-align: center;
+        margin-bottom: -80px; /* Pulls the select boxes up into the image */
+        position: relative;
+        z-index: 1;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    ">
+        <h1 style='text-align: center; color: #C9A96E; font-size: 3rem; margin-bottom: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.5);'>🌍 CQ Compass</h1>
+        <h3 style='text-align: center; color: #F5F0E8; font-size: 1.5rem; margin-bottom: 20px;'>Cultural Intelligence Assessment & Development Platform</h3>
+        <p style='text-align: center; font-size: 1.1em; color: #F5F0E8; max-width: 800px; margin: 0 auto;'>Discover your cultural profile. Compare it with other cultures. Navigate differences with confidence.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # --- 2. THE SELECTION BOXES (Now floating on the banner) ---
     col1, col2 = st.columns(2)
 
     with col1:
@@ -685,28 +702,13 @@ def page_welcome():
             ["Select country/region", "Brazil", "China", "Egypt", "India", "Iran", "Japan", "Malaysia", "Nigeria", "Russia", "USA", "Anglo", "Confucian Asia", "Eastern Europe", "Germanic Europe", "Latin America", "Latin Europe", "Middle East", "Nordic Europe", "Southern Asia", "Sub-Saharan Africa"],
             key="nationality_select"
         )
-        # Map the two-word display name to the one-word CSV name
         country_map = {
-            "Brazil": "Brazil", 
-            "China": "China", 
-            "Egypt": "Egypt", 
-            "India": "India", 
-            "Iran": "Iran", 
-            "Japan": "Japan", 
-            "Malaysia": "Malaysia", 
-            "Nigeria": "Nigeria", 
-            "Russia": "Russia", 
-            "USA": "USA", 
-            "Anglo": "Anglo", 
-            "Confucian Asia": "ConfucianAsia", 
-            "Eastern Europe": "EasternEurope", 
-            "Germanic Europe": "GermanicEurope", 
-            "Latin America": "LatinAmerica", 
-            "Latin Europe": "LatinEurope", 
-            "Middle East": "MiddleEast", 
-            "Nordic Europe": "NordicEurope", 
-            "Southern Asia": "SouthernAsia", 
-            "Sub-Saharan Africa": "SubSaharanAfrica"
+            "Brazil": "Brazil", "China": "China", "Egypt": "Egypt", "India": "India", 
+            "Iran": "Iran", "Japan": "Japan", "Malaysia": "Malaysia", "Nigeria": "Nigeria", 
+            "Russia": "Russia", "USA": "USA", "Anglo": "Anglo", "Confucian Asia": "ConfucianAsia", 
+            "Eastern Europe": "EasternEurope", "Germanic Europe": "GermanicEurope", 
+            "Latin America": "LatinAmerica", "Latin Europe": "LatinEurope", "Middle East": "MiddleEast", 
+            "Nordic Europe": "NordicEurope", "Southern Asia": "SouthernAsia", "Sub-Saharan Africa": "SubSaharanAfrica"
         }
         nationality = country_map.get(nationality_display, None)
 
@@ -717,14 +719,10 @@ def page_welcome():
             key="gender_select"
         )
 
-    st.markdown("---")
+    # --- 3. THE BUTTONS (Pulled up closer to the boxes) ---
+    # We use a negative margin to remove the gap between the boxes and buttons
+    st.markdown('<div style="margin-top: -30px; position: relative; z-index: 2;">', unsafe_allow_html=True)
     
-    # Check if placeholders are still selected
-    is_ready = (nationality is not None) and (gender != "Select")
-
-    st.markdown("---")
-
-    # Create 4 columns to cluster buttons in the center
     c1, c2, c3, c4 = st.columns(4)
 
     with c2:
@@ -733,13 +731,14 @@ def page_welcome():
             st.rerun()
 
     with c3:
+        is_ready = (nationality is not None) and (gender != "Select")
         if st.button("Begin Assessment", use_container_width=True, disabled=not is_ready, key="begin_assessment_btn"):
-            # SAVE THE NATIONALITY HERE!
             st.session_state.nationality = nationality
-            
             st.session_state.current_page = 2
             st.rerun()
-
+            
+    st.markdown('</div>', unsafe_allow_html=True)
+    
 def page_test_selection():
     st.markdown("<h1 style='color: #C9A96E;'>Select Your Assessment</h1>", unsafe_allow_html=True)
     st.markdown(f"<p>Your Anonymous ID: <span class='anonymous-id'>{st.session_state.anonymous_id}</span></p>", unsafe_allow_html=True)
