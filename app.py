@@ -92,122 +92,118 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# Custom CSS for dark academia theme
+# Custom CSS for flexible theming
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
-/* Main background */
+/* 1. MAIN BACKGROUND & TYPOGRAPHY */
 .stApp {
-    background-color: #FAF7F0;
+    background-color: var(--bg-main) !important;
 }
 
-/* Typography */
 h1, h2, h3, h4, h5 {
     font-family: 'Playfair Display', serif !important;
-    color: #FCF2E5 !important;
+    color: var(--text-main) !important;
 }
 
-p, li, span, label {
+p, li, span, label, div {
     font-family: 'Inter', sans-serif !important;
-    color: #FCF2E5 !important;
+    color: var(--text-main) !important;
 }
 
-/* Cards and containers */
-.stMetric, .stAlert {
-    background-color: #243447 !important;
+/* 2. CARDS AND CONTAINERS */
+.stMetric, .stAlert, .recommendation-card {
+    background-color: var(--bg-secondary) !important;
     border-radius: 12px !important;
     padding: 20px !important;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
+    color: var(--text-main) !important;
 }
 
-/* Buttons */
+/* 3. BUTTONS */
 .stButton > button {
-    background-color: #A8A492 !important;
-    color: #1B2838 !important;
+    background-color: transparent !important;
+    color: var(--text-main) !important;
     font-family: 'Inter', sans-serif !important;
     font-weight: 600 !important;
     border-radius: 8px !important;
     padding: 10px 24px !important;
-    border: none !important;
+    border: 2px solid var(--text-secondary) !important;
     transition: all 0.3s ease !important;
 }
 
 .stButton > button:hover {
-    background-color: #D4B87A !important;
+    background-color: rgba(236, 91, 56, 0.1) !important; /* Subtle accent glow */
+    border-color: var(--accent) !important;
+    color: var(--accent) !important;
     transform: translateY(-2px) !important;
-    box-shadow: 0 6px 12px rgba(201, 169, 110, 0.3) !important;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2) !important;
 }
 
-/* Darken Plotly chart icons */
-    .modebar-btn path {
-        fill: #EC5B38 !important;
-    }
-    .modebar-btn:hover path {
-        fill: #D4B87A !important;
-    }
+/* 4. PLOTLY CHART ICONS */
+.modebar-btn path {
+    fill: var(--text-secondary) !important;
+}
+.modebar-btn:hover path {
+    fill: var(--accent) !important;
+}
     
-/* Select boxes and inputs - Fixed for visibility */
-        div[data-baseweb="select"] > div {
-            background-color: #243447 !important;
-            border: 1px solid #3A4A5C !important;
-            border-radius: 8px !important;
-        }
-        div[data-baseweb="select"] > div > div > div {
-            color: #FCF2E5 !important;
-        }
+/* 5. SELECT BOXES AND INPUTS */
+div[data-baseweb="select"] > div,
+.stTextInput > div > div > input {
+    background-color: var(--bg-secondary) !important;
+    color: var(--text-main) !important;
+    border: 1px solid var(--text-secondary) !important;
+    border-radius: 8px !important;
+}
 
-        div[data-baseweb="select"] div[role="option"][aria-selected="true"] {
-        color: #FCF2E5 !important;
-        }
-        .stTextInput > div > div > input {
-            background-color: #243447 !important;
-            color: #FCF2E5 !important;
-            border: 1px solid #3A4A5C !important;
-            border-radius: 8px !important;
-        }
+div[data-baseweb="select"] > div > div > div {
+    color: var(--text-main) !important;
+}
 
-/* Radio buttons */
+div[data-baseweb="select"] div[role="option"][aria-selected="true"] {
+    color: var(--text-main) !important;
+    background-color: var(--bg-main) !important;
+}
+
+/* 6. RADIO BUTTONS */
 .stRadio > div {
     background-color: transparent !important;
 }
-
 .stRadio > div > label {
-    color: #FCF2E5 !important;
+    color: var(--text-main) !important;
     padding: 8px !important;
     border-radius: 6px !important;
 }
 
-/* Progress bar */
+/* 7. PROGRESS BAR */
 .stProgress > div > div > div > div {
-    background-color: #EC5B38 !important;
+    background-color: var(--accent) !important;
 }
 
-/* Recommendation cards */
+/* 8. RECOMMENDATION CARDS (Using Semantic Variables) */
 .recommendation-card {
-    background-color: #243447;
+    background-color: var(--bg-secondary);
     border-radius: 12px;
     padding: 20px;
     margin: 15px 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
-
 .recommendation-red {
-    border-left: 4px solid #C75B3A;
+    border-left: 4px solid var(--color-danger) !important;
 }
-
 .recommendation-yellow {
-    border-left: 4px solid #D4A843;
+    border-left: 4px solid var(--color-warning) !important;
 }
-
 .recommendation-green {
-    border-left: 4px solid #7A9E7E;
+    border-left: 4px solid var(--color-success) !important;
 }
 
-/* Anonymous ID display */
+/* 9. ANONYMOUS ID DISPLAY */
 .anonymous-id {
-    background-color: #FF7575;
-    color: #1B2838;
+    background-color: var(--accent);
+    color: var(--bg-main); /* Ensures high contrast */
     padding: 15px 25px;
     border-radius: 8px;
     font-family: 'Inter', monospace;
@@ -217,7 +213,7 @@ p, li, span, label {
     margin: 10px 0;
 }
 
-/* Urgency badges */
+/* 10. URGENCY BADGES */
 .urgency-badge {
     display: inline-block;
     padding: 4px 12px;
@@ -226,20 +222,17 @@ p, li, span, label {
     font-weight: 600;
     margin-bottom: 10px;
 }
-
 .urgency-red {
-    background-color: #C75B3A;
-    color: #FCF2E5;
+    background-color: var(--color-danger);
+    color: #FFFFFF;
 }
-
 .urgency-yellow {
-    background-color: #D4A843;
+    background-color: var(--color-warning);
     color: #1B2838;
 }
-
 .urgency-green {
-    background-color: #7A9E7E;
-    color: #FCF2E5;
+    background-color: var(--color-success);
+    color: #FFFFFF;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -1563,28 +1556,56 @@ def render_navigation():
 
 # Main app logic
 def main():
-    # --- GLOBAL BUTTON STYLING ---
+    # --- MASTER COLOR PALETTE & GLOBAL STYLES ---
     st.markdown("""
-        <style>
-        /* Target all standard buttons in the app */
+    <style>
+        /* 1. DEFINE THE PALETTE (Change these 5 hex codes to change the whole app!) */
+        :root {
+            /* 1. MAIN UI COLORS (Change these to test new palettes!) */
+            --bg-main: #524646;          /* General Background */
+            --bg-secondary: #635656;     /* Cards, Inputs, Dropdowns */
+            --text-main: #FCF2E5;        /* Primary Text */
+            --text-secondary: #A8A492;   /* Borders, Subtle Text, Icons */
+            --accent: #EC5B38;           /* Buttons Hover, Progress Bar, Highlights */
+            
+            /* 2. SEMANTIC COLORS (For alerts, badges, and recommendations) */
+            --color-danger: #C75B3A;     /* Red / Urgent */
+            --color-warning: #D4A843;    /* Yellow / Caution */
+            --color-success: #7A9E7E;    /* Green / Aligned */
+        }
+
+        /* 2. GENERAL BACKGROUND & PRIMARY TEXT */
+        .stApp {
+            background-color: var(--bg-main) !important;
+            color: var(--text-main) !important;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* 3. BUTTONS (Background, Border, and Hover) */
         div[data-testid="stButton"] button {
             background-color: transparent !important;
-            color: #111827 !important; /* Black Ink text */
-            border: 1px solid #A8A492 !important; /* Sea Hazel border */
-            border-radius: 6px !important;
-            padding: 8px 16px !important;
-            font-weight: 500 !important;
-            font-size: 14px !important;
+            border: 2px solid var(--text-secondary) !important;
+            color: var(--text-main) !important;
+            border-radius: 8px !important;
             transition: all 0.3s ease !important;
         }
-        
-        /* Elegant hover effect */
         div[data-testid="stButton"] button:hover {
-            background-color: rgba(201, 169, 110, 0.15) !important; /* Subtle gold glow */
-            color: #EC5B38 !important; /* Text turns gold on hover */
-            box-shadow: 0 0 10px rgba(201, 169, 110, 0.3) !important;
+            border-color: var(--accent) !important;
+            color: var(--accent) !important;
+            background-color: rgba(236, 91, 56, 0.1) !important;
         }
-        </style>
+
+        /* 6. SELECTION FIELDS (Dropdowns, Text Inputs) */
+        .stSelectbox > div > div, .stTextInput > div > div, .stNumberInput > div > div {
+            background-color: var(--bg-secondary) !important;
+            color: var(--text-main) !important;
+            border: 1px solid var(--text-secondary) !important;
+        }
+
+        /* 5. PROGRESS BAR (For your custom HTML progress bar) */
+        .custom-progress-bg { background-color: var(--bg-secondary) !important; }
+        .custom-progress-fill { background-color: var(--accent) !important; }
+    </style>
     """, unsafe_allow_html=True)
 
     # --- YOUR EXISTING PAGE ROUTING ---
