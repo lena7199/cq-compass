@@ -1229,7 +1229,7 @@ def page_country_comparison():
                 div[data-testid="stButton"] button[kind="secondary"] {
                     background-color: transparent !important;
                     color: #FFFFFF !important;
-                    border: 1px solid #EC5B38 !important;
+                    border: 1px solid #A8A492 !important;
                     border-radius: 6px !important;
                     padding: 8px 16px !important;
                     font-weight: 500 !important;
