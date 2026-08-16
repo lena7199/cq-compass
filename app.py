@@ -99,7 +99,7 @@ st.markdown("""
 
 /* Main background */
 .stApp {
-    background-color: #525675;
+    background-color: #FAF7F0;
 }
 
 /* Typography */
@@ -1569,7 +1569,7 @@ def main():
         /* Target all standard buttons in the app */
         div[data-testid="stButton"] button {
             background-color: transparent !important;
-            color: #F8F9FA !important; /* Very light grey/white text */
+            color: #111827 !important; /* Black Ink text */
             border: 1px solid #A8A492 !important; /* Sea Hazel border */
             border-radius: 6px !important;
             padding: 8px 16px !important;
