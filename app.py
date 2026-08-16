@@ -1562,7 +1562,7 @@ def main():
         /* 1. DEFINE THE PALETTE (Change these 5 hex codes to change the whole app!) */
         :root {
             /* 1. MAIN UI COLORS (Change these to test new palettes!) */
-            --bg-main: #F8F6F0;          /* General Background */
+            --bg-main: #FAF9F6;          /* General Background */
             --bg-secondary: #635656;     /* Cards, Inputs, Dropdowns */
             --text-main: #111827;        /* Primary Text */
             --text-secondary: #A8A492;   /* Borders, Subtle Text, Icons */
