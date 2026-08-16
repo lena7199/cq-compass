@@ -828,7 +828,7 @@ def page_test_administration():
     
     st.markdown(f"""
     <div style="
-        background-color: #2a3b55; 
+        background-color: #A8A492; 
         border-radius: 10px; 
         height: 20px; 
         width: 100%; 
@@ -836,7 +836,7 @@ def page_test_administration():
         overflow: hidden;
     ">
         <div style="
-            background-color: #A8A492; 
+            background-color: #EC5B38; 
             height: 100%; 
             width: {progress_percent}%; 
             border-radius: 10px;
