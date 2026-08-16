@@ -123,7 +123,7 @@ p, li, span, label {
 
 /* Buttons */
 .stButton > button {
-    background-color: #EC5B38 !important;
+    background-color: #A8A492 !important;
     color: #1B2838 !important;
     font-family: 'Inter', sans-serif !important;
     font-weight: 600 !important;
