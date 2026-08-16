@@ -206,7 +206,7 @@ p, li, span, label {
 
 /* Anonymous ID display */
 .anonymous-id {
-    background-color: #EC5B38;
+    background-color: #FF7575;
     color: #1B2838;
     padding: 15px 25px;
     border-radius: 8px;
