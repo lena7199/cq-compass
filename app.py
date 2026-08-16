@@ -1570,7 +1570,7 @@ def main():
         div[data-testid="stButton"] button {
             background-color: transparent !important;
             color: #F8F9FA !important; /* Very light grey/white text */
-            border: 1px solid #EC5B38 !important; /* Golden border */
+            border: 1px solid #A8A492 !important; /* Sea Hazel border */
             border-radius: 6px !important;
             padding: 8px 16px !important;
             font-weight: 500 !important;
