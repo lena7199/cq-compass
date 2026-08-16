@@ -744,13 +744,13 @@ def page_test_selection():
     with col2:
         st.markdown("### GLOBE Cultural Practices")
         st.markdown("9 dimensions | 18 questions | ~10 minutes")
-        st.markdown("Assesses your cultural practices based on the GLOBE framework")
+        st.markdown("Assesses your cultural practices based on the GLOBE framework | COMING SOON")
         globe_culture_selected = st.checkbox("Select", key="globe_culture_check")
     
     with col3:
         st.markdown("### GLOBE Leadership Style")
         st.markdown("6 dimensions | 12 questions | ~8 minutes")
-        st.markdown("Evaluates your personal leadership style and preferences")
+        st.markdown("Evaluates your personal leadership style and preferences | COMING SOON")
         globe_leadership_selected = st.checkbox("Select", key="globe_leadership_check")
     
     selected_tests = []
@@ -823,11 +823,31 @@ def page_test_administration():
     current_idx = st.session_state.current_question
     current_item = question_map[current_idx]
     
-    # Progress bar
-    progress = (current_idx + 1) / total_questions
-    st.progress(progress)
-    st.markdown(f"<p style='text-align: center; color: #C9A96E;'>Question {current_idx + 1} of {total_questions}</p>", unsafe_allow_html=True)
+    # Custom Gold Progress Bar
+    progress_percent = int(((current_idx + 1) / total_questions) * 100)
     
+    st.markdown(f"""
+    <div style="
+        background-color: #2a3b55; 
+        border-radius: 10px; 
+        height: 20px; 
+        width: 100%; 
+        margin: 10px 0 20px 0;
+        overflow: hidden;
+    ">
+        <div style="
+            background-color: #C9A96E; 
+            height: 100%; 
+            width: {progress_percent}%; 
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        ">
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown(f"<p style='text-align: center; color: #C9A96E; margin-top: -10px; margin-bottom: 30px;'>Question {current_idx + 1} of {total_questions}</p>", unsafe_allow_html=True)
+
     # Display question
     pretty_name = format_dimension_name(current_item['dimension'])
     st.markdown(f"### {pretty_name}")
