@@ -99,7 +99,7 @@ st.markdown("""
 
 /* Main background */
 .stApp {
-    background-color: #524646;
+    background-color: #525675;
 }
 
 /* Typography */
