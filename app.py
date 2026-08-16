@@ -836,7 +836,7 @@ def page_test_administration():
         overflow: hidden;
     ">
         <div style="
-            background-color: #EC5B38; 
+            background-color: #A8A492; 
             height: 100%; 
             width: {progress_percent}%; 
             border-radius: 10px;
