@@ -816,12 +816,13 @@ def page_test_administration():
     current_idx = st.session_state.current_question
     current_item = question_map[current_idx]
     
-    # Custom Gold Progress Bar
+    # --- CUSTOM PROGRESS BAR (Now using Master Palette Variables) ---
     progress_percent = int(((current_idx + 1) / total_questions) * 100)
     
     st.markdown(f"""
     <div style="
-        background-color: #A8A492; 
+        background-color: var(--bg-secondary); 
+        border: 1px solid var(--text-secondary); /* Adds a subtle outline so it's visible on light backgrounds */
         border-radius: 10px; 
         height: 20px; 
         width: 100%; 
@@ -829,7 +830,7 @@ def page_test_administration():
         overflow: hidden;
     ">
         <div style="
-            background-color: #EC5B38; 
+            background-color: var(--accent); 
             height: 100%; 
             width: {progress_percent}%; 
             border-radius: 10px;
@@ -839,7 +840,7 @@ def page_test_administration():
     </div>
     """, unsafe_allow_html=True)
     
-    st.markdown(f"<p style='text-align: center; color: #EC5B38; margin-top: -10px; margin-bottom: 30px;'>Question {current_idx + 1} of {total_questions}</p>", unsafe_allow_html=True)
+    st.markdown(f"<p style='text-align: center; color: var(--accent); margin-top: -10px; margin-bottom: 30px; font-weight: 500;'>Question {current_idx + 1} of {total_questions}</p>", unsafe_allow_html=True)
 
     # Display question
     pretty_name = format_dimension_name(current_item['dimension'])
