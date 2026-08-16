@@ -1566,7 +1566,7 @@ def main():
             --bg-secondary: #635656;     /* Cards, Inputs, Dropdowns */
             --text-main: #111827;        /* Primary Text */
             --text-secondary: #A8A492;   /* Borders, Subtle Text, Icons */
-            --accent: #EC5B38;           /* Buttons Hover, Progress Bar, Highlights */
+            --accent: #FF7575;           /* Buttons Hover, Progress Bar, Highlights */
             
             /* 2. SEMANTIC COLORS (For alerts, badges, and recommendations) */
             --color-danger: #C75B3A;     /* Red / Urgent */
