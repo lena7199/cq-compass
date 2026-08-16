@@ -105,12 +105,12 @@ st.markdown("""
 /* Typography */
 h1, h2, h3, h4, h5 {
     font-family: 'Playfair Display', serif !important;
-    color: #F5F0E8 !important;
+    color: #FCF2E5 !important;
 }
 
 p, li, span, label {
     font-family: 'Inter', sans-serif !important;
-    color: #F5F0E8 !important;
+    color: #FCF2E5 !important;
 }
 
 /* Cards and containers */
@@ -123,7 +123,7 @@ p, li, span, label {
 
 /* Buttons */
 .stButton > button {
-    background-color: #C9A96E !important;
+    background-color: #EC5B38 !important;
     color: #1B2838 !important;
     font-family: 'Inter', sans-serif !important;
     font-weight: 600 !important;
@@ -141,7 +141,7 @@ p, li, span, label {
 
 /* Darken Plotly chart icons */
     .modebar-btn path {
-        fill: #C9A96E !important;
+        fill: #EC5B38 !important;
     }
     .modebar-btn:hover path {
         fill: #D4B87A !important;
@@ -154,15 +154,15 @@ p, li, span, label {
             border-radius: 8px !important;
         }
         div[data-baseweb="select"] > div > div > div {
-            color: #F5F0E8 !important;
+            color: #FCF2E5 !important;
         }
 
         div[data-baseweb="select"] div[role="option"][aria-selected="true"] {
-        color: #F5F0E8 !important;
+        color: #FCF2E5 !important;
         }
         .stTextInput > div > div > input {
             background-color: #243447 !important;
-            color: #F5F0E8 !important;
+            color: #FCF2E5 !important;
             border: 1px solid #3A4A5C !important;
             border-radius: 8px !important;
         }
@@ -173,14 +173,14 @@ p, li, span, label {
 }
 
 .stRadio > div > label {
-    color: #F5F0E8 !important;
+    color: #FCF2E5 !important;
     padding: 8px !important;
     border-radius: 6px !important;
 }
 
 /* Progress bar */
 .stProgress > div > div > div > div {
-    background-color: #C9A96E !important;
+    background-color: #EC5B38 !important;
 }
 
 /* Recommendation cards */
@@ -206,7 +206,7 @@ p, li, span, label {
 
 /* Anonymous ID display */
 .anonymous-id {
-    background-color: #C9A96E;
+    background-color: #EC5B38;
     color: #1B2838;
     padding: 15px 25px;
     border-radius: 8px;
@@ -229,7 +229,7 @@ p, li, span, label {
 
 .urgency-red {
     background-color: #C75B3A;
-    color: #F5F0E8;
+    color: #FCF2E5;
 }
 
 .urgency-yellow {
@@ -239,7 +239,7 @@ p, li, span, label {
 
 .urgency-green {
     background-color: #7A9E7E;
-    color: #F5F0E8;
+    color: #FCF2E5;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -297,7 +297,7 @@ def create_radar_chart(scores, labels, title="Cultural Profile"):
         theta=labels_closed,
         fill='toself',
         name='Your Profile',
-        line_color='#C9A96E',
+        line_color='#EC5B38',
         fillcolor='rgba(201, 169, 110, 0.3)'
     ))
     
@@ -307,22 +307,22 @@ def create_radar_chart(scores, labels, title="Cultural Profile"):
                 visible=True,
                 range=[1, 7],
                 gridcolor='#3A4A5C',
-                tickfont=dict(color='#F5F0E8')
+                tickfont=dict(color='#FCF2E5')
             ),
             angularaxis=dict(
                 gridcolor='#3A4A5C',
-                tickfont=dict(color='#F5F0E8', size=10)
+                tickfont=dict(color='#FCF2E5', size=10)
             ),
             bgcolor='#243447'
         ),
         showlegend=True,
         title=dict(
             text=title,
-            font=dict(color='#F5F0E8', size=20, family='Playfair Display')
+            font=dict(color='#FCF2E5', size=20, family='Playfair Display')
         ),
         plot_bgcolor='#1B2838',
         paper_bgcolor='#1B2838',
-        font=dict(color='#F5F0E8')
+        font=dict(color='#FCF2E5')
     )
     
     return fig
@@ -673,11 +673,11 @@ GLOBE_LEADERSHIP_QUESTIONS = {
 def page_welcome():
     # --- 1. CENTERED HEADER SECTION ---
     # We use text-align: center to fix the alignment issues
-    st.markdown("<h1 style='text-align: center; color: #C9A96E; font-size: 3rem; margin-bottom: 10px;'>🌍 CQ Compass</h1>", unsafe_allow_html=True)
-    st.markdown("<h3 style='text-align: center; color: #F5F0E8; font-size: 1.5rem; margin-bottom: 20px;'>Cultural Intelligence Assessment & Development Platform</h3>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: #EC5B38; font-size: 3rem; margin-bottom: 10px;'>🌍 CQ Compass</h1>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align: center; color: #FCF2E5; font-size: 1.5rem; margin-bottom: 20px;'>Cultural Intelligence Assessment & Development Platform</h3>", unsafe_allow_html=True)
     
     # Subtitle - Centered and constrained width so it looks neat
-    st.markdown("<p style='text-align: center; font-size: 1.1em; color: #F5F0E8; max-width: 800px; margin: 0 auto;'>Discover your cultural profile. Compare it with other cultures.<br>Navigate differences with confidence.</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; font-size: 1.1em; color: #FCF2E5; max-width: 800px; margin: 0 auto;'>Discover your cultural profile. Compare it with other cultures.<br>Navigate differences with confidence.</p>", unsafe_allow_html=True)
 
     # --- 2. SPACER (Separates header from selects) ---
     st.markdown('<div style="height: 50px;"></div>', unsafe_allow_html=True)
@@ -727,7 +727,7 @@ def page_welcome():
             st.rerun()
     
 def page_test_selection():
-    st.markdown("<h1 style='color: #C9A96E;'>Select Your Assessment</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='color: #EC5B38;'>Select Your Assessment</h1>", unsafe_allow_html=True)
     st.markdown(f"<p>Your Anonymous ID: <span class='anonymous-id'>{st.session_state.anonymous_id}</span></p>", unsafe_allow_html=True)
     st.markdown("<p style='color: #D4A843; font-size: 0.9em;'>⚠️ Save this ID to access your profile later. No email or password required.</p>", unsafe_allow_html=True)
     
@@ -791,12 +791,12 @@ def page_test_administration():
         /* 4. BONUS: Force the Gold color using a stronger Streamlit selector! */
         div[data-testid="stProgress"] > div > div > div > div,
         .stProgress > div > div > div > div {
-            background-color: #C9A96E !important;
+            background-color: #EC5B38 !important;
         }
     </style>
     """, unsafe_allow_html=True)    
     
-    st.markdown("<h1 style='color: #C9A96E;'>Assessment in Progress</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='color: #EC5B38;'>Assessment in Progress</h1>", unsafe_allow_html=True)
     
     # Calculate total questions and current position
     total_questions = 0
@@ -836,7 +836,7 @@ def page_test_administration():
         overflow: hidden;
     ">
         <div style="
-            background-color: #C9A96E; 
+            background-color: #EC5B38; 
             height: 100%; 
             width: {progress_percent}%; 
             border-radius: 10px;
@@ -846,7 +846,7 @@ def page_test_administration():
     </div>
     """, unsafe_allow_html=True)
     
-    st.markdown(f"<p style='text-align: center; color: #C9A96E; margin-top: -10px; margin-bottom: 30px;'>Question {current_idx + 1} of {total_questions}</p>", unsafe_allow_html=True)
+    st.markdown(f"<p style='text-align: center; color: #EC5B38; margin-top: -10px; margin-bottom: 30px;'>Question {current_idx + 1} of {total_questions}</p>", unsafe_allow_html=True)
 
     # Display question
     pretty_name = format_dimension_name(current_item['dimension'])
@@ -924,7 +924,7 @@ def page_results():
             st.rerun()
         return
         
-    st.markdown("<h1 style='color: #C9A96E;'>Your Cultural Profile</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='color: #EC5B38;'>Your Cultural Profile</h1>", unsafe_allow_html=True)
     st.markdown(f"<p>Anonymous ID: <span class='anonymous-id'>{st.session_state.anonymous_id}</span></p>", unsafe_allow_html=True)
     
     # Load country scores
@@ -962,7 +962,7 @@ def page_results():
             theta=[format_dimension_name(l) for l in list(user_scores.keys()) + [list(user_scores.keys())[0]]],
             fill='toself',
             name='Your Profile',
-            line_color='#C9A96E',
+            line_color='#EC5B38',
             fillcolor='rgba(201, 169, 110, 0.3)'
         ))
         
@@ -1052,7 +1052,7 @@ def page_results():
     
     # Display Interpretations
     st.markdown("---") # Add a nice divider line
-    st.markdown("<h3 style='color: #C9A96E;'>Your Personal Interpretations</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='color: #EC5B38;'>Your Personal Interpretations</h3>", unsafe_allow_html=True)
     
     # 1. Load the interpretations CSV
     interpretations_df = load_data('interpretations.csv') 
@@ -1074,15 +1074,15 @@ def page_results():
             # Display as a beautiful card with a golden left border
             st.markdown(f"""
             <div style="
-                background-color: #1a2639; 
-                border-left: 5px solid #C9A96E; 
+                background-color: #635656; 
+                border-left: 5px solid #EC5B38; 
                 padding: 20px; 
                 border-radius: 8px; 
                 margin-bottom: 20px;
                 box-shadow: 0 4px 6px rgba(0,0,0,0.2);
             ">
-                <h3 style="color: #F5F0E8; margin-top: 0; margin-bottom: 10px; font-size: 1.5rem;">{dimension}</h3>
-                <p style="color: #F5F0E8; margin: 0; font-size: 1.1rem; line-height: 1.6;">{interpretation_text}</p>
+                <h3 style="color: #FCF2E5; margin-top: 0; margin-bottom: 10px; font-size: 1.5rem;">{dimension}</h3>
+                <p style="color: #FCF2E5; margin: 0; font-size: 1.1rem; line-height: 1.6;">{interpretation_text}</p>
             </div>
             """, unsafe_allow_html=True)            
     
@@ -1090,7 +1090,7 @@ def page_results():
     render_navigation()
 
 def page_country_comparison():
-    st.markdown("<h1 style='color: #C9A96E;'>Country Comparison</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='color: #EC5B38;'>Country Comparison</h1>", unsafe_allow_html=True)
 
     # 1. Always load the country data first
     country_scores_df = load_data('country_scores.csv')
@@ -1177,7 +1177,7 @@ def page_country_comparison():
                 theta=[format_dimension_name(l) for l in labels_closed],
                 fill='toself',
                 name='Your Profile',
-                line_color='#C9A96E',
+                line_color='#EC5B38',
                 fillcolor='rgba(201, 169, 110, 0.3)'
             ))
             
@@ -1216,7 +1216,7 @@ def page_country_comparison():
                     bgcolor='#243447'
                 ),
                 showlegend=True,
-                legend=dict(orientation="h", yanchor="bottom", y=1.20, xanchor="center", x=0.5, font=dict(color='#C9A96E', size=12)),
+                legend=dict(orientation="h", yanchor="bottom", y=1.20, xanchor="center", x=0.5, font=dict(color='#EC5B38', size=12)),
                 plot_bgcolor='#1B2838',
                 paper_bgcolor='#1B2838'
             )
@@ -1229,7 +1229,7 @@ def page_country_comparison():
                 div[data-testid="stButton"] button[kind="secondary"] {
                     background-color: transparent !important;
                     color: #FFFFFF !important;
-                    border: 1px solid #C9A96E !important;
+                    border: 1px solid #EC5B38 !important;
                     border-radius: 6px !important;
                     padding: 8px 16px !important;
                     font-weight: 500 !important;
@@ -1365,8 +1365,8 @@ def page_country_comparison():
                 st.markdown(f"""
                 <div class="recommendation-card {urgency_class}">
                     <span class="urgency-badge {urgency_badge_class}">{badge_text}</span>
-                    <h4 style='color: #C9A96E; margin-top: 10px;'>{format_dimension_name(rec['dimension'])}</h4>
-                    <p style='color: #F5F0E8; line-height: 1.6;'>{rec['text']}</p>
+                    <h4 style='color: #EC5B38; margin-top: 10px;'>{format_dimension_name(rec['dimension'])}</h4>
+                    <p style='color: #FCF2E5; line-height: 1.6;'>{rec['text']}</p>
                 </div>
                 """, unsafe_allow_html=True)
 
@@ -1376,7 +1376,7 @@ def page_country_comparison():
     render_navigation()
     
 def page_gap_analysis():
-    st.markdown(f"<h1 style='color: #C9A96E;'>Cultural Navigation Brief for {st.session_state.target_country}</h1>", unsafe_allow_html=True)
+    st.markdown(f"<h1 style='color: #EC5B38;'>Cultural Navigation Brief for {st.session_state.target_country}</h1>", unsafe_allow_html=True)
     
     target_country = st.session_state.target_country
     
@@ -1451,7 +1451,7 @@ def page_gap_analysis():
             ]
 
 def page_profile_access():
-    st.markdown("<h1 style='color: #C9A96E;'>Access Your Profile</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='color: #EC5B38;'>Access Your Profile</h1>", unsafe_allow_html=True)
     
     anonymous_id = st.text_input("Enter your Anonymous ID", key="access_id_input")
     
@@ -1570,7 +1570,7 @@ def main():
         div[data-testid="stButton"] button {
             background-color: transparent !important;
             color: #F8F9FA !important; /* Very light grey/white text */
-            border: 1px solid #C9A96E !important; /* Golden border */
+            border: 1px solid #EC5B38 !important; /* Golden border */
             border-radius: 6px !important;
             padding: 8px 16px !important;
             font-weight: 500 !important;
@@ -1581,7 +1581,7 @@ def main():
         /* Elegant hover effect */
         div[data-testid="stButton"] button:hover {
             background-color: rgba(201, 169, 110, 0.15) !important; /* Subtle gold glow */
-            color: #C9A96E !important; /* Text turns gold on hover */
+            color: #EC5B38 !important; /* Text turns gold on hover */
             box-shadow: 0 0 10px rgba(201, 169, 110, 0.3) !important;
         }
         </style>
