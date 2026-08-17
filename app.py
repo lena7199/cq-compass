@@ -390,212 +390,52 @@ if 'user_scores' not in st.session_state:
 # Define all test questions
 KARNAUHOVA_QUESTIONS = {
     "TimeFocus": [
-        {"q": "You are leading a project meeting with an international team. The agenda has 5 items, but the first topic sparks a rich, unexpected discussion. The scheduled time has passed. What do you do?",
-         "options": [
-             ("Politely interrupt and move to the next agenda item. The schedule must be respected.", 1),
-             ("Allow 2-3 extra minutes, then firmly redirect the group back to the agenda.", 2),
-             ("Quickly assess whether the discussion is more valuable than remaining items and adjust accordingly.", 3),
-             ("Let the discussion continue and drop the least important agenda item to compensate.", 4),
-             ("Fully embrace the organic flow. The best outcomes come from following the energy of the group.", 5)
-         ]},
-        {"q": "A colleague calls during your focused work time for a non-urgent matter. How do you respond?",
-         "options": [
-             ("I don't answer. I have blocked this time for deep work and will call back during open hours.", 1),
-             ("I answer briefly, explain I'm busy, and schedule a specific time to talk later.", 2),
-             ("I answer and spend a few minutes helping, then gently wrap up.", 3),
-             ("I take the call and help as long as needed. Relationships come first.", 4),
-             ("I'm happy to help. Interruptions are a natural part of the workday.", 5)
-         ]},
-        {"q": "You are organizing a social event for an international group. How do you structure the evening?",
-         "options": [
-             ("A detailed timeline: 7:00 arrivals, 7:30 dinner, 8:30 speeches, 9:30 networking, 10:30 close.", 1),
-             ("A loose framework with approximate start times but some flexibility built in.", 2),
-             ("A general plan (dinner, then socializing) but I let the evening unfold naturally.", 3),
-             ("Minimal structure. I provide food, drinks, and a space, and trust the group.", 4),
-             ("No schedule at all. People arrive when they arrive, eat when hungry, leave when ready.", 5)
-         ]}
+        {"q": "Placeholder Karnauhova question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(5)]},
+        {"q": "Placeholder Karnauhova question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(5)]},
+        {"q": "Placeholder Karnauhova question 3", "options": [(f"Option {chr(65+i)}", i+1) for i in range(5)]},
+        {"q": "Placeholder Karnauhova question 4", "options": [(f"Option {chr(65+i)}", i+1) for i in range(5)]}
     ],
     "TimeOrientation": [
-        {"q": "Your organization is considering a major strategic change. What type of argument do you find most persuasive?",
-         "options": [
-             ("This approach has been tested for decades and has a proven track record.", 1),
-             ("This builds on established traditions while making careful, incremental improvements.", 2),
-             ("This respects our history but also positions us for emerging trends.", 3),
-             ("This is innovative and will give us a competitive advantage in the next 5 years.", 4),
-             ("This completely reimagines our model. We need to disrupt ourselves before someone else does.", 5)
-         ]},
-        {"q": "A diplomatic delegation is visiting your city. What do you prioritize in the welcome program?",
-         "options": [
-             ("Historical monuments, museums, and sites showcasing our rich heritage.", 1),
-             ("A mix of historical sites and meetings with established institutions.", 2),
-             ("A Aligned program honoring past achievements while showcasing current developments.", 3),
-             ("Tours of innovation hubs, tech parks, and startups showing where our country is heading.", 4),
-             ("Presentations on future megaprojects and emerging industries that don't exist yet.", 5)
-         ]},
-        {"q": "When making an important personal decision (e.g., relocating), what weighs most heavily?",
-         "options": [
-             ("How this honors my family's history, roots, and previous generations' sacrifices.", 1),
-             ("Whether this is consistent with values and lessons from my past experiences.", 2),
-             ("A balance between honoring where I come from and creating new opportunities.", 3),
-             ("How this positions me for growth and success in the coming years.", 4),
-             ("The long-term vision of the life I want to build 10-20 years from now.", 5)
-         ]}
+        {"q": "Placeholder Karnauhova question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(5)]},
+        {"q": "Placeholder Karnauhova question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(5)]},
+        {"q": "Placeholder Karnauhova question 3", "options": [(f"Option {chr(65+i)}", i+1) for i in range(5)]},
+        {"q": "Placeholder Karnauhova question 4", "options": [(f"Option {chr(65+i)}", i+1) for i in range(5)]}
     ],
     "Space": [
-        {"q": "You are working in a shared office with international colleagues. How do you feel about the workspace?",
-         "options": [
-             ("I need a closed door and clear boundaries. My workspace is my personal territory.", 1),
-             ("I prefer a quiet corner or partitioned desk with some visual and acoustic privacy.", 2),
-             ("I'm comfortable in open-plan if private meeting rooms are available when needed.", 3),
-             ("I enjoy open, shared spaces where I can interact with colleagues throughout the day.", 4),
-             ("I thrive in bustling, communal environments. The more people around, the more energized.", 5)
-         ]},
-        {"q": "A new colleague asks a personal question (salary, marital status) during work lunch. How do you react?",
-         "options": [
-             ("Very uncomfortable. This is private and has no place in a professional setting.", 1),
-             ("I give a vague, polite answer and steer back to work topics.", 2),
-             ("I share a little to be friendly but keep most details to myself.", 3),
-             ("I'm open to sharing. Knowing each other personally builds stronger professional trust.", 4),
-             ("I welcome it enthusiastically. There is no separation between personal and professional life.", 5)
-         ]},
-        {"q": "When hosting an international business dinner, how do you handle seating?",
-         "options": [
-             ("Assigned seats with clear place cards. Each person has their designated space.", 1),
-             ("Assigned seats for key guests, some flexibility for others.", 2),
-             ("General seating plan (this table for delegation, that for our team) but no specific seats.", 3),
-             ("Open seating. I encourage people to mix and sit wherever comfortable.", 4),
-             ("No seating plan. Everyone shares food family-style and moves around freely.", 5)
-         ]}
+        {"q": "Placeholder Karnauhova question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(5)]},
+        {"q": "Placeholder Karnauhova question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(5)]},
+        {"q": "Placeholder Karnauhova question 3", "options": [(f"Option {chr(65+i)}", i+1) for i in range(5)]},
+        {"q": "Placeholder Karnauhova question 4", "options": [(f"Option {chr(65+i)}", i+1) for i in range(5)]}
     ],
     "Power": [
-        {"q": "During a negotiation, the most senior person on your team makes a statement with a factual error. What do you do?",
-         "options": [
-             ("I correct the error immediately and openly. Accuracy matters more than rank.", 1),
-             ("I raise my hand: 'If I may add a clarification...' in a respectful but direct tone.", 2),
-             ("I wait for a natural pause and gently reframe without explicitly calling it an error.", 3),
-             ("I say nothing during the meeting but send a private message afterward.", 4),
-             ("I would never contradict a senior leader in front of others. Their authority must be preserved.", 5)
-         ]},
-        {"q": "You are at a formal diplomatic reception. How do you approach greeting protocol?",
-         "options": [
-             ("I greet everyone equally with a handshake and first names, regardless of title.", 1),
-             ("I use titles for the most senior but am more casual with junior staff.", 2),
-             ("I follow my host's lead. If formal, I match; if casual, I match.", 3),
-             ("I research the hierarchy beforehand and greet the most senior person first with formalities.", 4),
-             ("I strictly observe all protocol: bowing, waiting to be introduced, full titles, deferring throughout.", 5)
-         ]},
-        {"q": "In a cross-cultural team project, how should decisions be made?",
-         "options": [
-             ("Every member has an equal vote regardless of position. The best idea wins.", 1),
-             ("Everyone shares opinions, but the team lead makes the final call.", 2),
-             ("The team discusses openly; the most experienced members naturally guide toward consensus.", 3),
-             ("The senior leader consults a small inner circle, then announces the decision.", 4),
-             ("The most senior person decides. Their authority makes them best suited to lead.", 5)
-         ]}
+       {"q": "Placeholder Karnauhova question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(5)]},
+        {"q": "Placeholder Karnauhova question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(5)]},
+        {"q": "Placeholder Karnauhova question 3", "options": [(f"Option {chr(65+i)}", i+1) for i in range(5)]},
+        {"q": "Placeholder Karnauhova question 4", "options": [(f"Option {chr(65+i)}", i+1) for i in range(5)]}
     ],
     "Structure": [
-        {"q": "Your company offers you a prestigious individual award, but your team contributed significantly. How do you handle it?",
-         "options": [
-             ("I accept proudly. I earned it through individual effort and initiative.", 1),
-             ("I accept but publicly acknowledge my team's contributions in my speech.", 2),
-             ("I feel uncomfortable accepting alone and suggest sharing with the team.", 3),
-             ("I redirect recognition to the team. Group success matters more than individual achievement.", 4),
-             ("I decline the individual award and insist it go to the entire team.", 5)
-         ]},
-        {"q": "You are assigned to a long-term project abroad. What is your primary relationship-building goal?",
-         "options": [
-             ("To expand my personal professional network and advance my individual career.", 1),
-             ("To build a few strong professional connections for mutual future benefit.", 2),
-             ("To integrate into the local community while maintaining independence and personal goals.", 3),
-             ("To become a trusted group member, prioritizing their needs alongside my own.", 4),
-             ("To fully immerse in the group's identity. My success is inseparable from the community's.", 5)
-         ]},
-        {"q": "When facing a major life decision, whose opinion matters most?",
-         "options": [
-             ("My own. I trust my individual judgment above all else.", 1),
-             ("My own, but I value input from a close friend or mentor.", 2),
-             ("A balance between personal desires and family/close circle expectations.", 3),
-             ("My family and close community. Their well-being and approval are central.", 4),
-             ("The collective. I would not decide without full consensus from family and community.", 5)
-         ]}
+        {"q": "Placeholder Karnauhova question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(5)]},
+        {"q": "Placeholder Karnauhova question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(5)]},
+        {"q": "Placeholder Karnauhova question 3", "options": [(f"Option {chr(65+i)}", i+1) for i in range(5)]},
+        {"q": "Placeholder Karnauhova question 4", "options": [(f"Option {chr(65+i)}", i+1) for i in range(5)]}
     ],
     "Competition": [
-        {"q": "In a business pitch competition, another team struggles with their technology. What do you do?",
-         "options": [
-             ("I focus on my own preparation. We are competitors; it's not my responsibility.", 1),
-             ("I wish them luck but don't intervene. Fair competition means managing your own challenges.", 2),
-             ("I offer a quick suggestion if I know the solution, but don't go out of my way.", 3),
-             ("I actively help them fix the issue. A good relationship matters more than winning.", 4),
-             ("I share my equipment freely. The best outcome is when everyone presents their best work.", 5)
-         ]},
-        {"q": "Your company is setting performance targets. What approach do you advocate?",
-         "options": [
-             ("Individual targets with clear rankings and bonuses for top performers.", 1),
-             ("Individual targets with some team-based incentives to balance drive with collaboration.", 2),
-             ("A mix of individual and team goals with equal weight.", 3),
-             ("Team-based targets where the group succeeds or fails together.", 4),
-             ("Collective organizational goals only. Internal competition is destructive.", 5)
-         ]},
-        {"q": "In a cross-cultural workshop, which group exercise format do you prefer?",
-         "options": [
-             ("A competitive debate where teams argue opposing positions and a winner is declared.", 1),
-             ("Structured exercise with scoring, but teams can learn from each other.", 2),
-             ("Collaborative problem-solving where all groups work on the same challenge and share results.", 3),
-             ("A cooperative simulation where all participants work together for a single shared outcome.", 4),
-             ("A community-building circle focused on mutual understanding, not producing a result.", 5)
-         ]}
+        {"q": "Placeholder Karnauhova question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(5)]},
+        {"q": "Placeholder Karnauhova question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(5)]},
+        {"q": "Placeholder Karnauhova question 3", "options": [(f"Option {chr(65+i)}", i+1) for i in range(5)]},
+        {"q": "Placeholder Karnauhova question 4", "options": [(f"Option {chr(65+i)}", i+1) for i in range(5)]}
     ],
     "Communication": [
-        {"q": "You receive an email: 'Your proposal is interesting. We will think about it and get back to you when the time is right.' How do you interpret this?",
-         "options": [
-             ("They are genuinely interested and will contact me soon with specific feedback.", 1),
-             ("They are leaning positive but need more time. I'll follow up in a week.", 2),
-             ("I'm not sure. The message is ambiguous, so I'll wait and ask for clarification.", 3),
-             ("This is likely a polite refusal. 'Interesting' and 'when the time is right' suggest they won't say no directly.", 4),
-             ("This is clearly a 'no.' Direct rejection would be rude, so they signal refusal indirectly.", 5)
-         ]},
-        {"q": "You need to give negative feedback to a colleague about their presentation. How do you deliver it?",
-         "options": [
-             ("Directly: 'Your presentation had three major issues. Here they are...'", 1),
-             ("Honestly but constructively: 'Good effort, but specific areas need improvement.'", 2),
-             ("Carefully, balancing positive and negative so the message is clear but not harsh.", 3),
-             ("Indirectly, by asking questions that guide them to identify issues themselves.", 4),
-             ("Very subtly, through hints or a trusted third party. Direct criticism would damage the relationship.", 5)
-         ]},
-        {"q": "Your counterpart says 'yes' but their body language is hesitant. How do you proceed?",
-         "options": [
-             ("I take the 'yes' at face value and move forward with the agreement.", 1),
-             ("I note the hesitation but proceed, planning to confirm details in writing later.", 2),
-             ("I pause and ask: 'Are you comfortable with all aspects of this proposal?'", 3),
-             ("I read the non-verbal cues as discomfort and suggest revisiting with more flexibility.", 4),
-             ("The 'yes' is about harmony, not agreement. I slow down, rebuild rapport, and look for the real answer in what is NOT said.", 5)
-         ]}
+        {"q": "Placeholder Karnauhova question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(5)]},
+        {"q": "Placeholder Karnauhova question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(5)]},
+        {"q": "Placeholder Karnauhova question 3", "options": [(f"Option {chr(65+i)}", i+1) for i in range(5)]},
+        {"q": "Placeholder Karnauhova question 4", "options": [(f"Option {chr(65+i)}", i+1) for i in range(5)]}
     ],
     "Action": [
-        {"q": "You meet a new international contact at a conference. What do you want to know first?",
-         "options": [
-             ("What do they do? Job title, company, current projects.", 1),
-             ("Their professional achievements and goals they're working toward.", 2),
-             ("A mix of what they do professionally and who they are as a person.", 3),
-             ("Where they're from, their family, what they enjoy outside work.", 4),
-             ("Who they are at their core—values, philosophy, what gives them meaning.", 5)
-         ]},
-        {"q": "Your organization evaluates a partnership's success. What metric matters most?",
-         "options": [
-             ("Tangible results: revenue, contracts signed, deadlines met.", 1),
-             ("Measurable outcomes combined with qualitative stakeholder feedback.", 2),
-             ("A balance between deliverables and relationship quality built during the process.", 3),
-             ("The depth of trust and mutual understanding established between partners.", 4),
-             ("The long-term harmony and shared purpose that emerged, regardless of short-term deliverables.", 5)
-         ]},
-        {"q": "When introducing yourself to international professionals, how do you describe yourself?",
-         "options": [
-             ("I'm a [title] at [company]. I specialize in [field] and recently completed [achievement].", 1),
-             ("I work in [field] and I'm passionate about [goal]. Currently focused on [project].", 2),
-             ("I work in [field], but I'm also a [hobby/identity]. I believe in balancing professional and personal growth.", 3),
-             ("I value deep connections and meaningful experiences. My relationships define me more than my title.", 4),
-             ("I'm a [cultural identity] who believes in [philosophy]. My work is just one expression of who I am.", 5)
-         ]}
+        {"q": "Placeholder Karnauhova question 1", "options": [(f"Option {chr(65+i)}", i+1) for i in range(5)]},
+        {"q": "Placeholder Karnauhova question 2", "options": [(f"Option {chr(65+i)}", i+1) for i in range(5)]},
+        {"q": "Placeholder Karnauhova question 3", "options": [(f"Option {chr(65+i)}", i+1) for i in range(5)]},
+        {"q": "Placeholder Karnauhova question 4", "options": [(f"Option {chr(65+i)}", i+1) for i in range(5)]}
     ]
 }
 
