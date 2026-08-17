@@ -14,12 +14,23 @@ from supabase import create_client, Client
 # Initialize Supabase client (cached so it doesn't reconnect on every click)
 @st.cache_resource
 def init_supabase():
-    return create_client(st.secrets["supabase"]["url"], st.secrets["supabase"]["key"])
+    try:
+        # This will fail gracefully if the secrets are missing in the demo app
+        return create_client(st.secrets["supabase"]["url"], st.secrets["supabase"]["key"])
+    except Exception:
+        return None  # Returns None instead of crashing the app
 
-supabase: Client = init_supabase()
+supabase = init_supabase()
 
 def save_user_profile(anonymous_id, nationality, framework, scores, comparison_type, comparison_country=None):
     """Saves the user's test results to the Supabase database."""
+    
+    # --- DEMO MODE: Database is disconnected ---
+    if supabase is None:
+        st.toast("Demo Mode: Database connection is currently disabled.", icon="⚠️")
+        return True  # Pretends it saved successfully so the UI doesn't break!
+    # -------------------------------------------
+
     try:
         # Magic trick: Converts special calculation numbers into standard Python numbers for Supabase
         clean_scores = json.loads(json.dumps(scores))
