@@ -1595,6 +1595,12 @@ def main():
             color: var(--accent) !important;
             background-color: rgba(59, 111, 161, 0.1) !important;
         }
+        
+        /* Custom Checkbox Styling */
+        div[data-testid="stCheckbox"] > label > div > div {
+            background-color: var(--text-main) !important;
+            border-color: var(--text-main) !important;
+        }
 
         /* 6. SELECTION FIELDS (Dropdowns, Text Inputs) */
         .stSelectbox > div > div, .stTextInput > div > div, .stNumberInput > div > div {
