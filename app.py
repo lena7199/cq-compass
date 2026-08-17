@@ -134,7 +134,7 @@ p, li, span, label, div {
 }
 
 .stButton > button:hover {
-    background-color: rgba(236, 91, 56, 0.1) !important; /* Subtle accent glow */
+    background-color: rgba(59, 111, 160, 0.1) !important; /* Subtle accent glow */
     border-color: var(--accent) !important;
     color: var(--accent) !important;
     transform: translateY(-2px) !important;
@@ -1231,8 +1231,8 @@ def page_country_comparison():
                     transition: all 0.3s ease !important;
                 }
                 div[data-testid="stButton"] button[kind="secondary"]:hover {
-                    background-color: rgba(201, 169, 110, 0.15) !important;
-                    box-shadow: 0 0 10px rgba(201, 169, 110, 0.4) !important;
+                    background-color: rgba(59, 111, 160, 0.15) !important;
+                    box-shadow: 0 0 10px rgba(59, 111, 160, 0.3) !important;
                 }
                 </style>
             """, unsafe_allow_html=True)
@@ -1593,7 +1593,7 @@ def main():
         div[data-testid="stButton"] button:hover {
             border-color: var(--accent) !important;
             color: var(--accent) !important;
-            background-color: rgba(236, 91, 56, 0.1) !important;
+            background-color: rgba(59, 111, 161, 0.1) !important;
         }
 
         /* 6. SELECTION FIELDS (Dropdowns, Text Inputs) */
