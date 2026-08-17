@@ -1595,20 +1595,6 @@ def main():
             color: var(--accent) !important;
             background-color: rgba(59, 111, 161, 0.1) !important;
         }
-        
-        /* Nuclear Option - Override ALL checkboxes */
-        [data-testid="stCheckbox"] * {
-            background-color: transparent !important;
-        }
-
-        [data-testid="stCheckbox"] label > div > div {
-            background-color: var(--text-main) !important;
-            border: 2px solid var(--text-main) !important;
-        }
-
-        [data-testid="stCheckbox"] svg {
-            fill: white !important;
-        }
 
         /* 6. SELECTION FIELDS (Dropdowns, Text Inputs) */
         .stSelectbox > div > div, .stTextInput > div > div, .stNumberInput > div > div {
