@@ -1565,9 +1565,9 @@ def main():
             /* 1. MAIN UI COLORS (Change these to test new palettes!) */
             --bg-main: #F9F7F5;          /* General Background */
             --bg-secondary: #FFFFFF;     /* Cards, Inputs, Dropdowns */
-            --text-main: #2D3748;        /* Primary Text */
-            --text-secondary: #718096;   /* Borders, Subtle Text, Icons */
-            --accent: #FF7575;           /* Buttons Hover, Progress Bar, Highlights */
+            --text-main: #1E3A5F;        /* Primary Text */
+            --text-secondary: #A8906B;   /* Borders, Subtle Text, Icons */
+            --accent: #2E5C8A;           /* Buttons Hover, Progress Bar, Highlights */
             
             /* 2. SEMANTIC COLORS (For alerts, badges, and recommendations) */
             --color-danger: #C75B3A;     /* Red / Urgent */
