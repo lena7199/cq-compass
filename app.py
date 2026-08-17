@@ -203,7 +203,7 @@ div[data-baseweb="select"] div[role="option"][aria-selected="true"] {
 /* 9. ANONYMOUS ID DISPLAY */
 .anonymous-id {
     background-color: var(--accent);
-    color: var(--bg-main); /* Ensures high contrast */
+    color: var(--bg-main) !important; /* Ensures high contrast */
     padding: 15px 25px;
     border-radius: 8px;
     font-family: 'Inter', monospace;
