@@ -1596,10 +1596,15 @@ def main():
             background-color: rgba(59, 111, 161, 0.1) !important;
         }
         
-        /* Custom Checkbox Styling */
-        div[data-testid="stCheckbox"] > label > div > div {
+        /* Custom Checkbox Styling - Fixed */
+        div[data-testid="stCheckbox"] label > div:first-child > div {
             background-color: var(--text-main) !important;
             border-color: var(--text-main) !important;
+        }
+
+        /* Ensure the checkmark itself stays white for contrast */
+        div[data-testid="stCheckbox"] svg {
+            color: #FFFFFF !important;
         }
 
         /* 6. SELECTION FIELDS (Dropdowns, Text Inputs) */
