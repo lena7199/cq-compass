@@ -1596,27 +1596,18 @@ def main():
             background-color: rgba(59, 111, 161, 0.1) !important;
         }
         
-        /* Custom Checkbox Styling - Aggressive Override */
-        div[data-testid="stCheckbox"] label > div > div:first-child,
-        div[data-testid="stCheckbox"] .stCheckbox label > div > div:first-child,
-        .stCheckbox label > div > div:first-child {
-            background-color: var(--text-main) !important;
-            border-color: var(--text-main) !important;
-            border-width: 2px !important;
+        /* Nuclear Option - Override ALL checkboxes */
+        [data-testid="stCheckbox"] * {
+            background-color: transparent !important;
         }
 
-        /* Force the checkmark to be white */
-        div[data-testid="stCheckbox"] svg,
-        .stCheckbox svg {
-            fill: #FFFFFF !important;
-            color: #FFFFFF !important;
+        [data-testid="stCheckbox"] label > div > div {
+            background-color: var(--text-main) !important;
+            border: 2px solid var(--text-main) !important;
         }
 
-        /* Also target the checked state specifically */
-        div[data-testid="stCheckbox"] input:checked + div,
-        .stCheckbox input:checked + div {
-            background-color: var(--text-main) !important;
-            border-color: var(--text-main) !important;
+        [data-testid="stCheckbox"] svg {
+            fill: white !important;
         }
 
         /* 6. SELECTION FIELDS (Dropdowns, Text Inputs) */
