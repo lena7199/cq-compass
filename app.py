@@ -1565,7 +1565,7 @@ def main():
             /* 1. MAIN UI COLORS (Change these to test new palettes!) */
             --bg-main: #F9F7F5;          /* General Background */
             --bg-secondary: #FFFFFF;     /* Cards, Inputs, Dropdowns */
-            --text-main: #1E3A5F;        /* Primary Text */
+            --text-main: #1C2D4B;        /* Primary Text */
             --text-secondary: #A8906B;   /* Borders, Subtle Text, Icons */
             --accent: #2E5C8A;           /* Buttons Hover, Progress Bar, Highlights */
             
