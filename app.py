@@ -299,14 +299,14 @@ def create_radar_chart(scores, labels, title="Cultural Profile"):
             radialaxis=dict(
                 visible=True,
                 range=[1, 7],
-                gridcolor='#E5E7EB', # Light grey for subtle, elegant grid lines
+                gridcolor='#E5E7EB',  # Light gray for subtle, elegant grid lines
                 tickfont=dict(color='#1C2D4B', size=10) # Dark midnight blue text
             ),
             angularaxis=dict(
-                gridcolor='#E5E7EB', # Light grey grid lines
-                tickfont=dict(color='#1C2D4B', size=11, family='Playfair Display') # Dark blue font
+                gridcolor='#E5E7EB',  # Light gray grid lines
+                tickfont=dict(color='#1C2D4B', size=11, family='Playfair Display') # Dark blue, elegant font
             ),
-            bgcolor='rgba(0,0,0,0)' # Transparent! Blends into the white card
+            bgcolor='rgba(0,0,0,0)' # Transparent! Blends perfectly into the white card
         ),
         showlegend=True,
         title=dict(
@@ -314,7 +314,7 @@ def create_radar_chart(scores, labels, title="Cultural Profile"):
             font=dict(color='#1C2D4B', size=22, family='Playfair Display') # Dark blue title
         ),
         plot_bgcolor='rgba(0,0,0,0)', # Transparent plot area
-        paper_bgcolor='rgba(0,0,0,0)', #Transparent paper area
+        paper_bgcolor='rgba(0,0,0,0)', # Transparent paper area
         font=dict(color='#1C2D4B', family='Inter'), # Dark blue default text
         legend=dict(
             font=dict(color='#1C2D4B', size=12),
