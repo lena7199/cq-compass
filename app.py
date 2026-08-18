@@ -978,12 +978,22 @@ def page_results():
         
         fig.update_layout(
             polar=dict(
-                radialaxis=dict(visible=True, range=[1, 7]),
-                bgcolor='#243447'
+                radialaxis=dict(
+                    visible=True, 
+                    range=[1, 7],
+                    gridcolor='#E5E7EB',
+                    tickfont=dict(color='#1C2D4B')
+                ),
+                angularaxis=dict(
+                    gridcolor='#E5E7EB',
+                    tickfont=dict(color='#1C2D4B')
+                ),
+                bgcolor='rgba(0,0,0,0)'
             ),
             showlegend=True,
-            plot_bgcolor='#1B2838',
-            paper_bgcolor='#1B2838'
+            plot_bgcolor='rgba(0,0,0,0)',
+            paper_bgcolor='rgba(0,0,0,0)',
+            font=dict(color='#1C2D4B')
         )
 
         fig.update_layout(
@@ -995,7 +1005,7 @@ def page_results():
                 xanchor="center",
                 x=0.5,
                 bgcolor="rgba(0,0,0,0)",
-                font=dict(color="#D4AF37", size=14)
+                font=dict(color="#1C2D4B", size=14)
             )
         )
         
@@ -1210,13 +1220,29 @@ def page_country_comparison():
             
             fig.update_layout(
                 polar=dict(
-                    radialaxis=dict(visible=True, range=[1, 7]),
-                    bgcolor='#243447'
+                    radialaxis=dict(
+                        visible=True, 
+                        range=[1, 7],
+                        gridcolor='#E5E7EB',
+                        tickfont=dict(color='#1C2D4B')
+                    ),
+                    angularaxis=dict(
+                        gridcolor='#E5E7EB',
+                        tickfont=dict(color='#1C2D4B')
+                    ),
+                    bgcolor='rgba(0,0,0,0)'
                 ),
                 showlegend=True,
-                legend=dict(orientation="h", yanchor="bottom", y=1.20, xanchor="center", x=0.5, font=dict(color='#EC5B38', size=12)),
-                plot_bgcolor='#1B2838',
-                paper_bgcolor='#1B2838'
+                legend=dict(
+                     orientation="h", 
+                     yanchor="bottom", 
+                     y=1.20, 
+                     xanchor="center", 
+                     x=0.5, 
+                     font=dict(color='#1C2D4B', size=12)
+                 ),
+                 plot_bgcolor='rgba(0,0,0,0)',
+                 paper_bgcolor='rgba(0,0,0,0)'
             )
             
             st.plotly_chart(fig, use_container_width=True, config={'staticPlot': True})
