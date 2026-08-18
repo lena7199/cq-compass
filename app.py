@@ -290,8 +290,8 @@ def create_radar_chart(scores, labels, title="Cultural Profile"):
         theta=labels_closed,
         fill='toself',
         name='Your Profile',
-        line_color='#EC5B38',
-        fillcolor='rgba(201, 169, 110, 0.3)'
+        line_color='#2E5C8A',
+        fillcolor='rgba(59, 111, 160, 0.15)'
     ))
     
     fig.update_layout(
@@ -960,8 +960,8 @@ def page_results():
             theta=[format_dimension_name(l) for l in list(user_scores.keys()) + [list(user_scores.keys())[0]]],
             fill='toself',
             name='Your Profile',
-            line_color='#EC5B38',
-            fillcolor='rgba(201, 169, 110, 0.3)'
+            line_color='#2E5C8A',
+            fillcolor='rgba(59, 111, 160, 0.15)'
         ))
         
         # National scores
@@ -972,8 +972,8 @@ def page_results():
             theta=[format_dimension_name(l) for l in user_labels],
             fill='toself',
             name=f'{(st.session_state.nationality or "National").replace("LatinAmerica", "Latin America")} Average',
-            line_color='#7A9E7E',
-            fillcolor='rgba(122, 158, 126, 0.2)'
+            line_color='#1C2D4B',
+            fillcolor='rgba(28, 45, 75, 0.15)'
         ))
         
         fig.update_layout(
@@ -1185,8 +1185,8 @@ def page_country_comparison():
                 theta=[format_dimension_name(l) for l in labels_closed],
                 fill='toself',
                 name='Your Profile',
-                line_color='#EC5B38',
-                fillcolor='rgba(201, 169, 110, 0.3)'
+                line_color='#2E5C8A',
+                fillcolor='rgba(59, 111, 160, 0.15)'
             ))
             
             # National scores data preparation (Part 1)
@@ -1203,8 +1203,8 @@ def page_country_comparison():
                     theta=[format_dimension_name(l) for l in labels_closed],
                     fill='toself',
                     name=f'{(st.session_state.nationality or "National").replace("LatinAmerica", "Latin America")} Average',
-                    line_color='#7A9E7E',
-                    fillcolor='rgba(122, 158, 126, 0.2)'
+                    line_color='#1C2D4B',
+                    fillcolor='rgba(28, 45, 75, 0.15)'
                 ))
 
             # Target scores
@@ -1214,8 +1214,8 @@ def page_country_comparison():
                 theta=[format_dimension_name(l) for l in labels_closed],
                 fill='toself',
                 name=f'{target_country.replace("LatinAmerica", "Latin America")} Average',
-                line_color='#C75B3A',
-                fillcolor='rgba(199, 91, 58, 0.2)'
+                line_color='#A8906B',
+                fillcolor='rgba(184, 165, 122, 0.15)'
             ))
             
             fig.update_layout(
