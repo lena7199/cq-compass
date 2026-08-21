@@ -1395,7 +1395,36 @@ def page_country_comparison():
                 """, unsafe_allow_html=True)
 
             st.markdown("---")
+
+    # --- LOAD AND DISPLAY CULTURAL NOTES ---
+    notes_file = 'data/cultural_notes.csv'
+
+    # Check if the file exists to prevent crashes
+    if os.path.exists(notes_file):
+        df_notes = pd.read_csv(notes_file)
             
+        # Check if a comparison country is currently selected in the session
+        if st.session_state.get('comparison_country'):
+            target_country = st.session_state.comparison_country
+                
+            # Filter the notes for the selected country
+            country_notes = df_notes[df_notes['Country'] == target_country]
+                
+            # Display the notes if they exist
+            if not country_notes.empty:
+                st.markdown("---") # Adds a subtle divider line
+                st.markdown("### 💡 Cultural Context & Local Etiquette")
+                st.caption(f"Key behavioral insights for interacting in {target_country.replace('LatinAmerica', 'Latin America')}.")
+                    
+                # Loop through each note and render the custom HTML card
+                for index, row in country_notes.iterrows():
+                    st.markdown(f"""
+                    <div class="cultural-note-card">
+                        <div class="note-category">{row['Category']}</div>
+                        <div class="note-tip">{row['Tip']}</div>
+                    </div>
+                    """, unsafe_allow_html=True)
+
     #Add navigation at the bottom
     render_navigation()
     
@@ -1635,7 +1664,33 @@ def main():
 
         /* 5. PROGRESS BAR (For your custom HTML progress bar) */
         .custom-progress-bg { background-color: var(--bg-secondary) !important; }
-        .custom-progress-fill { background-color: var(--accent) !important; }
+        .custom-progress-fill { background-color: var(--accent) !important; 
+        }
+
+        /* --- CULTURAL NOTES CARDS --- */
+        .cultural-note-card {
+            background-color: var(--bg-secondary);
+            border-left: 4px solid var(--text-secondary);
+            padding: 16px 20px;
+            margin-bottom: 16px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .note-category {
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 1.1em;
+            margin-bottom: 6px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .note-tip {
+            color: var(--text-main);
+            font-size: 1em;
+            line-height: 1.5;
+            font-family: 'Inter', sans-serif;
+        }
     </style>
     """, unsafe_allow_html=True)
 
