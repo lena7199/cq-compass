@@ -1412,7 +1412,6 @@ def page_country_comparison():
                 
             # Display the notes if they exist
             if not country_notes.empty:
-                st.markdown("---") # Adds a subtle divider line
                 st.markdown("### 💡 Cultural Context & Local Etiquette")
                 st.caption(f"Key behavioral insights for interacting in {target_country.replace('LatinAmerica', 'Latin America')}.")
                     
