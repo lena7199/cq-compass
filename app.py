@@ -1144,6 +1144,8 @@ def page_country_comparison():
         # Reverse map the pretty name back to the raw CSV name
         target_country = reverse_country_map.get(target_country_pretty, target_country_pretty)
 
+        st.session_state.comparison_country = target_country
+
     # 4. DRAWING THE CHARTS (Runs for BOTH returning users and new users!)
     if target_country:
         # Display comparison for each test
