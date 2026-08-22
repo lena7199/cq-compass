@@ -1,52 +1,12 @@
 {
   "Karnauhova": {
-    "TimeFocus": [
-      {
-        "q": "You are leading a project meeting with an international team. The agenda has 5 items, but the first topic sparks a rich, unexpected discussion. The scheduled time has passed. What do you do?",
-        "options": [
-          ["Politely interrupt and move to the next agenda item. The schedule must be respected.", 1],
-          ["Allow 2-3 extra minutes, then firmly redirect the group back to the agenda.", 2],
-          ["Quickly assess whether the discussion is more valuable than remaining items and adjust accordingly.", 3],
-          ["Let the discussion continue and drop the least important agenda item to compensate.", 4],
-          ["Fully embrace the organic flow. The best outcomes come from following the energy of the group.", 5]
-        ]
-      },
-      {
-        "q": "A colleague calls during your focused work time for a non-urgent matter. How do you respond?",
-        "options": [
-          ["I don't answer. I have blocked this time for deep work and will call back during open hours.", 1],
-          ["I answer briefly, explain I'm busy, and schedule a specific time to talk later.", 2],
-          ["I answer and spend a few minutes helping, then gently wrap up.", 3],
-          ["I take the call and help as long as needed. Relationships come first.", 4],
-          ["I'm happy to help. Interruptions are a natural part of the workday.", 5]
-        ]
-      },
-      {
-        "q": "You are organizing a social event for an international group. How do you structure the evening?",
-        "options": [
-          ["A detailed timeline: 7:00 arrivals, 7:30 dinner, 8:30 speeches, 9:30 networking, 10:30 close.", 1],
-          ["A loose framework with approximate start times but some flexibility built in.", 2],
-          ["A general plan (dinner, then socializing) but I let the evening unfold naturally.", 3],
-          ["Minimal structure. I provide food, drinks, and a space, and trust the group.", 4],
-          ["No schedule at all. People arrive when they arrive, eat when hungry, leave when ready.", 5]
-        ]
-      }
-    ]
+    "TimeFocus": [ ... your questions here ... ],
+    "TimeOrientation": [ ... your questions here ... ]
   },
   "GLOBE_Culture": {
-    "PowerDistance": [
-      {
-         "q": "...",
-         "options": [ ... ]
-      }
-    ]
+    "PerformanceOrientation": [ ... your questions here ... ]
   },
   "GLOBE_Leadership": {
-    "CharismaticValueBased": [
-      {
-         "q": "...",
-         "options": [ ... ]
-      }
-    ]
+    "CharismaticValueBased": [ ... your questions here ... ]
   }
 }
