@@ -927,6 +927,10 @@ def page_results():
     
     # Load country scores
     country_scores_df = load_data('country_scores.csv')
+
+    # Load the test questions
+    with open('data/questions.json', 'r', encoding='utf-8') as f:
+        test_questions = json.load(f)
     
     # Display results for each test
     for test_name in st.session_state.selected_tests:
