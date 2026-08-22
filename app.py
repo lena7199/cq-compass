@@ -11,6 +11,15 @@ import ast
 import json
 from supabase import create_client, Client
 
+# Load all questions from the single JSON file
+with open('data/questions.json', 'r', encoding='utf-8') as f:
+    json_data = json.load(f)
+
+# MAGIC TRICK: Assign the JSON data to the exact variable names your app already expects!
+KARNAUHOVA_QUESTIONS = json_data.get("Karnauhova", {})
+GLOBE_CULTURE_QUESTIONS = json_data.get("GLOBE_Culture", {})
+GLOBE_LEADERSHIP_QUESTIONS = json_data.get("GLOBE_Leadership", {})
+    
 # Initialize Supabase client (cached so it doesn't reconnect on every click)
 @st.cache_resource
 def init_supabase():
@@ -717,15 +726,6 @@ def page_results():
     # Load country scores
     country_scores_df = load_data('country_scores.csv')
 
-    # Load all questions from the single JSON file
-    with open('data/questions.json', 'r', encoding='utf-8') as f:
-        json_data = json.load(f)
-
-    # MAGIC TRICK: Assign the JSON data to the exact variable names your app already expects!
-    KARNAUHOVA_QUESTIONS = json_data.get("Karnauhova", {})
-    GLOBE_CULTURE_QUESTIONS = json_data.get("GLOBE_Culture", {})
-    GLOBE_LEADERSHIP_QUESTIONS = json_data.get("GLOBE_Leadership", {})
-    
     # Display results for each test
     for test_name in st.session_state.selected_tests:
         st.markdown(f"## {test_name.replace('_', ' ')} Results")
