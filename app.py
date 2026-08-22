@@ -1345,6 +1345,7 @@ def page_country_comparison():
                 target_score = target_score[0]
                 gap = abs(user_score - target_score)
 
+                # 1. Determine Gap Category and Urgency
                 if test_name == "Karnauhova":
                     if gap >= 2.0: gap_category, urgency = "High", "Red"
                     elif gap >= 1.0: gap_category, urgency = "Medium", "Yellow"
@@ -1354,31 +1355,37 @@ def page_country_comparison():
                     elif gap >= 1.2: gap_category, urgency = "Medium", "Yellow"
                     else: gap_category, urgency = "Low", "Green"
 
+                # 2. Determine Direction
                 if user_score > target_score: direction = "UserHigher"
                 elif user_score < target_score: direction = "UserLower"
                 else: direction = "Aligned"
 
-                rec_row = rec_df[
-                    (rec_df['Dimension'] == dimension) &
-                    (rec_df['GapCategory'] == gap_category) &
-                    (rec_df['Direction'] == direction)
-                ]
+                # 3. Find the matching row in the CSV
+                # FIX: If the gap is Low/Green, just look for the "Aligned" text regardless of direction
+                if gap_category == "Low":
+                    rec_row = rec_df[
+                        (rec_df['Dimension'] == dimension) &
+                        (rec_df['GapCategory'] == 'Low')
+                    ]
+                else:
+                    rec_row = rec_df[
+                        (rec_df['Dimension'] == dimension) &
+                        (rec_df['GapCategory'] == gap_category) &
+                        (rec_df['Direction'] == direction)
+                    ]
 
+                # 4. Append the recommendation
                 if len(rec_row) > 0:
                     recommendations.append({
-                        "dimension": dimension, "urgency": urgency, "gap_category": gap_category,
-                        "text": rec_row.iloc[0]['RecommendationText'], "gap": gap
-                    })
-
-                else:
-                # Fallback for Strengths/Aligned dimensions
-                    recommendations.append({
-                        "dimension": dimension,
-                        "urgency": "Green",
-                        "gap_category": "Low",
-                        "text": f"You are naturally aligned with {target_country} in this area. This is a core strength that will help you connect easily!",
+                        "dimension": dimension, 
+                        "urgency": urgency, 
+                        "gap_category": gap_category,
+                        "text": rec_row.iloc[0]['RecommendationText'], 
                         "gap": gap
                     })
+                else:
+                    # Failsafe: If it STILL can't find it, print a warning to the console so we know
+                    print(f"Warning: Missing recommendation for {dimension} ({gap_category}/{direction})")
 
             urgency_order = {"Red": 0, "Yellow": 1, "Green": 2}
             recommendations.sort(key=lambda x: (urgency_order[x['urgency']], -x['gap']))
