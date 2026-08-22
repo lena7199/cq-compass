@@ -1069,7 +1069,7 @@ def page_results():
     for dimension, score in user_scores.items():
         # Find the row in the CSV that matches the Framework, Dimension, and Score Range
         mask = (
-            (interpretations_df['Framework'] == 'Karnauhova') & 
+            (interpretations_df['Framework'] == test_name) & 
             (interpretations_df['Dimension'] == dimension) & 
             (score >= interpretations_df['Min_Score']) & 
             (score <= interpretations_df['Max_Score'])
