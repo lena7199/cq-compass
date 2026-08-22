@@ -257,4 +257,580 @@
       }
     ]
   }
+},
+,
+  "GLOBE_Culture": {
+    "PowerDistance": [
+      {
+        "q": "During a high-stakes negotiation, the most senior leader on your team makes a statement that contains a clear factual error. How do you respond?",
+        "options": [
+          ["I openly and immediately correct the error. Accuracy and truth are more important than rank.", 1],
+          ["I politely but directly interject to clarify the facts for the room.", 2],
+          ["I wait for a natural pause and gently suggest an alternative perspective without explicitly calling it an error.", 3],
+          ["I say nothing during the meeting, but send a private, polite message to the leader afterward.", 4],
+          ["I defer completely during the meeting and only discuss the discrepancy with a trusted peer later.", 5],
+          ["I accept the statement as is. In this setting, the leader's authority and the team's unified front override minor factual details.", 6],
+          ["I actively support the leader's statement to reinforce their authority, and I would only correct the record privately and very discreetly later if absolutely necessary.", 7]
+        ]
+      },
+      {
+        "q": "You are organizing a formal diplomatic reception. How do you handle the seating arrangement and greeting protocol?",
+        "options": [
+          ["Completely open seating and first-name greetings for everyone, regardless of title or age.", 1],
+          ["Mostly open seating, but I ensure the guest of honor gets a slightly better spot.", 2],
+          ["A general seating plan by delegation, with casual but respectful greetings.", 3],
+          ["Assigned seating for key figures, with a mix of formal and informal greetings based on familiarity.", 4],
+          ["Strictly assigned seating based on protocol, and I greet everyone using their formal titles.", 5],
+          ["Highly structured seating reflecting exact hierarchical rank, and I wait to be introduced before speaking to seniors.", 6],
+          ["Rigid protocol: seating is strictly by rank, and I use full formal titles, bowing or deferring appropriately, never speaking to a senior until addressed.", 7]
+        ]
+      },
+      {
+        "q": "Your team is facing a critical deadline. How should the final decision on the project direction be made?",
+        "options": [
+          ["A democratic vote where every team member, regardless of role, has an equal say.", 1],
+          ["An open discussion where the team lead considers all opinions but makes the final call.", 2],
+          ["The team discusses openly, and the most experienced members naturally guide the group to a consensus.", 3],
+          ["The team lead consults a small group of senior members, then announces the decision.", 4],
+          ["The senior leader makes the decision after brief input, and the team is expected to execute it without debate.", 5],
+          ["The most senior person decides entirely on their own. Their experience and authority make them best suited to lead.", 6],
+          ["The top leader dictates the direction. Questioning or debating this decision would be seen as insubordination and disrespect.", 7]
+        ]
+      }
+    ],
+    "UncertaintyAvoidance": [
+      {
+        "q": "Your organization suddenly announces a major change in project scope with very little prior warning or detailed instruction. How do you react?",
+        "options": [
+          ["I embrace it immediately. Ambiguity is an exciting opportunity for innovation and creative problem-solving.", 1],
+          ["I am comfortable with it and will figure out the details as we go, adapting on the fly.", 2],
+          ["I am slightly uneasy but will ask a few clarifying questions and then proceed flexibly.", 3],
+          ["I feel a moderate need for clarity and will immediately draft a provisional plan to establish some structure.", 4],
+          ["I am quite uncomfortable and will actively seek out management to demand a detailed, step-by-step roadmap before proceeding.", 5],
+          ["I am highly anxious about the lack of rules. I will refuse to act until a comprehensive, formal procedure is written and approved.", 6],
+          ["I am deeply distressed by the ambiguity. I believe operating without strict, pre-approved protocols is reckless and unprofessional.", 7]
+        ]
+      },
+      {
+        "q": "You are drafting a partnership agreement with a new international counterpart. What is your approach to the contract?",
+        "options": [
+          ["A brief, one-page memorandum of understanding. We trust each other and can adapt as needed.", 1],
+          ["A short agreement outlining the main goals, leaving the specific methods flexible.", 2],
+          ["A standard contract with clear objectives, but room for informal adjustments as the relationship evolves.", 3],
+          ["A detailed contract covering most foreseeable scenarios, with a formal process for amendments.", 4],
+          ["A highly detailed, lengthy contract with strict clauses, penalties, and explicit procedures for every possible contingency.", 5],
+          ["An exhaustive legal document. Every single rule, exception, and protocol must be explicitly defined to eliminate all risk.", 6],
+          ["A rigid, ironclad contract. Any deviation from the written rules without formal, multi-level approval is unacceptable.", 7]
+        ]
+      },
+      {
+        "q": "A colleague proposes a completely new, untested method to solve a recurring problem. What is your immediate reaction?",
+        "options": [
+          ["I enthusiastically support it. We should always be experimenting and disrupting the status quo.", 1],
+          ["I am open to it and suggest we run a quick, low-risk pilot to see how it works.", 2],
+          ["I am cautiously optimistic but want to review the potential risks before committing.", 3],
+          ["I am hesitant and ask for a detailed risk assessment and a comparison with our current proven methods.", 4],
+          ["I am skeptical. I prefer we stick to the established procedures that we know work reliably.", 5],
+          ["I strongly oppose it. Introducing untested methods creates unnecessary and dangerous unpredictability.", 6],
+          ["I outright reject it. We must strictly adhere to our proven, standardized operating procedures without deviation.", 7]
+        ]
+      }
+    ],
+    "InstitutionalCollectivism": [
+      {
+        "q": "Your company has a surplus budget at the end of the year. How do you believe it should be allocated?",
+        "options": [
+          ["Entirely as individual performance bonuses to reward the top-performing employees.", 1],
+          ["Mostly as individual bonuses, with a small portion for a team celebration.", 2],
+          ["A balanced split: half for individual merit bonuses, half for improving shared workplace resources.", 3],
+          ["Mostly toward improving shared resources and community programs, with modest individual bonuses.", 4],
+          ["Entirely toward collective benefits: upgrading shared facilities, funding team-wide training, or community initiatives.", 5],
+          ["Heavily into societal or organizational welfare programs, ensuring no individual stands out financially.", 6],
+          ["Strictly into collective funds. Individual bonuses are inappropriate; the organization's collective strength must be prioritized above all.", 7]
+        ]
+      },
+      {
+        "q": "When evaluating a potential new hire, what is the most important factor for you?",
+        "options": [
+          ["Their individual track record, unique skills, and personal drive to outperform others.", 1],
+          ["Their personal achievements, balanced with their ability to work alongside others.", 2],
+          ["A mix of their individual merit and their potential to fit into the existing team dynamic.", 3],
+          ["Their willingness to collaborate and their alignment with the organization's collective values.", 4],
+          ["Their proven ability to work harmoniously within a team and prioritize group goals over personal ambition.", 5],
+          ["Their background and connections that can benefit the broader organizational community.", 6],
+          ["Their deep commitment to the collective. Individual brilliance is irrelevant if they do not serve the group's unified purpose.", 7]
+        ]
+      },
+      {
+        "q": "How do you view the role of organizational or societal institutions (like government or corporate leadership) in people's lives?",
+        "options": [
+          ["They should interfere as little as possible. Individuals are fully responsible for their own success or failure.", 1],
+          ["They should provide a basic safety net, but individuals must primarily rely on their own initiative.", 2],
+          ["They should offer moderate support and regulation to ensure fairness, while preserving individual freedom.", 3],
+          ["They should play an active role in ensuring resources are distributed fairly and collective well-being is maintained.", 4],
+          ["They have a strong duty to actively manage resources and protect the collective from individual selfishness.", 5],
+          ["They must heavily regulate and guide society to ensure absolute collective harmony and resource sharing.", 6],
+          ["They must strictly enforce collective action and resource distribution. The needs of the society/organization completely override individual desires.", 7]
+        ]
+      }
+    ],
+    "InGroupCollectivism": [
+      {
+        "q": "You are offered a prestigious promotion that requires you to relocate, which would mean leaving your close-knit team and family behind. How do you decide?",
+        "options": [
+          ["I accept immediately. My individual career advancement is my top priority.", 1],
+          ["I accept, but I will make sure to visit my family and old team regularly.", 2],
+          ["I weigh the personal career benefits against the impact on my family, seeking a compromise.", 3],
+          ["I lean toward declining or negotiating remote work, as my family and current team's stability is highly important to me.", 4],
+          ["I decline the promotion. My loyalty to my family and my current group outweighs any individual career gain.", 5],
+          ["I would not even consider it. Uprooting my family or abandoning my group for personal gain is unacceptable.", 6],
+          ["I outright reject it. My identity and duty are entirely tied to my family and in-group; individual ambition is secondary to their well-being.", 7]
+        ]
+      },
+      {
+        "q": "A close friend or family member asks you to help them get a job at your company, but they are not the most qualified candidate. What do you do?",
+        "options": [
+          ["I refuse. Hiring must be strictly based on merit, and nepotism is unprofessional.", 1],
+          ["I will review their resume, but I will only recommend them if they are genuinely competitive with other candidates.", 2],
+          ["I will give their resume a slight boost or an internal referral, but the final decision must be fair.", 3],
+          ["I will actively advocate for them and highlight their potential, as loyalty to my circle is a key professional value.", 4],
+          ["I will strongly push for their hiring. Helping my in-group is a moral obligation, even if others are slightly more qualified.", 5],
+          ["I will use my influence to ensure they get the position. Taking care of my own is more important than abstract corporate meritocracy.", 6],
+          ["I will do whatever it takes to get them hired. The bond of family/group loyalty supersedes all other professional considerations.", 7]
+        ]
+      },
+      {
+        "q": "When your organization achieves a major success, how do you prefer to celebrate?",
+        "options": [
+          ["By highlighting and rewarding the specific individuals who drove the success.", 1],
+          ["By acknowledging the key contributors, while noting the team's general support.", 2],
+          ["By celebrating the team as a whole, while still giving a nod to standout individual efforts.", 3],
+          ["By focusing entirely on the team's collective effort, avoiding singling out any one person.", 4],
+          ["By organizing a large group event that reinforces our shared identity and mutual dependence.", 5],
+          ["By emphasizing that this success belongs to the entire organization/family, with no individual credit taken.", 6],
+          ["By strictly framing the success as a victory for the collective. Any individual claiming personal credit would be seen as selfish and disruptive.", 7]
+        ]
+      }
+    ],
+    "GenderEgalitarianism": [
+      {
+        "q": "Your company is selecting a project manager for a high-stress, high-travel international assignment. Two candidates are equally qualified: one man, one woman. What is your guiding principle?",
+        "options": [
+          ["I would subtly favor the male candidate, as men are generally more suited for high-stress, demanding travel roles.", 1],
+          ["I would lean toward the male candidate, assuming he might have fewer family obligations that could interfere with travel.", 2],
+          ["I would evaluate them strictly on their individual resumes, but acknowledge that traditional gender roles might make the role slightly harder for the woman.", 3],
+          ["I would evaluate them completely blindly, ensuring gender plays absolutely zero role in the decision.", 4],
+          ["I would actively ensure the woman is given equal or preferential consideration to counteract historical biases in such roles.", 5],
+          ["I would advocate for the woman, believing that breaking traditional gender barriers in high-stress roles is a critical organizational duty.", 6],
+          ["I would insist on the woman's selection if there is any doubt, as achieving absolute gender parity in leadership is a non-negotiable priority.", 7]
+        ]
+      },
+      {
+        "q": "During a meeting, a junior female colleague's idea is talked over by a senior male colleague. How do you react?",
+        "options": [
+          ["I do nothing. This is a normal dynamic, and seniority naturally commands the floor.", 1],
+          ["I feel it's unfortunate, but I assume she will speak up again later if it's truly important.", 2],
+          ["I might gently steer the conversation back to her if the opportunity arises naturally.", 3],
+          ["I immediately interject: 'I'd like to hear the rest of what [Name] was saying.'", 4],
+          ["I actively redirect the conversation to her and explicitly state that her idea is valuable and deserves full attention.", 5],
+          ["I call out the dynamic directly: 'Let's ensure we are hearing from everyone, regardless of seniority or gender.'", 6],
+          ["I firmly stop the meeting to address the interruption, making it clear that silencing female colleagues is unacceptable and will be formally addressed.", 7]
+        ]
+      },
+      {
+        "q": "How do you view the division of household and professional responsibilities between genders?",
+        "options": [
+          ["Men should primarily focus on professional careers, while women should primarily manage the household and family.", 1],
+          ["Men should be the primary breadwinners, though women can work if they choose, but family remains their main duty.", 2],
+          ["Both should contribute to work and home, though traditional roles may naturally emerge based on personal preference.", 3],
+          ["Responsibilities should be divided entirely based on individual skills and agreements, with no regard for gender.", 4],
+          ["There should be an active, intentional effort to ensure men take on equal shares of domestic and caregiving responsibilities.", 5],
+          ["Societal and corporate structures must be actively redesigned to eliminate any remaining systemic advantages men have in the workplace.", 6],
+          ["Gender is entirely irrelevant to capability. Any remaining disparity in roles is a failure of society that must be aggressively corrected.", 7]
+        ]
+      }
+    ],
+    "Assertiveness": [
+      {
+        "q": "A business partner proposes a deal that is highly unfavorable to your organization. How do you respond?",
+        "options": [
+          ["I firmly and directly reject the proposal, clearly stating why it is unacceptable and outlining my counter-demands.", 1],
+          ["I push back strongly, pointing out the flaws in their proposal and demanding significant revisions.", 2],
+          ["I express my concerns clearly but politely, suggesting we work together to find a more balanced middle ground.", 3],
+          ["I express mild hesitation and suggest we need more time to review, avoiding direct confrontation.", 4],
+          ["I remain very diplomatic, focusing on our long-term relationship and gently steering the conversation away from the unfavorable terms.", 5],
+          ["I avoid saying 'no' directly. I use vague language like 'this will be difficult' to signal disagreement without causing offense.", 6],
+          ["I remain completely silent on the issue during the meeting to preserve harmony, and later use a trusted intermediary to convey my reluctance.", 7]
+        ]
+      },
+      {
+        "q": "In a team brainstorming session, you strongly disagree with the majority's chosen direction. What do you do?",
+        "options": [
+          ["I openly and passionately debate the majority, presenting strong counter-arguments to change their minds.", 1],
+          ["I voice my disagreement clearly and advocate for my alternative, even if it creates some tension.", 2],
+          ["I share my alternative perspective respectfully, but I am willing to compromise if the group disagrees.", 3],
+          ["I keep my disagreement to myself to avoid disrupting the group's momentum and harmony.", 4],
+          ["I subtly ask questions that might make the group reconsider, without directly stating my own opposition.", 5],
+          ["I fully support the group's decision outwardly, even though I privately disagree, to maintain team cohesion.", 6],
+          ["I remain entirely silent. Open disagreement is disrespectful and threatens the harmony of the group.", 7]
+        ]
+      },
+      {
+        "q": "How do you prefer to handle a situation where a colleague has made a mistake that affects your work?",
+        "options": [
+          ["I confront them directly and immediately, demanding they fix it and explaining the negative impact.", 1],
+          ["I speak to them privately but firmly, making it clear that the mistake is unacceptable and must be corrected.", 2],
+          ["I discuss it with them constructively, focusing on how we can solve the problem together.", 3],
+          ["I gently mention the issue and offer to help them fix it, minimizing any sense of blame.", 4],
+          ["I fix the mistake myself without saying anything, to avoid making them feel embarrassed or defensive.", 5],
+          ["I ignore the mistake if it's minor, as pointing it out might damage our working relationship.", 6],
+          ["I would never point out a colleague's mistake directly. Preserving their dignity and our harmony is far more important than the error.", 7]
+        ]
+      }
+    ],
+    "FutureOrientation": [
+      {
+        "q": "Your company has a windfall of extra capital. How do you advocate for it to be spent?",
+        "options": [
+          ["On immediate bonuses and short-term perks to boost current morale and reward recent efforts.", 1],
+          ["On quick-win projects that will show a return on investment within the next 6 to 12 months.", 2],
+          ["On a balanced portfolio: some immediate improvements, and some moderate investment in next year's goals.", 3],
+          ["Primarily on strategic initiatives that will position the company for growth over the next 3 to 5 years.", 4],
+          ["Heavily on long-term R&D and infrastructure, even if it means sacrificing short-term profits or bonuses.", 5],
+          ["Almost entirely on 10-year strategic visions and sustainable legacy projects, with minimal focus on current quarterly results.", 6],
+          ["Exclusively on generational, long-term investments. Short-term gains are irrelevant compared to securing the organization's distant future.", 7]
+        ]
+      },
+      {
+        "q": "You are planning a major career move. What is your primary deciding factor?",
+        "options": [
+          ["The immediate salary increase and the perks I can enjoy right now.", 1],
+          ["The short-term career advancement and the skills I can add to my resume this year.", 2],
+          ["A balance between a good current role and the potential for moderate growth in the next few years.", 3],
+          ["The long-term career trajectory and how this move positions me for leadership in 5 years.", 4],
+          ["The enduring legacy and long-term stability this path provides, even if it requires years of delayed gratification.", 5],
+          ["How this decision aligns with my 10-to-20 year life vision, prioritizing future security over present comfort.", 6],
+          ["Entirely on the long-term impact. I am willing to make significant present-day sacrifices to ensure a secure and prosperous distant future.", 7]
+        ]
+      },
+      {
+        "q": "How do you view the practice of saving money versus spending it?",
+        "options": [
+          ["I prefer to spend on experiences and quality of life now. The future is uncertain, so enjoy the present.", 1],
+          ["I spend mostly for the present, but I keep a small, basic emergency fund just in case.", 2],
+          ["I balance enjoying my current income with a disciplined, moderate savings plan for the near future.", 3],
+          ["I prioritize saving and investing a significant portion of my income to ensure future security and growth.", 4],
+          ["I aggressively save and invest, often delaying current pleasures to build substantial long-term wealth.", 5],
+          ["I live very frugally now, channeling almost all resources into long-term investments and future preparations.", 6],
+          ["I believe in extreme delayed gratification. Present-day spending should be minimized to the absolute essentials to maximize future security.", 7]
+        ]
+      }
+    ],
+    "PerformanceOrientation": [
+      {
+        "q": "An employee on your team is a top performer who consistently exceeds targets, but they are arrogant and disrupt team harmony. How do you handle it?",
+        "options": [
+          ["I praise and reward them lavishly. Results are all that matter, and harmony is secondary to excellence.", 1],
+          ["I reward their performance highly, but give them a mild, private warning about their attitude.", 2],
+          ["I acknowledge their results but have a firm conversation about the need to improve their teamwork and attitude.", 3],
+          ["I balance my feedback: praising their output while strongly emphasizing that team cohesion is equally important.", 4],
+          ["I prioritize team harmony. I will formally warn them that their behavior is unacceptable, even if it risks a drop in their output.", 5],
+          ["I am prepared to let them go if they do not change. A toxic high-performer is more damaging to the organization than a moderate, harmonious one.", 6],
+          ["I immediately take action to remove or isolate them. Preserving the collective well-being and harmony of the group is absolutely paramount.", 7]
+        ]
+      },
+      {
+        "q": "When setting annual goals for your department, what is your primary focus?",
+        "options": [
+          ["Setting highly aggressive, stretch targets to drive maximum individual competition and excellence.", 1],
+          ["Setting challenging targets with clear individual rewards for those who outperform their peers.", 2],
+          ["Setting ambitious but achievable goals, with a mix of individual and team-based incentives.", 3],
+          ["Setting clear team goals, emphasizing that we succeed or fail together through collaboration.", 4],
+          ["Setting moderate, realistic goals that prioritize a supportive, low-stress, and harmonious work environment.", 5],
+          ["Focusing primarily on relationship-building and employee well-being, with performance metrics being a secondary concern.", 6],
+          ["Avoiding aggressive targets entirely. The primary goal is to maintain a peaceful, conflict-free, and deeply supportive community.", 7]
+        ]
+      },
+      {
+        "q": "How do you believe a company should recognize and reward success?",
+        "options": [
+          ["Through highly visible, individual awards, public recognition, and significant financial bonuses for top achievers.", 1],
+          ["Through individual merit-based promotions and public acknowledgment of standout contributions.", 2],
+          ["Through a combination of individual recognition for excellence and team rewards for collaboration.", 3],
+          ["Through team-based celebrations and shared bonuses that reinforce collective effort.", 4],
+          ["Through subtle, private acknowledgments that avoid making anyone feel left out or creating unhealthy competition.", 5],
+          ["By focusing on collective milestones and ensuring that no individual is elevated above the rest of the group.", 6],
+          ["By avoiding individual competition entirely. Rewards should be distributed equally to maintain perfect harmony and unity.", 7]
+        ]
+      }
+    ],
+    "HumaneOrientation": [
+      {
+        "q": "A colleague confides in you that they are going through a severe personal crisis that is affecting their work performance. What is your priority?",
+        "options": [
+          ["Their work output. I will politely but firmly remind them of their deadlines and professional responsibilities.", 1],
+          ["I will express brief sympathy, but I will still expect them to meet their core professional obligations.", 2],
+          ["I will offer some flexibility and support, but we still need to find a practical solution to keep the project on track.", 3],
+          ["I will actively help them redistribute their workload and offer significant flexibility, prioritizing their well-being over immediate deadlines.", 4],
+          ["I will strongly advocate for them to take extended leave, ensuring they have full organizational support, regardless of project delays.", 5],
+          ["I will personally step in to cover their work and provide emotional support, as their human dignity is far more important than any task.", 6],
+          ["I will mobilize the entire team to support them unconditionally. The well-being of a person always supersedes any business objective.", 7]
+        ]
+      },
+      {
+        "q": "When evaluating a potential business partner, what trait do you value most?",
+        "options": [
+          ["Their efficiency, competence, and ability to deliver results on time and under budget.", 1],
+          ["Their strong track record of success and their sharp, strategic business acumen.", 2],
+          ["A balance of their professional competence and their basic decency and fairness.", 3],
+          ["Their reputation for being fair, trustworthy, and treating their own employees well.", 4],
+          ["Their demonstrated commitment to social responsibility, kindness, and community support.", 5],
+          ["Their genuine compassion and altruism. I prefer to work with people who prioritize human welfare over pure profit.", 6],
+          ["Their deep, proven dedication to philanthropy and helping others. A partner's moral character and generosity are the only true measures of value.", 7]
+        ]
+      },
+      {
+        "q": "How do you view the role of empathy and kindness in a professional workplace?",
+        "options": [
+          ["They are largely irrelevant. The workplace is for getting things done efficiently, not for emotional support.", 1],
+          ["They are nice to have, but professionalism and objectivity must always come first.", 2],
+          ["They are important, but they should not interfere with making tough, logical business decisions.", 3],
+          ["They are essential. A good leader or colleague should actively show care and consideration for others' feelings.", 4],
+          ["They are a core professional value. The workplace should be a supportive, nurturing environment.", 5],
+          ["They are the foundation of a good workplace. Generosity and compassion should guide most professional interactions.", 6],
+          ["They are the highest professional ideals. A workplace should function like a caring community, where altruism and mutual support override all else.", 7]
+        ]
+      }
+    ]
+  },
+  "GLOBE_Leadership": {
+    "CharismaticValueBased": [
+      {
+        "q": "Your team is facing a difficult, demoralizing project. How do you motivate them?",
+        "options": [
+          ["I focus strictly on the transactional rewards: 'If we finish this, you will get a bonus.'", 1],
+          ["I outline the practical benefits of completing the project, keeping the focus on the task.", 2],
+          ["I acknowledge the difficulty but emphasize our shared professional duty to get it done.", 3],
+          ["I share a compelling vision of how this project will positively impact our clients and our future.", 4],
+          ["I passionately articulate our core values and inspire them by connecting their daily work to a higher, meaningful purpose.", 5],
+          ["I lead by personal example, making sacrifices alongside them and using highly inspiring, visionary rhetoric to ignite their passion.", 6],
+          ["I completely immerse myself in the team's struggle, using profound moral conviction and visionary storytelling to transform their mindset and drive exceptional performance.", 7]
+        ]
+      },
+      {
+        "q": "When making a major strategic decision, what is your primary guiding principle?",
+        "options": [
+          ["Pure data, logic, and immediate financial return.", 1],
+          ["Practical feasibility and risk management.", 2],
+          ["A balance of logical analysis and consultation with key stakeholders.", 3],
+          ["How well the decision aligns with the organization's stated mission and medium-term goals.", 4],
+          ["How strongly the decision reflects our core, non-negotiable values, even if it is not the easiest path.", 5],
+          ["I rely heavily on my moral compass and visionary intuition to guide the organization toward a principled future.", 6],
+          ["I am driven entirely by a deep, unwavering commitment to a higher purpose. The decision must be a testament to our highest ideals, regardless of short-term cost.", 7]
+        ]
+      },
+      {
+        "q": "How do you handle a situation where the team's performance is slipping?",
+        "options": [
+          ["I implement stricter monitoring and tie their pay directly to immediate output.", 1],
+          ["I set clearer, more specific daily targets and check in frequently.", 2],
+          ["I hold a meeting to identify practical roadblocks and adjust our workflow.", 3],
+          ["I remind the team of our shared goals and encourage them to recommit to our standards.", 4],
+          ["I deliver an inspiring message about our potential, reigniting their belief in our collective mission.", 5],
+          ["I personally connect with each member, appealing to their sense of pride and our shared values to elevate their effort.", 6],
+          ["I step in as a visionary catalyst, using powerful, values-driven communication to transform their mindset and inspire them to exceed their own expectations.", 7]
+        ]
+      }
+    ],
+    "TeamOriented": [
+      {
+        "q": "Two of your top employees are in a bitter conflict that is disrupting the team. How do you resolve it?",
+        "options": [
+          ["I tell them to work it out themselves or I will reassign one of them. I don't have time for drama.", 1],
+          ["I issue a formal warning that their behavior is affecting productivity and must stop immediately.", 2],
+          ["I mediate a practical discussion focused on how to divide their tasks to minimize interaction.", 3],
+          ["I facilitate a meeting to help them understand each other's perspectives and find a professional compromise.", 4],
+          ["I actively work to rebuild their relationship, emphasizing our shared team goals and the importance of mutual respect.", 5],
+          ["I invest significant time in team-building and coaching, prioritizing the restoration of group harmony above all immediate project deadlines.", 6],
+          ["I halt regular work if necessary to facilitate deep, restorative dialogue. The unity and cohesion of the team are the absolute foundation of our success.", 7]
+        ]
+      },
+      {
+        "q": "When a major project succeeds, how do you handle the recognition?",
+        "options": [
+          ["I highlight the specific individuals who did the heavy lifting and ensure they are rewarded.", 1],
+          ["I acknowledge the key contributors, while mentioning the team's general support.", 2],
+          ["I celebrate the team's effort, but make sure the project lead gets appropriate individual credit.", 3],
+          ["I publicly praise the entire team equally, emphasizing that it was a true collaborative effort.", 4],
+          ["I organize a team-wide celebration and explicitly state that no single person could have achieved this alone.", 5],
+          ["I deflect all personal credit as a leader and shine the spotlight entirely on the collective effort and shared purpose of the group.", 6],
+          ["I fiercely protect the narrative that this was purely a collective victory. Individual recognition is secondary to reinforcing the team's unified identity.", 7]
+        ]
+      },
+      {
+        "q": "How do you prefer to structure your team's workflow?",
+        "options": [
+          ["Highly independent. Everyone has their own clear, individual targets and is responsible for their own output.", 1],
+          ["Mostly independent, with occasional check-ins to ensure individual efforts are loosely aligned.", 2],
+          ["A mix of individual ownership and collaborative milestones where the group syncs up.", 3],
+          ["Highly collaborative, with shared goals and regular group problem-solving sessions.", 4],
+          ["Deeply integrated, where team members constantly support each other and share responsibilities fluidly.", 5],
+          ["Completely collective. The team functions as a single unit, with shared accountability for every outcome.", 6],
+          ["Utterly cohesive. Individual roles are blurred in favor of a unified, interdependent group effort where the collective mission is the only focus.", 7]
+        ]
+      }
+    ],
+    "Participative": [
+      {
+        "q": "Your organization needs to adopt a new software system. How do you make the decision?",
+        "options": [
+          ["I research the options and make the final decision myself to ensure it's done quickly and efficiently.", 1],
+          ["I make the decision, but I briefly inform the team of my reasoning afterward.", 2],
+          ["I ask for a few quick opinions from key members, but I retain the final authority to choose.", 3],
+          ["I hold a meeting to discuss the options, consider the team's feedback, and then make the final call.", 4],
+          ["I facilitate a collaborative evaluation where the team's consensus heavily dictates the final choice.", 5],
+          ["I step back and let the team research, debate, and decide together, acting only as a facilitator.", 6],
+          ["I fully delegate the decision to the team. I believe the best solutions always emerge from collective, democratic deliberation.", 7]
+        ]
+      },
+      {
+        "q": "A junior team member proposes an idea that contradicts your initial strategy. How do you respond?",
+        "options": [
+          ["I politely but firmly dismiss it and reiterate my original strategy.", 1],
+          ["I acknowledge it, but explain why my strategy is better and move on.", 2],
+          ["I listen to their idea, but I ultimately steer the conversation back to my original plan.", 3],
+          ["I genuinely consider their idea, ask questions, and am willing to adjust my strategy if their point is valid.", 4],
+          ["I actively encourage them to elaborate, and I am highly likely to adopt their idea if it improves our outcome.", 5],
+          ["I champion their idea to the rest of the group, demonstrating that every voice has the power to shape our direction.", 6],
+          ["I enthusiastically embrace the challenge to my own strategy. I believe that leaders must constantly be challenged by their team to find the best path forward.", 7]
+        ]
+      },
+      {
+        "q": "What is your fundamental belief about how decisions should be made in your organization?",
+        "options": [
+          ["Decisions should be made swiftly by those at the top who have the clearest view of the big picture.", 1],
+          ["Leaders should decide, but they have a duty to communicate the 'why' to the team.", 2],
+          ["Leaders should decide, but they must consult with experts and key stakeholders first.", 3],
+          ["The best decisions come from a leader who actively listens to and integrates the team's input.", 4],
+          ["Decision-making should be a shared process, where the leader and the team build the solution together.", 5],
+          ["The team should have the primary role in decision-making, with the leader acting as a supportive guide.", 6],
+          ["True innovation and commitment only happen when decisions are made entirely democratically, with maximum participation from everyone affected.", 7]
+        ]
+      }
+    ],
+    "HumaneOriented": [
+      {
+        "q": "An employee is consistently missing deadlines due to a difficult personal situation. How do you manage them?",
+        "options": [
+          ["I issue a formal performance warning. Personal issues cannot excuse professional failure.", 1],
+          ["I express sympathy, but I still require them to meet their core deadlines or face consequences.", 2],
+          ["I offer a slight extension, but I make it clear that this is a one-time exception and performance must improve.", 3],
+          ["I work with them to temporarily adjust their workload and provide flexible hours to help them cope.", 4],
+          ["I proactively offer significant support, such as connecting them with HR resources and taking on some of their tasks myself.", 5],
+          ["I prioritize their well-being entirely, encouraging them to take a leave of absence with full support, regardless of the project's immediate needs.", 6],
+          ["I treat them with deep compassion and mobilize the entire organization to support them. Their human dignity is infinitely more valuable than any corporate metric.", 7]
+        ]
+      },
+      {
+        "q": "How do you define a 'successful' leader?",
+        "options": [
+          ["Someone who consistently drives high financial returns and operational efficiency.", 1],
+          ["Someone who achieves strategic goals while maintaining basic professional standards.", 2],
+          ["Someone who balances achieving results with treating people fairly and respectfully.", 3],
+          ["Someone who achieves results while actively fostering a positive, supportive team environment.", 4],
+          ["Someone who is known for their compassion, generosity, and genuine care for their employees' well-being.", 5],
+          ["Someone who serves as a mentor and caregiver, prioritizing the personal growth and happiness of their team above all else.", 6],
+          ["Someone whose legacy is defined entirely by their altruism, selflessness, and the profound, positive impact they have on the lives of others.", 7]
+        ]
+      },
+      {
+        "q": "When allocating a limited budget for team improvements, what is your priority?",
+        "options": [
+          ["Tools and software that will directly increase productivity and output.", 1],
+          ["Training programs that will enhance the team's professional skills and performance.", 2],
+          ["A mix of productivity tools and a modest budget for a team lunch or casual event.", 3],
+          ["Investing in team-building retreats and resources that improve workplace morale and collaboration.", 4],
+          ["Funding wellness programs, mental health support, and initiatives that directly improve employees' quality of life.", 5],
+          ["Direct financial assistance or generous perks for team members who are facing personal or financial hardships.", 6],
+          ["Channeling resources entirely toward charitable causes or community support, reflecting the team's shared values of generosity and care.", 7]
+        ]
+      }
+    ],
+    "Autonomous": [
+      {
+        "q": "You are given a broad, ambiguous mandate to 'improve departmental efficiency.' What is your first move?",
+        "options": [
+          ["I immediately consult with my team and stakeholders to gather their ideas and build a consensus on the definition of 'efficiency'.", 1],
+          ["I hold a series of meetings to understand the current state before proposing any direction.", 2],
+          ["I gather some data and discuss preliminary ideas with a few trusted colleagues before finalizing a plan.", 3],
+          ["I analyze the data independently, draft a clear plan, and then present it to the team for feedback.", 4],
+          ["I rely on my own expertise to quickly design a unique, innovative strategy, and I inform the team of the new direction.", 5],
+          ["I work entirely independently to craft a bold, unconventional solution, as I trust my own judgment far more than group consensus.", 6],
+          ["I isolate myself to develop a highly individualistic, disruptive strategy. I believe true innovation requires breaking away from the group's conventional thinking.", 7]
+        ]
+      },
+      {
+        "q": "How do you prefer to manage a highly skilled, experienced team?",
+        "options": [
+          ["I facilitate daily collaborative sessions to ensure everyone is perfectly aligned and working together.", 1],
+          ["I maintain regular, close communication to ensure the team is on track and supporting each other.", 2],
+          ["I check in weekly to offer guidance, but I expect the team to collaborate and solve most problems together.", 3],
+          ["I set clear goals and let the team figure out the best way to achieve them together, stepping in only when asked.", 4],
+          ["I give them broad objectives and trust them to work independently, intervening as little as possible.", 5],
+          ["I encourage each member to pursue their own unique, independent projects with minimal oversight or group coordination.", 6],
+          ["I grant them total, unrestricted autonomy. I believe that highly skilled individuals perform best when completely free from collaborative constraints or managerial oversight.", 7]
+        ]
+      },
+      {
+        "q": "When facing a major crisis, what is your leadership instinct?",
+        "options": [
+          ["To immediately gather the entire group to brainstorm and decide on a unified response together.", 1],
+          ["To consult with key advisors quickly, then make a decision that the whole team will execute.", 2],
+          ["To gather essential input, but take charge of directing the team's coordinated response.", 3],
+          ["To assess the situation, delegate specific tasks based on expertise, and let the team execute.", 4],
+          ["To take swift, independent action to stabilize the situation, relying on my own judgment and experience.", 5],
+          ["To isolate myself, analyze the problem deeply, and craft a unique, independent solution without group input.", 6],
+          ["To rely entirely on my own individualistic vision. In a crisis, I believe a single, strong, independent mind is far more effective than a committee.", 7]
+        ]
+      }
+    ],
+    "SelfProtective": [
+      {
+        "q": "A major project you led has failed publicly, and the media is asking questions. How do you respond?",
+        "options": [
+          ["I take full, public responsibility, openly detail my mistakes, and outline how I will personally fix them.", 1],
+          ["I acknowledge my role in the failure, apologize, and focus on the lessons learned for the future.", 2],
+          ["I share the responsibility with the team, explaining the complex factors that led to the outcome.", 3],
+          ["I issue a carefully worded, neutral statement that acknowledges the setback without assigning specific blame.", 4],
+          ["I emphasize the external factors and market conditions that contributed to the failure, protecting my and the organization's reputation.", 5],
+          ["I strictly control the narrative, ensuring that the focus remains on the organization's overall strength and my continued competent leadership.", 6],
+          ["I aggressively defend my track record and the organization's protocols, ensuring that no personal or institutional blame is accepted under any circumstances.", 7]
+        ]
+      },
+      {
+        "q": "How do you view the use of status symbols (e.g., corner offices, formal titles, exclusive perks) in leadership?",
+        "options": [
+          ["They are harmful and create unnecessary barriers. Leaders should sit with the team and reject special treatment.", 1],
+          ["They are mostly unnecessary. A leader's value comes from their actions, not their title or office.", 2],
+          ["They are acceptable if they are earned, but they shouldn't be flaunted or used to intimidate.", 3],
+          ["They are useful tools for establishing clear authority and commanding respect in a professional setting.", 4],
+          ["They are important for maintaining the dignity of the leadership role and reinforcing the organizational hierarchy.", 5],
+          ["They are essential. Status symbols protect the leader's authority and ensure that their position is respected and not challenged.", 6],
+          ["They are absolutely critical. A leader must actively cultivate and display their status and security to maintain control and prevent any threat to their position.", 7]
+        ]
+      },
+      {
+        "q": "When a new, risky opportunity arises, what is your primary consideration?",
+        "options": [
+          ["The potential for massive, disruptive innovation. High risk is worth the reward.", 1],
+          ["The potential upside, provided we have a basic contingency plan if things go wrong.", 2],
+          ["A careful calculation of the risk versus reward, ensuring the team is prepared for either outcome.", 3],
+          ["How this opportunity might impact the team's stability, and ensuring we have strong safeguards in place.", 4],
+          ["How this decision will reflect on my leadership and the organization's reputation. I must avoid any move that could be seen as reckless.", 5],
+          ["I prioritize protecting my position and the organization's current standing. I will only proceed if the risk to my authority is virtually zero.", 6],
+          ["I will likely reject it. My primary duty is to ensure absolute security, stability, and the preservation of the status quo to protect my leadership position.", 7]
+        ]
+      }
+    ]
+  }
 }
