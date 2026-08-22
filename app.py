@@ -472,13 +472,13 @@ def page_test_selection():
     
     with col2:
         st.markdown("### GLOBE Cultural Practices")
-        st.markdown("9 dimensions | 18 questions | ~10 minutes")
+        st.markdown("9 dimensions | 27 questions | ~14 minutes")
         st.markdown("Assesses your cultural practices based on the GLOBE framework")
         globe_culture_selected = st.checkbox("Select", key="globe_culture_check")
     
     with col3:
         st.markdown("### GLOBE Leadership Style")
-        st.markdown("6 dimensions | 12 questions | ~8 minutes")
+        st.markdown("6 dimensions | 18 questions | ~9 minutes")
         st.markdown("Evaluates your personal leadership style and preferences")
         globe_leadership_selected = st.checkbox("Select", key="globe_leadership_check")
     
