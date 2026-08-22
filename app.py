@@ -928,8 +928,6 @@ def page_results():
     # Load country scores
     country_scores_df = load_data('country_scores.csv')
 
-    import json
-
     # Load all questions from the single JSON file
     with open('data/questions.json', 'r', encoding='utf-8') as f:
         json_data = json.load(f)
