@@ -13,6 +13,16 @@ import ast
 import json
 from supabase import create_client, Client
 
+# Define the tool
+def load_data(filename):
+    """Load CSV data from the data folder"""
+    filepath = os.path.join('data', filename)
+    if os.path.exists(filepath):
+        return pd.read_csv(filepath)
+    else:
+        st.error(f"File not found: {filepath}")
+        return pd.DataFrame()
+
 # Load all questions from the single JSON file
 with open('data/questions.json', 'r', encoding='utf-8') as f:
     json_data = json.load(f)
@@ -315,15 +325,6 @@ def generate_anonymous_id():
     digits = ''.join(random.choices(string.digits, k=4))
     letters = ''.join(random.choices(string.ascii_uppercase, k=3))
     return f"CQ-{digits}-{letters}"
-
-def load_data(filename):
-    """Load CSV data from the data folder"""
-    filepath = os.path.join('data', filename)
-    if os.path.exists(filepath):
-        return pd.read_csv(filepath)
-    else:
-        st.error(f"File not found: {filepath}")
-        return pd.DataFrame()
 
 def load_user_profile(anonymous_id):
     """Loads a user's profile from the database using their anonymous ID."""
