@@ -5,6 +5,7 @@ import plotly.graph_objects as go
 import random
 import string
 from datetime import datetime
+import base64
 import os
 import re
 import ast
@@ -400,20 +401,24 @@ if 'user_scores' not in st.session_state:
 
 # Page functions
 def page_welcome():
-    # --- LOAD THE PNG LOGO ---
     logo_path = "assets/cqc-logo.png"
     logo_html = ""
     
-    if os.path.exists(logo_path):
-        # The height: 60px controls the display size. Change this number to make it bigger or smaller!
-        logo_html = f'<img src="{logo_path}" style="height: 60px; width: auto; vertical-align: middle; margin-right: 15px;">'
+    # The Base64 Magic Trick to make local images work in HTML
+    try:
+        with open(logo_path, "rb") as f:
+            b64_img = base64.b64encode(f.read()).decode()
+        # Change the 60px below to make the logo bigger or smaller!
+        logo_html = f'<img src="data:image/png;base64,{b64_img}" style="height: 60px; width: auto; vertical-align: middle; margin-right: 15px;">'
+    except FileNotFoundError:
+        pass
 
     # --- 1. CENTERED HEADER SECTION ---
     st.markdown(f"<h1 style='text-align: center; color: #111827; font-size: 3rem; margin-bottom: 10px;'>{logo_html} CQ Compass</h1>", unsafe_allow_html=True)
     st.markdown("<h3 style='text-align: center; color: #111827; font-size: 1.5rem; margin-bottom: 20px;'>Cultural Intelligence Assessment & Development Platform</h3>", unsafe_allow_html=True)
     
     # Subtitle - Centered and constrained width so it looks neat
-    st.markdown("<p style='text-align: center; font-size: 1.1em; color: #FCF2E5; max-width: 800px; margin: 0 auto;'>Discover your cultural profile. Compare it with other cultures.<br>Navigate differences with confidence.</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; font-size: 1.1em; color: #FCF2E5; max-width: 800px; margin: 0 auto;'>Discover your cultural profile. Compare it with other cultures.<br>Navigate differences with confidence.</p>", unsafe_allow_html=True)in: 0 auto;'>Discover your cultural profile. Compare it with other cultures.<br>Navigate differences with confidence.</p>", unsafe_allow_html=True)
     
     # --- 2. SPACER (Separates header from selects) ---
     st.markdown('<div style="height: 50px;"></div>', unsafe_allow_html=True)
