@@ -418,7 +418,7 @@ def page_welcome():
     st.markdown("<h3 style='text-align: center; color: #111827; font-size: 1.5rem; margin-bottom: 20px;'>Cultural Intelligence Assessment & Development Platform</h3>", unsafe_allow_html=True)
     
     # Subtitle - Centered and constrained width so it looks neat
-    st.markdown("<p style='text-align: center; font-size: 1.1em; color: #FCF2E5; max-width: 800px; margin: 0 auto;'>Discover your cultural profile. Compare it with other cultures.<br>Navigate differences with confidence.</p>", unsafe_allow_html=True)in: 0 auto;'>Discover your cultural profile. Compare it with other cultures.<br>Navigate differences with confidence.</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; font-size: 1.1em; color: #FCF2E5; max-width: 800px; margin: 0 auto;'>Discover your cultural profile. Compare it with other cultures.<br>Navigate differences with confidence.</p>", unsafe_allow_html=True)
     
     # --- 2. SPACER (Separates header from selects) ---
     st.markdown('<div style="height: 50px;"></div>', unsafe_allow_html=True)
