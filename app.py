@@ -1067,9 +1067,20 @@ def page_country_comparison():
             # Create 3 columns for the action buttons
             col_match, col_toggle, col_save = st.columns(3)
 
-            # 1. Closest Match Button (Placeholder)
+            # 1. Closest Match Button
             with col_match:
                 if st.button("🎯 Closest Match"):
+                    
+                    # --- DEBUG: Check what's in the data ---
+                    st.write("User scores keys:", list(user_scores.keys()))
+                    st.write("Country CSV columns:", list(country_scores_df.columns))
+    
+                    # Check if country_scores_df is empty
+                    st.write("Number of countries loaded:", len(country_scores_df))
+                    if len(country_scores_df) > 0:
+                        st.write("First country row:", country_scores_df.iloc[0])
+                    # ---------------------------------------
+     
                     # Calculate the top 3 matches
                     top_matches = calculate_closest_matches(user_scores, country_scores_df, top_n=3)
     
