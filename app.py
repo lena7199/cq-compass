@@ -1167,8 +1167,8 @@ def page_country_comparison():
             # 3. If the section is hidden, show a button to bring it back
             else:
                 if st.button("Show Closest Matches", key="show_matches_btn"):
-                st.session_state.show_matches = True
-                st.rerun()
+                    st.session_state.show_matches = True
+                    st.rerun()
             
             st.markdown("---")
             st.markdown(f"### 🧭 Cultural Navigation Brief for {target_country}")
