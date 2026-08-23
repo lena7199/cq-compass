@@ -1148,60 +1148,6 @@ def page_country_comparison():
                     st.session_state.profile_saved = False
             
             st.markdown("</div>", unsafe_allow_html=True)
-
-            # --- CLOSEST MATCH FEATURE (WITH HIDE/SHOW BUTTON) ---
-    
-            # 1. Create a memory variable to track if the section should be visible
-            if 'show_matches' not in st.session_state:
-                st.session_state.show_matches = True
-
-            # 2. Only display the matches if the memory variable is True
-            if st.session_state.show_matches:
-        
-                # Calculate the top 3 matches
-                top_matches = calculate_closest_matches(user_scores, country_scores_df, top_n=3)
-
-                if top_matches:
-                    st.markdown("<h4 style='color: var(--accent); text-align: center; margin-top: 20px;'>🌍 Your Closest Cultural Matches</h4>", unsafe_allow_html=True)
-            
-                    # Create 3 columns for the top 3 countries
-                    cols = st.columns(3)
-            
-                    for i, match in enumerate(top_matches):
-                        with cols[i]:
-                            if i == 0:
-                                badge, border_color = "🥇", "#FFD700"
-                            elif i == 1:
-                                badge, border_color = "🥈", "#C0C0C0"
-                            else:
-                                badge, border_color = "🥉", "#CD7F32"
-
-                            st.markdown(f"""
-                            <div style="
-                                background-color: var(--bg-secondary); 
-                                border: 2px solid {border_color}; 
-                                border-radius: 12px; 
-                                padding: 15px; 
-                                text-align: center;
-                                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-                            ">
-                                <div style="font-size: 1.5rem; margin-bottom: 5px;">{badge}</div>
-                                <h4 style="color: var(--text-main); margin: 0;">{match['country']}</h4>
-                                <p style="color: var(--accent); font-size: 1.2rem; font-weight: bold; margin: 5px 0 0 0;">{match['match']}% Match</p>
-                            </div>
-                            """, unsafe_allow_html=True)
-            
-                # Add a little space, then the button to hide it
-                st.markdown("<br>", unsafe_allow_html=True)
-                if st.button("Hide Closest Matches", key="hide_matches_btn"):
-                    st.session_state.show_matches = False
-                    st.rerun() # This refreshes the app to hide the section
-
-            # 3. If the section is hidden, show a button to bring it back
-            else:
-                if st.button("Show Closest Matches", key="show_matches_btn"):
-                    st.session_state.show_matches = True
-                    st.rerun()
             
             st.markdown("---")
             st.markdown(f"### 🧭 Cultural Navigation Brief for {target_country}")
