@@ -1101,27 +1101,27 @@ def page_country_comparison():
                     cols = st.columns(3)
                     for i, match in enumerate(top_matches):
                         with cols[i]:
-                        if i == 0:
-                            badge, border_color = "", "#FFD700"
-                        elif i == 1:
-                            badge, border_color = "🥈", "#C0C0C0"
-                        else:
-                            badge, border_color = "🥉", "#CD7F32"
+                            if i == 0:
+                                badge, border_color = "", "#FFD700"
+                            elif i == 1:
+                                badge, border_color = "🥈", "#C0C0C0"
+                            else:
+                                badge, border_color = "🥉", "#CD7F32"
 
-                        st.markdown(f"""
-                        <div style="
-                            background-color: var(--bg-secondary); 
-                            border: 2px solid {border_color}; 
-                            border-radius: 12px; 
-                            padding: 15px; 
-                            text-align: center;
-                            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-                        ">
-                            <div style="font-size: 1.5rem; margin-bottom: 5px;">{badge}</div>
-                            <h4 style="color: var(--text-main); margin: 0;">{match['country']}</h4>
-                            <p style="color: var(--accent); font-size: 1.2rem; font-weight: bold; margin: 5px 0 0 0;">{match['match']}% Match</p>
-                        </div>
-                        """, unsafe_allow_html=True)
+                            st.markdown(f"""
+                            <div style="
+                                background-color: var(--bg-secondary); 
+                                border: 2px solid {border_color}; 
+                                border-radius: 12px; 
+                                padding: 15px; 
+                                text-align: center;
+                                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                            ">
+                                <div style="font-size: 1.5rem; margin-bottom: 5px;">{badge}</div>
+                                <h4 style="color: var(--text-main); margin: 0;">{match['country']}</h4>
+                                <p style="color: var(--accent); font-size: 1.2rem; font-weight: bold; margin: 5px 0 0 0;">{match['match']}% Match</p>
+                            </div>
+                            """, unsafe_allow_html=True)
             
             # 2. Show/Hide Toggle
             with col_toggle:
