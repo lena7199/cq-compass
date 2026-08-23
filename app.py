@@ -1574,5 +1574,15 @@ def main():
     elif st.session_state.current_page == 7:
         page_profile_access()
 
+    # --- FOOTER (Copyright & Credits) ---
+    st.markdown("---") # This creates a nice horizontal divider line
+    
+    st.markdown("""
+    <div style="text-align: center; color: #1C2D4B; font-size: 0.85em; padding: 20px 0;">
+        © 2026 CQ Compass. All rights reserved.<br>
+        Made by Elena A. Pari | Rostov-on-Don
+    </div>
+    """, unsafe_allow_html=True)
+
 if __name__ == "__main__":
     main()
