@@ -32,6 +32,16 @@ KARNAUHOVA_QUESTIONS = json_data.get("Karnauhova", {})
 GLOBE_CULTURE_QUESTIONS = json_data.get("GLOBE_Culture", {})
 GLOBE_LEADERSHIP_QUESTIONS = json_data.get("GLOBE_Leadership", {})
 
+# Define country name mapping 
+country_map = {
+            "Brazil": "Brazil", "China": "China", "Egypt": "Egypt", "India": "India", 
+            "Iran": "Iran", "Japan": "Japan", "Malaysia": "Malaysia", "Nigeria": "Nigeria", 
+            "Russia": "Russia", "USA": "USA", "Anglo": "Anglo", "Confucian Asia": "ConfucianAsia", 
+            "Eastern Europe": "EasternEurope", "Germanic Europe": "GermanicEurope", 
+            "Latin America": "LatinAmerica", "Latin Europe": "LatinEurope", "Middle East": "MiddleEast", 
+            "Nordic Europe": "NordicEurope", "Southern Asia": "SouthernAsia", "Sub-Saharan Africa": "SubSaharanAfrica"
+        }
+
 # Load country scores
 country_scores_df = load_data('country_scores.csv')
 
@@ -495,14 +505,7 @@ def page_welcome():
             ["Select country/region", "Brazil", "China", "Egypt", "India", "Iran", "Japan", "Malaysia", "Nigeria", "Russia", "USA", "Anglo", "Confucian Asia", "Eastern Europe", "Germanic Europe", "Latin America", "Latin Europe", "Middle East", "Nordic Europe", "Southern Asia", "Sub-Saharan Africa"],
             key="nationality_select"
         )
-        country_map = {
-            "Brazil": "Brazil", "China": "China", "Egypt": "Egypt", "India": "India", 
-            "Iran": "Iran", "Japan": "Japan", "Malaysia": "Malaysia", "Nigeria": "Nigeria", 
-            "Russia": "Russia", "USA": "USA", "Anglo": "Anglo", "Confucian Asia": "ConfucianAsia", 
-            "Eastern Europe": "EasternEurope", "Germanic Europe": "GermanicEurope", 
-            "Latin America": "LatinAmerica", "Latin Europe": "LatinEurope", "Middle East": "MiddleEast", 
-            "Nordic Europe": "NordicEurope", "Southern Asia": "SouthernAsia", "Sub-Saharan Africa": "SubSaharanAfrica"
-        }
+        
         nationality = country_map.get(nationality_display, None)
 
     with col2:
