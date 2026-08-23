@@ -179,7 +179,7 @@ def format_dimension_name(name):
 # Page configuration
 st.set_page_config(
     page_title="CQ Compass - Cultural Intelligence Assessment",
-    page_icon="🌍",
+    page_icon="assets/cqc_logo.png",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
