@@ -1076,44 +1076,52 @@ def page_country_comparison():
             # Create 3 columns for the action buttons
             col_match, col_toggle, col_save = st.columns(3)
 
-            # 1. Closest Match Button
-            with col_match:
-                if st.button("🎯 Closest Match"):
-     
-                    # Calculate the top 3 matches
-                    top_matches = calculate_closest_matches(user_scores, country_scores_wide, top_n=3)
+            # --- CLOSEST MATCH TOGGLE FEATURE ---
     
-                    if top_matches:
-                        st.markdown("<h4 style='color: var(--accent); text-align: center; margin-top: 20px;'>🌍 Your Closest Cultural Matches</h4>", unsafe_allow_html=True)
-        
-                        # Create 3 columns for the top 3 countries
-                        cols = st.columns(3)
-        
-                        for i, match in enumerate(top_matches):
-                            with cols[i]:
-                                if i == 0:
-                                    badge, border_color = "🥇", "#FFD700"
-                                elif i == 1:
-                                    badge, border_color = "🥈", "#C0C0C0"
-                                else:
-                                    badge, border_color = "🥉", "#CD7F32"
+            # 1. Initialize the memory variable if it doesn't exist yet
+            if 'show_matches' not in st.session_state:
+                st.session_state.show_matches = False
 
-                                st.markdown(f"""
-                                <div style="
-                                    background-color: var(--bg-secondary); 
-                                    border: 2px solid {border_color}; 
-                                    border-radius: 12px; 
-                                    padding: 15px; 
-                                    text-align: center;
-                                    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-                                ">
-                                    <div style="font-size: 1.5rem; margin-bottom: 5px;">{badge}</div>
-                                    <h4 style="color: var(--text-main); margin: 0;">{match['country']}</h4>
-                                    <p style="color: var(--accent); font-size: 1.2rem; font-weight: bold; margin: 5px 0 0 0;">{match['match']}% Match</p>
-                                </div>
-                                """, unsafe_allow_html=True)
-                    else:
-                        st.error("Could not calculate matches. Please check your data.")
+            # 2. Create a dynamic button label
+            btn_label = " Hide Closest Matches" if st.session_state.show_matches else "🎯 Show Closest Matches"
+
+            # 3. The Toggle Button
+            if st.button(btn_label, key="toggle_matches_btn"):
+                # Flip the switch (True becomes False, False becomes True)
+                st.session_state.show_matches = not st.session_state.show_matches
+                st.rerun() # Force the app to refresh and apply the change immediately
+
+            # 4. Only display the results if the switch is ON
+            if st.session_state.show_matches:
+                top_matches = calculate_closest_matches(user_scores, country_scores_wide, top_n=3)
+        
+                if top_matches:
+                    st.markdown("<h4 style='color: var(--accent); text-align: center; margin-top: 20px;'> Your Closest Cultural Matches</h4>", unsafe_allow_html=True)
+            
+                    cols = st.columns(3)
+                    for i, match in enumerate(top_matches):
+                        with cols[i]:
+                        if i == 0:
+                            badge, border_color = "", "#FFD700"
+                        elif i == 1:
+                            badge, border_color = "🥈", "#C0C0C0"
+                        else:
+                            badge, border_color = "🥉", "#CD7F32"
+
+                        st.markdown(f"""
+                        <div style="
+                            background-color: var(--bg-secondary); 
+                            border: 2px solid {border_color}; 
+                            border-radius: 12px; 
+                            padding: 15px; 
+                            text-align: center;
+                            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                        ">
+                            <div style="font-size: 1.5rem; margin-bottom: 5px;">{badge}</div>
+                            <h4 style="color: var(--text-main); margin: 0;">{match['country']}</h4>
+                            <p style="color: var(--accent); font-size: 1.2rem; font-weight: bold; margin: 5px 0 0 0;">{match['match']}% Match</p>
+                        </div>
+                        """, unsafe_allow_html=True)
             
             # 2. Show/Hide Toggle
             with col_toggle:
