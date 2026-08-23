@@ -399,8 +399,6 @@ if 'user_scores' not in st.session_state:
 # For now, we'll create placeholder questions
 
 # Page functions
-import os
-
 def page_welcome():
     # --- LOAD THE SVG LOGO ---
     logo_svg = ""
@@ -408,15 +406,13 @@ def page_welcome():
         with open("assets/logo.svg", "r", encoding="utf-8") as f:
             logo_svg = f.read()
     
-    # Wrap the SVG in a span to align it perfectly with the text baseline (like an emoji)
+    # --- THE FIX: FORCE A SPECIFIC SIZE ---
     if logo_svg:
-        logo_html = f'<span style="vertical-align: middle; height: 1em; width: auto; margin-right: 15px; display: inline-flex; align-items: center;">{logo_svg}</span>'
-    else:
-        logo_html = "" # Failsafe in case the file isn't found
-
+        # This line finds the <svg> tag and forces it to be 60x60 pixels
+        logo_svg = logo_svg.replace('<svg', '<svg width="60" height="60" style="vertical-align: middle; margin-right: 15px;"')
+    
     # --- 1. CENTERED HEADER SECTION ---
-    # We inject the logo_html right before "CQ Compass"
-    st.markdown(f"<h1 style='text-align: center; color: #111827; font-size: 3rem; margin-bottom: 10px;'>{logo_html} CQ Compass</h1>", unsafe_allow_html=True)
+    st.markdown(f"<h1 style='text-align: center; color: #111827; font-size: 3rem; margin-bottom: 10px;'>{logo_svg} CQ Compass</h1>", unsafe_allow_html=True)
     
     st.markdown("<h3 style='text-align: center; color: #111827; font-size: 1.5rem; margin-bottom: 20px;'>Cultural Intelligence Assessment & Development Platform</h3>", unsafe_allow_html=True)
     
