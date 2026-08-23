@@ -22,6 +22,17 @@ KARNAUHOVA_QUESTIONS = json_data.get("Karnauhova", {})
 GLOBE_CULTURE_QUESTIONS = json_data.get("GLOBE_Culture", {})
 GLOBE_LEADERSHIP_QUESTIONS = json_data.get("GLOBE_Leadership", {})
 
+# Load country scores
+country_scores_df = load_data('country_scores.csv')
+
+# Create a NEW variable for the Closest Match feature
+country_scores_wide = country_scores_df.pivot_table(
+    index='Country', 
+    columns='Dimension', 
+    values='Score', 
+    aggfunc='mean'
+).reset_index()
+
 # Calculate closest match
 def calculate_closest_matches(user_scores, country_df, top_n=3):
     """
@@ -719,17 +730,6 @@ def page_results():
         
     st.markdown("<h1 style='color: #EC5B38;'>Your Cultural Profile</h1>", unsafe_allow_html=True)
     st.markdown(f"<p>Anonymous ID: <span class='anonymous-id'>{st.session_state.anonymous_id}</span></p>", unsafe_allow_html=True)
-    
-    # Load country scores
-    country_scores_df = load_data('country_scores.csv')
-
-    # Create a NEW variable for the Closest Match feature
-    country_scores_wide = country_scores_df.pivot_table(
-        index='Country', 
-        columns='Dimension', 
-        values='Score', 
-        aggfunc='mean'
-    ).reset_index()
     
     # Display results for each test
     for test_name in st.session_state.selected_tests:
