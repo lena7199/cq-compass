@@ -1088,11 +1088,12 @@ def page_country_comparison():
             # 2. Create a dynamic button label
             btn_label = " Hide Closest Matches" if st.session_state.show_matches else "🎯 Show Closest Matches"
 
-            # 3. The Toggle Button
-            if st.button(btn_label, key="toggle_matches_btn", use_container_width=True):
-                # Flip the switch (True becomes False, False becomes True)
-                st.session_state.show_matches = not st.session_state.show_matches
-                st.rerun() # Force the app to refresh and apply the change immediately
+            # 3. The Toggle Button (Wrapped in the first column)
+            with col_match:
+                if st.button(btn_label, key="toggle_matches_btn", use_container_width=True):
+                    # Flip the switch (True becomes False, False becomes True)
+                    st.session_state.show_matches = not st.session_state.show_matches
+                    st.rerun() # Force the app to refresh and apply the change immediately
 
             # 4. Only display the results if the switch is ON
             if st.session_state.show_matches:
@@ -1111,7 +1112,7 @@ def page_country_comparison():
                     for i, match in enumerate(top_matches):
                         with cols[i]:
                             if i == 0:
-                                badge, border_color = "", "#FFD700"
+                                badge, border_color = "🥇", "#FFD700"
                             elif i == 1:
                                 badge, border_color = "🥈", "#C0C0C0"
                             else:
