@@ -723,6 +723,14 @@ def page_results():
     # Load country scores
     country_scores_df = load_data('country_scores.csv')
 
+    # Create a NEW variable for the Closest Match feature
+    country_scores_wide = country_scores_df.pivot_table(
+        index='Country', 
+        columns='Dimension', 
+        values='Score', 
+        aggfunc='mean'
+    ).reset_index()
+    
     # Display results for each test
     for test_name in st.session_state.selected_tests:
         st.markdown(f"## {test_name.replace('_', ' ')} Results")
@@ -1082,7 +1090,7 @@ def page_country_comparison():
                     # ---------------------------------------
      
                     # Calculate the top 3 matches
-                    top_matches = calculate_closest_matches(user_scores, country_scores_df, top_n=3)
+                    top_matches = calculate_closest_matches(user_scores, country_scores_wide, top_n=3)
     
                     if top_matches:
                         st.markdown("<h4 style='color: var(--accent); text-align: center; margin-top: 20px;'>🌍 Your Closest Cultural Matches</h4>", unsafe_allow_html=True)
