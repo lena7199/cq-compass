@@ -1094,8 +1094,8 @@ def page_country_comparison():
             # 4. Only display the results if the switch is ON
             if st.session_state.show_matches:
                 top_matches = calculate_closest_matches(user_scores, country_scores_wide, top_n=3)
-                    for match in top_matches:
-                        match['country'] = match['country'].replace('LatinAmerica', 'Latin America').replace('NorthAmerica', 'North America')
+                for match in top_matches:
+                    match['country'] = match['country'].replace('LatinAmerica', 'Latin America').replace('NorthAmerica', 'North America')
         
                 if top_matches:
                     st.markdown("<h4 style='color: var(--accent); text-align: center; margin-top: 20px;'> Your Closest Cultural Matches</h4>", unsafe_allow_html=True)
