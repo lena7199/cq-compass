@@ -119,6 +119,7 @@ def save_user_profile(anonymous_id, nationality, framework, scores, comparison_t
         data = {
             "anonymous_id": str(anonymous_id),
             "nationality": str(nationality),
+            "gender": str (gender),
             "test_type": str(framework),
             "scores": clean_scores,
             "comparison_type": str(comparison_type),
