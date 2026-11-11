@@ -524,20 +524,19 @@ def page_test_selection():
             st.rerun()
         
 def page_test_administration():
-    # --- 1. CSS TO HIDE NATIVE BAR & FIX RADIO BUTTONS ---
-    st.markdown("""
-    <style>
-        /* Hide Streamlit's native progress bar */
-        div[data-testid="stProgress"] { display: none !important; }
-        
-        /* FIX: Make radio buttons visible with a gold border, but let Streamlit handle the selection color */
-        div[data-testid="stRadio"] > div > div > label > div > div:first-child { 
-            border: 2px solid #A8906B !important; 
-            margin-top: 4px !important;
-        }
-        /* Align radio text nicely */
-        div[data-testid="stRadio"] > div > div > label > div { align-items: flex-start !important; }
-    </style>
+    # --- 3. THE BRANDED QUESTION BADGE (Left-aligned, above dimension) ---
+    st.markdown(f"""
+    <div style="margin-bottom: 10px;">
+        <span style="
+            background-color: #A8906B; 
+            color: #F9F7F5 !important; 
+            padding: 4px 12px; 
+            border-radius: 6px; 
+            font-weight: 600; 
+            font-size: 0.9em; 
+            font-family: 'Inter', sans-serif;
+        ">Question {current_idx + 1} of {total_questions}</span>
+    </div>
     """, unsafe_allow_html=True)
 
     # --- 2. CALCULATE PROGRESS ---
