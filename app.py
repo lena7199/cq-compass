@@ -52,51 +52,6 @@ country_scores_wide = country_scores_df.pivot_table(
     aggfunc='mean'
 ).reset_index()
 
-# Calculate closest match
-def calculate_closest_matches(user_scores, country_df, top_n=3):
-    """
-    Calculates the top N closest matching countries based on normalized Euclidean distance.
-    """
-    # 1. Identify which dimensions we have scores for in BOTH the user and the country CSV
-    globe_dims = ['PowerDistance', 'UncertaintyAvoidance', 'InstitutionalCollectivism', 'InGroupCollectivism', 
-                  'GenderEgalitarianism', 'Assertiveness', 'FutureOrientation', 'PerformanceOrientation', 'HumaneOrientation']
-    
-    # Find common dimensions (This safely ignores GLOBE Leadership if countries don't have scores for it)
-    common_dims = [d for d in user_scores.keys() if d in country_df.columns]
-    
-    if not common_dims:
-        return []
-
-    results = []
-    
-    # 2. Loop through every country in the database
-    for index, row in country_df.iterrows():
-        country_name = row['Country'] # <-- CHECK THIS: Make sure your CSV column is named 'Country'
-        squared_diffs = []
-
-        for dim in common_dims:
-            user_score = user_scores[dim]
-            country_score = row[dim]
-
-            # Normalize scores to a 0-1 scale
-            u_norm = (user_score - 1) / 6
-            c_norm = (country_score - 1) / 6
-
-            squared_diffs.append((u_norm - c_norm) ** 2)
-
-        # Calculate Euclidean distance
-        distance = math.sqrt(sum(squared_diffs))
-
-        # Convert distance to a Match Percentage (0% to 100%)
-        max_possible_distance = math.sqrt(len(common_dims))
-        match_percentage = max(0, 100 - (distance / max_possible_distance) * 100)
-
-        results.append({'country': country_name, 'match': round(match_percentage, 1)})
-
-    # 3. Sort by highest match and return the top N
-    results.sort(key=lambda x: x['match'], reverse=True)
-    return results[:top_n]
-
 # Initialize Supabase client (cached so it doesn't reconnect on every click)
 @st.cache_resource
 def init_supabase():
@@ -116,7 +71,7 @@ def save_user_profile(anonymous_id, nationality, framework, scores, comparison_t
         data = {
             "anonymous_id": str(anonymous_id),
             "nationality": str(nationality),
-            "gender": str (gender),
+            "gender": str (user_gender),
             "test_type": str(framework),
             "scores": clean_scores,
             "comparison_type": str(comparison_type),
@@ -871,14 +826,18 @@ def page_results():
     interpretations_df = load_data('interpretations.csv') 
     
     # 2. Loop through the user's scores to find the matching text
-    for dimension, score in user_scores.items():
-        # Find the row in the CSV that matches the Framework, Dimension, and Score Range
-        mask = (
-            (interpretations_df['Framework'] == test_name) & 
-            (interpretations_df['Dimension'] == dimension) & 
-            (score >= interpretations_df['Min_Score']) & 
-            (score <= interpretations_df['Max_Score'])
-        )
+        for dimension, score in user_scores.items():
+            # Force the CSV columns to be numbers to prevent crashes
+            min_scores = pd.to_numeric(interpretations_df['Min_Score'], errors='coerce')
+            max_scores = pd.to_numeric(interpretations_df['Max_Score'], errors='coerce')
+            
+            # Find the row in the CSV that matches the Framework, Dimension, and Score Range
+            mask = (
+                (interpretations_df['Framework'] == test_name) & 
+                (interpretations_df['Dimension'] == dimension) & 
+                (float(score) >= min_scores) & 
+                (float(score) <= max_scores)
+            )
         
         # If we found a match, display it!
         if not interpretations_df.loc[mask].empty:
@@ -1075,61 +1034,7 @@ def page_country_comparison():
             """, unsafe_allow_html=True)
 
             # Create 3 columns for the action buttons
-            col_match, col_toggle, col_save = st.columns(3)
-
-            # --- CLOSEST MATCH TOGGLE FEATURE ---
-    
-            # 1. Initialize the memory variable if it doesn't exist yet
-            if 'show_matches' not in st.session_state:
-                st.session_state.show_matches = False
-
-            # 2. Create a dynamic button label
-            btn_label = " Hide Closest Matches" if st.session_state.show_matches else "🎯 Show Closest Matches"
-
-            # 3. The Toggle Button (Wrapped in the first column)
-            with col_match:
-                if st.button(btn_label, key="toggle_matches_btn", use_container_width=True):
-                    # Flip the switch (True becomes False, False becomes True)
-                    st.session_state.show_matches = not st.session_state.show_matches
-                    st.rerun() # Force the app to refresh and apply the change immediately
-
-            # 4. Only display the results if the switch is ON
-            if st.session_state.show_matches:
-                top_matches = calculate_closest_matches(user_scores, country_scores_wide, top_n=3)
-            
-                # Flip your dictionary so it looks up the Raw Name to get the Display Name
-                raw_to_display_map = {v: k for k, v in country_map.items()}
-            
-                for match in top_matches:
-                    match['country'] = raw_to_display_map.get(match['country'], match['country'])
-        
-                if top_matches:
-                    st.markdown("<h4 style='color: var(--accent); text-align: center; margin-top: 20px;'> Your Closest Cultural Matches</h4>", unsafe_allow_html=True)
-            
-                    cols = st.columns(3)
-                    for i, match in enumerate(top_matches):
-                        with cols[i]:
-                            if i == 0:
-                                badge, border_color = "🥇", "#FFD700"
-                            elif i == 1:
-                                badge, border_color = "🥈", "#C0C0C0"
-                            else:
-                                badge, border_color = "🥉", "#CD7F32"
-
-                            st.markdown(f"""
-                            <div style="
-                                background-color: var(--bg-secondary); 
-                                border: 2px solid {border_color}; 
-                                border-radius: 12px; 
-                                padding: 15px; 
-                                text-align: center;
-                                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-                            ">
-                                <div style="font-size: 1.5rem; margin-bottom: 5px;">{badge}</div>
-                                <h4 style="color: var(--text-main); margin: 0;">{match['country']}</h4>
-                                <p style="color: var(--accent); font-size: 1.2rem; font-weight: bold; margin: 5px 0 0 0;">{match['match']}% Match</p>
-                            </div>
-                            """, unsafe_allow_html=True)
+            col_toggle, col_save = st.columns(2)
             
             # 2. Show/Hide Toggle
             with col_toggle:
