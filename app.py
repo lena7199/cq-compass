@@ -530,10 +530,9 @@ def page_test_administration():
         /* Hide Streamlit's native progress bar */
         div[data-testid="stProgress"] { display: none !important; }
         
-        /* FIX: Make unselected radio buttons visible with a gold border */
+        /* FIX: Make radio buttons visible with a gold border, but let Streamlit handle the selection color */
         div[data-testid="stRadio"] > div > div > label > div > div:first-child { 
             border: 2px solid #A8906B !important; 
-            background-color: transparent !important;
             margin-top: 4px !important;
         }
         /* Align radio text nicely */
@@ -570,7 +569,7 @@ def page_test_administration():
     <div style="margin-bottom: 10px;">
         <span style="
             background-color: #A8906B; 
-            color: #F9F7F5; 
+            color: #F9F7F5 !important; 
             padding: 4px 12px; 
             border-radius: 6px; 
             font-weight: 600; 
