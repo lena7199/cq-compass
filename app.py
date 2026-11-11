@@ -599,9 +599,17 @@ def page_test_administration():
     # --- RANDOMIZE OPTIONS & REMEMBER PREVIOUS ANSWER ---
     import copy
 
-    # 1. Create a shuffled copy of the options for this specific question
-    shuffled_options = copy.deepcopy(current_item['question']['options'])
-    random.shuffle(shuffled_options)
+    # Initialize the dictionary to store shuffled options if it doesn't exist
+    if 'shuffled_options_map' not in st.session_state:
+        st.session_state.shuffled_options_map = {}
+
+    # 1. Get or create the shuffled options for THIS specific question index
+    if current_idx not in st.session_state.shuffled_options_map:
+        shuffled_opts = copy.deepcopy(current_item['question']['options'])
+        random.shuffle(shuffled_opts)
+        st.session_state.shuffled_options_map[current_idx] = shuffled_opts
+
+    shuffled_options = st.session_state.shuffled_options_map[current_idx]
 
     # 2. Find the index of the previously saved answer IN THE SHUFFLED LIST
     radio_index = None
