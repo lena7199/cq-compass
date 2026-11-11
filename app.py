@@ -504,7 +504,7 @@ def page_test_selection():
     with col1:
         st.markdown("### 🌍 GLOBE Cultural Practices")
         st.markdown("**9 dimensions | 27 questions**")
-        st.markdown("Assesses your personal cultural style and practices. Includes comparison with your home region and a target country of your choice. Ideal for understanding general cross-cultural interactions and social norms.")
+        st.markdown("Assesses your personal cultural style and practices. Includes comparison with your home country/region and a target country/region of your choice. Ideal for understanding general cross-cultural interactions and social norms.")
         if st.button("Select & Start Cultural Practices", use_container_width=True, key="btn_culture", type="primary"):
             st.session_state.selected_tests = ["GLOBE_Culture"]
             st.session_state.current_page = 3
@@ -515,7 +515,7 @@ def page_test_selection():
     with col2:
         st.markdown("### 👔 GLOBE Leadership Style")
         st.markdown("**6 dimensions | 18 questions**")
-        st.markdown("Evaluates your personal leadership style and preferences. Includes comparison with your home region and a target country of your choice. Ideal for understanding management, team dynamics, and authority across cultures.")
+        st.markdown("Evaluates your personal leadership style and preferences. Includes comparison with your home country/region and a target country/region of your choice. Ideal for understanding management, team dynamics, and authority across cultures.")
         if st.button("Select & Start Leadership Style", use_container_width=True, key="btn_leadership", type="primary"):
             st.session_state.selected_tests = ["GLOBE_Leadership"]
             st.session_state.current_page = 3
