@@ -28,7 +28,6 @@ with open('data/questions.json', 'r', encoding='utf-8') as f:
     json_data = json.load(f)
 
 # MAGIC TRICK: Assign the JSON data to the exact variable names your app already expects!
-KARNAUHOVA_QUESTIONS = json_data.get("Karnauhova", {})
 GLOBE_CULTURE_QUESTIONS = json_data.get("GLOBE_Culture", {})
 GLOBE_LEADERSHIP_QUESTIONS = json_data.get("GLOBE_Leadership", {})
 
@@ -59,7 +58,6 @@ def calculate_closest_matches(user_scores, country_df, top_n=3):
     Calculates the top N closest matching countries based on normalized Euclidean distance.
     """
     # 1. Identify which dimensions we have scores for in BOTH the user and the country CSV
-    karnauhova_dims = ['TimeFocus', 'TimeOrientation', 'Space', 'Power', 'Structure', 'Competition', 'Communication', 'Action']
     globe_dims = ['PowerDistance', 'UncertaintyAvoidance', 'InstitutionalCollectivism', 'InGroupCollectivism', 
                   'GenderEgalitarianism', 'Assertiveness', 'FutureOrientation', 'PerformanceOrientation', 'HumaneOrientation']
     
@@ -81,12 +79,8 @@ def calculate_closest_matches(user_scores, country_df, top_n=3):
             country_score = row[dim]
 
             # Normalize scores to a 0-1 scale
-            if dim in karnauhova_dims:
-                u_norm = (user_score - 1) / 4
-                c_norm = (country_score - 1) / 4
-            else: # GLOBE dimensions
-                u_norm = (user_score - 1) / 6
-                c_norm = (country_score - 1) / 6
+            u_norm = (user_score - 1) / 6
+            c_norm = (country_score - 1) / 6
 
             squared_diffs.append((u_norm - c_norm) ** 2)
 
@@ -115,7 +109,10 @@ def save_user_profile(anonymous_id, nationality, framework, scores, comparison_t
     try:
         # Magic trick: Converts special calculation numbers into standard Python numbers for Supabase
         clean_scores = json.loads(json.dumps(scores))
-
+        
+        # PHASE 1 FIX: Safely fetch gender from session state to prevent NameError
+        user_gender = st.session_state.get("gender", "Not specified")
+        
         data = {
             "anonymous_id": str(anonymous_id),
             "nationality": str(nationality),
