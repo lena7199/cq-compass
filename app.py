@@ -524,15 +524,19 @@ def page_test_selection():
             st.rerun()
         
 def page_test_administration():
-    # --- 1. CSS FOR RADIO BUTTONS ---
+    # --- 1. CSS TO HIDE NATIVE BAR & STYLE RADIO BUTTONS ---
     st.markdown("""
     <style>
+        /* Hide Streamlit's ugly native progress bar */
+        div[data-testid="stProgress"] { display: none !important; }
+        
+        /* Align radio buttons nicely */
         div[data-testid="stRadio"] > div > div > label > div { align-items: flex-start !important; }
         div[data-testid="stRadio"] > div > div > label > div > div:first-child { margin-top: 4px !important; }
     </style>
     """, unsafe_allow_html=True)
 
-    # --- 2. CALCULATE PROGRESS (Must happen BEFORE the HTML uses it) ---
+    # --- 2. CALCULATE PROGRESS ---
     total_questions = 0
     question_map = []
     
@@ -554,83 +558,24 @@ def page_test_administration():
     
     current_idx = st.session_state.current_question
     current_item = question_map[current_idx]
-    progress_percent = int(((current_idx + 1) / total_questions) * 100)
 
-    # --- 3. THE STICKY PROGRESS BAR ---
+    # --- 3. THE BEAUTIFUL QUESTION BADGE ---
     st.markdown(f"""
-    <div style="
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background-color: #F9F7F5; 
-        z-index: 100;
-        padding: 15px 20px 20px 20px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
-    ">
-        <p style="text-align: center; color: #EC5B38; font-weight: 700; font-size: 1.1em; margin: 0 0 10px 0;">Question {current_idx + 1} of {total_questions}</p>
-        <div style="background-color: #e4e4e7; border-radius: 10px; height: 12px; width: 100%; overflow: hidden;">
-            <div style="background-color: #EC5B38; height: 100%; width: {progress_percent}%; border-radius: 10px; transition: width 0.3s ease;"></div>
-        </div>
+    <div style="text-align: center; margin-bottom: 30px;">
+        <span style="
+            background-color: #EC5B38; 
+            color: white; 
+            padding: 6px 18px; 
+            border-radius: 20px; 
+            font-weight: 600; 
+            font-size: 0.95em; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        ">Question {current_idx + 1} of {total_questions}</span>
     </div>
     """, unsafe_allow_html=True)
-
-    # --- 4. THE SPACER (Prevents Overlap!) ---
-    st.markdown('<div style="height: 120px;"></div>', unsafe_allow_html=True)
 
     st.markdown("<h1 style='color: #EC5B38;'>Assessment in Progress</h1>", unsafe_allow_html=True)
-    
-    # Calculate total questions and current position
-    total_questions = 0
-    question_map = []
-    
-    for test_name in st.session_state.selected_tests:
-        if test_name == "Karnauhova":
-            questions = KARNAUHOVA_QUESTIONS
-        elif test_name == "GLOBE_Culture":
-            questions = GLOBE_CULTURE_QUESTIONS
-        else:
-            questions = GLOBE_LEADERSHIP_QUESTIONS
-        
-        for dimension, dim_questions in questions.items():
-            for q_idx, question in enumerate(dim_questions):
-                question_map.append({
-                    "test": test_name,
-                    "dimension": dimension,
-                    "question": question,
-                    "global_idx": total_questions
-                })
-                total_questions += 1
-    
-    current_idx = st.session_state.current_question
-    current_item = question_map[current_idx]
-    
-    # --- CUSTOM PROGRESS BAR (Now using Master Palette Variables) ---
-    progress_percent = int(((current_idx + 1) / total_questions) * 100)
-    
-    st.markdown(f"""
-    <div style="
-        background-color: var(--bg-secondary); 
-        border: 1px solid var(--text-secondary); /* Adds a subtle outline so it's visible on light backgrounds */
-        border-radius: 10px; 
-        height: 20px; 
-        width: 100%; 
-        margin: 10px 0 20px 0;
-        overflow: hidden;
-    ">
-        <div style="
-            background-color: var(--accent); 
-            height: 100%; 
-            width: {progress_percent}%; 
-            border-radius: 10px;
-            transition: width 0.3s ease;
-        ">
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    st.markdown(f"<p style='text-align: center; color: var(--accent); margin-top: -10px; margin-bottom: 30px; font-weight: 500;'>Question {current_idx + 1} of {total_questions}</p>", unsafe_allow_html=True)
-
+   
     # Display question
     pretty_name = format_dimension_name(current_item['dimension'])
     st.markdown(f"### {pretty_name}")
