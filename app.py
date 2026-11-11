@@ -360,43 +360,18 @@ def create_radar_chart(scores, labels, title="Cultural Profile"):
     
     return fig
 
-def get_qualitative_label(score, scale_type, dimension=""):
-        """Convert numerical score to qualitative label"""
-        # Define Karnauhova poles with brief explanations
-        karnauhova_poles = {
-            "Time Focus": ("Monochronic (Strict scheduling)", "Polychronic (Flexible flow)"),
-            "Time Orientation": ("Past-oriented (Tradition)", "Future-oriented (Innovation)"),
-            "Space": ("Private (Boundaries)", "Public (Openness)"),
-            "Power": ("Egalitarian (Flat hierarchy)", "Hierarchical (Status-driven)"),
-            "Structure": ("Individualist (Self-reliant)", "Collectivist (Group-focused)"),
-            "Competition": ("Cooperative (Harmony)", "Competitive (Achievement)"),
-            "Communication": ("Low-context (Direct)", "High-context (Indirect)"),
-            "Action": ("Being-oriented (Relationships)", "Doing-oriented (Results)")
-        }
-
-        if scale_type == "karnauhova":  # 1-5 scale
-            pole1, pole2 = karnauhova_poles.get(dimension, ("Pole 1", "Pole 2"))
-            if score <= 1.7:
-                return f"Strongly {pole1}"
-            elif score <= 2.6:
-                return f"Moderately {pole1}"
-            elif score <= 3.4:
-                return "Aligned"
-            elif score <= 4.2:
-                return f"Moderately {pole2}"
-            else:
-                return f"Strongly {pole2}"
-        else:  # 1-7 scale (GLOBE)
-            if score <= 2.2:
-                return "Low"
-            elif score <= 3.6:
-                return "Moderately Low"
-            elif score <= 4.4:
-                return "Moderate"
-            elif score <= 5.8:
-                return "Moderately High"
-            else:
-                return "High"
+def get_qualitative_label(score, dimension=""):
+    """Convert numerical score to qualitative label (GLOBE 1-7 scale only)"""
+    if score <= 2.2:
+        return "Low"
+    elif score <= 3.6:
+        return "Moderately Low"
+    elif score <= 4.4:
+        return "Moderate"
+    elif score <= 5.8:
+        return "Moderately High"
+    else:
+        return "High"
 
 # Initialize session state and generate a new ID for new sessions
 if 'anonymous_id' not in st.session_state or st.session_state.anonymous_id is None:
@@ -772,8 +747,7 @@ def page_results():
         
         score_data = []
         for dimension, score in user_scores.items():
-            scale_type = "karnauhova" if test_name == "Karnauhova" else "globe"
-            label = get_qualitative_label(score, scale_type, dimension)
+            label = get_qualitative_label(score, dimension)
             score_data.append({
                 "Dimension": format_dimension_name(dimension),
                 "Your Score": score,
@@ -1079,9 +1053,7 @@ def page_country_comparison():
             st.markdown("---")
             st.markdown(f"### 🧭 Cultural Navigation Brief for {target_country}")
 
-            if test_name == "Karnauhova":
-                rec_df = load_data('dimension_recommendations_karnauhova.csv')
-            elif test_name == "GLOBE_Culture":
+            if test_name == "GLOBE_Culture":
                 rec_df = load_data('dimension_recommendations_globe_culture.csv')
             else:
                 rec_df = load_data('dimension_recommendations_globe_leadership.csv')
@@ -1100,15 +1072,10 @@ def page_country_comparison():
                 target_score = target_score[0]
                 gap = abs(user_score - target_score)
 
-                # 1. Determine Gap Category and Urgency
-                if test_name == "Karnauhova":
-                    if gap >= 2.0: gap_category, urgency = "High", "Red"
-                    elif gap >= 1.0: gap_category, urgency = "Medium", "Yellow"
-                    else: gap_category, urgency = "Low", "Green"
-                else:
-                    if gap >= 2.5: gap_category, urgency = "High", "Red"
-                    elif gap >= 1.2: gap_category, urgency = "Medium", "Yellow"
-                    else: gap_category, urgency = "Low", "Green"
+                # 1. Determine Gap Category and Urgency (GLOBE 1-7 scale only)
+                if gap >= 2.5: gap_category, urgency = "High", "Red"
+                elif gap >= 1.2: gap_category, urgency = "Medium", "Yellow"
+                else: gap_category, urgency = "Low", "Green"
 
                 # 2. Determine Direction
                 if user_score > target_score: direction = "UserHigher"
@@ -1203,9 +1170,7 @@ def page_gap_analysis():
         st.markdown(f"## {test_name.replace('_', ' ')} Gap Analysis")
         
         # Load recommendations
-        if test_name == "Karnauhova":
-            rec_df = load_data('dimension_recommendations_karnauhova.csv')
-        elif test_name == "GLOBE_Culture":
+        if test_name == "GLOBE_Culture":
             rec_df = load_data('dimension_recommendations_globe_culture.csv')
         else:
             rec_df = load_data('dimension_recommendations_globe_leadership.csv')
@@ -1230,27 +1195,16 @@ def page_gap_analysis():
             # Calculate gap
             gap = abs(user_score - target_score)
             
-            # Determine category and direction
-            if test_name == "Karnauhova":
-                if gap >= 2.0:
-                    gap_category = "High"
-                    urgency = "Red"
-                elif gap >= 1.0:
-                    gap_category = "Medium"
-                    urgency = "Yellow"
-                else:
-                    gap_category = "Low"
-                    urgency = "Green"
-            else:  # GLOBE (1-7 scale)
-                if gap >= 2.5:
-                    gap_category = "High"
-                    urgency = "Red"
-                elif gap >= 1.2:
-                    gap_category = "Medium"
-                    urgency = "Yellow"
-                else:
-                    gap_category = "Low"
-                    urgency = "Green"
+            # Determine category and direction (GLOBE 1-7 scale only)
+            if gap >= 2.5:
+                gap_category = "High"
+                urgency = "Red"
+            elif gap >= 1.2:
+                gap_category = "Medium"
+                urgency = "Yellow"
+            else:
+                gap_category = "Low"
+                urgency = "Green"
             
             if user_score > target_score:
                 direction = "UserHigher"
