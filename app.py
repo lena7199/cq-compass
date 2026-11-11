@@ -587,22 +587,31 @@ def page_test_administration():
     
     # Display options
     current_answer = st.session_state.test_answers[current_item['test']].get(current_item['dimension'], [])    
+    
     # Find which question within this dimension we're on
-    dim_questions = []
-    if current_item['test'] == "Karnauhova":
-        dim_questions = KARNAUHOVA_QUESTIONS[current_item['dimension']]
-    elif current_item['test'] == "GLOBE_Culture":
+    if current_item['test'] == "GLOBE_Culture":
         dim_questions = GLOBE_CULTURE_QUESTIONS[current_item['dimension']]
     else:
         dim_questions = GLOBE_LEADERSHIP_QUESTIONS[current_item['dimension']]
     
     q_in_dim_idx = dim_questions.index(current_item['question'])
     
+    # PHASE 2 FIX: Dynamically find the index of the previously saved answer
+    radio_index = None
+    current_answer_list = st.session_state.test_answers.get(current_item['test'], {}).get(current_item['dimension'], [])
+    
+    if q_in_dim_idx < len(current_answer_list):
+        saved_score = current_answer_list[q_in_dim_idx]
+        for opt_idx, opt in enumerate(current_item['question']['options']):
+            if opt[1] == saved_score:
+                radio_index = opt_idx
+                break
+    
     selected_option = st.radio(
         "Select your answer:",
         [opt[0] for opt in current_item['question']['options']],
         key=f"q_{current_idx}",
-        index=None
+        index=radio_index # <--- THIS REMEMBERS THE ANSWER!
     )
     
     # Navigation buttons
