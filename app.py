@@ -524,28 +524,49 @@ def page_test_selection():
             st.rerun()
         
 def page_test_administration():
-    # --- 1. CSS FOR RADIO BUTTONS & SPACER ---
+    # --- 1. CSS FOR RADIO BUTTONS ---
     st.markdown("""
     <style>
-        /* Align radio buttons nicely */
         div[data-testid="stRadio"] > div > div > label > div { align-items: flex-start !important; }
         div[data-testid="stRadio"] > div > div > label > div > div:first-child { margin-top: 4px !important; }
     </style>
     """, unsafe_allow_html=True)
 
-    # --- 2. THE STICKY PROGRESS BAR ---
-    # position: fixed keeps it at the top of the screen while scrolling.
-    # z-index: 100 keeps it above the text, but below the Streamlit menu.
+    # --- 2. CALCULATE PROGRESS (Must happen BEFORE the HTML uses it) ---
+    total_questions = 0
+    question_map = []
+    
+    for test_name in st.session_state.selected_tests:
+        if test_name == "GLOBE_Culture":
+            questions = GLOBE_CULTURE_QUESTIONS
+        else:
+            questions = GLOBE_LEADERSHIP_QUESTIONS
+        
+        for dimension, dim_questions in questions.items():
+            for q_idx, question in enumerate(dim_questions):
+                question_map.append({
+                    "test": test_name,
+                    "dimension": dimension,
+                    "question": question,
+                    "global_idx": total_questions
+                })
+                total_questions += 1
+    
+    current_idx = st.session_state.current_question
+    current_item = question_map[current_idx]
+    progress_percent = int(((current_idx + 1) / total_questions) * 100)
+
+    # --- 3. THE STICKY PROGRESS BAR ---
     st.markdown(f"""
     <div style="
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
-        background-color: #F9F7F5; /* Matches your app's main background color */
+        background-color: #F9F7F5; 
         z-index: 100;
         padding: 15px 20px 20px 20px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Subtle shadow to separate it from content */
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
     ">
         <p style="text-align: center; color: #EC5B38; font-weight: 700; font-size: 1.1em; margin: 0 0 10px 0;">Question {current_idx + 1} of {total_questions}</p>
         <div style="background-color: #e4e4e7; border-radius: 10px; height: 12px; width: 100%; overflow: hidden;">
@@ -554,10 +575,9 @@ def page_test_administration():
     </div>
     """, unsafe_allow_html=True)
 
-    # --- 3. THE SPACER (Prevents Overlap!) ---
-    # This invisible block pushes the title and question down so they start BELOW the sticky bar.
+    # --- 4. THE SPACER (Prevents Overlap!) ---
     st.markdown('<div style="height: 120px;"></div>', unsafe_allow_html=True)
-    
+
     st.markdown("<h1 style='color: #EC5B38;'>Assessment in Progress</h1>", unsafe_allow_html=True)
     
     # Calculate total questions and current position
