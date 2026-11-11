@@ -493,42 +493,30 @@ def page_test_selection():
     
     st.markdown("---")
     
-    col1, col2, col3 = st.columns(3)
+    # PHASE 1 STEP 2: Add honesty prompt
+    st.info("💡 **Tip:** There are no right or wrong answers. Please answer honestly based on your natural instincts for the most accurate cultural friction prediction.")
     
-    with col1:
-        st.markdown("### Karnauhova Model")
-        st.markdown("8 dimensions | 24 questions | ~12 minutes")
-        st.markdown("Measures your personal cultural style across 8 key dimensions")
-        karnauhova_selected = st.checkbox("Select", key="karnauhova_check")
+    st.markdown("### Choose ONE framework to assess:")
     
-    with col2:
-        st.markdown("### GLOBE Cultural Practices")
-        st.markdown("9 dimensions | 27 questions | ~14 minutes")
-        st.markdown("Assesses your cultural practices based on the GLOBE framework")
-        globe_culture_selected = st.checkbox("Select", key="globe_culture_check")
+    # PHASE 1 STEP 2: Use a radio button to natively enforce single selection
+    selected_test = st.radio(
+        "Select Assessment",
+        ["GLOBE Cultural Practices", "GLOBE Leadership Style"],
+        index=0,
+        key="test_selection_radio",
+        horizontal=True
+    )
     
-    with col3:
-        st.markdown("### GLOBE Leadership Style")
-        st.markdown("6 dimensions | 18 questions | ~9 minutes")
-        st.markdown("Evaluates your personal leadership style and preferences")
-        globe_leadership_selected = st.checkbox("Select", key="globe_leadership_check")
+    # Map the pretty name to the internal JSON key
+    test_key = "GLOBE_Culture" if selected_test == "GLOBE Cultural Practices" else "GLOBE_Leadership"
+    st.session_state.selected_tests = [test_key]
     
-    selected_tests = []
-    if karnauhova_selected:
-        selected_tests.append("Karnauhova")
-    if globe_culture_selected:
-        selected_tests.append("GLOBE_Culture")
-    if globe_leadership_selected:
-        selected_tests.append("GLOBE_Leadership")
-    
-    st.session_state.selected_tests = selected_tests
-    
-    if st.button("Start Selected Test(s)", use_container_width=True, disabled=len(selected_tests) == 0):
+    if st.button("Start Assessment", use_container_width=True, key="begin_test_btn"):
         st.session_state.current_page = 3
         st.session_state.current_question = 0
-        st.session_state.test_answers = {test: {} for test in selected_tests}
+        st.session_state.test_answers = {test_key: {}}
         st.rerun()
-
+        
 def page_test_administration():
 # --- CSS TO TIGHTEN SPACING AND MATCH THEME ---
     st.markdown("""
