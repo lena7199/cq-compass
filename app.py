@@ -826,18 +826,18 @@ def page_results():
     interpretations_df = load_data('interpretations.csv') 
     
     # 2. Loop through the user's scores to find the matching text
-        for dimension, score in user_scores.items():
-            # Force the CSV columns to be numbers to prevent crashes
-            min_scores = pd.to_numeric(interpretations_df['Min_Score'], errors='coerce')
-            max_scores = pd.to_numeric(interpretations_df['Max_Score'], errors='coerce')
+    for dimension, score in user_scores.items():
+        # Force the CSV columns to be numbers to prevent crashes
+        min_scores = pd.to_numeric(interpretations_df['Min_Score'], errors='coerce')
+        max_scores = pd.to_numeric(interpretations_df['Max_Score'], errors='coerce')
             
-            # Find the row in the CSV that matches the Framework, Dimension, and Score Range
-            mask = (
-                (interpretations_df['Framework'] == test_name) & 
-                (interpretations_df['Dimension'] == dimension) & 
-                (float(score) >= min_scores) & 
-                (float(score) <= max_scores)
-            )
+        # Find the row in the CSV that matches the Framework, Dimension, and Score Range
+        mask = (
+            (interpretations_df['Framework'] == test_name) & 
+            (interpretations_df['Dimension'] == dimension) & 
+            (float(score) >= min_scores) & 
+            (float(score) <= max_scores)
+        )
         
         # If we found a match, display it!
         if not interpretations_df.loc[mask].empty:
