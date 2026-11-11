@@ -498,40 +498,30 @@ def page_test_selection():
     
     st.markdown("### Choose ONE framework to assess:")
     
-    # Initialize the selection variable if it doesn't exist yet
-    if 'selected_test_key' not in st.session_state:
-        st.session_state.selected_test_key = "GLOBE_Culture" # Default choice
-        
     # Create the beautiful two-column layout
     col1, col2 = st.columns(2)
     
     with col1:
         st.markdown("### 🌍 GLOBE Cultural Practices")
         st.markdown("**9 dimensions | 27 questions**")
-        st.markdown("Assesses your personal cultural style and practices. Ideal for understanding general cross-cultural interactions and social norms.")
-        if st.button("Select Cultural Practices", use_container_width=True, key="btn_culture"):
-            st.session_state.selected_test_key = "GLOBE_Culture"
+        st.markdown("Assesses your personal cultural style and practices. Includes comparison with your home region and a target country of your choice. Ideal for understanding general cross-cultural interactions and social norms.")
+        if st.button("Select & Start Cultural Practices", use_container_width=True, key="btn_culture", type="primary"):
+            st.session_state.selected_tests = ["GLOBE_Culture"]
+            st.session_state.current_page = 3
+            st.session_state.current_question = 0
+            st.session_state.test_answers = {"GLOBE_Culture": {}}
             st.rerun()
             
     with col2:
         st.markdown("### 👔 GLOBE Leadership Style")
         st.markdown("**6 dimensions | 18 questions**")
-        st.markdown("Evaluates your personal leadership style and preferences. Ideal for understanding management, team dynamics, and authority across cultures.")
-        if st.button("Select Leadership Style", use_container_width=True, key="btn_leadership"):
-            st.session_state.selected_test_key = "GLOBE_Leadership"
+        st.markdown("Evaluates your personal leadership style and preferences. Includes comparison with your home region and a target country of your choice. Ideal for understanding management, team dynamics, and authority across cultures.")
+        if st.button("Select & Start Leadership Style", use_container_width=True, key="btn_leadership", type="primary"):
+            st.session_state.selected_tests = ["GLOBE_Leadership"]
+            st.session_state.current_page = 3
+            st.session_state.current_question = 0
+            st.session_state.test_answers = {"GLOBE_Leadership": {}}
             st.rerun()
-            
-    # Show the user what they have currently selected
-    selected_pretty = "GLOBE Cultural Practices" if st.session_state.selected_test_key == "GLOBE_Culture" else "GLOBE Leadership Style"
-    st.success(f"✅ Currently selected: **{selected_pretty}**")
-    
-    # The final start button
-    if st.button("Start Assessment", use_container_width=True, key="begin_test_btn", type="primary"):
-        st.session_state.selected_tests = [st.session_state.selected_test_key]
-        st.session_state.current_page = 3
-        st.session_state.current_question = 0
-        st.session_state.test_answers = {st.session_state.selected_test_key: {}}
-        st.rerun()
         
 def page_test_administration():
 # --- CSS TO TIGHTEN SPACING AND MATCH THEME ---
