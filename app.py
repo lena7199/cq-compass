@@ -524,31 +524,39 @@ def page_test_selection():
             st.rerun()
         
 def page_test_administration():
-# --- CSS TO TIGHTEN SPACING AND MATCH THEME ---
+    # --- 1. CSS FOR RADIO BUTTONS & SPACER ---
     st.markdown("""
     <style>
-        /* 1. Fix the overlap: Pull the bar up just a little bit, not 50px! */
-        .stProgress {
-            margin-top: -10px !important;
-            margin-bottom: -10px !important;
-        }
-        /* 2. Reduce space under the main title */
-        h1 {
-            margin-bottom: 5px !important;
-            padding-bottom: 0px !important;
-        }
-        /* 3. Pull the "Question X of Y" text up closer to the bar */
-        .stMarkdown p {
-            margin-top: 0px !important;
-            margin-bottom: 10px !important;
-        }
-        /* 4. BONUS: Force the Gold color using a stronger Streamlit selector! */
-        div[data-testid="stProgress"] > div > div > div > div,
-        .stProgress > div > div > div > div {
-            background-color: #EC5B38 !important;
-        }
+        /* Align radio buttons nicely */
+        div[data-testid="stRadio"] > div > div > label > div { align-items: flex-start !important; }
+        div[data-testid="stRadio"] > div > div > label > div > div:first-child { margin-top: 4px !important; }
     </style>
-    """, unsafe_allow_html=True)    
+    """, unsafe_allow_html=True)
+
+    # --- 2. THE STICKY PROGRESS BAR ---
+    # position: fixed keeps it at the top of the screen while scrolling.
+    # z-index: 100 keeps it above the text, but below the Streamlit menu.
+    st.markdown(f"""
+    <div style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #F9F7F5; /* Matches your app's main background color */
+        z-index: 100;
+        padding: 15px 20px 20px 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Subtle shadow to separate it from content */
+    ">
+        <p style="text-align: center; color: #EC5B38; font-weight: 700; font-size: 1.1em; margin: 0 0 10px 0;">Question {current_idx + 1} of {total_questions}</p>
+        <div style="background-color: #e4e4e7; border-radius: 10px; height: 12px; width: 100%; overflow: hidden;">
+            <div style="background-color: #EC5B38; height: 100%; width: {progress_percent}%; border-radius: 10px; transition: width 0.3s ease;"></div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # --- 3. THE SPACER (Prevents Overlap!) ---
+    # This invisible block pushes the title and question down so they start BELOW the sticky bar.
+    st.markdown('<div style="height: 120px;"></div>', unsafe_allow_html=True)
     
     st.markdown("<h1 style='color: #EC5B38;'>Assessment in Progress</h1>", unsafe_allow_html=True)
     
