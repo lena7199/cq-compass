@@ -595,23 +595,32 @@ def page_test_administration():
         dim_questions = GLOBE_LEADERSHIP_QUESTIONS[current_item['dimension']]
     
     q_in_dim_idx = dim_questions.index(current_item['question'])
-    
-    # PHASE 2 FIX: Dynamically find the index of the previously saved answer
+
+    # --- RANDOMIZE OPTIONS & REMEMBER PREVIOUS ANSWER ---
+    import copy
+
+    # 1. Create a shuffled copy of the options for this specific question
+    shuffled_options = copy.deepcopy(current_item['question']['options'])
+    random.shuffle(shuffled_options)
+
+    # 2. Find the index of the previously saved answer IN THE SHUFFLED LIST
     radio_index = None
     current_answer_list = st.session_state.test_answers.get(current_item['test'], {}).get(current_item['dimension'], [])
-    
+
     if q_in_dim_idx < len(current_answer_list):
         saved_score = current_answer_list[q_in_dim_idx]
-        for opt_idx, opt in enumerate(current_item['question']['options']):
+        # Look for the saved score in the SHUFFLED options
+        for opt_idx, opt in enumerate(shuffled_options):
             if opt[1] == saved_score:
                 radio_index = opt_idx
                 break
-    
+
+    # 3. Display the radio button with shuffled options
     selected_option = st.radio(
         "Select your answer:",
-        [opt[0] for opt in current_item['question']['options']],
+        [opt[0] for opt in shuffled_options],
         key=f"q_{current_idx}",
-        index=radio_index # <--- THIS REMEMBERS THE ANSWER!
+        index=radio_index
     )
     
     # Navigation buttons
