@@ -524,15 +524,20 @@ def page_test_selection():
             st.rerun()
         
 def page_test_administration():
-    # --- 1. CSS TO HIDE NATIVE BAR & STYLE RADIO BUTTONS ---
+    # --- 1. CSS TO HIDE NATIVE BAR & FIX RADIO BUTTONS ---
     st.markdown("""
     <style>
-        /* Hide Streamlit's ugly native progress bar */
+        /* Hide Streamlit's native progress bar */
         div[data-testid="stProgress"] { display: none !important; }
         
-        /* Align radio buttons nicely */
+        /* FIX: Make unselected radio buttons visible with a gold border */
+        div[data-testid="stRadio"] > div > div > label > div > div:first-child { 
+            border: 2px solid #A8906B !important; 
+            background-color: transparent !important;
+            margin-top: 4px !important;
+        }
+        /* Align radio text nicely */
         div[data-testid="stRadio"] > div > div > label > div { align-items: flex-start !important; }
-        div[data-testid="stRadio"] > div > div > label > div > div:first-child { margin-top: 4px !important; }
     </style>
     """, unsafe_allow_html=True)
 
@@ -558,31 +563,29 @@ def page_test_administration():
     
     current_idx = st.session_state.current_question
     current_item = question_map[current_idx]
+    pretty_name = format_dimension_name(current_item['dimension'])
 
-    # --- 3. THE BEAUTIFUL QUESTION BADGE ---
+    # --- 3. THE BRANDED QUESTION BADGE (Left-aligned, above dimension) ---
     st.markdown(f"""
-    <div style="text-align: center; margin-bottom: 30px;">
+    <div style="margin-bottom: 10px;">
         <span style="
-            background-color: #EC5B38; 
-            color: white; 
-            padding: 6px 18px; 
-            border-radius: 20px; 
+            background-color: #A8906B; 
+            color: #F9F7F5; 
+            padding: 4px 12px; 
+            border-radius: 6px; 
             font-weight: 600; 
-            font-size: 0.95em; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-size: 0.9em; 
+            font-family: 'Inter', sans-serif;
         ">Question {current_idx + 1} of {total_questions}</span>
     </div>
     """, unsafe_allow_html=True)
 
-    st.markdown("<h1 style='color: #EC5B38;'>Assessment in Progress</h1>", unsafe_allow_html=True)
-   
-    # Display question
-    pretty_name = format_dimension_name(current_item['dimension'])
+    # --- 4. DISPLAY DIMENSION AND QUESTION ---
     st.markdown(f"### {pretty_name}")
     st.markdown(f"**{current_item['question']['q']}**")
     
     # Display options
-    current_answer = st.session_state.test_answers[current_item['test']].get(current_item['dimension'], [])
+    current_answer = st.session_state.test_answers[current_item['test']].get(current_item['dimension'], [])    
     
     # Find which question within this dimension we're on
     dim_questions = []
