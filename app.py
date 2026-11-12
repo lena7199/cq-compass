@@ -982,26 +982,22 @@ def page_results():
                         txt = str(interpretations_df.loc[mask, 'Interpretation'].values[0])
                         interpretations_dict[format_dimension_name(dimension)] = txt
                 
-                # --- 2. GET COMPARISON DATA (WITH DEBUGGING) ---
+                # --- 2. GET COMPARISON DATA ---
                 countries_df = load_data('country_scores.csv') 
                 
-                # DEBUGGING PRINTS (Look in your terminal/command prompt, not the browser!)
-                print("="*40)
-                print("DEBUG: Starting country score lookup...")
-                print(f"DEBUG: User Nationality is: '{user_nationality}'")
-                print(f"DEBUG: User Scores Keys are: {list(user_scores.keys())}")
-                print(f"DEBUG: CSV Columns are: {countries_df.columns.tolist()}")
+                # --- DEBUG INFO (Will show on your screen) ---
+                st.write("🔍 **DEBUG INFO:**")
+                st.write(f"Looking for country: **'{user_nationality}'**")
+                st.write(f"First 5 countries in your CSV: {countries_df['Country'].tolist()[:5]}")
                 
                 # Filter the dataframe
                 country_row = countries_df[countries_df['Country'] == user_nationality]
                 
                 if country_row.empty:
-                    print(f"DEBUG: WARNING! '{user_nationality}' not found in CSV 'Country' column.")
-                    print(f"DEBUG: Available countries in CSV: {countries_df['Country'].tolist()[:5]}...")
-                    # Fallback if not found
+                    st.warning(f"⚠️ Could not find '{user_nationality}' in CSV. Using fallback scores.")
                     national_avg_scores = {dim: 4.0 for dim in user_scores.keys()} 
                 else:
-                    print(f"DEBUG: Found country row successfully!")
+                    st.success(f"✅ Found '{user_nationality}' in CSV!")
                     full_dict = country_row.iloc[0].to_dict()
                     
                     national_avg_scores = {}
@@ -1011,17 +1007,13 @@ def page_results():
                                 national_avg_scores[k] = float(v)
                             except:
                                 national_avg_scores[k] = None
-                        else:
-                            print(f"DEBUG: Column '{k}' in CSV does not match user dimension.")
                     
-                    # Check for missing dimensions
                     for dim in user_scores:
                         if dim not in national_avg_scores:
-                            print(f"DEBUG: WARNING! Dimension '{dim}' is missing from CSV.")
                             national_avg_scores[dim] = None
                             
-                print(f"DEBUG: Final National Scores Dictionary: {national_avg_scores}")
-                print("="*40)
+                st.write(f"**Final National Scores Dictionary:** {national_avg_scores}")
+                st.write("---") # Adds a visual line
 
                 # --- 3. Create the DataFrame for the HTML table ---
                 dimensions = list(user_scores.keys())
