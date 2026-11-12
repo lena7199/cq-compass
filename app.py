@@ -875,39 +875,48 @@ def page_results():
                         st.rerun() 
 
         # 2. Download PDF Button
+        # 2. Download PDF Button (Safely placed in its own column)
         with nav_col2:
-            # Prepare data for the cached generator
-            user_id = st.session_state.get("anonymous_id", "UNKNOWN")
-            scores_json = json.dumps(user_scores)
-            
-            # Gather interpretations
-            interpretations_dict = {}
-            interpretations_df = load_data('interpretations.csv')
-            for dimension, score in user_scores.items():
-                min_scores = pd.to_numeric(interpretations_df['Min_Score'], errors='coerce')
-                max_scores = pd.to_numeric(interpretations_df['Max_Score'], errors='coerce')
-                mask = (
-                    (interpretations_df['Framework'] == test_name) & 
-                    (interpretations_df['Dimension'] == dimension) & 
-                    (float(score) >= min_scores) & 
-                    (float(score) <= max_scores)
-                )
-                if not interpretations_df.loc[mask].empty:
-                    interpretations_dict[format_dimension_name(dimension)] = interpretations_df.loc[mask, 'Interpretation'].values[0]
-            
-            interps_json = json.dumps(interpretations_dict)
-            
-            # Generate PDF (Fast because of the cache we added in Step 1)
-            pdf_bytes = generate_cached_pdf(user_id, scores_json, interps_json)
-            
-            # The actual download button (No 'if' block needed!)
-            st.download_button(
-                label="📄 Download PDF",
-                data=pdf_bytes,
-                file_name=f"Cultural_Profile_{user_id}.pdf",
-                mime="application/pdf",
-                use_container_width=True
-            )
+            try:
+                # Prepare data for the cached generator
+                user_id = st.session_state.get("anonymous_id", "UNKNOWN")
+                scores_json = json.dumps(user_scores)
+                
+                # Gather interpretations
+                interpretations_dict = {}
+                interpretations_df = load_data('interpretations.csv')
+                for dimension, score in user_scores.items():
+                    min_scores = pd.to_numeric(interpretations_df['Min_Score'], errors='coerce')
+                    max_scores = pd.to_numeric(interpretations_df['Max_Score'], errors='coerce')
+                    mask = (
+                        (interpretations_df['Framework'] == test_name) & 
+                        (interpretations_df['Dimension'] == dimension) & 
+                        (float(score) >= min_scores) & 
+                        (float(score) <= max_scores)
+                    )
+                    if not interpretations_df.loc[mask].empty:
+                        # Force to string to prevent JSON serialization errors
+                        txt = str(interpretations_df.loc[mask, 'Interpretation'].values[0])
+                        interpretations_dict[format_dimension_name(dimension)] = txt
+                
+                interps_json = json.dumps(interpretations_dict)
+                
+                # Generate PDF
+                pdf_bytes = generate_cached_pdf(user_id, scores_json, interps_json)
+                
+                # The actual download button (Removed use_container_width to prevent API crash)
+                if pdf_bytes:
+                    st.download_button(
+                        label="📄 Download PDF",
+                        data=pdf_bytes,
+                        file_name=f"Cultural_Profile_{user_id}.pdf",
+                        mime="application/pdf",
+                        key=f"pdf_btn_{test_name}" # Dynamic key prevents collisions
+                    )
+                else:
+                    st.warning("Could not generate PDF.")
+            except Exception as e:
+                st.error(f"PDF Error: {e}")
         
         with nav_col3:
             if st.button("Compare with Another Culture", use_container_width=True, key="btn_compare_from_profile"):
