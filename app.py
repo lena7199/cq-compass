@@ -444,7 +444,7 @@ def create_profile_pdf(user_code, user_scores, interpretations_dict):
         pdf.multi_cell(0, 5, text)
         pdf.ln(5)
         
-    return pdf.output()
+    return bytes(pdf.output())
     
 def get_qualitative_label(score, dimension=""):
     """Convert numerical score to qualitative label (GLOBE 1-7 scale only)"""
