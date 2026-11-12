@@ -991,11 +991,17 @@ def page_results():
                 else:
                     national_avg_scores = {dim: 4.0 for dim in user_scores.keys()} # Fallback if country not found
                 
-                # Create the DataFrame for the HTML table
+                # Create the DataFrame for the HTML table (Bulletproof version)
+                dimensions = list(user_scores.keys())
+                your_scores = list(user_scores.values())
+                
+                # Safely get national scores, using None if a dimension is missing from the CSV
+                national_scores = [national_avg_scores.get(dim, None) for dim in dimensions]
+
                 comparison_df = pd.DataFrame({
-                    'Cultural Dimension': [format_dimension_name(d) for d in user_scores.keys()],
-                    'Your Score': list(user_scores.values()),
-                    f'{user_nationality} Average': list(national_avg_scores.values())
+                    'Cultural Dimension': [format_dimension_name(d) for d in dimensions],
+                    'Your Score': your_scores,
+                    f'{user_nationality} Average': national_scores
                 })
 
                 # --- 3. Generate the Radar Chart PNG bytes (Updated) ---
