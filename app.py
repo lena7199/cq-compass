@@ -13,13 +13,12 @@ import ast
 import json
 from supabase import create_client, Client
 
-def generate_html_report(user_code, user_scores, interpretations_dict, radar_png_bytes):
-    """Generates a beautifully styled HTML report and embeds the radar chart."""
+def generate_html_report(user_code, user_scores, interpretations_dict, radar_png_bytes, comparison_df=None):
+    """Generates HTML report with Roboto font, Radar Chart, and Comparison Table."""
     
-    # 1. Convert the Matplotlib PNG bytes to a Base64 string for HTML embedding
     img_b64 = base64.b64encode(radar_png_bytes).decode('utf-8')
     
-    # 2. Format the interpretations into HTML blocks
+    # 1. Generate Interpretations HTML
     interps_html = ""
     for dim, text in interpretations_dict.items():
         interps_html += f"""
@@ -28,37 +27,47 @@ def generate_html_report(user_code, user_scores, interpretations_dict, radar_png
             <p>{text}</p>
         </div>
         """
+
+    # 2. Generate Comparison Table HTML (if provided)
+    table_html = ""
+    if comparison_df is not None and not comparison_df.empty:
+        # Convert dataframe to HTML table with specific classes for styling
+        table_html = comparison_df.to_html(index=False, classes='comparison-table', border=0)
+        table_section = f"""
+        <div class="table-section">
+            <h2>Score Comparison</h2>
+            {table_html}
+        </div>
+        """
+    else:
+        table_section = ""
         
     current_date = datetime.now().strftime("%B %d, %Y")
     
-    # 3. Build the HTML template with professional CSS
+    # 3. The HTML Template (Now with Roboto Font and Table Styles)
     html_template = f"""
     <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
         <title>Cultural Profile Report</title>
+        <!-- Import Roboto Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
         <style>
-            /* Page setup for printing to PDF */
             @page {{ margin: 2cm; }}
-            
-            /* Global Typography */
             body {{ 
-                font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+                font-family: 'Roboto', sans-serif; /* CHANGED TO ROBOTO */
                 color: #333; line-height: 1.6; margin: 0; padding: 20px; 
                 max-width: 800px; margin: auto; background-color: #ffffff;
             }}
-            
-            /* Header Styling */
             .header {{ 
                 text-align: center; border-bottom: 3px solid #2E5C8A; 
                 padding-bottom: 20px; margin-bottom: 30px; 
             }}
-            .header h1 {{ color: #2E5C8A; margin: 0; font-size: 28px; letter-spacing: 0.5px; }}
+            .header h1 {{ color: #2E5C8A; margin: 0; font-size: 28px; }}
             .header p {{ color: #666; margin: 5px 0; }}
             .confidential {{ font-size: 12px; color: #999; font-style: italic; margin-top: 10px; }}
             
-            /* Chart Container */
             .chart-container {{ text-align: center; margin: 30px 0; }}
             .chart-container img {{ 
                 max-width: 100%; height: auto; 
@@ -66,9 +75,8 @@ def generate_html_report(user_code, user_scores, interpretations_dict, radar_png
                 border-radius: 8px; background-color: #fcfcfc;
             }}
             
-            /* Interpretations Section */
             .interpretations {{ margin-top: 40px; }}
-            .interpretations h2 {{ 
+            .interpretations h2, .table-section h2 {{ 
                 color: #2E5C8A; border-bottom: 1px solid #ddd; 
                 padding-bottom: 10px; font-size: 22px;
             }}
@@ -78,42 +86,49 @@ def generate_html_report(user_code, user_scores, interpretations_dict, radar_png
                 border-radius: 4px; 
             }}
             .dimension-block h3 {{ margin: 0 0 10px 0; color: #2E5C8A; font-size: 18px; }}
-            .dimension-block p {{ margin: 0; font-size: 14px; color: #444; }}
             
-            /* Footer */
+            /* NEW: Table Styling */
+            .comparison-table {{
+                width: 100%; border-collapse: collapse; margin-top: 15px;
+                font-family: 'Roboto', sans-serif;
+            }}
+            .comparison-table th {{
+                background-color: #2E5C8A; color: white; 
+                padding: 12px; text-align: left; font-weight: 700;
+            }}
+            .comparison-table td {{
+                padding: 10px; border-bottom: 1px solid #eee;
+            }}
+            .comparison-table tr:nth-child(even) {{ background-color: #f9f9fb; }}
+            
             .footer {{ 
                 text-align: center; margin-top: 50px; font-size: 12px; 
                 color: #999; border-top: 1px solid #eee; padding-top: 15px; 
             }}
-            
-            /* Print-specific adjustments */
             @media print {{
                 body {{ padding: 0; }}
-                .dimension-block {{ break-inside: avoid; }} /* Prevents a dimension block from splitting across pages */
-                .header {{ page-break-after: avoid; }}
+                .dimension-block, .table-section {{ break-inside: avoid; }}
             }}
         </style>
     </head>
     <body>
-        <!-- HEADER -->
         <div class="header">
             <h1>Cultural Friction Prediction Report</h1>
             <p>User Code: <strong>{user_code}</strong> | Generated: {current_date}</p>
             <p class="confidential">Confidential - For Personal Use Only | CQ Compass 2026</p>
         </div>
         
-        <!-- RADAR CHART -->
         <div class="chart-container">
             <img src="data:image/png;base64,{img_b64}" alt="Cultural Radar Chart">
         </div>
         
-        <!-- INTERPRETATIONS -->
+        {table_section}
+        
         <div class="interpretations">
             <h2>Personal Interpretations & Recommendations</h2>
             {interps_html}
         </div>
         
-        <!-- FOOTER -->
         <div class="footer">
             Generated by CQ Compass | Advancing Intercultural Intelligence
         </div>
@@ -470,32 +485,40 @@ import io
 import tempfile
 import os
 
-def create_radar_chart_png(user_scores):
-    """Creates a radar chart using Matplotlib and returns it as PNG bytes."""
+def create_radar_chart_png(user_scores, comparison_scores=None):
+    """Creates a radar chart comparing User vs. National/Target Culture."""
     categories = list(user_scores.keys())
     values = list(user_scores.values())
     N = len(categories)
     
-    # Calculate angles for the radar chart
     angles = [n / float(N) * 2 * np.pi for n in range(N)]
-    angles += angles[:1] # Close the loop
-    values += values[:1] # Close the loop
+    angles += angles[:1] 
+    values += values[:1] 
     
     fig, ax = plt.subplots(figsize=(6, 6), subplot_kw=dict(polar=True))
     
-    # Plot the data
-    ax.plot(angles, values, linewidth=2, linestyle='solid', color='#2E5C8A')
+    # 1. Plot User Data (Blue)
+    ax.plot(angles, values, linewidth=2, linestyle='solid', color='#2E5C8A', label='Your Score')
     ax.fill(angles, values, color='#2E5C8A', alpha=0.15)
     
-    # Format the chart
+    # 2. Plot Comparison Data (Gold) if provided
+    if comparison_scores:
+        # Ensure the comparison scores match the order of categories
+        comp_values = [comparison_scores.get(c, 0) for c in categories]
+        comp_values += comp_values[:1] # Close loop
+        ax.plot(angles, comp_values, linewidth=2, linestyle='dashed', color='#C5A059', label='Comparison')
+        
+    # Formatting
     ax.set_xticks(angles[:-1])
     ax.set_xticklabels([format_dimension_name(c) for c in categories], size=10)
-    ax.set_ylim(1, 7) # GLOBE scale is 1 to 7
+    ax.set_ylim(1, 7) 
     ax.set_yticks([1, 2, 3, 4, 5, 6, 7])
     ax.set_yticklabels(["1", "2", "3", "4", "5", "6", "7"], color="grey", size=8)
     ax.grid(color="grey", linestyle="--", linewidth=0.5)
     
-    # Save to bytes
+    # Add Legend
+    ax.legend(loc='upper right', bbox_to_anchor=(1.3, 1.1), fontsize=10)
+    
     buf = io.BytesIO()
     fig.savefig(buf, format='png', dpi=150, bbox_inches='tight')
     buf.seek(0)
@@ -930,12 +953,13 @@ def page_results():
                         st.success("Profile saved successfully!")
                         st.rerun() 
 
-        # 2. Download HTML Report Button (Replaces the old PDF logic)
+        # 2. Download HTML Report Button
         with nav_col2:
             try:
                 user_id = st.session_state.get("anonymous_id", "UNKNOWN")
+                user_nationality = st.session_state.get("nationality", "Unknown")
                 
-                # --- Gather interpretations (Your existing logic) ---
+                # --- 1. Gather interpretations (Your existing logic) ---
                 interpretations_dict = {}
                 interpretations_df = load_data('interpretations.csv')
                 for dimension, score in user_scores.items():
@@ -951,14 +975,63 @@ def page_results():
                         txt = str(interpretations_df.loc[mask, 'Interpretation'].values[0])
                         interpretations_dict[format_dimension_name(dimension)] = txt
                 
-                # --- Generate the Radar Chart PNG bytes ---
-                # We call your existing Matplotlib function here to get the image bytes
-                img_bytes = create_radar_chart_png(user_scores)
+                # --- 2. GET COMPARISON DATA ---
+                # 1. Load your country scores file (Make sure the filename matches your actual file exactly!)
+                countries_df = load_data('country_scores.csv') 
                 
-                # --- Generate the HTML report ---
-                html_report = generate_html_report(user_id, user_scores, interpretations_dict, img_bytes)
+                # 2. Filter the dataframe to find the user's nationality
+                # (Make sure 'Country' matches the exact column name in your CSV)
+                country_row = countries_df[countries_df['Country'] == user_nationality]
                 
-                # --- The actual download button ---
+                # 3. Convert that row into the dictionary we need
+                if not country_row.empty:
+                    full_dict = country_row.iloc[0].to_dict()
+                    # Only keep the dimensions that match the user's test, and ensure they are numbers
+                    national_avg_scores = {k: float(v) for k, v in full_dict.items() if k in user_scores}
+                else:
+                    national_avg_scores = {dim: 4.0 for dim in user_scores.keys()} # Fallback if country not found
+                
+                # Create the DataFrame for the HTML table
+                comparison_df = pd.DataFrame({
+                    'Cultural Dimension': [format_dimension_name(d) for d in user_scores.keys()],
+                    'Your Score': list(user_scores.values()),
+                    f'{user_nationality} Average': list(national_avg_scores.values())
+                })
+
+                # --- 3. Generate the Radar Chart PNG bytes (Updated) ---
+                # We now pass the national_avg_scores to plot the second line
+                img_bytes = create_radar_chart_png(user_scores, comparison_scores=national_avg_scores)
+                
+                # --- 4. Generate the HTML report (Updated) ---
+                # We now pass the comparison_df to generate the table
+                html_report = generate_html_report(
+                    user_id, 
+                    user_scores, 
+                    interpretations_dict, 
+                    img_bytes, 
+                    comparison_df=comparison_df
+                )
+                
+                # --- CSS TO MATCH BUTTON STYLING ---
+                st.markdown("""
+                <style>
+                div[data-testid="stDownloadButton"] button {
+                    background-color: white !important;
+                    color: #1a2b4c !important; 
+                    border: 2px solid #c5a059 !important; 
+                    border-radius: 5px !important;
+                    width: 100% !important;
+                    padding: 10px !important;
+                    font-size: 16px !important;
+                    font-weight: 500 !important;
+                }
+                div[data-testid="stDownloadButton"] button:hover {
+                    background-color: #f9f9f9 !important;
+                }
+                </style>
+                """, unsafe_allow_html=True)
+
+                # --- 5. The actual download button ---
                 st.download_button(
                     label="📥 Download Report (Local Device)",
                     data=html_report.encode('utf-8'),
@@ -968,7 +1041,6 @@ def page_results():
                     use_container_width=True
                 )
                 
-                # Explicit instructions to prevent user confusion
                 st.caption("💡 *Download this file, open it in your browser, and press **Ctrl+P** (or **Cmd+P**) to save as PDF.*")
                 
             except Exception as e:
