@@ -977,7 +977,13 @@ def page_results():
                     if success:
                         st.session_state.profile_saved = True
                         st.success("Profile saved successfully!")
-                        st.rerun() 
+                        st.rerun()
+                    
+            # Only show if it was just saved, then immediately clear the flag
+                if st.session_state.get('profile_saved', False):
+                    st.success("✅ Profile saved!")
+                    st.caption(f"Your unique code: **{st.session_state.anonymous_id}**")
+                    st.session_state.profile_saved = False       
 
         # 2. Download HTML Report Button
         with nav_col2:
@@ -1272,22 +1278,11 @@ def page_country_comparison():
             st.plotly_chart(fig, use_container_width=True, config={'staticPlot': True})
 
             # Create 3 columns for the action buttons
-            col_toggle, col_save, col_html = st.columns(3)
-            
-            # 1. Show/Hide Toggle
-            with col_toggle:
-                if st.session_state.show_national_avg:
-                    btn_text = "◉ Hide Home Country Average"
-                else:
-                    btn_text = "◎ Show Home Country Average"
-                
-                if st.button(btn_text, use_container_width=True, key="national_toggle_btn", type="secondary"):
-                    st.session_state.show_national_avg = not st.session_state.show_national_avg
-                    st.rerun()
+            col_save, col_html, col_toggle = st.columns(3)
 
-            # 2. Save Results Button
+            # 1. Save Results Button
             with col_save:
-                if st.button("💾 Save Results", use_container_width=True, key="save_comparison_btn"):
+                if st.button("⬆️ Save Report to Database", use_container_width=True, key="save_comparison_btn"):
                     with st.spinner("Saving your comparison to the database..."):
                         user_id = st.session_state.get("anonymous_id", "UNKNOWN")
                         user_nationality = st.session_state.get("nationality", "Unknown")
@@ -1316,7 +1311,7 @@ def page_country_comparison():
                     st.caption(f"Your unique code: **{st.session_state.anonymous_id}**")
                     st.session_state.profile_saved = False
           
-            # 3. Download HTML Report Button - Comparison with Target Country
+            # 2. Download HTML Report Button - Comparison with Target Country
             with col_html:
                 try:
                     user_id = st.session_state.get("anonymous_id", "UNKNOWN")
@@ -1420,7 +1415,7 @@ def page_country_comparison():
                 
                     # --- 6. The actual download button ---
                     st.download_button(
-                        label="📥 Download Report (Local Device)",
+                        label="⬇️ Download HTML Report",
                         data=html_report.encode('utf-8'),
                         file_name=f"CQ_Profile_{user_id}.html",
                         mime="text/html",
@@ -1428,10 +1423,21 @@ def page_country_comparison():
                         use_container_width=True
                     )
                 
-                    st.caption("💡 *Download this file, open it in your browser, and press **Ctrl+P** (or **Cmd+P**) to save as PDF.*")
+                    st.caption("*Open the downloaded file, open it in your browser, and press **Ctrl+P** (or **Cmd+P**) to save as PDF.*")
                 
                 except Exception as e:
                     st.error(f"Report Error: {e}")
+
+            # 3. Show/Hide Toggle
+            with col_toggle:
+                if st.session_state.show_national_avg:
+                    btn_text = "◉ Hide Home Country Average"
+                else:
+                    btn_text = "◎ Show Home Country Average"
+                
+                if st.button(btn_text, use_container_width=True, key="national_toggle_btn", type="secondary"):
+                    st.session_state.show_national_avg = not st.session_state.show_national_avg
+                    st.rerun()
             
             st.markdown("</div>", unsafe_allow_html=True)
             
