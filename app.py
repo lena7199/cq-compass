@@ -1475,7 +1475,7 @@ def page_country_comparison():
                         user_scores, 
                         recommendations_dict, 
                         img_bytes, 
-                        comparison_df=comparison_df
+                        comparison_df=comparison_df,
                         cultural_notes_df=cultural_notes_df
                     )
                 
