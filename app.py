@@ -13,22 +13,41 @@ import ast
 import json
 from supabase import create_client, Client
 
-def generate_html_report(user_code, user_scores, interpretations_dict, radar_png_bytes, comparison_df=None):
+def generate_html_report(user_code, user_scores, text_dict, radar_png_bytes, comparison_df=None, cultural_notes_df=None):
     """Generates HTML report with Roboto font, Radar Chart, and Comparison Table."""
     
     img_b64 = base64.b64encode(radar_png_bytes).decode('utf-8')
     
     # 1. Generate Interpretations HTML
     interps_html = ""
-    for dim, text in interpretations_dict.items():
+    for dim, text in text_dict.items():
         interps_html += f"""
         <div class="dimension-block">
             <h3>{dim}</h3>
             <p>{text}</p>
         </div>
         """
-
-    # 2. Generate Comparison Table HTML (if provided)
+    # 2. Generate Cultural Notes HTML (if provided)
+    notes_html = ""
+    if cultural_notes_df is not None and not cultural_notes_df.empty:
+        for _, row in cultural_notes_df.iterrows():
+            notes_html += f"""
+            <div class="cultural-note-card">
+                <div class="note-category">{row['Category']}</div>
+                <div class="note-tip">{row['Tip']}</div>
+            </div>
+            """
+        notes_section = f"""
+        <div class="notes-section">
+            <h2>Cultural Context & Local Etiquette</h2>
+            <p class="notes-caption">Key behavioral insights for interacting in your target culture.</p>
+            {notes_html}
+        </div>
+        """
+    else:
+        notes_section = ""
+    
+    # 3. Generate Comparison Table HTML (if provided)
     table_html = ""
     if comparison_df is not None and not comparison_df.empty:
         # Convert dataframe to HTML table with specific classes for styling
@@ -44,7 +63,7 @@ def generate_html_report(user_code, user_scores, interpretations_dict, radar_png
         
     current_date = datetime.now().strftime("%B %d, %Y")
     
-    # 3. The HTML Template (Now with Roboto Font and Table Styles)
+    # 4. The HTML Template (Now with Roboto Font and Table Styles)
     html_template = f"""
     <!DOCTYPE html>
     <html lang="en">
@@ -109,6 +128,24 @@ def generate_html_report(user_code, user_scores, interpretations_dict, radar_png
                 body {{ padding: 0; }}
                 .dimension-block, .table-section {{ break-inside: avoid; }}
             }}
+
+            /* NEW: Cultural Notes Styling */
+            .notes-section { margin-top: 40px; }
+            .notes-section h2 { 
+                color: #2E5C8A; border-bottom: 1px solid #ddd; 
+                padding-bottom: 10px; font-size: 22px; 
+            }
+            .notes-caption { color: #666; font-style: italic; margin-bottom: 20px; }
+            .cultural-note-card {
+                background-color: #fcfcfc; border: 1px solid #e0e0e0; 
+                border-left: 4px solid #C5A059; border-radius: 4px; 
+                padding: 15px 20px; margin-bottom: 15px;
+            }
+            .note-category {
+                font-weight: 700; color: #2E5C8A; font-size: 14px; 
+                margin-bottom: 5px; text-transform: uppercase;
+            }
+            .note-tip { color: #333; font-size: 14px; line-height: 1.5; }
         </style>
     </head>
     <body>
@@ -123,6 +160,7 @@ def generate_html_report(user_code, user_scores, interpretations_dict, radar_png
         </div>
         
         {table_section}
+        {notes_section}
         
         <div class="interpretations">
             <h2>Personal Interpretations & Recommendations</h2>
@@ -1346,6 +1384,14 @@ def page_country_comparison():
 
                     # LOAD THE CSV FIRST SO BOTH STEPS CAN USE IT
                     countries_df = load_data('country_scores.csv')
+
+                    # Load Cultural Notes for the HTML report
+                    cultural_notes_df = None
+                    if os.path.exists('data/cultural_notes.csv'):
+                        notes_df = pd.read_csv('data/cultural_notes.csv')
+                        cultural_notes_df = notes_df[notes_df['Country'] == target_country]
+                        if cultural_notes_df.empty:
+                            cultural_notes_df = None
                     
                     # --- 1. Gather Recommendations for HTML ---
                     recommendations_dict = {}
@@ -1430,6 +1476,7 @@ def page_country_comparison():
                         recommendations_dict, 
                         img_bytes, 
                         comparison_df=comparison_df
+                        cultural_notes_df=cultural_notes_df
                     )
                 
                     # --- CSS TO MATCH BUTTON STYLING ---
