@@ -43,56 +43,6 @@ def generate_html_report(user_code, user_scores, interpretations_dict, radar_png
         table_section = ""
         
     current_date = datetime.now().strftime("%B %d, %Y")
-
-    # --- 2. GET COMPARISON DATA ---
-                # 1. Load your country scores file
-                countries_df = load_data('country_scores.csv') 
-                
-                # DEBUG: Print what we're working with
-                print("=== DEBUG INFO ===")
-                print(f"User Nationality: '{user_nationality}'")
-                print(f"User Scores Keys: {list(user_scores.keys())}")
-                print(f"CSV Columns: {countries_df.columns.tolist()}")
-                print(f"Sample CSV Countries: {countries_df['Country'].head(10).tolist()}")
-                
-                # 2. Filter the dataframe - TRY BOTH VERSIONS (with and without space)
-                country_row = countries_df[countries_df['Country'] == user_nationality]
-                
-                # If not found, try removing spaces from user_nationality
-                if country_row.empty:
-                    print(f"Warning: '{user_nationality}' not found in CSV. Trying without spaces...")
-                    country_row = countries_df[countries_df['Country'] == user_nationality.replace(" ", "")]
-                
-                print(f"Found country row: {not country_row.empty}")
-                if not country_row.empty:
-                    print(f"Country Row Data: {country_row.iloc[0].to_dict()}")
-                
-                # 3. Convert that row into the dictionary we need
-                if not country_row.empty:
-                    full_dict = country_row.iloc[0].to_dict()
-                    print(f"Full dict keys: {full_dict.keys()}")
-                    # Only keep the dimensions that match the user's test, and ensure they are numbers
-                    national_avg_scores = {}
-                    for k, v in full_dict.items():
-                        if k in user_scores:
-                            try:
-                                national_avg_scores[k] = float(v)
-                            except (ValueError, TypeError):
-                                national_avg_scores[k] = None
-                        else:
-                            print(f"Warning: Key '{k}' in CSV but not in user_scores")
-                    
-                    # Check for missing dimensions
-                    for dim in user_scores:
-                        if dim not in national_avg_scores:
-                            print(f"Warning: Dimension '{dim}' in user_scores but not in CSV")
-                            national_avg_scores[dim] = None
-                else:
-                    print(f"ERROR: Could not find '{user_nationality}' in CSV!")
-                    national_avg_scores = {dim: 4.0 for dim in user_scores.keys()} # Fallback
-                
-                print(f"Final national_avg_scores: {national_avg_scores}")
-                print("==================")
     
     # 3. The HTML Template (Now with Roboto Font and Table Styles)
     html_template = f"""
@@ -1016,7 +966,7 @@ def page_results():
                 user_id = st.session_state.get("anonymous_id", "UNKNOWN")
                 user_nationality = st.session_state.get("nationality", "Unknown")
                 
-                # --- 1. Gather interpretations (Your existing logic) ---
+                # --- 1. Gather interpretations ---
                 interpretations_dict = {}
                 interpretations_df = load_data('interpretations.csv')
                 for dimension, score in user_scores.items():
@@ -1032,27 +982,50 @@ def page_results():
                         txt = str(interpretations_df.loc[mask, 'Interpretation'].values[0])
                         interpretations_dict[format_dimension_name(dimension)] = txt
                 
-                # --- 2. GET COMPARISON DATA ---
-                # 1. Load your country scores file (Make sure the filename matches your actual file exactly!)
+                # --- 2. GET COMPARISON DATA (WITH DEBUGGING) ---
                 countries_df = load_data('country_scores.csv') 
                 
-                # 2. Filter the dataframe to find the user's nationality
-                # (Make sure 'Country' matches the exact column name in your CSV)
+                # DEBUGGING PRINTS (Look in your terminal/command prompt, not the browser!)
+                print("="*40)
+                print("DEBUG: Starting country score lookup...")
+                print(f"DEBUG: User Nationality is: '{user_nationality}'")
+                print(f"DEBUG: User Scores Keys are: {list(user_scores.keys())}")
+                print(f"DEBUG: CSV Columns are: {countries_df.columns.tolist()}")
+                
+                # Filter the dataframe
                 country_row = countries_df[countries_df['Country'] == user_nationality]
                 
-                # 3. Convert that row into the dictionary we need
-                if not country_row.empty:
-                    full_dict = country_row.iloc[0].to_dict()
-                    # Only keep the dimensions that match the user's test, and ensure they are numbers
-                    national_avg_scores = {k: float(v) for k, v in full_dict.items() if k in user_scores}
+                if country_row.empty:
+                    print(f"DEBUG: WARNING! '{user_nationality}' not found in CSV 'Country' column.")
+                    print(f"DEBUG: Available countries in CSV: {countries_df['Country'].tolist()[:5]}...")
+                    # Fallback if not found
+                    national_avg_scores = {dim: 4.0 for dim in user_scores.keys()} 
                 else:
-                    national_avg_scores = {dim: 4.0 for dim in user_scores.keys()} # Fallback if country not found
-                
-                # Create the DataFrame for the HTML table (Bulletproof version)
+                    print(f"DEBUG: Found country row successfully!")
+                    full_dict = country_row.iloc[0].to_dict()
+                    
+                    national_avg_scores = {}
+                    for k, v in full_dict.items():
+                        if k in user_scores:
+                            try:
+                                national_avg_scores[k] = float(v)
+                            except:
+                                national_avg_scores[k] = None
+                        else:
+                            print(f"DEBUG: Column '{k}' in CSV does not match user dimension.")
+                    
+                    # Check for missing dimensions
+                    for dim in user_scores:
+                        if dim not in national_avg_scores:
+                            print(f"DEBUG: WARNING! Dimension '{dim}' is missing from CSV.")
+                            national_avg_scores[dim] = None
+                            
+                print(f"DEBUG: Final National Scores Dictionary: {national_avg_scores}")
+                print("="*40)
+
+                # --- 3. Create the DataFrame for the HTML table ---
                 dimensions = list(user_scores.keys())
                 your_scores = list(user_scores.values())
-                
-                # Safely get national scores, using None if a dimension is missing from the CSV
                 national_scores = [national_avg_scores.get(dim, None) for dim in dimensions]
 
                 comparison_df = pd.DataFrame({
@@ -1061,12 +1034,10 @@ def page_results():
                     f'{user_nationality} Average': national_scores
                 })
 
-                # --- 3. Generate the Radar Chart PNG bytes (Updated) ---
-                # We now pass the national_avg_scores to plot the second line
+                # --- 4. Generate the Radar Chart PNG bytes ---
                 img_bytes = create_radar_chart_png(user_scores, comparison_scores=national_avg_scores)
                 
-                # --- 4. Generate the HTML report (Updated) ---
-                # We now pass the comparison_df to generate the table
+                # --- 5. Generate the HTML report ---
                 html_report = generate_html_report(
                     user_id, 
                     user_scores, 
@@ -1094,7 +1065,7 @@ def page_results():
                 </style>
                 """, unsafe_allow_html=True)
 
-                # --- 5. The actual download button ---
+                # --- 6. The actual download button ---
                 st.download_button(
                     label="📥 Download Report (Local Device)",
                     data=html_report.encode('utf-8'),
