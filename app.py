@@ -992,11 +992,8 @@ def page_results():
                 ]
 
                 if country_data.empty:
-                    st.warning(f"⚠️ Could not find scores for '{user_nationality}' in {test_name}. Using fallback.")
                     national_avg_scores = {dim: 4.0 for dim in user_scores.keys()} 
                 else:
-                    st.success(f"✅ Found {len(country_data)} scores for '{user_nationality}'!")
-                    
                     national_avg_scores = {}
                     # Loop through the specific rows for this country/framework
                     for _, row in country_data.iterrows():
@@ -1342,26 +1339,45 @@ def page_country_comparison():
                     st.caption(f"Your unique code: **{st.session_state.anonymous_id}**")
                     st.session_state.profile_saved = False
           
-            # 3. Download HTML Report Button
+            # 3. Download HTML Report Button - Comparison with Target Country
             with col_html:
                 try:
                     user_id = st.session_state.get("anonymous_id", "UNKNOWN")
                 
-                    # --- 1. Gather interpretations ---
-                    interpretations_dict = {}
-                    interpretations_df = load_data('interpretations.csv')
-                    for dimension, score in user_scores.items():
-                        min_scores = pd.to_numeric(interpretations_df['Min_Score'], errors='coerce')
-                        max_scores = pd.to_numeric(interpretations_df['Max_Score'], errors='coerce')
-                        mask = (
-                            (interpretations_df['Framework'] == test_name) & 
-                            (interpretations_df['Dimension'] == dimension) & 
-                            (float(score) >= min_scores) & 
-                            (float(score) <= max_scores)
-                        )
-                        if not interpretations_df.loc[mask].empty:
-                            txt = str(interpretations_df.loc[mask, 'Interpretation'].values[0])
-                            interpretations_dict[format_dimension_name(dimension)] = txt
+                    # --- 1. Gather Recommendations for HTML ---
+                    recommendations_dict = {}
+                    if test_name == "GLOBE_Culture":
+                        rec_df = load_data('dimension_recommendations_globe_culture.csv')
+                    else:
+                        rec_df = load_data('dimension_recommendations_globe_leadership.csv')
+
+                    for dimension, user_score in user_scores.items():
+                        target_score = countries_df[
+                            (countries_df['Country'] == target_country) &
+                            (countries_df['Framework'] == test_name) &
+                            (countries_df['Dimension'] == dimension)
+                        ]['Score'].values
+
+                        if len(target_score) == 0: continue
+                        target_score = target_score[0]
+                        gap = abs(user_score - target_score)
+
+                        if gap >= 2.5: gap_category, urgency = "High", "Red"
+                        elif gap >= 1.2: gap_category, urgency = "Medium", "Yellow"
+                        else: gap_category, urgency = "Low", "Green"
+
+                        if user_score > target_score: direction = "UserHigher"
+                        elif user_score < target_score: direction = "UserLower"
+                        else: direction = "Aligned"
+
+                        if gap_category == "Low":
+                            rec_row = rec_df[(rec_df['Dimension'] == dimension) & (rec_df['GapCategory'] == 'Low')]
+                        else:
+                            rec_row = rec_df[(rec_df['Dimension'] == dimension) & (rec_df['GapCategory'] == gap_category) & (rec_df['Direction'] == direction)]
+
+                        if len(rec_row) > 0:
+                            badge = "🔴 Crucial: " if urgency == "Red" else "🟡 Important: " if urgency == "Yellow" else "🟢 Strength: "
+                            recommendations_dict[format_dimension_name(dimension)] = badge + str(rec_row.iloc[0]['RecommendationText'])
                 
                     # --- 2. GET COMPARISON DATA ---
                     countries_df = load_data('country_scores.csv') 
@@ -1373,11 +1389,8 @@ def page_country_comparison():
                     ]
 
                     if country_data.empty:
-                        st.warning(f"⚠️ Could not find scores for '{target_country}' in {test_name}. Using fallback.")
                         national_avg_scores = {dim: 4.0 for dim in user_scores.keys()} 
                     else:
-                        st.success(f"✅ Found {len(country_data)} scores for '{target_country}'!")
-                    
                         national_avg_scores = {}
                         # Loop through the specific rows for this country/framework
                         for _, row in country_data.iterrows():
@@ -1412,7 +1425,7 @@ def page_country_comparison():
                     html_report = generate_html_report(
                         user_id, 
                         user_scores, 
-                        interpretations_dict, 
+                        recommendations_dict, 
                         img_bytes, 
                         comparison_df=comparison_df
                     )
