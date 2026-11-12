@@ -988,10 +988,15 @@ def page_results():
                 # --- DEBUG INFO (Will show on your screen) ---
                 st.write("🔍 **DEBUG INFO:**")
                 st.write(f"Looking for country: **'{user_nationality}'**")
-                st.write(f"First 5 countries in your CSV: {countries_df['Country'].tolist()[:5]}")
+                st.write(f"CSV Column Headers: **{countries_df.columns.tolist()}**")
+                st.write(f"Total rows in CSV: {len(countries_df)}")
                 
                 # Filter the dataframe
                 country_row = countries_df[countries_df['Country'] == user_nationality]
+                st.write(f"Rows found for '{user_nationality}': **{len(country_row)}**")
+                
+                if len(country_row) > 0:
+                    st.write(f"Sample data for this country: {country_row.head().to_dict('records')}")
                 
                 if country_row.empty:
                     st.warning(f"⚠️ Could not find '{user_nationality}' in CSV. Using fallback scores.")
