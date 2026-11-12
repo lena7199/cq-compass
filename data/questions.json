@@ -452,37 +452,37 @@
       {
         "q": "A business partner proposes a deal that is highly unfavorable to your organization. How do you respond?",
         "options": [
-          ["I firmly and directly reject the proposal, clearly stating why it is unacceptable and outlining my counter-demands.", 1],
-          ["I push back strongly, pointing out the flaws in their proposal and demanding significant revisions.", 2],
-          ["I express my concerns clearly but politely, suggesting we work together to find a more balanced middle ground.", 3],
+          ["I firmly and directly reject the proposal, clearly stating why it is unacceptable and outlining my counter-demands.", 7],
+          ["I push back strongly, pointing out the flaws in their proposal and demanding significant revisions.", 6],
+          ["I express my concerns clearly but politely, suggesting we work together to find a more balanced middle ground.", 5],
           ["I express mild hesitation and suggest we need more time to review, avoiding direct confrontation.", 4],
-          ["I remain very diplomatic, focusing on our long-term relationship and gently steering the conversation away from the unfavorable terms.", 5],
-          ["I avoid saying 'no' directly. I use vague language like 'this will be difficult' to signal disagreement without causing offense.", 6],
-          ["I remain completely silent on the issue during the meeting to preserve harmony, and later use a trusted intermediary to convey my reluctance.", 7]
+          ["I remain very diplomatic, focusing on our long-term relationship and gently steering the conversation away from the unfavorable terms.", 3],
+          ["I avoid saying 'no' directly. I use vague language like 'this will be difficult' to signal disagreement without causing offense.", 2],
+          ["I remain completely silent on the issue during the meeting to preserve harmony, and later use a trusted intermediary to convey my reluctance.", 1]
         ]
       },
       {
         "q": "In a team brainstorming session, you strongly disagree with the majority's chosen direction. What do you do?",
         "options": [
-          ["I openly and passionately debate the majority, presenting strong counter-arguments to change their minds.", 1],
-          ["I voice my disagreement clearly and advocate for my alternative, even if it creates some tension.", 2],
-          ["I share my alternative perspective respectfully, but I am willing to compromise if the group disagrees.", 3],
+          ["I openly and passionately debate the majority, presenting strong counter-arguments to change their minds.", 7],
+          ["I voice my disagreement clearly and advocate for my alternative, even if it creates some tension.", 6],
+          ["I share my alternative perspective respectfully, but I am willing to compromise if the group disagrees.", 5],
           ["I keep my disagreement to myself to avoid disrupting the group's momentum and harmony.", 4],
-          ["I subtly ask questions that might make the group reconsider, without directly stating my own opposition.", 5],
-          ["I fully support the group's decision outwardly, even though I privately disagree, to maintain team cohesion.", 6],
-          ["I remain entirely silent. Open disagreement is disrespectful and threatens the harmony of the group.", 7]
+          ["I subtly ask questions that might make the group reconsider, without directly stating my own opposition.", 3],
+          ["I fully support the group's decision outwardly, even though I privately disagree, to maintain team cohesion.", 2],
+          ["I remain entirely silent. Open disagreement is disrespectful and threatens the harmony of the group.", 1]
         ]
       },
       {
         "q": "How do you prefer to handle a situation where a colleague has made a mistake that affects your work?",
         "options": [
-          ["I confront them directly and immediately, demanding they fix it and explaining the negative impact.", 1],
-          ["I speak to them privately but firmly, making it clear that the mistake is unacceptable and must be corrected.", 2],
-          ["I discuss it with them constructively, focusing on how we can solve the problem together.", 3],
+          ["I confront them directly and immediately, demanding they fix it and explaining the negative impact.", 7],
+          ["I speak to them privately but firmly, making it clear that the mistake is unacceptable and must be corrected.", 6],
+          ["I discuss it with them constructively, focusing on how we can solve the problem together.", 5],
           ["I gently mention the issue and offer to help them fix it, minimizing any sense of blame.", 4],
-          ["I fix the mistake myself without saying anything, to avoid making them feel embarrassed or defensive.", 5],
-          ["I ignore the mistake if it's minor, as pointing it out might damage our working relationship.", 6],
-          ["I would never point out a colleague's mistake directly. Preserving their dignity and our harmony is far more important than the error.", 7]
+          ["I fix the mistake myself without saying anything, to avoid making them feel embarrassed or defensive.", 3],
+          ["I ignore the mistake if it's minor, as pointing it out might damage our working relationship.", 2],
+          ["I would never point out a colleague's mistake directly. Preserving their dignity and our harmony is far more important than the error.", 1]
         ]
       }
     ],
@@ -528,37 +528,37 @@
       {
         "q": "An employee on your team is a top performer who consistently exceeds targets, but they are arrogant and disrupt team harmony. How do you handle it?",
         "options": [
-          ["I praise and reward them lavishly. Results are all that matter, and harmony is secondary to excellence.", 1],
-          ["I reward their performance highly, but give them a mild, private warning about their attitude.", 2],
-          ["I acknowledge their results but have a firm conversation about the need to improve their teamwork and attitude.", 3],
+          ["I praise and reward them lavishly. Results are all that matter, and harmony is secondary to excellence.", 7],
+          ["I reward their performance highly, but give them a mild, private warning about their attitude.", 6],
+          ["I acknowledge their results but have a firm conversation about the need to improve their teamwork and attitude.", 5],
           ["I balance my feedback: praising their output while strongly emphasizing that team cohesion is equally important.", 4],
-          ["I prioritize team harmony. I will formally warn them that their behavior is unacceptable, even if it risks a drop in their output.", 5],
-          ["I am prepared to let them go if they do not change. A toxic high-performer is more damaging to the organization than a moderate, harmonious one.", 6],
-          ["I immediately take action to remove or isolate them. Preserving the collective well-being and harmony of the group is absolutely paramount.", 7]
+          ["I prioritize team harmony. I will formally warn them that their behavior is unacceptable, even if it risks a drop in their output.", 3],
+          ["I am prepared to let them go if they do not change. A toxic high-performer is more damaging to the organization than a moderate, harmonious one.", 2],
+          ["I immediately take action to remove or isolate them. Preserving the collective well-being and harmony of the group is absolutely paramount.", 1]
         ]
       },
       {
         "q": "When setting annual goals for your department, what is your primary focus?",
         "options": [
-          ["Setting highly aggressive, stretch targets to drive maximum individual competition and excellence.", 1],
-          ["Setting challenging targets with clear individual rewards for those who outperform their peers.", 2],
-          ["Setting ambitious but achievable goals, with a mix of individual and team-based incentives.", 3],
+          ["Setting highly aggressive, stretch targets to drive maximum individual competition and excellence.", 7],
+          ["Setting challenging targets with clear individual rewards for those who outperform their peers.", 6],
+          ["Setting ambitious but achievable goals, with a mix of individual and team-based incentives.", 5],
           ["Setting clear team goals, emphasizing that we succeed or fail together through collaboration.", 4],
-          ["Setting moderate, realistic goals that prioritize a supportive, low-stress, and harmonious work environment.", 5],
-          ["Focusing primarily on relationship-building and employee well-being, with performance metrics being a secondary concern.", 6],
-          ["Avoiding aggressive targets entirely. The primary goal is to maintain a peaceful, conflict-free, and deeply supportive community.", 7]
+          ["Setting moderate, realistic goals that prioritize a supportive, low-stress, and harmonious work environment.", 3],
+          ["Focusing primarily on relationship-building and employee well-being, with performance metrics being a secondary concern.", 2],
+          ["Avoiding aggressive targets entirely. The primary goal is to maintain a peaceful, conflict-free, and deeply supportive community.", 1]
         ]
       },
       {
         "q": "How do you believe a company should recognize and reward success?",
         "options": [
-          ["Through highly visible, individual awards, public recognition, and significant financial bonuses for top achievers.", 1],
-          ["Through individual merit-based promotions and public acknowledgment of standout contributions.", 2],
-          ["Through a combination of individual recognition for excellence and team rewards for collaboration.", 3],
+          ["Through highly visible, individual awards, public recognition, and significant financial bonuses for top achievers.", 7],
+          ["Through individual merit-based promotions and public acknowledgment of standout contributions.", 6],
+          ["Through a combination of individual recognition for excellence and team rewards for collaboration.", 5],
           ["Through team-based celebrations and shared bonuses that reinforce collective effort.", 4],
-          ["Through subtle, private acknowledgments that avoid making anyone feel left out or creating unhealthy competition.", 5],
-          ["By focusing on collective milestones and ensuring that no individual is elevated above the rest of the group.", 6],
-          ["By avoiding individual competition entirely. Rewards should be distributed equally to maintain perfect harmony and unity.", 7]
+          ["Through subtle, private acknowledgments that avoid making anyone feel left out or creating unhealthy competition.", 3],
+          ["By focusing on collective milestones and ensuring that no individual is elevated above the rest of the group.", 2],
+          ["By avoiding individual competition entirely. Rewards should be distributed equally to maintain perfect harmony and unity.", 1]
         ]
       }
     ],
