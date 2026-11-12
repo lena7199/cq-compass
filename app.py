@@ -321,26 +321,6 @@ p, li, span, label, div {
     color: var(--text-main) !important;
 }
 
-/* 3. BUTTONS */
-.stButton > button {
-    background-color: transparent !important;
-    color: var(--text-main) !important;
-    font-family: 'Inter', sans-serif !important;
-    font-weight: 600 !important;
-    border-radius: 8px !important;
-    padding: 10px 24px !important;
-    border: 2px solid var(--text-secondary) !important;
-    transition: all 0.3s ease !important;
-}
-
-.stButton > button:hover {
-    background-color: rgba(59, 111, 160, 0.1) !important; /* Subtle accent glow */
-    border-color: var(--accent) !important;
-    color: var(--accent) !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2) !important;
-}
-
 /* 4. PLOTLY CHART ICONS */
 .modebar-btn path {
     fill: var(--text-secondary) !important;
@@ -1048,9 +1028,6 @@ def page_results():
                     for dim in user_scores:
                         if dim not in national_avg_scores:
                             national_avg_scores[dim] = None
-                            
-                st.write(f"**Final National Scores Dictionary:** {national_avg_scores}")
-                st.write("---") # Adds a visual line
 
                 # --- 3. Create the DataFrame for the HTML table ---
                 dimensions = list(user_scores.keys())
@@ -1075,25 +1052,6 @@ def page_results():
                     comparison_df=comparison_df
                 )
                 
-                # --- CSS TO MATCH BUTTON STYLING ---
-                st.markdown("""
-                <style>
-                div[data-testid="stDownloadButton"] button {
-                    background-color: white !important;
-                    color: #1a2b4c !important; 
-                    border: 2px solid #c5a059 !important; 
-                    border-radius: 5px !important;
-                    width: 100% !important;
-                    padding: 10px !important;
-                    font-size: 16px !important;
-                    font-weight: 500 !important;
-                }
-                div[data-testid="stDownloadButton"] button:hover {
-                    background-color: #f9f9f9 !important;
-                }
-                </style>
-                """, unsafe_allow_html=True)
-
                 # --- 6. The actual download button ---
                 st.download_button(
                     label="📥 Download Report (Local Device)",
@@ -1313,26 +1271,6 @@ def page_country_comparison():
             
             st.plotly_chart(fig, use_container_width=True, config={'staticPlot': True})
 
-# Move the CSS ABOVE the columns so it doesn't push the middle button down
-            st.markdown("""
-                <style>
-                div[data-testid="stButton"] button[kind="secondary"] {
-                    background-color: transparent !important;
-                    color: #FFFFFF !important;
-                    border: 1px solid #A8A492 !important;
-                    border-radius: 6px !important;
-                    padding: 8px 16px !important;
-                    font-weight: 500 !important;
-                    font-size: 14px !important;
-                    transition: all 0.3s ease !important;
-                }
-                div[data-testid="stButton"] button[kind="secondary"]:hover {
-                    background-color: rgba(59, 111, 160, 0.15) !important;
-                    box-shadow: 0 0 10px rgba(59, 111, 160, 0.3) !important;
-                }
-                </style>
-            """, unsafe_allow_html=True)
-
             # Create 3 columns for the action buttons
             col_toggle, col_save, col_html = st.columns(3)
             
@@ -1480,25 +1418,6 @@ def page_country_comparison():
                         cultural_notes_df=cultural_notes_df
                     )
                 
-                    # --- CSS TO MATCH BUTTON STYLING ---
-                    st.markdown("""
-                    <style>
-                    div[data-testid="stDownloadButton"] button {
-                        background-color: white !important;
-                        color: #1a2b4c !important; 
-                        border: 2px solid #c5a059 !important; 
-                        border-radius: 5px !important;
-                        width: 100% !important;
-                        padding: 10px !important;
-                        font-size: 16px !important;
-                        font-weight: 500 !important;
-                    }
-                    div[data-testid="stDownloadButton"] button:hover {
-                        background-color: #f9f9f9 !important;
-                    }
-                    </style>
-                    """, unsafe_allow_html=True)
-
                     # --- 6. The actual download button ---
                     st.download_button(
                         label="📥 Download Report (Local Device)",
@@ -1825,19 +1744,27 @@ def main():
         }
 
         /* 3. BUTTONS (Background, Border, and Hover) */
-        div[data-testid="stButton"] button {
+        div[data-testid="stButton"] button,
+        div[data-testid="stDownloadButton"] button {
             background-color: transparent !important;
             border: 2px solid var(--text-secondary) !important;
             color: var(--text-main) !important;
             border-radius: 8px !important;
             transition: all 0.3s ease !important;
+            width: 100% !important; /* Ensures they fill the column equally */
         }
-        div[data-testid="stButton"] button:hover {
+        div[data-testid="stButton"] button:hover,
+        div[data-testid="stDownloadButton"] button:hover {
             border-color: var(--accent) !important;
             color: var(--accent) !important;
             background-color: rgba(59, 111, 161, 0.1) !important;
         }
 
+        /* Fix for the slight vertical drop of the download button */
+        div[data-testid="stDownloadButton"] form {
+            margin-bottom: 0 !important;
+        }
+                
         /* 6. SELECTION FIELDS (Dropdowns, Text Inputs) */
         .stSelectbox > div > div, .stTextInput > div > div, .stNumberInput > div > div {
             background-color: var(--bg-secondary) !important;
