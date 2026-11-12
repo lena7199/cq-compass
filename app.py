@@ -393,6 +393,13 @@ def create_radar_chart_png(user_scores):
     plt.close(fig)
     return buf.getvalue()
 
+@st.cache_data
+def generate_cached_pdf(user_code, scores_json, interps_json):
+    """Generates PDF and caches it so it doesn't slow down the app."""
+    scores = json.loads(scores_json)
+    interps = json.loads(interps_json)
+    return create_profile_pdf(user_code, scores, interps)
+
 def create_profile_pdf(user_code, user_scores, interpretations_dict):
     """Generates a branded PDF with the radar chart and interpretations."""
     pdf = FPDF()
@@ -869,36 +876,39 @@ def page_results():
 
         # 2. Download PDF Button
         with nav_col2:
-            if st.button("📄 Download PDF", use_container_width=True, key="download_pdf_btn"):
-                with st.spinner("Generating your PDF report..."):
-                    user_id = st.session_state.get("anonymous_id", "UNKNOWN")
-                    
-                    # Gather interpretations
-                    interpretations_dict = {}
-                    interpretations_df = load_data('interpretations.csv')
-                    for dimension, score in user_scores.items():
-                        min_scores = pd.to_numeric(interpretations_df['Min_Score'], errors='coerce')
-                        max_scores = pd.to_numeric(interpretations_df['Max_Score'], errors='coerce')
-                        mask = (
-                            (interpretations_df['Framework'] == test_name) & 
-                            (interpretations_df['Dimension'] == dimension) & 
-                            (float(score) >= min_scores) & 
-                            (float(score) <= max_scores)
-                        )
-                        if not interpretations_df.loc[mask].empty:
-                            interpretations_dict[format_dimension_name(dimension)] = interpretations_df.loc[mask, 'Interpretation'].values[0]
-                    
-                    # Generate and offer the download
-                    pdf_bytes = create_profile_pdf(user_id, user_scores, interpretations_dict)
-                    
-                    st.download_button(
-                        label="⬇️ Click to Save PDF",
-                        data=pdf_bytes,
-                        file_name=f"Cultural_Profile_{user_id}.pdf",
-                        mime="application/pdf",
-                        use_container_width=True
-                    )
-
+            # Prepare data for the cached generator
+            user_id = st.session_state.get("anonymous_id", "UNKNOWN")
+            scores_json = json.dumps(user_scores)
+            
+            # Gather interpretations
+            interpretations_dict = {}
+            interpretations_df = load_data('interpretations.csv')
+            for dimension, score in user_scores.items():
+                min_scores = pd.to_numeric(interpretations_df['Min_Score'], errors='coerce')
+                max_scores = pd.to_numeric(interpretations_df['Max_Score'], errors='coerce')
+                mask = (
+                    (interpretations_df['Framework'] == test_name) & 
+                    (interpretations_df['Dimension'] == dimension) & 
+                    (float(score) >= min_scores) & 
+                    (float(score) <= max_scores)
+                )
+                if not interpretations_df.loc[mask].empty:
+                    interpretations_dict[format_dimension_name(dimension)] = interpretations_df.loc[mask, 'Interpretation'].values[0]
+            
+            interps_json = json.dumps(interpretations_dict)
+            
+            # Generate PDF (Fast because of the cache we added in Step 1)
+            pdf_bytes = generate_cached_pdf(user_id, scores_json, interps_json)
+            
+            # The actual download button (No 'if' block needed!)
+            st.download_button(
+                label="📄 Download PDF",
+                data=pdf_bytes,
+                file_name=f"Cultural_Profile_{user_id}.pdf",
+                mime="application/pdf",
+                use_container_width=True
+            )
+        
         with nav_col3:
             if st.button("Compare with Another Culture", use_container_width=True, key="btn_compare_from_profile"):
                 st.session_state.current_page = 5 # Takes them to the Comparison page
