@@ -43,6 +43,56 @@ def generate_html_report(user_code, user_scores, interpretations_dict, radar_png
         table_section = ""
         
     current_date = datetime.now().strftime("%B %d, %Y")
+
+    # --- 2. GET COMPARISON DATA ---
+                # 1. Load your country scores file
+                countries_df = load_data('country_scores.csv') 
+                
+                # DEBUG: Print what we're working with
+                print("=== DEBUG INFO ===")
+                print(f"User Nationality: '{user_nationality}'")
+                print(f"User Scores Keys: {list(user_scores.keys())}")
+                print(f"CSV Columns: {countries_df.columns.tolist()}")
+                print(f"Sample CSV Countries: {countries_df['Country'].head(10).tolist()}")
+                
+                # 2. Filter the dataframe - TRY BOTH VERSIONS (with and without space)
+                country_row = countries_df[countries_df['Country'] == user_nationality]
+                
+                # If not found, try removing spaces from user_nationality
+                if country_row.empty:
+                    print(f"Warning: '{user_nationality}' not found in CSV. Trying without spaces...")
+                    country_row = countries_df[countries_df['Country'] == user_nationality.replace(" ", "")]
+                
+                print(f"Found country row: {not country_row.empty}")
+                if not country_row.empty:
+                    print(f"Country Row Data: {country_row.iloc[0].to_dict()}")
+                
+                # 3. Convert that row into the dictionary we need
+                if not country_row.empty:
+                    full_dict = country_row.iloc[0].to_dict()
+                    print(f"Full dict keys: {full_dict.keys()}")
+                    # Only keep the dimensions that match the user's test, and ensure they are numbers
+                    national_avg_scores = {}
+                    for k, v in full_dict.items():
+                        if k in user_scores:
+                            try:
+                                national_avg_scores[k] = float(v)
+                            except (ValueError, TypeError):
+                                national_avg_scores[k] = None
+                        else:
+                            print(f"Warning: Key '{k}' in CSV but not in user_scores")
+                    
+                    # Check for missing dimensions
+                    for dim in user_scores:
+                        if dim not in national_avg_scores:
+                            print(f"Warning: Dimension '{dim}' in user_scores but not in CSV")
+                            national_avg_scores[dim] = None
+                else:
+                    print(f"ERROR: Could not find '{user_nationality}' in CSV!")
+                    national_avg_scores = {dim: 4.0 for dim in user_scores.keys()} # Fallback
+                
+                print(f"Final national_avg_scores: {national_avg_scores}")
+                print("==================")
     
     # 3. The HTML Template (Now with Roboto Font and Table Styles)
     html_template = f"""
@@ -504,7 +554,14 @@ def create_radar_chart_png(user_scores, comparison_scores=None):
     # 2. Plot Comparison Data (Gold) if provided
     if comparison_scores:
         # Ensure the comparison scores match the order of categories
-        comp_values = [comparison_scores.get(c, 0) for c in categories]
+        comp_values = []
+        for c in categories:
+            val = comparison_scores.get(c)
+            if val is None:
+                comp_values.append(4)  # Default if missing
+            else:
+                comp_values.append(float(val))
+        
         comp_values += comp_values[:1] # Close loop
         ax.plot(angles, comp_values, linewidth=2, linestyle='dashed', color='#C5A059', label='Comparison')
         
