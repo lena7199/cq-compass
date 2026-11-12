@@ -130,22 +130,22 @@ def generate_html_report(user_code, user_scores, text_dict, radar_png_bytes, com
             }}
 
             /* NEW: Cultural Notes Styling */
-            .notes-section { margin-top: 40px; }
-            .notes-section h2 { 
+            .notes-section {{ margin-top: 40px; }}
+            .notes-section h2 {{ 
                 color: #2E5C8A; border-bottom: 1px solid #ddd; 
                 padding-bottom: 10px; font-size: 22px; 
-            }
-            .notes-caption { color: #666; font-style: italic; margin-bottom: 20px; }
-            .cultural-note-card {
+            }}
+            .notes-caption {{ color: #666; font-style: italic; margin-bottom: 20px; }}
+            .cultural-note-card {{
                 background-color: #fcfcfc; border: 1px solid #e0e0e0; 
                 border-left: 4px solid #C5A059; border-radius: 4px; 
                 padding: 15px 20px; margin-bottom: 15px;
-            }
-            .note-category {
+            }}
+            .note-category {{
                 font-weight: 700; color: #2E5C8A; font-size: 14px; 
                 margin-bottom: 5px; text-transform: uppercase;
-            }
-            .note-tip { color: #333; font-size: 14px; line-height: 1.5; }
+            }}
+            .note-tip {{ color: #333; font-size: 14px; line-height: 1.5; }}
         </style>
     </head>
     <body>
