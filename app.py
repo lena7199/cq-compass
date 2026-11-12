@@ -998,21 +998,30 @@ def page_results():
                 if len(country_row) > 0:
                     st.write(f"Sample data for this country: {country_row.head().to_dict('records')}")
                 
-                if country_row.empty:
-                    st.warning(f"⚠️ Could not find '{user_nationality}' in CSV. Using fallback scores.")
+                # Filter by Country AND Framework (to get the right test scores)
+                country_data = countries_df[
+                    (countries_df['Country'] == user_nationality) & 
+                    (countries_df['Framework'] == test_name)
+                ]
+
+                if country_data.empty:
+                    st.warning(f"⚠️ Could not find scores for '{user_nationality}' in {test_name}. Using fallback.")
                     national_avg_scores = {dim: 4.0 for dim in user_scores.keys()} 
                 else:
-                    st.success(f"✅ Found '{user_nationality}' in CSV!")
-                    full_dict = country_row.iloc[0].to_dict()
+                    st.success(f"✅ Found {len(country_data)} scores for '{user_nationality}'!")
                     
                     national_avg_scores = {}
-                    for k, v in full_dict.items():
-                        if k in user_scores:
+                    # Loop through the specific rows for this country/framework
+                    for _, row in country_data.iterrows():
+                        dim = row['Dimension']
+                        score = row['Score']
+                        if dim in user_scores:
                             try:
-                                national_avg_scores[k] = float(v)
+                                national_avg_scores[dim] = float(score)
                             except:
-                                national_avg_scores[k] = None
+                                national_avg_scores[dim] = None
                     
+                    # Fill in any missing dimensions with None
                     for dim in user_scores:
                         if dim not in national_avg_scores:
                             national_avg_scores[dim] = None
