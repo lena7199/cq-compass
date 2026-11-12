@@ -1343,7 +1343,10 @@ def page_country_comparison():
             with col_html:
                 try:
                     user_id = st.session_state.get("anonymous_id", "UNKNOWN")
-                
+
+                    # LOAD THE CSV FIRST SO BOTH STEPS CAN USE IT
+                    countries_df = load_data('country_scores.csv')
+                    
                     # --- 1. Gather Recommendations for HTML ---
                     recommendations_dict = {}
                     if test_name == "GLOBE_Culture":
@@ -1379,8 +1382,7 @@ def page_country_comparison():
                             badge = "🔴 Crucial: " if urgency == "Red" else "🟡 Important: " if urgency == "Yellow" else "🟢 Strength: "
                             recommendations_dict[format_dimension_name(dimension)] = badge + str(rec_row.iloc[0]['RecommendationText'])
                 
-                    # --- 2. GET COMPARISON DATA ---
-                    countries_df = load_data('country_scores.csv') 
+                    # --- 2. GET COMPARISON DATA --- 
                 
                     # Filter by Country AND Framework (to get the right test scores)
                     country_data = countries_df[
