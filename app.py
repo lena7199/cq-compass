@@ -44,14 +44,6 @@ country_map = {
 # Load country scores
 country_scores_df = load_data('country_scores.csv')
 
-# Create a NEW variable for the Closest Match feature
-country_scores_wide = country_scores_df.pivot_table(
-    index='Country', 
-    columns='Dimension', 
-    values='Score', 
-    aggfunc='mean'
-).reset_index()
-
 # Initialize Supabase client (cached so it doesn't reconnect on every click)
 @st.cache_resource
 def init_supabase():
@@ -665,19 +657,24 @@ def page_results():
         
         user_scores = st.session_state.user_scores[test_name]
         
-        # Get national scores
+        # Get national scores (Robust Matching)
         national_scores = {}
+        user_nationality_clean = str(st.session_state.nationality).replace(" ", "").lower() if st.session_state.nationality else ""
+        
+        # Create a clean version of the CSV country names for matching
+        country_scores_df['Country_Clean'] = country_scores_df['Country'].astype(str).str.replace(" ", "").str.lower()
+        
         for dimension in user_scores.keys():
-            national_score = country_scores_df[
-                (country_scores_df['Country'] == st.session_state.nationality) &
+            match = country_scores_df[
+                (country_scores_df['Country_Clean'] == user_nationality_clean) &
                 (country_scores_df['Framework'] == test_name) &
                 (country_scores_df['Dimension'] == dimension)
-            ]['Score'].values
+            ]
             
-            if len(national_score) > 0:
-                national_scores[dimension] = national_score[0]
+            if len(match) > 0:
+                national_scores[dimension] = float(match.iloc[0]['Score'])
             else:
-                national_scores[dimension] = 3.5  # Default if not found
+                national_scores[dimension] = 3.5  # Default only if truly not found
         
         # Create radar chart
         fig = go.Figure()
@@ -888,25 +885,29 @@ def page_country_comparison():
             
             user_scores = st.session_state.user_scores.get(test_name, {})
             
-            # Get national and target scores
+            # Get national and target scores (Robust Matching)
             national_scores = {}
             target_scores = {}
             
+            user_nat_clean = str(st.session_state.nationality).replace(" ", "").lower() if st.session_state.nationality else ""
+            target_clean = str(target_country).replace(" ", "").lower() if target_country else ""
+            
+            country_scores_df['Country_Clean'] = country_scores_df['Country'].astype(str).str.replace(" ", "").str.lower()
+            
             for dimension in user_scores.keys():
-                national_score = country_scores_df[
-                    (country_scores_df['Country'] == st.session_state.nationality) &
+                nat_match = country_scores_df[
+                    (country_scores_df['Country_Clean'] == user_nat_clean) &
                     (country_scores_df['Framework'] == test_name) &
                     (country_scores_df['Dimension'] == dimension)
-                ]['Score'].values
+                ]
+                national_scores[dimension] = float(nat_match.iloc[0]['Score']) if len(nat_match) > 0 else 3.5
                 
-                target_score = country_scores_df[
-                    (country_scores_df['Country'] == target_country) &
+                targ_match = country_scores_df[
+                    (country_scores_df['Country_Clean'] == target_clean) &
                     (country_scores_df['Framework'] == test_name) &
                     (country_scores_df['Dimension'] == dimension)
-                ]['Score'].values
-                
-                national_scores[dimension] = national_score[0] if len(national_score) > 0 else 3.5
-                target_scores[dimension] = target_score[0] if len(target_score) > 0 else 3.5
+                ]
+                target_scores[dimension] = float(targ_match.iloc[0]['Score']) if len(targ_match) > 0 else 3.5
             
             # Create 3-layer radar chart
             fig = go.Figure()
