@@ -957,7 +957,7 @@ def page_results():
         nav_col1, nav_col2, nav_col3 = st.columns(3)
 
         with nav_col1:
-            if st.button("💾 Save Results", use_container_width=True, key="save_results_btn"):
+            if st.button("⬆️ Save Report to Database", use_container_width=True, key="save_results_btn"):
                 with st.spinner("Saving your profile to the database..."):
                     user_id = st.session_state.get("anonymous_id", "UNKNOWN")
                     user_nationality = st.session_state.get("nationality", "Unknown")
@@ -1054,7 +1054,7 @@ def page_results():
                 
                 # --- 6. The actual download button ---
                 st.download_button(
-                    label="📥 Download Report (Local Device)",
+                    label="⬇️ Download HTML Report",
                     data=html_report.encode('utf-8'),
                     file_name=f"CQ_Profile_{user_id}.html",
                     mime="text/html",
@@ -1062,7 +1062,7 @@ def page_results():
                     use_container_width=True
                 )
                 
-                st.caption("💡 *Download this file, open it in your browser, and press **Ctrl+P** (or **Cmd+P**) to save as PDF.*")
+                st.caption("*Open the downloaded file in your browser, and press **Ctrl+P** (or **Cmd+P**) to save as PDF.*")
                 
             except Exception as e:
                 st.error(f"Report Error: {e}")
