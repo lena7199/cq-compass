@@ -985,19 +985,6 @@ def page_results():
                 # --- 2. GET COMPARISON DATA ---
                 countries_df = load_data('country_scores.csv') 
                 
-                # --- DEBUG INFO (Will show on your screen) ---
-                st.write("🔍 **DEBUG INFO:**")
-                st.write(f"Looking for country: **'{user_nationality}'**")
-                st.write(f"CSV Column Headers: **{countries_df.columns.tolist()}**")
-                st.write(f"Total rows in CSV: {len(countries_df)}")
-                
-                # Filter the dataframe
-                country_row = countries_df[countries_df['Country'] == user_nationality]
-                st.write(f"Rows found for '{user_nationality}': **{len(country_row)}**")
-                
-                if len(country_row) > 0:
-                    st.write(f"Sample data for this country: {country_row.head().to_dict('records')}")
-                
                 # Filter by Country AND Framework (to get the right test scores)
                 country_data = countries_df[
                     (countries_df['Country'] == user_nationality) & 
@@ -1359,7 +1346,6 @@ def page_country_comparison():
             with col_html:
                 try:
                     user_id = st.session_state.get("anonymous_id", "UNKNOWN")
-                    user_nationality = st.session_state.get("nationality", "Unknown")
                 
                     # --- 1. Gather interpretations ---
                     interpretations_dict = {}
@@ -1382,15 +1368,15 @@ def page_country_comparison():
                 
                     # Filter by Country AND Framework (to get the right test scores)
                     country_data = countries_df[
-                        (countries_df['Country'] == user_nationality) & 
+                        (countries_df['Country'] == target_country) & 
                         (countries_df['Framework'] == test_name)
                     ]
 
                     if country_data.empty:
-                        st.warning(f"⚠️ Could not find scores for '{user_nationality}' in {test_name}. Using fallback.")
+                        st.warning(f"⚠️ Could not find scores for '{target_country}' in {test_name}. Using fallback.")
                         national_avg_scores = {dim: 4.0 for dim in user_scores.keys()} 
                     else:
-                        st.success(f"✅ Found {len(country_data)} scores for '{user_nationality}'!")
+                        st.success(f"✅ Found {len(country_data)} scores for '{target_country}'!")
                     
                         national_avg_scores = {}
                         # Loop through the specific rows for this country/framework
@@ -1407,9 +1393,6 @@ def page_country_comparison():
                         for dim in user_scores:
                             if dim not in national_avg_scores:
                                 national_avg_scores[dim] = None
-                            
-                    st.write(f"**Final National Scores Dictionary:** {national_avg_scores}")
-                    st.write("---") # Adds a visual line
 
                     # --- 3. Create the DataFrame for the HTML table ---
                     dimensions = list(user_scores.keys())
@@ -1419,7 +1402,7 @@ def page_country_comparison():
                     comparison_df = pd.DataFrame({
                         'Cultural Dimension': [format_dimension_name(d) for d in dimensions],
                         'Your Score': your_scores,
-                        f'{user_nationality} Average': national_scores
+                        f'{target_country} Average': national_scores
                     })
 
                     # --- 4. Generate the Radar Chart PNG bytes ---
