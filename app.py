@@ -1311,9 +1311,9 @@ def page_country_comparison():
             """, unsafe_allow_html=True)
 
             # Create 3 columns for the action buttons
-            col_toggle, col_save = st.columns(2)
+            col_toggle, col_save, col_html = st.columns(3)
             
-            # 2. Show/Hide Toggle
+            # 1. Show/Hide Toggle
             with col_toggle:
                 if st.session_state.show_national_avg:
                     btn_text = "◉ Hide Home Country Average"
@@ -1324,7 +1324,7 @@ def page_country_comparison():
                     st.session_state.show_national_avg = not st.session_state.show_national_avg
                     st.rerun()
 
-            # 3. Save Results Button
+            # 2. Save Results Button
             with col_save:
                 if st.button("💾 Save Results", use_container_width=True, key="save_comparison_btn"):
                     with st.spinner("Saving your comparison to the database..."):
@@ -1354,6 +1354,119 @@ def page_country_comparison():
                     st.success("✅ Profile saved!")
                     st.caption(f"Your unique code: **{st.session_state.anonymous_id}**")
                     st.session_state.profile_saved = False
+          
+            # 3. Download HTML Report Button
+            with col_html:
+                try:
+                    user_id = st.session_state.get("anonymous_id", "UNKNOWN")
+                    user_nationality = st.session_state.get("nationality", "Unknown")
+                
+                    # --- 1. Gather interpretations ---
+                    interpretations_dict = {}
+                    interpretations_df = load_data('interpretations.csv')
+                    for dimension, score in user_scores.items():
+                        min_scores = pd.to_numeric(interpretations_df['Min_Score'], errors='coerce')
+                        max_scores = pd.to_numeric(interpretations_df['Max_Score'], errors='coerce')
+                        mask = (
+                            (interpretations_df['Framework'] == test_name) & 
+                            (interpretations_df['Dimension'] == dimension) & 
+                            (float(score) >= min_scores) & 
+                            (float(score) <= max_scores)
+                        )
+                        if not interpretations_df.loc[mask].empty:
+                            txt = str(interpretations_df.loc[mask, 'Interpretation'].values[0])
+                            interpretations_dict[format_dimension_name(dimension)] = txt
+                
+                    # --- 2. GET COMPARISON DATA ---
+                    countries_df = load_data('country_scores.csv') 
+                
+                    # Filter by Country AND Framework (to get the right test scores)
+                    country_data = countries_df[
+                        (countries_df['Country'] == user_nationality) & 
+                        (countries_df['Framework'] == test_name)
+                    ]
+
+                    if country_data.empty:
+                        st.warning(f"⚠️ Could not find scores for '{user_nationality}' in {test_name}. Using fallback.")
+                        national_avg_scores = {dim: 4.0 for dim in user_scores.keys()} 
+                    else:
+                        st.success(f"✅ Found {len(country_data)} scores for '{user_nationality}'!")
+                    
+                        national_avg_scores = {}
+                        # Loop through the specific rows for this country/framework
+                        for _, row in country_data.iterrows():
+                            dim = row['Dimension']
+                            score = row['Score']
+                            if dim in user_scores:
+                                try:
+                                    national_avg_scores[dim] = float(score)
+                                except:
+                                    national_avg_scores[dim] = None
+                    
+                        # Fill in any missing dimensions with None
+                        for dim in user_scores:
+                            if dim not in national_avg_scores:
+                                national_avg_scores[dim] = None
+                            
+                    st.write(f"**Final National Scores Dictionary:** {national_avg_scores}")
+                    st.write("---") # Adds a visual line
+
+                    # --- 3. Create the DataFrame for the HTML table ---
+                    dimensions = list(user_scores.keys())
+                    your_scores = list(user_scores.values())
+                    national_scores = [national_avg_scores.get(dim, None) for dim in dimensions]
+
+                    comparison_df = pd.DataFrame({
+                        'Cultural Dimension': [format_dimension_name(d) for d in dimensions],
+                        'Your Score': your_scores,
+                        f'{user_nationality} Average': national_scores
+                    })
+
+                    # --- 4. Generate the Radar Chart PNG bytes ---
+                    img_bytes = create_radar_chart_png(user_scores, comparison_scores=national_avg_scores)
+                
+                    # --- 5. Generate the HTML report ---
+                    html_report = generate_html_report(
+                        user_id, 
+                        user_scores, 
+                        interpretations_dict, 
+                        img_bytes, 
+                        comparison_df=comparison_df
+                    )
+                
+                    # --- CSS TO MATCH BUTTON STYLING ---
+                    st.markdown("""
+                    <style>
+                    div[data-testid="stDownloadButton"] button {
+                        background-color: white !important;
+                        color: #1a2b4c !important; 
+                        border: 2px solid #c5a059 !important; 
+                        border-radius: 5px !important;
+                        width: 100% !important;
+                        padding: 10px !important;
+                        font-size: 16px !important;
+                        font-weight: 500 !important;
+                    }
+                    div[data-testid="stDownloadButton"] button:hover {
+                        background-color: #f9f9f9 !important;
+                    }
+                    </style>
+                    """, unsafe_allow_html=True)
+
+                    # --- 6. The actual download button ---
+                    st.download_button(
+                        label="📥 Download Report (Local Device)",
+                        data=html_report.encode('utf-8'),
+                        file_name=f"CQ_Profile_{user_id}.html",
+                        mime="text/html",
+                        key=f"download_html_{test_name}",
+                        use_container_width=True
+                    )
+                
+                    st.caption("💡 *Download this file, open it in your browser, and press **Ctrl+P** (or **Cmd+P**) to save as PDF.*")
+                
+                except Exception as e:
+                    st.error(f"Report Error: {e}")
             
             st.markdown("</div>", unsafe_allow_html=True)
             
