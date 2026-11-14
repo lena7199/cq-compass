@@ -619,13 +619,18 @@ def page_welcome():
     col1, col2 = st.columns(2)
 
     with col1:
+        # Dynamically load countries directly from your cleaned CSV
+        unique_countries = sorted(country_scores_df['Country'].dropna().unique().tolist())
+        country_options = ["Select country/region"] + unique_countries
+
         nationality_display = st.selectbox(
             "Select your nationality",
-            ["Select country/region", "Brazil", "China", "Egypt", "India", "Iran", "Japan", "Malaysia", "Nigeria", "Russia", "USA", "Anglo", "Confucian Asia", "Eastern Europe", "Germanic Europe", "Latin America", "Latin Europe", "Middle East", "Nordic Europe", "Southern Asia", "Sub-Saharan Africa"],
+            country_options,
             key="nationality_select"
         )
         
-        nationality = country_map.get(nationality_display, None)
+        # Assign the exact CSV string to nationality, or None if not selected
+        nationality = nationality_display if nationality_display != "Select country/region" else None
 
     with col2:
         gender = st.selectbox(
@@ -1126,21 +1131,11 @@ def page_country_comparison():
 
     # 1. Always load the country data first
     country_scores_df = load_data('country_scores.csv')
-    available_countries = country_scores_df['Country'].unique()
-    available_countries = [c for c in available_countries if c != st.session_state.nationality]
     
-    country_name_map = {
-        "Brazil": "Brazil", "China": "China", "Egypt": "Egypt", "India": "India",
-        "Iran": "Iran", "Japan": "Japan", "Malaysia": "Malaysia", "Nigeria": "Nigeria",
-        "Russia": "Russia", "USA": "USA", "Anglo": "Anglo", "ConfucianAsia": "Confucian Asia",
-        "EasternEurope": "Eastern Europe", "GermanicEurope": "Germanic Europe",
-        "LatinAmerica": "Latin America", "LatinEurope": "Latin Europe", "MiddleEast": "Middle East",
-        "NordicEurope": "Nordic Europe", "SouthernAsia": "Southern Asia", "SubSaharanAfrica": "Sub-Saharan Africa"
-    }
+    # Get unique countries directly from CSV, excluding user's nationality, and sort them
+    user_nat = st.session_state.get('nationality')
+    available_countries = sorted([c for c in country_scores_df['Country'].unique() if c != user_nat])
     
-    available_countries_pretty = [country_name_map.get(c, c) for c in available_countries]
-    reverse_country_map = {v: k for k, v in country_name_map.items()}
-
     # 2. SMART RETURNING USER CHECK
     if st.session_state.get('comparison_country') and st.session_state.get('returning_user'):
         # We already know the country from the loaded profile! Skip the dropdown.
@@ -1156,18 +1151,16 @@ def page_country_comparison():
             
     else:
         # 3. NORMAL DROPDOWN CODE (Only shows if NOT a returning user)
-        target_country_pretty = st.selectbox(
+        target_country = st.selectbox(
             "Select target country", 
-            ["Select a country to compare..."] + available_countries_pretty
+            ["Select a country to compare..."] + available_countries
         )
 
-        if target_country_pretty == "Select a country to compare...":
+        if target_country == "Select a country to compare...":
             st.info("👆 Please select a country from the dropdown above to see your comparison.")
             st.stop()
         
-        # Reverse map the pretty name back to the raw CSV name
-        target_country = reverse_country_map.get(target_country_pretty, target_country_pretty)
-
+        # No reverse mapping needed! It's already the exact CSV name.
         st.session_state.comparison_country = target_country
 
     # 4. DRAWING THE CHARTS (Runs for BOTH returning users and new users!)
