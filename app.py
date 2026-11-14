@@ -830,16 +830,13 @@ def page_results():
         
         user_scores = st.session_state.user_scores[test_name]
         
-        # Get national scores (Robust Matching)
+        # Get national scores (direct matching - CSV, JSON and dropdown now 
         national_scores = {}
-        user_nationality_clean = str(st.session_state.nationality).replace(" ", "").lower() if st.session_state.nationality else ""
-        
-        # Create a clean version of the CSV country names for matching
-        country_scores_df['Country_Clean'] = country_scores_df['Country'].astype(str).str.replace(" ", "").str.lower()
+        user_nationality = st.session_state.nationality
         
         for dimension in user_scores.keys():
             match = country_scores_df[
-                (country_scores_df['Country_Clean'] == user_nationality_clean) &
+                (country_scores_df['Country_Clean'] == user_nationality) &
                 (country_scores_df['Framework'] == test_name) &
                 (country_scores_df['Dimension'] == dimension)
             ]
@@ -858,7 +855,7 @@ def page_results():
         
         fig.add_trace(go.Scatterpolar(
             r=user_values,
-            theta=[format_dimension_name(l) for l in list(user_scores.keys()) + [list(user_scores.keys())[0]]],
+            theta=user_labels,
             fill='toself',
             name='Your Profile',
             line_color='#2E5C8A',
@@ -870,9 +867,9 @@ def page_results():
         
         fig.add_trace(go.Scatterpolar(
             r=national_values,
-            theta=[format_dimension_name(l) for l in user_labels],
+            theta=user_labels,
             fill='toself',
-            name=f'{(st.session_state.nationality or "National").replace("LatinAmerica", "Latin America")} Average',
+            name=f'{user_nationality or "National"} Average',
             line_color='#1C2D4B',
             fillcolor='rgba(28, 45, 75, 0.15)'
         ))
@@ -919,7 +916,7 @@ def page_results():
         for dimension, score in user_scores.items():
             label = get_qualitative_label(score, dimension)
             score_data.append({
-                "Dimension": format_dimension_name(dimension),
+                "Dimension": dimension,
                 "Your Score": score,
                 "National/Regional Average": national_scores[dimension],
                 "Your Personal Profile": label
@@ -1174,7 +1171,7 @@ def page_country_comparison():
             user_values = list(user_scores.values()) + [list(user_scores.values())[0]]
             fig.add_trace(go.Scatterpolar(
                 r=user_values,
-                theta=[format_dimension_name(l) for l in labels_closed],
+                theta=labels_closed,
                 fill='toself',
                 name='Your Profile',
                 line_color='#2E5C8A',
@@ -1192,7 +1189,7 @@ def page_country_comparison():
             if st.session_state.show_national_avg:
                 fig.add_trace(go.Scatterpolar(
                     r=national_values,
-                    theta=[format_dimension_name(l) for l in labels_closed],
+                    theta=labels_closed,
                     fill='toself',
                     name=f'{(st.session_state.nationality or "National").replace("LatinAmerica", "Latin America")} Average',
                     line_color='#1C2D4B',
@@ -1203,9 +1200,9 @@ def page_country_comparison():
             target_values = list(target_scores.values()) + [list(target_scores.values())[0]]
             fig.add_trace(go.Scatterpolar(
                 r=target_values,
-                theta=[format_dimension_name(l) for l in labels_closed],
+                theta=labels_closed,
                 fill='toself',
-                name=f'{target_country.replace("LatinAmerica", "Latin America")} Average',
+                name=f'{target_country} Average',
                 line_color='#A8906B',
                 fillcolor='rgba(184, 165, 122, 0.15)'
             ))
