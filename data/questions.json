@@ -1,6 +1,6 @@
 {
   "GLOBE_Culture": {
-    "PowerDistance": [
+    "Power Distance": [
       {
         "q": "During a high-stakes negotiation, the most senior leader on your team makes a statement that contains a clear factual error. How do you respond?",
         "options": [
@@ -38,7 +38,7 @@
         ]
       }
     ],
-    "UncertaintyAvoidance": [
+    "Uncertainty Avoidance": [
       {
         "q": "Your organization suddenly announces a major change in project scope with very little prior warning or detailed instruction. How do you react?",
         "options": [
@@ -76,7 +76,7 @@
         ]
       }
     ],
-    "InstitutionalCollectivism": [
+    "Institutional Collectivism": [
       {
         "q": "Your company has a surplus budget at the end of the year. How do you believe it should be allocated?",
         "options": [
@@ -114,7 +114,7 @@
         ]
       }
     ],
-    "InGroupCollectivism": [
+    "In-Group Collectivism": [
       {
         "q": "You are offered a prestigious promotion that requires you to relocate, which would mean leaving your close-knit team and family behind. How do you decide?",
         "options": [
@@ -152,7 +152,7 @@
         ]
       }
     ],
-    "GenderEgalitarianism": [
+    "Gender Egalitarianism": [
       {
         "q": "Your company is selecting a project manager for a high-stress, high-travel international assignment. Two candidates are equally qualified: one man, one woman. What is your guiding principle?",
         "options": [
@@ -228,7 +228,7 @@
         ]
       }
     ],
-    "FutureOrientation": [
+    "Future Orientation": [
       {
         "q": "Your company has a windfall of extra capital. How do you advocate for it to be spent?",
         "options": [
@@ -266,7 +266,7 @@
         ]
       }
     ],
-    "PerformanceOrientation": [
+    "Performance Orientation": [
       {
         "q": "An employee on your team is a top performer who consistently exceeds targets, but they are arrogant and disrupt team harmony. How do you handle it?",
         "options": [
@@ -304,7 +304,7 @@
         ]
       }
     ],
-    "HumaneOrientation": [
+    "Humane Orientation": [
       {
         "q": "A colleague confides in you that they are going through a severe personal crisis that is affecting their work performance. What is your priority?",
         "options": [
@@ -344,7 +344,7 @@
     ]
   },
   "GLOBE_Leadership": {
-    "CharismaticValueBased": [
+    "Charismatic": [
       {
         "q": "Your team is facing a difficult, demoralizing project. How do you motivate them?",
         "options": [
@@ -382,7 +382,7 @@
         ]
       }
     ],
-    "TeamOriented": [
+    "Team Oriented": [
       {
         "q": "Two of your top employees are in a bitter conflict that is disrupting the team. How do you resolve it?",
         "options": [
@@ -458,7 +458,7 @@
         ]
       }
     ],
-    "HumaneOriented": [
+    "Humane Oriented": [
       {
         "q": "An employee is consistently missing deadlines due to a difficult personal situation. How do you manage them?",
         "options": [
@@ -534,7 +534,7 @@
         ]
       }
     ],
-    "SelfProtective": [
+    "Self-Protective": [
       {
         "q": "A major project you led has failed publicly, and the media is asking questions. How do you respond?",
         "options": [
