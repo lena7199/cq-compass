@@ -704,7 +704,7 @@ def page_test_administration():
     
     current_idx = st.session_state.current_question
     current_item = question_map[current_idx]
-    pretty_name = current_item['dimension'])
+    pretty_name = current_item['dimension']
 
     # --- 3. THE BRANDED QUESTION BADGE (Left-aligned, above dimension) ---
     st.markdown(f"""
