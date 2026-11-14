@@ -8,7 +8,7 @@ Brazil,GLOBE_Culture,In-Group Collectivism,5.18,Practice,Latin America
 Brazil,GLOBE_Culture,Gender Egalitarianism,3.31,Practice,Latin America
 Brazil,GLOBE_Culture,Power Distance,5.33,Practice,Latin America
 Brazil,GLOBE_Culture,Uncertainty Avoidance,3.6,Practice,Latin America
-Brazil,GLOBE_Leadership,Inspirational Leadership,6.0,Practice,Latin America
+Brazil,GLOBE_Leadership,Charismatic,6.0,Practice,Latin America
 Brazil,GLOBE_Leadership,Team Oriented,6.17,Practice,Latin America
 Brazil,GLOBE_Leadership,Participative,6.06,Practice,Latin America
 Brazil,GLOBE_Leadership,Humane Oriented,4.84,Practice,Latin America
@@ -23,7 +23,7 @@ China,GLOBE_Culture,In-Group Collectivism,5.8,Practice,Confucian Asia
 China,GLOBE_Culture,Gender Egalitarianism,3.05,Practice,Confucian Asia
 China,GLOBE_Culture,Power Distance,5.04,Practice,Confucian Asia
 China,GLOBE_Culture,Uncertainty Avoidance,4.94,Practice,Confucian Asia
-China,GLOBE_Leadership,Inspirational Leadership,5.56,Practice,Confucian Asia
+China,GLOBE_Leadership,Charismatic,5.56,Practice,Confucian Asia
 China,GLOBE_Leadership,Team Oriented,5.57,Practice,Confucian Asia
 China,GLOBE_Leadership,Participative,5.04,Practice,Confucian Asia
 China,GLOBE_Leadership,Humane Oriented,5.19,Practice,Confucian Asia
@@ -38,7 +38,7 @@ Egypt,GLOBE_Culture,In-Group Collectivism,5.64,Practice,Middle East
 Egypt,GLOBE_Culture,Gender Egalitarianism,2.81,Practice,Middle East
 Egypt,GLOBE_Culture,Power Distance,4.92,Practice,Middle East
 Egypt,GLOBE_Culture,Uncertainty Avoidance,4.06,Practice,Middle East
-Egypt,GLOBE_Leadership,Inspirational Leadership,5.57,Practice,Middle East
+Egypt,GLOBE_Leadership,Charismatic,5.57,Practice,Middle East
 Egypt,GLOBE_Leadership,Team Oriented,5.55,Practice,Middle East
 Egypt,GLOBE_Leadership,Participative,4.69,Practice,Middle East
 Egypt,GLOBE_Leadership,Humane Oriented,5.15,Practice,Middle East
@@ -53,7 +53,7 @@ India,GLOBE_Culture,In-Group Collectivism,5.92,Practice,Southern Asia
 India,GLOBE_Culture,Gender Egalitarianism,2.9,Practice,Southern Asia
 India,GLOBE_Culture,Power Distance,5.47,Practice,Southern Asia
 India,GLOBE_Culture,Uncertainty Avoidance,4.15,Practice,Southern Asia
-India,GLOBE_Leadership,Inspirational Leadership,5.85,Practice,Southern Asia
+India,GLOBE_Leadership,Charismatic,5.85,Practice,Southern Asia
 India,GLOBE_Leadership,Team Oriented,5.72,Practice,Southern Asia
 India,GLOBE_Leadership,Participative,4.99,Practice,Southern Asia
 India,GLOBE_Leadership,Humane Oriented,5.26,Practice,Southern Asia
@@ -68,7 +68,7 @@ Iran,GLOBE_Culture,In-Group Collectivism,6.03,Practice,Middle East
 Iran,GLOBE_Culture,Gender Egalitarianism,2.99,Practice,Middle East
 Iran,GLOBE_Culture,Power Distance,5.43,Practice,Middle East
 Iran,GLOBE_Culture,Uncertainty Avoidance,3.67,Practice,Middle East
-Iran,GLOBE_Leadership,Inspirational Leadership,5.81,Practice,Middle East
+Iran,GLOBE_Leadership,Charismatic,5.81,Practice,Middle East
 Iran,GLOBE_Leadership,Team Oriented,5.9,Practice,Middle East
 Iran,GLOBE_Leadership,Participative,4.97,Practice,Middle East
 Iran,GLOBE_Leadership,Humane Oriented,5.75,Practice,Middle East
@@ -83,7 +83,7 @@ Japan,GLOBE_Culture,In-Group Collectivism,4.63,Practice,Confucian Asia
 Japan,GLOBE_Culture,Gender Egalitarianism,3.19,Practice,Confucian Asia
 Japan,GLOBE_Culture,Power Distance,5.11,Practice,Confucian Asia
 Japan,GLOBE_Culture,Uncertainty Avoidance,4.07,Practice,Confucian Asia
-Japan,GLOBE_Leadership,Inspirational Leadership,5.49,Practice,Confucian Asia
+Japan,GLOBE_Leadership,Charismatic,5.49,Practice,Confucian Asia
 Japan,GLOBE_Leadership,Team Oriented,5.56,Practice,Confucian Asia
 Japan,GLOBE_Leadership,Participative,5.07,Practice,Confucian Asia
 Japan,GLOBE_Leadership,Humane Oriented,4.68,Practice,Confucian Asia
@@ -98,7 +98,7 @@ Malaysia,GLOBE_Culture,In-Group Collectivism,5.51,Practice,Southern Asia
 Malaysia,GLOBE_Culture,Gender Egalitarianism,3.51,Practice,Southern Asia
 Malaysia,GLOBE_Culture,Power Distance,5.17,Practice,Southern Asia
 Malaysia,GLOBE_Culture,Uncertainty Avoidance,4.78,Practice,Southern Asia
-Malaysia,GLOBE_Leadership,Inspirational Leadership,5.89,Practice,Southern Asia
+Malaysia,GLOBE_Leadership,Charismatic,5.89,Practice,Southern Asia
 Malaysia,GLOBE_Leadership,Team Oriented,5.8,Practice,Southern Asia
 Malaysia,GLOBE_Leadership,Participative,5.12,Practice,Southern Asia
 Malaysia,GLOBE_Leadership,Humane Oriented,5.24,Practice,Southern Asia
@@ -113,7 +113,7 @@ Nigeria,GLOBE_Culture,In-Group Collectivism,5.55,Practice,Sub-Saharan Africa
 Nigeria,GLOBE_Culture,Gender Egalitarianism,3.01,Practice,Sub-Saharan Africa
 Nigeria,GLOBE_Culture,Power Distance,5.8,Practice,Sub-Saharan Africa
 Nigeria,GLOBE_Culture,Uncertainty Avoidance,4.29,Practice,Sub-Saharan Africa
-Nigeria,GLOBE_Leadership,Inspirational Leadership,5.76,Practice,Sub-Saharan Africa
+Nigeria,GLOBE_Leadership,Charismatic,5.76,Practice,Sub-Saharan Africa
 Nigeria,GLOBE_Leadership,Team Oriented,5.65,Practice,Sub-Saharan Africa
 Nigeria,GLOBE_Leadership,Participative,5.18,Practice,Sub-Saharan Africa
 Nigeria,GLOBE_Leadership,Humane Oriented,5.49,Practice,Sub-Saharan Africa
@@ -128,7 +128,7 @@ Russia,GLOBE_Culture,In-Group Collectivism,5.63,Practice,Eastern Europe
 Russia,GLOBE_Culture,Gender Egalitarianism,4.07,Practice,Eastern Europe
 Russia,GLOBE_Culture,Power Distance,5.52,Practice,Eastern Europe
 Russia,GLOBE_Culture,Uncertainty Avoidance,2.88,Practice,Eastern Europe
-Russia,GLOBE_Leadership,Inspirational Leadership,5.66,Practice,Eastern Europe
+Russia,GLOBE_Leadership,Charismatic,5.66,Practice,Eastern Europe
 Russia,GLOBE_Leadership,Team Oriented,5.76,Practice,Eastern Europe
 Russia,GLOBE_Leadership,Participative,4.67,Practice,Eastern Europe
 Russia,GLOBE_Leadership,Humane Oriented,4.08,Practice,Eastern Europe
@@ -143,7 +143,7 @@ USA,GLOBE_Culture,In-Group Collectivism,4.25,Practice,Anglo
 USA,GLOBE_Culture,Gender Egalitarianism,3.34,Practice,Anglo
 USA,GLOBE_Culture,Power Distance,4.88,Practice,Anglo
 USA,GLOBE_Culture,Uncertainty Avoidance,4.15,Practice,Anglo
-USA,GLOBE_Leadership,Inspirational Leadership,6.12,Practice,Anglo
+USA,GLOBE_Leadership,Charismatic,6.12,Practice,Anglo
 USA,GLOBE_Leadership,Team Oriented,5.8,Practice,Anglo
 USA,GLOBE_Leadership,Participative,5.93,Practice,Anglo
 USA,GLOBE_Leadership,Humane Oriented,5.21,Practice,Anglo
@@ -158,7 +158,7 @@ Anglo,GLOBE_Culture,In-Group Collectivism,4.3,Practice,Anglo
 Anglo,GLOBE_Culture,Gender Egalitarianism,3.4,Practice,Anglo
 Anglo,GLOBE_Culture,Power Distance,4.97,Practice,Anglo
 Anglo,GLOBE_Culture,Uncertainty Avoidance,4.42,Practice,Anglo
-Anglo,GLOBE_Leadership,Inspirational Leadership,6.05,Practice,Anglo
+Anglo,GLOBE_Leadership,Charismatic,6.05,Practice,Anglo
 Anglo,GLOBE_Leadership,Team Oriented,5.74,Practice,Anglo
 Anglo,GLOBE_Leadership,Participative,5.73,Practice,Anglo
 Anglo,GLOBE_Leadership,Humane Oriented,5.08,Practice,Anglo
@@ -173,7 +173,7 @@ Confucian Asia,GLOBE_Culture,In-Group Collectivism,5.42,Practice,Confucian Asia
 Confucian Asia,GLOBE_Culture,Gender Egalitarianism,3.18,Practice,Confucian Asia
 Confucian Asia,GLOBE_Culture,Power Distance,5.15,Practice,Confucian Asia
 Confucian Asia,GLOBE_Culture,Uncertainty Avoidance,4.42,Practice,Confucian Asia
-Confucian Asia,GLOBE_Leadership,Inspirational Leadership,5.63,Practice,Confucian Asia
+Confucian Asia,GLOBE_Leadership,Charismatic,5.63,Practice,Confucian Asia
 Confucian Asia,GLOBE_Leadership,Team Oriented,5.61,Practice,Confucian Asia
 Confucian Asia,GLOBE_Leadership,Participative,4.99,Practice,Confucian Asia
 Confucian Asia,GLOBE_Leadership,Humane Oriented,5.04,Practice,Confucian Asia
@@ -188,7 +188,7 @@ Eastern Europe,GLOBE_Culture,In-Group Collectivism,5.53,Practice,Eastern Europe
 Eastern Europe,GLOBE_Culture,Gender Egalitarianism,3.84,Practice,Eastern Europe
 Eastern Europe,GLOBE_Culture,Power Distance,5.26,Practice,Eastern Europe
 Eastern Europe,GLOBE_Culture,Uncertainty Avoidance,3.56,Practice,Eastern Europe
-Eastern Europe,GLOBE_Leadership,Inspirational Leadership,5.74,Practice,Eastern Europe
+Eastern Europe,GLOBE_Leadership,Charismatic,5.74,Practice,Eastern Europe
 Eastern Europe,GLOBE_Leadership,Team Oriented,5.88,Practice,Eastern Europe
 Eastern Europe,GLOBE_Leadership,Participative,5.08,Practice,Eastern Europe
 Eastern Europe,GLOBE_Leadership,Humane Oriented,4.76,Practice,Eastern Europe
@@ -203,7 +203,7 @@ Germanic Europe,GLOBE_Culture,In-Group Collectivism,4.21,Practice,Germanic Europ
 Germanic Europe,GLOBE_Culture,Gender Egalitarianism,3.14,Practice,Germanic Europe
 Germanic Europe,GLOBE_Culture,Power Distance,4.95,Practice,Germanic Europe
 Germanic Europe,GLOBE_Culture,Uncertainty Avoidance,5.12,Practice,Germanic Europe
-Germanic Europe,GLOBE_Leadership,Inspirational Leadership,5.93,Practice,Germanic Europe
+Germanic Europe,GLOBE_Leadership,Charismatic,5.93,Practice,Germanic Europe
 Germanic Europe,GLOBE_Leadership,Team Oriented,5.62,Practice,Germanic Europe
 Germanic Europe,GLOBE_Leadership,Participative,5.86,Practice,Germanic Europe
 Germanic Europe,GLOBE_Leadership,Humane Oriented,4.71,Practice,Germanic Europe
@@ -218,7 +218,7 @@ Latin America,GLOBE_Culture,In-Group Collectivism,5.52,Practice,Latin America
 Latin America,GLOBE_Culture,Gender Egalitarianism,3.41,Practice,Latin America
 Latin America,GLOBE_Culture,Power Distance,5.33,Practice,Latin America
 Latin America,GLOBE_Culture,Uncertainty Avoidance,3.62,Practice,Latin America
-Latin America,GLOBE_Leadership,Inspirational Leadership,5.99,Practice,Latin America
+Latin America,GLOBE_Leadership,Charismatic,5.99,Practice,Latin America
 Latin America,GLOBE_Leadership,Team Oriented,5.96,Practice,Latin America
 Latin America,GLOBE_Leadership,Participative,5.42,Practice,Latin America
 Latin America,GLOBE_Leadership,Humane Oriented,4.85,Practice,Latin America
@@ -233,7 +233,7 @@ Latin Europe,GLOBE_Culture,In-Group Collectivism,4.8,Practice,Latin Europe
 Latin Europe,GLOBE_Culture,Gender Egalitarianism,3.36,Practice,Latin Europe
 Latin Europe,GLOBE_Culture,Power Distance,5.21,Practice,Latin Europe
 Latin Europe,GLOBE_Culture,Uncertainty Avoidance,4.18,Practice,Latin Europe
-Latin Europe,GLOBE_Leadership,Inspirational Leadership,5.78,Practice,Latin Europe
+Latin Europe,GLOBE_Leadership,Charismatic,5.78,Practice,Latin Europe
 Latin Europe,GLOBE_Leadership,Team Oriented,5.73,Practice,Latin Europe
 Latin Europe,GLOBE_Leadership,Participative,5.37,Practice,Latin Europe
 Latin Europe,GLOBE_Leadership,Humane Oriented,4.45,Practice,Latin Europe
@@ -248,7 +248,7 @@ Middle East,GLOBE_Culture,In-Group Collectivism,5.58,Practice,Middle East
 Middle East,GLOBE_Culture,Gender Egalitarianism,2.95,Practice,Middle East
 Middle East,GLOBE_Culture,Power Distance,5.23,Practice,Middle East
 Middle East,GLOBE_Culture,Uncertainty Avoidance,3.91,Practice,Middle East
-Middle East,GLOBE_Leadership,Inspirational Leadership,5.35,Practice,Middle East
+Middle East,GLOBE_Leadership,Charismatic,5.35,Practice,Middle East
 Middle East,GLOBE_Leadership,Team Oriented,5.47,Practice,Middle East
 Middle East,GLOBE_Leadership,Participative,4.97,Practice,Middle East
 Middle East,GLOBE_Leadership,Humane Oriented,4.8,Practice,Middle East
@@ -263,7 +263,7 @@ Nordic Europe,GLOBE_Culture,In-Group Collectivism,3.75,Practice,Nordic Europe
 Nordic Europe,GLOBE_Culture,Gender Egalitarianism,3.71,Practice,Nordic Europe
 Nordic Europe,GLOBE_Culture,Power Distance,4.54,Practice,Nordic Europe
 Nordic Europe,GLOBE_Culture,Uncertainty Avoidance,5.19,Practice,Nordic Europe
-Nordic Europe,GLOBE_Leadership,Inspirational Leadership,5.93,Practice,Nordic Europe
+Nordic Europe,GLOBE_Leadership,Charismatic,5.93,Practice,Nordic Europe
 Nordic Europe,GLOBE_Leadership,Team Oriented,5.77,Practice,Nordic Europe
 Nordic Europe,GLOBE_Leadership,Participative,5.75,Practice,Nordic Europe
 Nordic Europe,GLOBE_Leadership,Humane Oriented,4.42,Practice,Nordic Europe
@@ -278,7 +278,7 @@ Southern Asia,GLOBE_Culture,In-Group Collectivism,5.87,Practice,Southern Asia
 Southern Asia,GLOBE_Culture,Gender Egalitarianism,3.28,Practice,Southern Asia
 Southern Asia,GLOBE_Culture,Power Distance,5.39,Practice,Southern Asia
 Southern Asia,GLOBE_Culture,Uncertainty Avoidance,4.1,Practice,Southern Asia
-Southern Asia,GLOBE_Leadership,Inspirational Leadership,5.97,Practice,Southern Asia
+Southern Asia,GLOBE_Leadership,Charismatic,5.97,Practice,Southern Asia
 Southern Asia,GLOBE_Leadership,Team Oriented,5.86,Practice,Southern Asia
 Southern Asia,GLOBE_Leadership,Participative,5.06,Practice,Southern Asia
 Southern Asia,GLOBE_Leadership,Humane Oriented,5.38,Practice,Southern Asia
@@ -293,7 +293,7 @@ Sub-Saharan Africa,GLOBE_Culture,In-Group Collectivism,5.31,Practice,Sub-Saharan
 Sub-Saharan Africa,GLOBE_Culture,Gender Egalitarianism,3.29,Practice,Sub-Saharan Africa
 Sub-Saharan Africa,GLOBE_Culture,Power Distance,5.24,Practice,Sub-Saharan Africa
 Sub-Saharan Africa,GLOBE_Culture,Uncertainty Avoidance,4.27,Practice,Sub-Saharan Africa
-Sub-Saharan Africa,GLOBE_Leadership,Inspirational Leadership,5.79,Practice,Sub-Saharan Africa
+Sub-Saharan Africa,GLOBE_Leadership,Charismatic,5.79,Practice,Sub-Saharan Africa
 Sub-Saharan Africa,GLOBE_Leadership,Team Oriented,5.7,Practice,Sub-Saharan Africa
 Sub-Saharan Africa,GLOBE_Leadership,Participative,5.31,Practice,Sub-Saharan Africa
 Sub-Saharan Africa,GLOBE_Leadership,Humane Oriented,5.16,Practice,Sub-Saharan Africa
