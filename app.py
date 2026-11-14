@@ -255,7 +255,7 @@ def check_duplicate_profile(anonymous_id, framework, comparison_type, comparison
 
 # Page configuration
 st.set_page_config(
-    page_title="CQ Compass - Cultural Intelligence Assessment",
+    page_title="CQ Compass - Cultural Intelligence Development",
     page_icon="assets/cqc_logo.png",
     layout="wide",
     initial_sidebar_state="collapsed"
@@ -575,10 +575,10 @@ def page_welcome():
 
     # --- 1. CENTERED HEADER SECTION ---
     st.markdown(f"<h1 style='text-align: center; color: #111827; font-size: 3rem; margin-bottom: 10px;'>{logo_html} CQ Compass</h1>", unsafe_allow_html=True)
-    st.markdown("<h3 style='text-align: center; color: #111827; font-size: 1.5rem; margin-bottom: 20px;'>Cultural Intelligence Assessment & Development Platform</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align: center; color: #111827; font-size: 1.5rem; margin-bottom: 20px;'>Intercultural Dynamics & Strategy Tool</h3>", unsafe_allow_html=True)
     
     # Subtitle - Centered and constrained width so it looks neat
-    st.markdown("<p style='text-align: center; font-size: 1.1em; color: #FCF2E5; max-width: 800px; margin: 0 auto;'>Discover your cultural profile. Compare it with other cultures.<br>Navigate differences with confidence.</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; font-size: 1.1em; color: #FCF2E5; max-width: 800px; margin: 0 auto;'>Discover your cultural profile. Anticipate intercultural dynamics.<br>Navigate differences with confidence.</p>", unsafe_allow_html=True)
     
     # --- 2. SPACER (Separates header from selects) ---
     st.markdown('<div style="height: 50px;"></div>', unsafe_allow_html=True)
