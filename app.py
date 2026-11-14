@@ -416,12 +416,11 @@ def calculate_dimension_score(answers, questions_per_dimension):
 
 def create_radar_chart(scores, labels, title="Cultural Profile"):
     """Create a radar/spider chart using Plotly"""
-    # Apply the pretty names to the labels
-    formatted_labels = [format_dimension_name(label) for label in labels]
+    # Labels are already clean
     
     # Close the radar chart by repeating the first value
     values = list(scores.values()) + [list(scores.values())[0]]
-    labels_closed = formatted_labels + [formatted_labels[0]]
+    labels_closed = labels + [labels[0]]
     
     fig = go.Figure()
     
@@ -505,7 +504,7 @@ def create_radar_chart_png(user_scores, comparison_scores=None):
         
     # Formatting
     ax.set_xticks(angles[:-1])
-    ax.set_xticklabels([format_dimension_name(c) for c in categories], size=10)
+    ax.set_xticklabels(categories, size=10)
     ax.set_ylim(1, 7) 
     ax.set_yticks([1, 2, 3, 4, 5, 6, 7])
     ax.set_yticklabels(["1", "2", "3", "4", "5", "6", "7"], color="grey", size=8)
@@ -705,7 +704,7 @@ def page_test_administration():
     
     current_idx = st.session_state.current_question
     current_item = question_map[current_idx]
-    pretty_name = format_dimension_name(current_item['dimension'])
+    pretty_name = current_item['dimension'])
 
     # --- 3. THE BRANDED QUESTION BADGE (Left-aligned, above dimension) ---
     st.markdown(f"""
@@ -836,7 +835,7 @@ def page_results():
         
         for dimension in user_scores.keys():
             match = country_scores_df[
-                (country_scores_df['Country_Clean'] == user_nationality) &
+                (country_scores_df['Country'] == user_nationality) &
                 (country_scores_df['Framework'] == test_name) &
                 (country_scores_df['Dimension'] == dimension)
             ]
@@ -976,7 +975,7 @@ def page_results():
                     )
                     if not interpretations_df.loc[mask].empty:
                         txt = str(interpretations_df.loc[mask, 'Interpretation'].values[0])
-                        interpretations_dict[format_dimension_name(dimension)] = txt
+                        interpretations_dict[dimension] = txt
                 
                 # --- 2. GET COMPARISON DATA ---
                 countries_df = load_data('country_scores.csv') 
@@ -1012,7 +1011,7 @@ def page_results():
                 national_scores = [national_avg_scores.get(dim, None) for dim in dimensions]
 
                 comparison_df = pd.DataFrame({
-                    'Cultural Dimension': [format_dimension_name(d) for d in dimensions],
+                    'Cultural Dimension': dimensions,
                     'Your Score': your_scores,
                     f'{user_nationality} Average': national_scores
                 })
@@ -1084,7 +1083,7 @@ def page_results():
                 margin-bottom: 20px;
                 box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             ">
-                <h3 style="color: var(--text-main); margin-top: 0; margin-bottom: 10px; font-size: 1.5rem;">{format_dimension_name(dimension)}</h3>
+                <h3 style="color: var(--text-main); margin-top: 0; margin-bottom: 10px; font-size: 1.5rem;">{dimension}</h3>
                 <p style="color: var(--text-main); margin: 0; font-size: 1.1rem; line-height: 1.6;">{interpretation_text}</p>
             </div>
             """, unsafe_allow_html=True)           
@@ -1141,21 +1140,19 @@ def page_country_comparison():
             national_scores = {}
             target_scores = {}
             
-            user_nat_clean = str(st.session_state.nationality).replace(" ", "").lower() if st.session_state.nationality else ""
-            target_clean = str(target_country).replace(" ", "").lower() if target_country else ""
-            
-            country_scores_df['Country_Clean'] = country_scores_df['Country'].astype(str).str.replace(" ", "").str.lower()
+            user_nat = st.session_state.nationality
+            target = target_country
             
             for dimension in user_scores.keys():
                 nat_match = country_scores_df[
-                    (country_scores_df['Country_Clean'] == user_nat_clean) &
+                    (country_scores_df['Country'] == user_nat) &
                     (country_scores_df['Framework'] == test_name) &
                     (country_scores_df['Dimension'] == dimension)
                 ]
                 national_scores[dimension] = float(nat_match.iloc[0]['Score']) if len(nat_match) > 0 else 3.5
                 
                 targ_match = country_scores_df[
-                    (country_scores_df['Country_Clean'] == target_clean) &
+                    (country_scores_df['Country'] == target) &
                     (country_scores_df['Framework'] == test_name) &
                     (country_scores_df['Dimension'] == dimension)
                 ]
@@ -1319,7 +1316,7 @@ def page_country_comparison():
 
                         if len(rec_row) > 0:
                             badge = "🔴 Crucial: " if urgency == "Red" else "🟡 Important: " if urgency == "Yellow" else "🟢 Strength: "
-                            recommendations_dict[format_dimension_name(dimension)] = badge + str(rec_row.iloc[0]['RecommendationText'])
+                            recommendations_dict[dimension] = badge + str(rec_row.iloc[0]['RecommendationText'])
                 
                     # --- 2. GET COMPARISON DATA --- 
                 
@@ -1354,7 +1351,7 @@ def page_country_comparison():
                     national_scores = [national_avg_scores.get(dim, None) for dim in dimensions]
 
                     comparison_df = pd.DataFrame({
-                        'Cultural Dimension': [format_dimension_name(d) for d in dimensions],
+                        'Cultural Dimension': dimensions,
                         'Your Score': your_scores,
                         f'{target_country} Average': national_scores
                     })
@@ -1470,7 +1467,7 @@ def page_country_comparison():
                 st.markdown(f"""
                 <div class="recommendation-card {urgency_class}">
                     <span class="urgency-badge {urgency_badge_class}">{badge_text}</span>
-                    <h4 style='color: #EC5B38; margin-top: 10px;'>{format_dimension_name(rec['dimension'])}</h4>
+                    <h4 style='color: #EC5B38; margin-top: 10px;'>{rec['dimension']}</h4>
                     <p style='color: #FCF2E5; line-height: 1.6;'>{rec['text']}</p>
                 </div>
                 """, unsafe_allow_html=True)
