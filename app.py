@@ -194,16 +194,6 @@ with open('data/questions.json', 'r', encoding='utf-8') as f:
 GLOBE_CULTURE_QUESTIONS = json_data.get("GLOBE_Culture", {})
 GLOBE_LEADERSHIP_QUESTIONS = json_data.get("GLOBE_Leadership", {})
 
-# Define country name mapping 
-country_map = {
-            "Brazil": "Brazil", "China": "China", "Egypt": "Egypt", "India": "India", 
-            "Iran": "Iran", "Japan": "Japan", "Malaysia": "Malaysia", "Nigeria": "Nigeria", 
-            "Russia": "Russia", "USA": "USA", "Anglo": "Anglo", "Confucian Asia": "ConfucianAsia", 
-            "Eastern Europe": "EasternEurope", "Germanic Europe": "GermanicEurope", 
-            "Latin America": "LatinAmerica", "Latin Europe": "LatinEurope", "Middle East": "MiddleEast", 
-            "Nordic Europe": "NordicEurope", "Southern Asia": "SouthernAsia", "Sub-Saharan Africa": "SubSaharanAfrica"
-        }
-
 # Load country scores
 country_scores_df = load_data('country_scores.csv')
 
@@ -262,27 +252,6 @@ def check_duplicate_profile(anonymous_id, framework, comparison_type, comparison
         return False
     except Exception as e:
         return False
-
-def format_dimension_name(name):
-    """Translates ugly backend names into pretty display names."""
-    name = str(name)
-    pretty_names = {
-        "TimeFocus": "Time Focus",
-        "TimeOrientation": "Time Orientation",
-        "PerformanceOrientation": "Performance Orientation",
-        "FutureOrientation": "Future Orientation",
-        "HumaneOrientation": "Humane Orientation",
-        "InstitutionalCollectivism": "Institutional Collectivism",
-        "InGroupCollectivism": "In-group Collectivism",
-        "GenderEgalitarianism": "Gender Egalitarianism",
-        "PowerDistance": "Power Distance",
-        "UncertaintyAvoidance": "Uncertainty Avoidance",
-        "CharismaticValueBased": "Charisma",
-        "TeamOriented": "Team Oriented",
-        "HumaneOriented": "Humane Oriented",
-        "SelfProtective": "Self-protective"
-    }
-    return pretty_names.get(name, name)
 
 # Page configuration
 st.set_page_config(
@@ -1137,15 +1106,15 @@ def page_country_comparison():
     available_countries = sorted([c for c in country_scores_df['Country'].unique() if c != user_nat])
     
     # 2. SMART RETURNING USER CHECK
-    if st.session_state.get('comparison_country') and st.session_state.get('returning_user'):
-        # We already know the country from the loaded profile! Skip the dropdown.
+    if st.session_state.get('comparison_country') and st.session_state.get('nationality'):
+        # We already know the country from the loaded profile! Skip the dropdown
         target_country = st.session_state.comparison_country
-        pretty_name = country_name_map.get(target_country, target_country)
-        st.info(f"📂 Viewing saved comparison with **{pretty_name}**.")
         
-        # Add a button to let them clear this and pick a new country if they want
-        if st.button("Compare with a different country", key="clear_comparison_btn"):
-            st.session_state.returning_user = False
+        # No mapping needed! target_country is already the exact clean CSV name
+        st.info(f"📂 Viewing saved comparison with **{target_country}**.")
+        
+        # Add a button to let them clear this and pick a new country
+        if st.button("Choose a different country"):
             st.session_state.comparison_country = None
             st.rerun()
             
