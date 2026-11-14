@@ -1782,13 +1782,19 @@ def main():
     elif st.session_state.current_page == 7:
         page_profile_access()
 
-    # --- FOOTER (Copyright & Credits) ---
+    # --- FOOTER (Disclaimer, Copyright & Credits) ---
     st.markdown("---") # This creates a nice horizontal divider line
     
     st.markdown("""
     <div style="text-align: center; color: #1C2D4B; font-size: 0.85em; padding: 20px 0;">
+        
+        <p style="font-size: 0.9em; color: #555555; max-width: 700px; margin: 0 auto 20px auto; line-height: 1.6; font-style: italic;">
+            <strong>Research Disclaimer:</strong> CQ Compass is a strategic navigation tool for educational and research purposes, not a definitive psychological assessment. The cultural profiles provided are generalized frameworks, not monolithic truths. Culture is fluid and shaped by historical, geopolitical, and individual factors. We actively discourage cultural essentialism. Use these insights as a starting point for critical reflection and strategic planning, always prioritizing real-world contextual awareness and individual agency.
+        </p>
+        
         © 2026 CQ Compass. All rights reserved.<br>
         Made by Elena A. Pari | Rostov-on-Don
+        
     </div>
     """, unsafe_allow_html=True)
 
