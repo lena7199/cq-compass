@@ -561,7 +561,7 @@ if 'user_scores' not in st.session_state:
 
 # Page functions
 def page_welcome():
-    logo_path = "assets/cqc-logo.png"
+    logo_path = "assets/logo-cqc.png"
     logo_html = ""
     
     # The Base64 Magic Trick to make local images work in HTML
