@@ -633,7 +633,7 @@ def page_test_selection():
     st.markdown("---")
     
     # Honesty Prompt
-    st.info("💡 **Tip:** There are no right or wrong answers. Please answer honestly based on your natural instincts for the most accurate cultural friction prediction.")
+    st.info("💡 **Tip:** There are no right or wrong answers. For the most accurate cultural friction prediction, please answer honestly based on how you actually behave (or would behave) in the proposed situations.")
     
     st.markdown("### Choose ONE framework to assess:")
     
