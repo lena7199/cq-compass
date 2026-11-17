@@ -26,15 +26,15 @@
         ]
       },
       {
-        "q": "Your team is facing a critical deadline. How should the final decision on the project direction be made?",
+        "q": "When my team faces a critical deadline, how do you approach making the final decision on our project direction?",
         "options": [
-          ["A democratic vote where every member has an equal say, regardless of their role.", 1],
-          ["An open discussion where the team lead listens to all opinions but makes the final call.", 2],
-          ["The team discusses openly, and the most experienced members naturally guide the group to a consensus.", 3],
-          ["The team lead consults a small group of senior members, then announces the decision.", 4],
-          ["The senior leader makes the decision after brief input, and the team executes it without debate.", 5],
-          ["The most senior person decides alone. Their experience and authority make them best suited for the final call.", 6],
-          ["The senior leader dictates the direction. The team executes it without debate, as respecting the chain of command is essential for cohesion.", 7]
+          ["I advocate for a democratic vote where every member has an equal say, ensuring no single voice dominates.", 1],
+          ["I prefer an open discussion where all opinions are heard, but a designated lead makes the final call to maintain momentum.", 2],
+          ["I encourage open debate, allowing the most experienced members to naturally guide the group toward a consensus.", 3],
+          ["I support a streamlined process where the lead consults a small group of senior experts before announcing the decision.", 4],
+          ["I expect the senior leader to make the decision after brief input, allowing the team to execute it immediately without further debate.", 5],
+          ["I defer entirely to the most senior person to decide alone, trusting their authority and experience to navigate the pressure.", 6],
+          ["I strictly adhere to the chain of command, expecting the senior leader to dictate the direction for immediate, unquestioned execution.", 7]
         ]
       }
     ],
@@ -78,7 +78,7 @@
     ],
     "Institutional Collectivism": [
       {
-        "q": "Your organization has a surplus budget at the end of the year. How do you believe it should be allocated?",
+        "q": "When your organization has a surplus budget at the end of the year, how should it be allocated?",
         "options": [
           ["Entirely as individual performance bonuses to reward top performers.", 1],
           ["Mostly as individual bonuses, with a small portion for a team celebration.", 2],
@@ -230,15 +230,14 @@
     ],
     "Future Orientation": [
       {
-        "q": "Your organization has a sudden surplus of capital. How do you advocate for it to be allocated?",
-        "options": [
-          ["Entirely on immediate bonuses and short-term perks to boost current morale.", 1],
-          ["Mostly on quick-win projects that show a return on investment within 6 to 12 months.", 2],
-          ["A balanced mix: some immediate improvements, and moderate investment in next year's goals.", 3],
-          ["Primarily on strategic initiatives that position the organization for growth over the next 3 to 5 years.", 4],
-          ["Heavily on long-term R&D and infrastructure, even if it means sacrificing short-term profits.", 5],
-          ["Almost entirely on long-term strategic visions and sustainable legacy projects, minimizing focus on current quarterly results.", 6],
-          ["Exclusively on generational, long-term investments. Short-term gains are secondary to securing the organization's distant future.", 7]
+        "q": "When starting a new partnership or collaboration with an international organization, what is your natural approach?": [
+          ["I focus on getting a quick agreement to show immediate, tangible results.", 1],
+          ["I prioritize short-term, practical wins to create visible outcomes as soon as possible.", 2],
+          ["I balance securing a quick initial agreement with some steps toward relationship-building.", 3],
+          ["I invest time in building mutual trust before pushing for a formal agreement.", 4],
+          ["I prioritize deep, long-term relationship building, even if it delays visible progress.", 5],
+          ["I focus almost entirely on developing a year-long strategic alliance. Early talks are just the first step for future growth.", 6],
+          ["I cultivate enduring partnerships that may last for generations. Building a reliable foundation is more important than any immediate agreement.", 7]
         ]
       },
       {
@@ -262,7 +261,7 @@
           ["I develop a clear 3-to-5 year strategic plan with measurable milestones and contingencies.", 4],
           ["I prioritize long-term sustainability and structural integrity, even if it slows down immediate progress.", 5],
           ["I build comprehensive, long-term frameworks designed to last decades, anticipating future geopolitical or market shifts.", 6],
-          ["I design the project entirely around generational impact and long-term legacy. Short-term metrics are secondary to enduring structural change.", 7]
+          ["I design the project entirely around generational impact and legacy.", 7]
         ]
       }
     ],
@@ -292,15 +291,15 @@
         ]
       },
       {
-        "q": "How do you believe an organization should recognize and reward success?",
+        "q": "When your team achieves a major success, how do you naturally prefer to see it recognized and rewarded?",
         "options": [
-          ["By distributing rewards equally to maintain group harmony and avoid the friction of individual competition.", 1],
-          ["By focusing on collective milestones and ensuring that no individual is elevated above the rest of the group.", 2],
-          ["Through subtle, private acknowledgments that avoid making anyone feel left out or creating unhealthy rivalry.", 3],
-          ["Through team-based celebrations and shared bonuses that reinforce collective effort.", 4],
-          ["Through a combination of individual recognition for excellence and team rewards for collaboration.", 5],
-          ["Through individual merit-based promotions and public acknowledgment of standout contributions.", 6],
-          ["Through highly visible, individual awards, public recognition, and significant financial bonuses for top achievers.", 7]
+          ["I advocate for distributing rewards equally to maintain group harmony and avoid individual competition.", 1],
+          ["I focus on celebrating collective milestones, ensuring no single person is elevated above the group.", 2],
+          ["I prefer subtle, private acknowledgments to avoid making anyone feel left out or creating rivalry.", 3],
+          ["I value team-based celebrations and shared bonuses that reinforce our collective effort.", 4],
+          ["I support a balanced approach: recognizing individual excellence while also rewarding the team's collaboration.", 5],
+          ["I push for merit-based promotions and public acknowledgment of standout individual contributions.", 6],
+          ["I advocate for highly visible individual awards, public recognition, and significant financial bonuses for top achievers.", 7]
         ]
       }
     ],
@@ -326,7 +325,7 @@
           ["Their reputation for being fair, trustworthy, and treating their own employees well.", 4],
           ["Their demonstrated commitment to social responsibility, kindness, and community support.", 5],
           ["Their genuine compassion. I prefer to work with partners who actively prioritize human welfare alongside profit.", 6],
-          ["Their profound dedication to social good. I believe a partner's moral character and generosity are the ultimate foundation of a sustainable relationship.", 7]
+          ["Their profound dedication to social good. A partner's moral character and generosity are the ultimate foundation of a sustainable relationship.", 7]
         ]
       },
       {
@@ -392,7 +391,7 @@
           ["I facilitate a meeting to help them understand each other's perspectives and reach a professional compromise.", 4],
           ["I actively work to rebuild their working relationship, emphasizing shared team goals and mutual respect.", 5],
           ["I invest significant time in coaching and team-building, prioritizing the restoration of group harmony over immediate deadlines.", 6],
-          ["I prioritize resolving the underlying relational dynamic, as I believe team cohesion is the absolute foundation of long-term success.", 7]
+          ["I prioritize resolving the underlying relational dynamic, as team cohesion is the absolute foundation of long-term success.", 7]
         ]
       },
       {
@@ -430,7 +429,7 @@
           ["I hold a meeting to discuss options, consider team feedback, and then make the final call.", 4],
           ["I facilitate a collaborative evaluation where the team's consensus heavily guides the final choice.", 5],
           ["I step back and let the team research, debate, and decide together, acting primarily as a facilitator.", 6],
-          ["I fully delegate the decision to the team, as I believe the most robust solutions emerge from collective deliberation.", 7]
+          ["I fully delegate the decision to the team. The most robust solutions emerge from collective deliberation.", 7]
         ]
       },
       {
@@ -442,19 +441,19 @@
           ["I genuinely consider their idea, ask clarifying questions, and am willing to adjust my strategy if their point is valid.", 4],
           ["I actively encourage them to elaborate, and I am highly likely to adopt their idea if it improves our outcome.", 5],
           ["I champion their idea to the rest of the group, demonstrating that diverse perspectives can actively shape our direction.", 6],
-          ["I enthusiastically welcome the challenge to my strategy, as I believe robust debate and diverse input are essential for optimal outcomes.", 7]
+          ["I enthusiastically welcome the challenge to my strategy, since robust debate and diverse input are essential for optimal outcomes.", 7]
         ]
       },
       {
-        "q": "What is your fundamental belief about how decisions should be made in your organization?",
+        "q": "When senior leadership introduces a new directive or policy, how do you naturally approach implementing it with your team?",
         "options": [
-          ["Decisions should be made swiftly by leadership to ensure strategic alignment and operational efficiency.", 1],
-          ["Leaders should decide, but they have a duty to clearly communicate the rationale to the team.", 2],
-          ["Leaders should decide, but they must consult with experts and key stakeholders first.", 3],
-          ["The best decisions come from a leader who actively listens to and integrates the team's input.", 4],
-          ["Decision-making should be a shared process, where the leader and the team co-create the solution.", 5],
-          ["The team should have the primary role in decision-making, with the leader acting as a supportive guide.", 6],
-          ["Maximum participation is essential. I believe inclusive, collaborative decision-making drives the highest level of innovation and commitment.", 7]
+          ["I provide clear, step-by-step instructions on exactly how to execute it, expecting strict compliance.", 1],
+          ["I explain the directive clearly, but I set firm expectations on how it must be implemented.", 2],
+          ["I outline the core requirements, but I allow the team flexibility in how they achieve those specific targets.", 3],
+          ["I present the directive and actively ask for the team's feedback on the best way to adapt it to our local context.", 4],
+          ["I organize a collaborative session where the team and I co-design the implementation plan together.", 5],
+          ["I empower the team to take the lead on designing the implementation strategy, stepping in only to ensure alignment with the core directive.", 6],
+          ["I fully delegate the implementation design to the team, trusting that their collective, grassroots input will yield the most effective execution.", 7]
         ]
       }
     ],
@@ -472,15 +471,15 @@
         ]
       },
       {
-        "q": "How do you define a 'successful' leader?",
+        "q": "When you are leading a team or project, what do you naturally prioritize to ensure our success?",
         "options": [
-          ["A leader who consistently drives high performance, efficiency, and strategic results.", 1],
-          ["A leader who achieves goals while maintaining professional distance and objectivity.", 2],
-          ["A leader who balances achieving results with fair and respectful treatment of the team.", 3],
-          ["A leader who actively fosters a positive, supportive, and collaborative environment.", 4],
-          ["A leader known for genuine care, mentorship, and prioritizing employee well-being.", 5],
-          ["A leader who serves as a dedicated mentor, prioritizing the personal growth and happiness of their team.", 6],
-          ["A leader whose primary legacy is the profound, positive impact they have on the lives and development of their people.", 7]
+          ["I focus entirely on driving high performance, efficiency, and hitting strategic targets.", 1],
+          ["I prioritize achieving our goals while maintaining professional distance and objective standards.", 2],
+          ["I balance the drive for results with ensuring fair and respectful treatment of the team.", 3],
+          ["I actively foster a positive, supportive, and collaborative environment to help us achieve our goals.", 4],
+          ["I champion genuine care, active mentorship, and the overall well-being of my team members.", 5],
+          ["I act primarily as a dedicated mentor, putting my team's personal growth and happiness above immediate metrics.", 6],
+          ["I measure my success entirely by the profound, positive impact I have on the long-term development and lives of my people.", 7]
         ]
       },
       {
@@ -506,11 +505,11 @@
           ["I analyze the data independently, draft a clear plan, and then present it to the team for feedback.", 4],
           ["I rely on my own expertise to quickly design an innovative strategy, and I inform the team of the new direction.", 5],
           ["I work independently to craft a bold, unconventional solution, relying on my own expertise rather than seeking group consensus.", 6],
-          ["I develop a highly independent, disruptive strategy. I believe true innovation often requires stepping away from group consensus to forge a unique, decisive path.", 7]
+          ["I develop a highly independent, disruptive strategy. True innovation often requires stepping away from group consensus to forge a unique, decisive path.", 7]
         ]
       },
       {
-        "q": "How do you prefer to manage a highly skilled, experienced team?",
+        "q": "How do you manage a highly skilled, experienced team?",
         "options": [
           ["I facilitate regular collaborative sessions to ensure everyone is perfectly aligned and working together.", 1],
           ["I maintain close communication to ensure the team is on track and actively supporting each other.", 2],
@@ -518,11 +517,11 @@
           ["I set clear goals and let the team figure out the best way to achieve them together, stepping in only when asked.", 4],
           ["I give them broad objectives and trust them to work independently, intervening as little as possible.", 5],
           ["I encourage each member to pursue independent projects with minimal oversight, prioritizing individual autonomy over group coordination.", 6],
-          ["I grant them complete autonomy. I believe highly skilled professionals perform best when empowered to work independently, without the constraints of group consensus.", 7]
+          ["I grant them complete autonomy because highly skilled professionals perform best when empowered to work independently, without the constraints of group consensus.", 7]
         ]
       },
       {
-        "q": "When facing a major crisis, what is your leadership instinct?",
+        "q": "When facing a major crisis, what do you do as the leader of your team?",
         "options": [
           ["I immediately gather the group to brainstorm and decide on a unified response together.", 1],
           ["I consult with key advisors quickly, then make a decision that the whole team will execute.", 2],
@@ -530,7 +529,7 @@
           ["I assess the situation, delegate specific tasks based on expertise, and let the team execute.", 4],
           ["I take swift, independent action to stabilize the situation, relying on my own judgment and experience.", 5],
           ["I step back to analyze the problem deeply and craft an independent solution, minimizing group input to maintain focus.", 6],
-          ["I rely entirely on my own independent judgment. In a crisis, I believe a single, decisive vision is often more effective and faster than a committee.", 7]
+          ["I rely entirely on my own independent judgment. A single, decisive vision is often more effective and faster than a committee.", 7]
         ]
       }
     ],
@@ -548,27 +547,27 @@
         ]
       },
       {
-        "q": "How do you view the use of status symbols (e.g., corner offices, formal titles, exclusive perks) in leadership?",
+        "q": "When establishing your role or working within an organization, how do you approach formal status symbols (e.g., titles, exclusive perks, hierarchical distinctions)?"",
         "options": [
-          ["They are harmful and create unnecessary barriers. Leaders should work alongside the team and reject special treatment.", 1],
-          ["They are mostly unnecessary. A leader's value comes from their actions, not their title or office.", 2],
-          ["They are acceptable if earned, but they should not be flaunted or used to intimidate.", 3],
-          ["They are useful tools for establishing clear authority and commanding respect in a professional setting.", 4],
-          ["They are important for maintaining the dignity of the leadership role and reinforcing the organizational hierarchy.", 5],
-          ["They are essential. Formal status symbols protect the leader's authority and ensure their position is respected and upheld.", 6],
-          ["They are critical tools of professional protocol. Visible status and formal hierarchy are necessary to command respect, maintain order, and uphold the authority of the office.", 7]
+          ["I actively minimize or reject them, preferring to work alongside the team without special treatment or formal distinctions.", 1],
+          ["I downplay them, ensuring my influence comes from my actions and collaboration rather than my title or office.", 2],
+          ["I accept them if they are earned, but I ensure they are never flaunted or used to create distance from my team.", 3],
+          ["I utilize them pragmatically as tools for establishing clear authority and facilitating professional interactions.", 4],
+          ["I uphold them to maintain the dignity of the leadership role and reinforce necessary organizational structure.", 5],
+          ["I embrace them as essential to protect my authority and ensure my position is clearly respected.", 6],
+          ["I enforce them visibly as critical tools of professional protocol to command respect and uphold the authority of the office.", 7]
         ]
       },
       {
-        "q": "When a new, risky opportunity arises, what is your primary consideration?",
+        "q": "When a new, risky opportunity arises, how do you approach the decision?",
         "options": [
-          ["The potential for massive, disruptive innovation. High risk is worth the potential reward.", 1],
-          ["The potential upside, provided we have a basic contingency plan if things go wrong.", 2],
-          ["A careful calculation of risk versus reward, ensuring the team is prepared for either outcome.", 3],
-          ["How this opportunity might impact the team's stability, ensuring we have strong safeguards in place.", 4],
-          ["How this decision will reflect on my leadership and the organization's reputation. I must avoid any move that could be seen as reckless.", 5],
-          ["I prioritize protecting the organization's current standing. I will only proceed if the risk to our established operations is virtually zero.", 6],
-          ["I prioritize institutional stability and risk mitigation. Preserving the organization's current standing and avoiding unnecessary exposure is more important than chasing unproven opportunities.", 7]
+          ["I focus on the potential for massive, disruptive innovation, believing the high risk is worth the potential reward.", 1],
+          ["I focus on the potential upside, provided we can establish a basic contingency plan if things go wrong.", 2],
+          ["I conduct a careful calculation of risk versus reward, ensuring the team is prepared for either outcome.", 3],
+          ["I prioritize assessing how the opportunity might impact the team's stability, ensuring we have strong safeguards in place.", 4],
+          ["I weigh how the decision will reflect on my leadership and the organization's reputation, actively avoiding any move that could be perceived as reckless.", 5],
+          ["I prioritize protecting the organization's current standing, proceeding only if the risk to our established operations is virtually zero.", 6],
+          ["I strictly prioritize institutional stability and risk mitigation, as preserving our current standing is far more important than chasing unproven opportunities.", 7]
         ]
       }
     ]
