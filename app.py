@@ -256,7 +256,7 @@ def check_duplicate_profile(anonymous_id, framework, comparison_type, comparison
 # Page configuration
 st.set_page_config(
     page_title="CQ Compass - Cultural Intelligence Development",
-    page_icon="assets/cqc_logo.png",
+    page_icon="assets/logo_cqc.png",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
