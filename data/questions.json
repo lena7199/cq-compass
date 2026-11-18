@@ -55,7 +55,7 @@
         "q": "You are drafting a partnership agreement with a new international counterpart. What is your approach to the contract?",
         "options": [
           ["A brief, one-page agreement. We rely on mutual trust and can adapt as needed.", 1],
-          ["A relatively short agreement outlining main goals, but leaving specific methods flexible.", 2],
+          ["A relatively short agreement outlining main goals but leaving specific methods flexible.", 2],
           ["A standard contract with clear objectives and some room for informal adjustments.", 3],
           ["A detailed contract covering most scenarios, with a formal process for amendments.", 4],
           ["A highly detailed contract with strict clauses and explicit procedures for possible contingencies.", 5],
@@ -66,13 +66,13 @@
       {
         "q": "A colleague proposes a completely new, untested method to solve a recurring problem. What is your immediate reaction?",
         "options": [
-          ["I enthusiastically support it. We should always experiment and challenge the status quo.", 1],
-          ["I am open to it and suggest a quick, low-risk pilot to test it.", 2],
-          ["I am cautiously optimistic but want to review potential risks before committing.", 3],
-          ["I am hesitant and ask for a detailed risk assessment compared to our current methods.", 4],
-          ["I am skeptical. I prefer to stick to established procedures that we know work reliably.", 5],
-          ["I strongly oppose it. Untested methods create unnecessary and dangerous unpredictability.", 6],
-          ["I reject the proposal. We must strictly adhere to our proven, standardized operating procedures to ensure stability and predictability.", 7]
+          ["I support it. We should constantly experiment and change to find better ways.", 1],
+          ["I am open to it, provided we can run a small test to check its viability before any wider rollout.", 2],
+          ["I am willing to consider it, but I need to see a clear breakdown of the pros and cons first.", 3],
+          ["I am hesitant and would require a detailed risk assessment comparing it to our current reliable methods.", 4],
+          ["I am skeptical. I generally prefer to stick with established procedures that we already know work reliably.", 5],
+          ["I strongly oppose it. Introducing untested methods creates unnecessary risk in our workflow.", 6],
+          ["I reject the proposal. We must adhere to our proven, standardized operating procedures to guarantee stability.", 7]
         ]
       }
     ],
@@ -86,7 +86,7 @@
           ["Using it mostly to improve shared resources and community programs, with modest individual bonuses.", 4],
           ["Focusing on collective benefits: upgrading shared facilities, funding team-wide training, or community initiatives.", 5],
           ["Investing heavily in organizational welfare programs to strengthen the collective rather than individual financial gain.", 6],
-          ["Direccting it totally into collective funds, prioritizing the organization's shared resources and systemic resilience.", 7]
+          ["Directing it totally into collective funds, prioritizing the organization's shared resources and systemic resilience.", 7]
         ]
       },
       {
@@ -97,72 +97,73 @@
           ["A mix of their individual merit and their potential to fit into the existing team dynamic.", 3],
           ["Their willingness to collaborate and their alignment with the organization's collective values.", 4],
           ["Their proven ability to work harmoniously within a team and prioritize group goals over personal ambition.", 5],
-          ["Their commitment to the organization's broader mission. Individual talent is secondary to maintaining team cohesion.", 6],
-          ["Their deep integration into the collective purpose. A candidate must prioritize the group's unified success over any individual brilliance.", 7]
+          ["Their commitment to the organization's broader mission and team cohesion. Individual talent is secondary.", 6],
+          ["Their deep integration into the collective purpose and their commitment to prioritize the group's unified success.", 7]
         ]
       },
       {
         "q": "In your daily work, how do you expect your organization's leadership and systems to support your role?",
         "options": [
-          ["I expect maximum autonomy; I prefer to rely entirely on my own initiative and resources to succeed, with minimal institutional interference.", 1],
+          ["I expect minimal institutional interference. I feel comfortable relying on my own initiative and resources to succeed.", 1],
           ["I appreciate a basic safety net of resources, but I primarily rely on my own drive and problem-solving to get the job done.", 2],
-          ["I value a balance where the organization provides fair guidelines and moderate support, while leaving ample room for my individual initiative.", 3],
-          ["I expect the organization to play an active role in providing robust resources and ensuring fair distribution of support across the team.", 4],
+          ["I value a balance where the organization provides fair guidelines and moderate support, while leaving room for individual initiative.", 3],
+          ["I expect the organization to play an active role in providing resources and ensuring fair distribution of support across the team.", 4],
           ["I rely on the institution to actively manage workloads and protect the team from burnout or unfair disadvantages.", 5],
           ["I expect leadership to heavily guide and structure our work to ensure collective harmony and equitable sharing of resources.", 6],
-          ["I strictly prefer an environment where the organization enforces strong collective action and resource sharing, ensuring the common good always overrides individual preferences.", 7]
+          ["I prefer an environment where the organization enforces strong collective action and resource sharing to ensure the common good.", 7]
         ]
       }
     ],
     "In-Group Collectivism": [
       {
-        "q": "You are offered a prestigious promotion that requires you to relocate, meaning you would leave your close-knit team and family behind. What do you do?",
+        "q": "You learn about a high-visibility opportunity (like a special training program or a premium project) that can only be given to one person in your department. How do you approach this?",
         "options": [
-          ["I accept immediately. My individual career advancement is my top priority.", 1],
-          ["I accept, but I will make sure to visit my family and old team regularly.", 2],
-          ["I weigh the career benefits against the impact on my family, seeking a practical compromise.", 3],
-          ["I lean toward declining or negotiating remote work, as my family and current team's stability is highly important to me.", 4],
-          ["I decline the promotion. My loyalty to my family and current group outweighs individual career gain.", 5],
-          ["I would likely decline. Uprooting my family or leaving my established group for personal gain conflicts with my core values.", 6],
-          ["I reject it. My primary duty is to the well-being and stability of my family and immediate group; individual ambition must not compromise that foundation.", 7]
+          ["I confidently pitch myself for it. I am highly qualified and it is my right to advance my own career.", 1],
+          ["I put my name forward, but I accept whatever objective, merit-based decision the organization makes.", 2],
+          ["I apply, but I also encourage other qualified colleagues to apply, letting a fair, transparent process decide.", 3],
+          ["I discuss the opportunity with my close-knit team first, to see who needs it most or what would benefit my team.", 4],
+          ["I step back and actively advocate for a specific colleague in my immediate circle who I know will greatly benefit from it.", 5],
+          ["I don't apply to ensure a member of my close-knit team gets it. Their success is a victory for our entire group.", 6],
+          ["I unconditionally pass on the opportunity to a close teammate. The advancement of my trusted colleagues is above my personal or broader organizational gains.", 7]
+
         ]
       },
       {
         "q": "A close friend or family member asks you to help them get a job at your company, but they are not the most qualified candidate on paper. What do you do?",
         "options": [
           ["I refuse. Hiring must be strictly based on merit, and personal connections should not influence the process.", 1],
-          ["I will review their resume, but I will only recommend them if they are genuinely competitive with other candidates.", 2],
-          ["I will give their resume an internal referral, but I expect the final decision to be based purely on fairness.", 3],
-          ["I will actively advocate for them and highlight their potential, as loyalty to my circle is a valuable professional asset.", 4],
-          ["I will strongly push for their hiring. Proven trust and loyalty within my network are often more valuable than a slightly stronger technical resume.", 5],
-          ["I will leverage my influence to support their hiring. Taking care of my trusted network is a priority, as long-term loyalty often outweighs abstract meritocracy.", 6],
-          ["I will prioritize their hiring above other candidates. The bond of family and in-group loyalty is a fundamental obligation that takes precedence over standard hiring metrics.", 7]
+          ["I review their resume, but I will only recommend them if they are genuinely competitive with other candidates.", 2],
+          ["I give their resume an internal referral, but I expect the final decision to be based purely on fairness.", 3],
+          ["I give them a strong personal referral, actively vouching for their character and work ethic, as personal trust is a valid professional metric.", 4],
+          ["I actively promote them to the hiring manager, arguing that proven loyalty and reliability are more valuable to the team than a slightly stronger technical skills.", 5],
+          ["I use my influence to support their hiring. Stregthening trusted networks is a priority, as loyalty often outweighs meritocracy.", 6],
+          ["I prioritize their hiring above other candidates. Family bonds and in-group loyalty are more valuable that standard hiring metrics.", 7]
         ]
       },
       {
-        "q": "When your organization achieves a major success, how do you prefer to celebrate?",
+        "q": "When your organization achieves a major success, how do you prefer to manage acknowledgment?",
         "options": [
-          ["By highlighting and rewarding the specific individuals who drove the success.", 1],
-          ["By acknowledging the key contributors, while noting the team's general support.", 2],
-          ["By celebrating the team as a whole, while still giving a nod to standout individual efforts.", 3],
-          ["By focusing entirely on the team's collective effort, avoiding singling out any one person.", 4],
-          ["By organizing a group event that reinforces our shared identity and mutual dependence.", 5],
-          ["By emphasizing that the success belongs entirely to the group. Highlighting individual contributions is unnecessary when the collective effort is what truly matters.", 6],
-          ["By strictly framing the success as a collective victory. Claiming individual credit undermines the mutual reliance and shared identity that made the success possible.", 7]
+          ["I highlight and reward the specific individuals who drove the success.", 1],
+          ["I acknowledge the key contributors, while also noting the team's general support.", 2],
+          ["I celebrate the team as a whole, while still giving a clear nod to outstanding individual efforts.", 3],
+          ["I focus entirely on the team's collective effort, deliberately avoiding singling out any one person.", 4],
+          ["I organize a group event or shared recognition that reinforces our shared identity and mutual dependence.", 5],
+          ["I actively redirect any individual praise back to the entire team, ensuring no single person is positioned above the rest.", 6],
+          ["I strictly oppose any form of individual recognition. Singling out one person inherently damages team cohesion and shared identity.", 7]
         ]
       }
     ],
     "Gender Egalitarianism": [
       {
-        "q": "You are selecting a candidate for a demanding, high-travel international role, and the organization has a stated goal of improving diversity in leadership, how do you approach the final decision between two equally qualified candidates: one man, one woman?",
+        "q": "Yo need to choose between two equally qualified candidates (one man, one woman) for a demanding, high-travel role. How do you approach the final decision?",
         "options": [
-          ["I prioritize immediate, unrestricted availability for travel above all else, as I view this as the most critical indicator of readiness for high-stress roles.", 1],
-          ["I lean toward the candidate whose current life circumstances appear to offer the most flexibility for extensive travel, prioritizing immediate operational ease.", 2],
-          ["I evaluate both strictly on their past performance and merit, deliberately setting aside any assumptions about their personal lives or gender.", 3],
-          ["I evaluate them on merit, but I proactively discuss the travel demands with both candidates to ensure they have the personal support systems needed to succeed.", 4],
-          ["I actively weigh the organization's diversity goals, giving strong consideration to the female candidate to help counteract historical underrepresentation in these specific roles.", 5],
-          ["I advocate for the female candidate, viewing this specific selection as a direct opportunity to dismantle systemic barriers and model inclusive leadership.", 6],
-          ["I prioritize the female candidate's selection, treating the achievement of gender parity in high-stakes international roles as a non-negotiable strategic imperative for the organization.", 7]
+          ["I focus strictly on who has the most unrestricted availability for travel, as I see this as the most important factor for a high-stress role.", 1],
+          ["I lean toward the candidate whose personal situation seems to offer the most flexibility for constant travel, prioritizing immediate ease for the team.", 2],
+          ["I evaluate them strictly on their past performance and skills, deliberately ignoring any assumptions about their gender or personal life.", 3],
+          ["I evaluate them on merit, but I openly discuss the travel demands with both to ensure they have the personal support they need to succeed.", 4],
+          ["I actively consider the company's diversity goals, giving strong preference to the female candidate to help address the historical lack of women in these roles.", 5],
+          ["I strongly advocate for the female candidate, seeing this selection as a direct chance to break down old barriers and lead by example.", 6],
+          ["I prioritize choosing the female candidate, treating gender equality in these high-stakes roles as a strict, non-negotiable rule for the organization.", 7]
         ]
       },
       {
@@ -170,8 +171,8 @@
         "options": [
           ["I do nothing. This is a normal dynamic, and seniority naturally commands the floor.", 1],
           ["I feel it is unfortunate, but I assume she will speak up again later if the point is important.", 2],
-          ["I might gently steer the conversation back to her if a natural opportunity arises.", 3],
-          ["I immediately interject to ensure she can finish her thought: 'I would like to hear the rest of what [Name] was saying.'", 4],
+          ["I might gently direct the conversation back to her if a natural opportunity arises.", 3],
+          ["I immediately jump in to ensure she can finish her thought: 'I would like to hear the rest of what [Name] was saying.'", 4],
           ["I actively redirect the conversation to her and explicitly state that her perspective is valuable and deserves full attention.", 5],
           ["I address the dynamic directly: 'Let us ensure we are hearing from everyone, regardless of seniority or gender.'", 6],
           ["I firmly pause the discussion to address the interruption, making it clear that equitable participation is a professional requirement, not an option.", 7]
