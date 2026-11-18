@@ -2,19 +2,19 @@
   "GLOBE_Culture": {
     "Power Distance": [
       {
-        "q": "During a high-stakes negotiation, the most senior leader on your team makes a statement that contains a factual error. How do you react?",
+        "q": "During an important negotiation, the most senior leader on your team makes a statement with a factual error. How do you react?",
         "options": [
           ["I openly and immediately correct the error. Accuracy is more important than rank.", 1],
           ["I politely but directly correct the facts in the meeting.", 2],
           ["I wait for a pause and gently suggest a different perspective without calling it an error.", 3],
           ["I say nothing in the meeting, but send a private message to the leader afterward.", 4],
           ["I don't point out the mistake in the meeting, but discuss the issue with a trusted peer later.", 5],
-          ["I accept the statement. The leader's authority and a unified team front are more important than factual details.", 6],
+          ["I accept the statement. The leader's authority and a united team are more important than factual details.", 6],
           ["I support the leader's statement. Any corrections are handled later, privately and discreetly, to maintain hierarchical harmony.", 7]
         ]
       },
       {
-        "q": "You have an idea to improve a workflow, but it contradicts the established method preferred by senior leadership. How do you approach this?",
+        "q": "You have an idea to improve how work is done, but it goes against the usual method preferred by senior leadership. How do you handle this?",
         "options": [
           ["I present my idea directly and openly to senior leadership, expecting a two-way discussion about its merits.", 1],
           ["I share my idea with my direct manager and encourage them to challenge or discuss the senior leadership's approach on my behalf.", 2],
@@ -26,21 +26,21 @@
         ]
       },
       {
-        "q": "The senior leadership issues a new directive that seems unclear or impractical for your local context. How do you react?",
+        "q": "Senior leadership gives a new instruction that seems unclear or hard to apply in your local office. How do you react?",
         "options": [
-          ["I immediately reach out to leadership for clarification and openly suggest adjustments to ensure the directive is practical.", 1],
-          ["I respectfully question the directive's feasibility and propose alternative solutions to my immediate superiors.", 2],
+          ["I immediately reach out to leadership for clarification and openly suggest adjustments to ensure the instruction is practical.", 1],
+          ["I respectfully question whether it will work and propose alternative solutions to my immediate superiors.", 2],
           ["I gather my team's practical concerns and present a consolidated, constructive request for clarification or adjustments.", 3],
-          ["I attempt to adapt the directive to our local context on my own, only seeking guidance if it is absolutely necessary to avoid overstepping.", 4],
-          ["I assume leadership has a broader strategic perspective I may not see, so I focus my energy on making the directive work.", 5],
-          ["I execute the directive exactly as instructed. It is not my role to question the feasibility of decisions made by senior leadership.", 6],
-          ["I strictly enforce the directive without any internal debate. Challenging leadership's vision feels inappropriate.", 7]
+          ["I attempt to adapt the instruction to our local context on my own, only seeking guidance if it is absolutely necessary to avoid overstepping.", 4],
+          ["I assume leadership has a broader strategic perspective I may not see, so I focus my energy on making the instruction work.", 5],
+          ["I execute the instruction exactly as instructed. It is not my role to question whether it will work when decided by senior leadership.", 6],
+          ["I strictly enforce the instruction without any internal debate. Challenging leadership's vision feels inappropriate.", 7]
         ]
       }
     ],
     "Uncertainty Avoidance": [
       {
-        "q": "Your organization suddenly announces a major change in project scope with very little prior warning or detailed instruction. How do you react?",
+        "q": "Your organization suddenly announces a major change in project goals with very little warning or detailed instruction. How do you react?",
         "options": [
           ["I embrace it immediately. Gaps are an opportunity for innovation.", 1],
           ["I am comfortable with it and will figure out the details as we go.", 2],
@@ -52,13 +52,13 @@
         ]
       },
       {
-        "q": "You are drafting a partnership agreement with a new international counterpart. What is your approach to the contract?",
+        "q": "You are writing a partnership agreement with a new international partner. What is your approach to the contract?",
         "options": [
           ["A brief, one-page agreement. We rely on mutual trust and can adapt as needed.", 1],
           ["A relatively short agreement outlining main goals but leaving specific methods flexible.", 2],
           ["A standard contract with clear objectives and some room for informal adjustments.", 3],
           ["A detailed contract covering most scenarios, with a formal process for amendments.", 4],
-          ["A highly detailed contract with strict clauses and explicit procedures for possible contingencies.", 5],
+          ["A highly detailed contract with strict clauses and explicit procedures for unexpected situations.", 5],
           ["An exhaustive legal document. Every rule and exception must be defined to eliminate risk.", 6],
           ["A solid, comprehensive contract where there is no place for deviations without formal approval.", 7]
         ]
@@ -78,7 +78,7 @@
     ],
     "Institutional Collectivism": [
       {
-        "q": "Your organization has a surplus budget at the end of the year and you have a say on how to allocate it, what do you suggest?",
+        "q": "Your organization has extra budget at the end of the year and you have a say in how to spend it. What do you suggest?",
         "options": [
           ["Distributing it entirely as individual performance bonuses to directly reward top performers.", 1],
           ["Allocating most of it to individual bonuses and reserving a small portion for a team celebration.", 2],
@@ -102,9 +102,9 @@
         ]
       },
       {
-        "q": "In your daily work, how do you expect your organization's leadership and systems to support your role?",
+        "q": "In your daily work, how do you expect the organization's leadership and systems to support you?",
         "options": [
-          ["I expect minimal institutional interference. I feel comfortable relying on my own initiative and resources to succeed.", 1],
+          ["I expect minimal management interference. I feel comfortable relying on my own initiative and resources to succeed.", 1],
           ["I appreciate a basic safety net of resources, but I primarily rely on my own drive and problem-solving to get the job done.", 2],
           ["I value a balance where the organization provides fair guidelines and moderate support, while leaving room for individual initiative.", 3],
           ["I expect the organization to play an active role in providing resources and ensuring fair distribution of support across the team.", 4],
@@ -116,7 +116,7 @@
     ],
     "In-Group Collectivism": [
       {
-        "q": "You learn about a high-visibility opportunity (like a special training program or a premium project) that can only be given to one person in your department. How do you approach this?",
+        "q": "You learn about a special opportunity (like a premium training program or project) that can only be given to one person in your department. How do you handle this?",
         "options": [
           ["I confidently pitch myself for it. I am highly qualified and it is my right to advance my own career.", 1],
           ["I put my name forward, but I accept whatever objective, merit-based decision the organization makes.", 2],
@@ -125,7 +125,6 @@
           ["I step back and actively advocate for a specific colleague in my immediate circle who I know will greatly benefit from it.", 5],
           ["I don't apply to ensure a member of my close-knit team gets it. Their success is a victory for our entire group.", 6],
           ["I unconditionally pass on the opportunity to a close teammate. The advancement of my trusted colleagues is above my personal or broader organizational gains.", 7]
-
         ]
       },
       {
@@ -135,13 +134,13 @@
           ["I review their resume, but I will only recommend them if they are genuinely competitive with other candidates.", 2],
           ["I give their resume an internal referral, but I expect the final decision to be based purely on fairness.", 3],
           ["I give them a strong personal referral, actively vouching for their character and work ethic, as personal trust is a valid professional metric.", 4],
-          ["I actively promote them to the hiring manager, arguing that proven loyalty and reliability are more valuable to the team than a slightly stronger technical skills.", 5],
-          ["I use my influence to support their hiring. Stregthening trusted networks is a priority, as loyalty often outweighs meritocracy.", 6],
-          ["I prioritize their hiring above other candidates. Family bonds and in-group loyalty are more valuable that standard hiring metrics.", 7]
+          ["I actively promote them to the hiring manager, arguing that proven loyalty and reliability are more valuable to the team than slightly stronger technical skills.", 5],
+          ["I use my influence to support their hiring. Strengthening trusted networks is a priority, as loyalty often outweighs meritocracy.", 6],
+          ["I prioritize their hiring above other candidates. Family bonds and in-group loyalty are more valuable than standard hiring metrics.", 7]
         ]
       },
       {
-        "q": "When your organization achieves a major success, how do you prefer to manage acknowledgment?",
+        "q": "When your organization achieves a major success, how do you prefer to handle recognition?",
         "options": [
           ["I highlight and reward the specific individuals who drove the success.", 1],
           ["I acknowledge the key contributors, while also noting the team's general support.", 2],
@@ -155,9 +154,9 @@
     ],
     "Gender Egalitarianism": [
       {
-        "q": "Yo need to choose between two equally qualified candidates (one man, one woman) for a demanding, high-travel role. How do you approach the final decision?",
+        "q": "You need to choose between two equally qualified candidates (one man, one woman) for a demanding role that requires a lot of travel. How do you make the final decision?",
         "options": [
-          ["I focus strictly on who has the most unrestricted availability for travel, as I see this as the most important factor for a high-stress role.", 1],
+          ["I focus strictly on who is most free to travel, as I see this as the most important factor for a high-stress role.", 1],
           ["I lean toward the candidate whose personal situation seems to offer the most flexibility for constant travel, prioritizing immediate ease for the team.", 2],
           ["I evaluate them strictly on their past performance and skills, deliberately ignoring any assumptions about their gender or personal life.", 3],
           ["I evaluate them on merit, but I openly discuss the travel demands with both to ensure they have the personal support they need to succeed.", 4],
@@ -186,18 +185,18 @@
           ["Both should contribute to work and home, though traditional roles may naturally emerge based on personal preference.", 3],
           ["Responsibilities should be divided entirely based on individual skills and agreements, with no regard for gender.", 4],
           ["There should be an active, intentional effort to ensure men take on equal shares of domestic and caregiving responsibilities.", 5],
-          ["Societal and corporate structures must be actively redesigned to eliminate any remaining systemic advantages for men in the workplace.", 6],
-          ["Gender is entirely irrelevant to capability. Any remaining disparity in roles is a structural failure that must be systematically corrected.", 7]
+          ["Societal and corporate structures must be actively redesigned to eliminate any remaining unfair advantages for men in the workplace.", 6],
+          ["Gender is entirely irrelevant to capability. Any remaining disparity in roles is a system problem that must be systematically corrected.", 7]
         ]
       }
     ],
     "Assertiveness": [
       {
-        "q": "A business partner proposes a deal that is highly unfavorable to your organization. How do you respond?",
+        "q": "A business partner proposes a deal that is very unfair to your organization. How do you respond?",
         "options": [
           ["I remain silent during the meeting to preserve harmony, later using a trusted intermediary to convey my reluctance.", 1],
           ["I avoid saying 'no' directly, using vague language like 'this will be challenging' to signal disagreement without causing offense.", 2],
-          ["I remain highly diplomatic, focusing on the long-term relationship and gently steering the conversation away from the unfavorable terms.", 3],
+          ["I remain highly diplomatic, focusing on the long-term relationship and gently steering the conversation away from the unfair terms.", 3],
           ["I express mild hesitation and suggest we need more time to review, avoiding direct confrontation.", 4],
           ["I express my concerns clearly but politely, suggesting we work together to find a more balanced middle ground.", 5],
           ["I push back strongly, pointing out the flaws in their proposal and demanding significant revisions.", 6],
@@ -231,7 +230,8 @@
     ],
     "Future Orientation": [
       {
-        "q": "When starting a new partnership or collaboration with an international organization, what is your natural approach?": [
+        "q": "When starting a new partnership or collaboration with an international organization, what is your natural approach?",
+        "options": [
           ["I focus on getting a quick agreement to show immediate, tangible results.", 1],
           ["I prioritize short-term, practical wins to create visible outcomes as soon as possible.", 2],
           ["I balance securing a quick initial agreement with some steps toward relationship-building.", 3],
@@ -248,13 +248,13 @@
           ["I focus on short-term career advancement and the specific skills I can add to my profile within the next 6 to 12 months.", 2],
           ["I seek a balance: securing a strong current role while laying the groundwork for moderate growth over the next few years.", 3],
           ["I prioritize the long-term career trajectory and how this opportunity positions me for greater strategic responsibility in 3 to 5 years.", 4],
-          ["I focus on enduring professional stability and the long-term legacy this path provides, even if it requires delayed gratification today.", 5],
+          ["I focus on enduring professional stability and the long-term legacy this path provides, even if it requires waiting for future rewards today.", 5],
           ["I align my decision with a 10-to-20 year vision, prioritizing future systemic security and impact over present-day comfort.", 6],
           ["I evaluate it entirely on long-term, generational impact, and I am willing to make significant present-day sacrifices to ensure a secure, prosperous future.", 7]
         ]
       },
       {
-        "q": "When planning a project you are responsible for, what is your approach to execution?",
+        "q": "When planning a project you are responsible for, what is your approach to doing the work?",
         "options": [
           ["I focus entirely on immediate, short-term results. Long-term planning is often a waste of time.", 1],
           ["I focus on quick wins, adjusting the plan as we go based on immediate feedback.", 2],
@@ -262,13 +262,13 @@
           ["I develop a clear 3-to-5 year strategic plan with measurable milestones and contingencies.", 4],
           ["I prioritize long-term sustainability and structural integrity, even if it slows down immediate progress.", 5],
           ["I build comprehensive, long-term frameworks designed to last decades, anticipating future geopolitical or market shifts.", 6],
-          ["I design the project entirely around generational impact and legacy.", 7]
+          ["I design the project entirely around long-term impact for the future.", 7]
         ]
       }
     ],
     "Performance Orientation": [
       {
-        "q": "A colleague consistently delivers excellent work but their arrogant behavior disrupts team harmony. How do you naturally respond?",
+        "q": "A colleague consistently does excellent work, but their arrogant behavior causes problems in the team. How do you naturally respond?",
         "options": [
           ["I distance myself or raise the issue with management, as preserving group harmony is more important than any individual's output.", 1],
           ["I am willing to formally report their behavior, as a disruptive high-performer is more damaging to the organization than a moderate, harmonious team.", 2],
@@ -280,7 +280,7 @@
         ]
       },
       {
-        "q": "When negotiating your annual goals or performance targets, what is your natural approach?",
+        "q": "When setting your annual goals or performance targets, what is your natural approach?",
         "options": [
           ["I set moderate, realistic goals that prioritize a supportive, harmonious work environment over aggressive competition.", 1],
           ["I focus primarily on building strong relationships and team well-being, with my personal performance metrics being a secondary concern.", 2],
@@ -306,7 +306,7 @@
     ],
     "Humane Orientation": [
       {
-        "q": "A colleague confides in you that they are going through a severe personal crisis that is affecting their work performance. How do you handle it?",
+        "q": "A colleague tells you in private that they are going through a serious personal problem that is affecting their work. How do you handle it?",
         "options": [
           ["I prioritize operational continuity. I will politely remind them of their deadlines and professional responsibilities.", 1],
           ["I express brief sympathy, but I still expect them to meet their core professional obligations.", 2],
@@ -330,7 +330,7 @@
         ]
       },
       {
-        "q": "When my organization faces unexpected financial pressure and resources become tight, how do I naturally approach my work and my colleagues?",
+        "q": "When your organization faces unexpected money problems and resources become tight, how do you naturally approach your work and your colleagues?",
         "options": [
           ["I focus strictly on my own operational efficiency and metrics to ensure my own security, keeping personal sentiments separate from business needs.", 1],
           ["I accept that tough times require strict professionalism, focusing solely on delivering my assigned tasks without getting emotionally involved in others' struggles.", 2],
@@ -346,15 +346,15 @@
   "GLOBE_Leadership": {
     "Charismatic": [
       {
-        "q": "Your team is facing a difficult, demoralizing project. How do you motivate them?",
+        "q": "Your team is facing a difficult, discouraging project. How do you motivate them?",
         "options": [
-          ["I rely strictly on transactional rewards, such as bonuses, to motivate completion.", 1],
+          ["I rely strictly on rewards like bonuses to motivate completion.", 1],
           ["I outline the practical benefits of finishing the project, keeping the focus strictly on the task.", 2],
           ["I acknowledge the difficulty but emphasize our shared professional duty to get it done.", 3],
           ["I share a compelling vision of how this project will positively impact our clients and our future.", 4],
           ["I articulate our core values, connecting their daily work to a meaningful, higher purpose.", 5],
           ["I lead by personal example, sharing the burden and using inspiring communication to reignite their passion.", 6],
-          ["I act as a visionary catalyst, using powerful, values-driven communication to transform the team's mindset and inspire exceptional performance.", 7]
+          ["I act as an inspiring leader, using powerful, values-driven communication to transform the team's mindset and inspire exceptional performance.", 7]
         ]
       },
       {
@@ -365,12 +365,12 @@
           ["I balance logical analysis with consultation from key stakeholders.", 3],
           ["I evaluate how well the decision aligns with the organization's stated mission and medium-term goals.", 4],
           ["I prioritize how strongly the decision reflects our core, non-negotiable values, even if it is not the easiest path.", 5],
-          ["I rely on my moral compass and visionary intuition to guide the organization toward a principled, long-term future.", 6],
+          ["I rely on my values and long-term vision to guide the organization toward a principled, long-term future.", 6],
           ["I am driven by an unwavering commitment to a higher purpose. The decision must be a testament to our highest ideals, even at a significant short-term cost.", 7]
         ]
       },
       {
-        "q": "Your teams' performance is slipping. How do you handle the situation?",
+        "q": "Your team's performance is dropping. How do you handle the situation?",
         "options": [
           ["I implement stricter monitoring and tie rewards directly to immediate output.", 1],
           ["I set clearer, more specific daily targets and check in frequently.", 2],
@@ -384,7 +384,7 @@
     ],
     "Team Oriented": [
       {
-        "q": "Two of your top employees are in a bitter conflict that is disrupting the team. How do you resolve it?",
+        "q": "Two of your top employees are in a serious conflict that is disrupting the team. How do you resolve it?",
         "options": [
           ["I delegate the resolution to them, emphasizing individual accountability for maintaining a functional work environment.", 1],
           ["I issue a formal directive that the conflict must stop immediately to protect team productivity.", 2],
@@ -416,7 +416,7 @@
           ["Highly collaborative, with shared goals and regular group problem-solving sessions.", 4],
           ["Deeply integrated, where team members constantly support each other and share responsibilities fluidly.", 5],
           ["Completely collective. The team functions as a single unit, with shared accountability for every outcome.", 6],
-          ["Fully synergistic. Individual roles are highly interdependent, prioritizing a unified group effort where the collective mission drives all actions.", 7]
+          ["Fully connected. Individual roles work closely together, prioritizing a unified group effort where the collective mission drives all actions.", 7]
         ]
       }
     ],
@@ -434,7 +434,7 @@
         ]
       },
       {
-        "q": "A junior team member proposes an idea that contradicts your initial strategy. How do you respond?",
+        "q": "A junior team member proposes an idea that goes against your initial plan. How do you respond?",
         "options": [
           ["I maintain my original strategy, as providing clear, consistent direction is my primary leadership responsibility.", 1],
           ["I acknowledge the idea, but explain why the current strategy remains the best path forward.", 2],
@@ -446,15 +446,15 @@
         ]
       },
       {
-        "q": "When senior leadership introduces a new directive or policy, how do you approach implementing it with your team?",
+        "q": "When senior leadership introduces a new rule or policy, how do you approach putting it into practice with your team?",
         "options": [
           ["I provide clear, step-by-step instructions on exactly how to execute it, expecting strict compliance.", 1],
-          ["I explain the directive clearly, but I set firm expectations on how it must be implemented.", 2],
+          ["I explain the rule clearly, but I set firm expectations on how it must be implemented.", 2],
           ["I outline the core requirements, but I allow the team flexibility in how they achieve those specific targets.", 3],
-          ["I present the directive and actively ask for the team's feedback on the best way to adapt it to our local context.", 4],
+          ["I present the rule and actively ask for the team's feedback on the best way to adapt it to our local context.", 4],
           ["I organize a collaborative session where the team and I co-design the implementation plan together.", 5],
-          ["I empower the team to take the lead on designing the implementation strategy, stepping in only to ensure alignment with the core directive.", 6],
-          ["I fully delegate the implementation design to the team, trusting that their collective, grassroots input will yield the most effective execution.", 7]
+          ["I empower the team to take the lead on designing the implementation strategy, stepping in only to ensure alignment with the core rule.", 6],
+          ["I fully delegate the implementation design to the team, trusting that their collective, team's ideas will yield the most effective execution.", 7]
         ]
       }
     ],
@@ -484,7 +484,7 @@
         ]
       },
       {
-        "q": "You have a limited budget for team improvements. How do you allocate it?",
+        "q": "You have a limited budget for team improvements. How do you spend it?",
         "options": [
           ["Tools and software that directly increase productivity and output.", 1],
           ["Technical training that enhances professional skills and performance.", 2],
@@ -498,7 +498,7 @@
     ],
     "Autonomous": [
       {
-        "q": "You are given a broad, ambiguous mandate to 'improve departmental efficiency.' What is your first move?",
+        "q": "You are given a vague instruction to 'improve how well the department works.' What is your first move?",
         "options": [
           ["I immediately consult with the team and stakeholders to build a consensus on the definition of 'efficiency'.", 1],
           ["I hold a series of meetings to understand the current state before proposing any direction.", 2],
@@ -548,7 +548,7 @@
         ]
       },
       {
-        "q": "When establishing your role or working within an organization, how do you approach formal status symbols (e.g., titles, exclusive perks, hierarchical distinctions)?"",
+        "q": "When working in an organization, how do you view formal status symbols (e.g., job titles, special benefits, differences in rank)?",
         "options": [
           ["I actively minimize or reject them, preferring to work alongside the team without special treatment or formal distinctions.", 1],
           ["I downplay them, ensuring my influence comes from my actions and collaboration rather than my title or office.", 2],
@@ -560,15 +560,15 @@
         ]
       },
       {
-        "q": "A new, risky opportunity arises and by taking it chances are that the impact on your reputation will be highly positive or highly negative. How do you approach the decision?",
+        "q": "A new, risky opportunity appears. Taking it could have a highly positive or highly negative impact on your reputation. How do you approach the decision?",
         "options": [
-          ["I focus on the potential for massive, disruptive innovation, believing the high risk is worth the potential reward.", 1],
+          ["I focus on the potential for big new ideas, believing the high risk is worth the potential reward.", 1],
           ["I focus on the potential upside, provided we can establish a basic contingency plan if things go wrong.", 2],
           ["I conduct a careful calculation of risk versus reward, ensuring the team is prepared for either outcome.", 3],
           ["I prioritize assessing how the opportunity might impact the team's stability, ensuring we have strong safeguards in place.", 4],
           ["I weigh how the decision will reflect on my leadership and the organization's reputation, actively avoiding any move that could be perceived as reckless.", 5],
           ["I prioritize protecting the organization's current standing, proceeding only if the risk to our established operations is virtually zero.", 6],
-          ["I strictly prioritize institutional stability and risk mitigation, as preserving our current standing is far more important than chasing unproven opportunities.", 7]
+          ["I strictly prioritize institutional stability and reducing risk, as preserving our current standing is far more important than chasing unproven opportunities.", 7]
         ]
       }
     ]
