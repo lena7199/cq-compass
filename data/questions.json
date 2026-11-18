@@ -173,9 +173,9 @@
           ["I feel it is unfortunate, but I assume she will speak up again later if the point is important.", 2],
           ["I might gently direct the conversation back to her if a natural opportunity arises.", 3],
           ["I immediately jump in to ensure she can finish her thought: 'I would like to hear the rest of what [Name] was saying.'", 4],
-          ["I actively redirect the conversation to her and explicitly state that her perspective is valuable and deserves full attention.", 5],
+          ["I redirect the conversation to her and explicitly state that her perspective is valuable and deserves full attention.", 5],
           ["I address the dynamic directly: 'Let us ensure we are hearing from everyone, regardless of seniority or gender.'", 6],
-          ["I firmly pause the discussion to address the interruption, making it clear that equitable participation is a professional requirement, not an option.", 7]
+          ["I pause the discussion to address the issue, making it clear that equal participation is a professional requirement.", 7]
         ]
       },
       {
@@ -201,7 +201,7 @@
           ["I express mild hesitation and suggest we need more time to review, avoiding direct confrontation.", 4],
           ["I express my concerns clearly but politely, suggesting we work together to find a more balanced middle ground.", 5],
           ["I push back strongly, pointing out the flaws in their proposal and demanding significant revisions.", 6],
-          ["I firmly and directly reject the proposal, clearly stating why it is unacceptable and outlining my non-negotiable counter-demands.", 7]
+          ["I firmly reject the proposal, clearly stating why it is unacceptable and outlining my non-negotiable counter-demands.", 7]
         ]
       },
       {
@@ -237,7 +237,7 @@
           ["I balance securing a quick initial agreement with some steps toward relationship-building.", 3],
           ["I invest time in building mutual trust before pushing for a formal agreement.", 4],
           ["I prioritize deep, long-term relationship building, even if it delays visible progress.", 5],
-          ["I focus almost entirely on developing a year-long strategic alliance. Early talks are just the first step for future growth.", 6],
+          ["I focus almost entirely on developing a solid strategic alliance. Early talks are just the first step for future growth.", 6],
           ["I cultivate enduring partnerships that may last for generations. Building a reliable foundation is more important than any immediate agreement.", 7]
         ]
       },
@@ -292,15 +292,15 @@
         ]
       },
       {
-        "q": "When your team achieves a major success, how do you approach the celebration and sharing of credit?",
+        "q": "A colleague is very friendly and well-liked, but their work is consistently just 'average' and occasionally slows down the project. How do you handle this?",
         "options": [
-          ["I advocate for distributing the credit equally to maintain group harmony and avoid any individual competition.", 1],
-          ["I focus on celebrating our collective milestone, ensuring no single person—including myself—is elevated above the rest of the group.", 2],
-          ["I prefer subtle, private acknowledgments among peers to avoid making anyone feel left out or creating rivalry.", 3],
-          ["I focus on team-based celebrations and shared credit that reinforce our collective effort and collaboration.", 4],
-          ["I support a balanced approach: highlighting individual excellence where it occurred, while also celebrating the team's overall collaboration.", 5],
-          ["I push for merit-based recognition, ensuring standout individual contributions are publicly acknowledged by leadership.", 6],
-          ["I advocate for highly visible individual recognition, ensuring top achievers receive public praise and significant personal credit for the win.", 7]
+          ["I say nothing and may even cover for them if needed. Preserving a positive, friendly environment is far more important than pushing for higher output.", 1],
+          ["I avoid bringing it up directly, as I do not want to damage our good relationship or make them feel inadequate.", 2],
+          ["I accept that 'good enough' is fine to keep the peace, only offering help if they explicitly ask for it.", 3],
+          ["I have a constructive, private conversation with them about specific areas for improvement, balancing personal support with clear expectations for better results.", 4],
+          ["I put personal feelings aside and directly address the performance gap with them, emphasizing that maintaining high professional standards is essential for our success.", 5],
+          ["I firmly demand improvement or escalate the issue, because I believe that tolerating mediocrity ultimately harms the entire team's potential.", 6],
+          ["I confront the issue immediately. Driving excellence and holding everyone to the highest standard is a priority, even if it creates interpersonal tension.", 7]
         ]
       }
     ],
@@ -560,7 +560,7 @@
         ]
       },
       {
-        "q": "When a new, risky opportunity arises, how do you approach the decision?",
+        "q": "A new, risky opportunity arises and by taking it chances are that the impact on your reputation will be highly positive or highly negative. How do you approach the decision?",
         "options": [
           ["I focus on the potential for massive, disruptive innovation, believing the high risk is worth the potential reward.", 1],
           ["I focus on the potential upside, provided we can establish a basic contingency plan if things go wrong.", 2],
