@@ -18,11 +18,11 @@
         "options": [
           ["I present my idea directly and openly to senior leadership, expecting a two-way discussion about its merits.", 1],
           ["I share my idea with my direct manager and encourage them to challenge or discuss the senior leadership's approach on my behalf.", 2],
-          ["I frame my idea very carefully as a 'suggestion' or 'question,' ensuring I do not appear to be directly challenging the authority.", 3],
+          ["I frame my idea very carefully as a 'suggestion' or 'question,' ensuring I do not seem to be directly challenging the authority.", 3],
           ["I discuss it informally with trusted peers first to assess if it is even appropriate or safe to bring it up to leadership.", 4],
           ["I adapt my idea to align with the senior leadership's existing preferences before presenting.", 5],
           ["I keep the idea to myself. It is not my place to question or suggest changes to methods established by those in charge.", 6],
-          ["I strictly follow the established method without question. Offering unsolicited alternatives to senior leadership feels inappropriate.", 7]
+          ["I follow the established method without question. Offering unsolicited alternatives to senior leadership feels inappropriate.", 7]
         ]
       },
       {
@@ -90,7 +90,7 @@
         ]
       },
       {
-        "q": "You are evaluating a potential new hire, what do you focus on?",
+        "q": "You are evaluating a potential new hire or team member, what do you focus on?",
         "options": [
           ["Their individual track record, unique skills, and personal drive to outperform others.", 1],
           ["Their personal achievements, balanced with their ability to work alongside others.", 2],
@@ -145,10 +145,10 @@
           ["I highlight and reward the specific individuals who drove the success.", 1],
           ["I acknowledge the key contributors, while also noting the team's general support.", 2],
           ["I celebrate the team as a whole, while still giving a clear nod to outstanding individual efforts.", 3],
-          ["I focus entirely on the team's collective effort, deliberately avoiding singling out any one person.", 4],
+          ["I focus entirely on the team's collective effort, deliberately avoiding publicly rewarding any one person.", 4],
           ["I organize a group event or shared recognition that reinforces our shared identity and mutual dependence.", 5],
-          ["I actively redirect any individual praise back to the entire team, ensuring no single person is positioned above the rest.", 6],
-          ["I strictly oppose any form of individual recognition. Singling out one person inherently damages team cohesion and shared identity.", 7]
+          ["I actively redirect any individual praise back to the entire team, ensuring that no one is positioned above the rest.", 6],
+          ["I strictly oppose any form of individual recognition. Highlighting one individual damages team cohesion and shared identity.", 7]
         ]
       }
     ],
@@ -156,13 +156,14 @@
       {
         "q": "You need to choose between two equally qualified candidates (one man, one woman) for a demanding role that requires a lot of travel. How do you make the final decision?",
         "options": [
-          ["I focus strictly on who is most free to travel, as I see this as the most important factor for a high-stress role.", 1],
-          ["I lean toward the candidate whose personal situation seems to offer the most flexibility for constant travel, prioritizing immediate ease for the team.", 2],
-          ["I evaluate them strictly on their past performance and skills, deliberately ignoring any assumptions about their gender or personal life.", 3],
-          ["I evaluate them on merit, but I openly discuss the travel demands with both to ensure they have the personal support they need to succeed.", 4],
-          ["I actively consider the company's diversity goals, giving strong preference to the female candidate to help address the historical lack of women in these roles.", 5],
-          ["I strongly advocate for the female candidate, seeing this selection as a direct chance to break down old barriers and lead by example.", 6],
-          ["I prioritize choosing the female candidate, treating gender equality in these high-stakes roles as a strict, non-negotiable rule for the organization.", 7]
+          ["I might lean toward the male candidate, assuming that traditional family roles could make frequent travel more difficult for a woman.", 1],
+          ["I consider their current family situations, as traditional roles often affect a person's flexibility for frequent travel.", 2],
+          ["I focus strictly on who has the most flexible personal schedule for travel, evaluating their individual circumstances objectively.", 3],
+          ["I evaluate them strictly on their past performance and skills, deliberately ignoring any assumptions about their gender or personal life.", 4],
+          ["I evaluate them on merit, but I carefully review the process to ensure no unconscious gender bias influences the final decision.", 5],
+          ["I evaluate them on merit, and I openly discuss the travel demands with both to ensure the company can provide the support either of them needs to succeed.", 6],
+          ["I make the decision purely on capability, and I actively challenge any assumptions from others about which gender is better suited for high-travel roles.", 7]
+
         ]
       },
       {
@@ -209,7 +210,7 @@
           ["I remain entirely silent, as open disagreement is disrespectful and threatens group harmony.", 1],
           ["I outwardly support the group's decision to maintain cohesion, even if I privately disagree.", 2],
           ["I subtly ask guiding questions to make the group reconsider, without directly stating my own opposition.", 3],
-          ["I share my alternative perspective respectfully, but I am willing to yield to the group to maintain harmony.", 4],
+          ["I share my alternative perspective respectfully, but I am willing to go along with the group to maintain harmony.", 4],
           ["I voice my disagreement clearly and advocate for my alternative, though I remain open to compromise.", 5],
           ["I voice my disagreement clearly and advocate for my alternative, even if it creates some tension.", 6],
           ["I openly and passionately debate the majority, presenting strong counter-arguments to change the direction.", 7]
@@ -250,7 +251,7 @@
           ["I prioritize the long-term career trajectory and how this opportunity positions me for greater strategic responsibility in 3 to 5 years.", 4],
           ["I focus on enduring professional stability and the long-term legacy this path provides, even if it requires waiting for future rewards today.", 5],
           ["I align my decision with a 10-to-20 year vision, prioritizing future systemic security and impact over present-day comfort.", 6],
-          ["I evaluate it entirely on long-term, generational impact, and I am willing to make significant present-day sacrifices to ensure a secure, prosperous future.", 7]
+          ["I evaluate it entirely on long-term impact and I am willing to make significant present-day sacrifices to ensure a secure, prosperous future.", 7]
         ]
       },
       {
@@ -365,8 +366,8 @@
           ["I balance logical analysis with consultation from key stakeholders.", 3],
           ["I evaluate how well the decision aligns with the organization's stated mission and medium-term goals.", 4],
           ["I prioritize how strongly the decision reflects our core, non-negotiable values, even if it is not the easiest path.", 5],
-          ["I rely on my values and long-term vision to guide the organization toward a principled, long-term future.", 6],
-          ["I am driven by an unwavering commitment to a higher purpose. The decision must be a testament to our highest ideals, even at a significant short-term cost.", 7]
+          ["I rely on my values and vision to guide the organization toward a principled, long-term future.", 6],
+          ["I am driven by our commitment to a higher purpose. The decision must reflect our highest ideals, even if there is a cost.", 7]
         ]
       },
       {
@@ -396,7 +397,7 @@
         ]
       },
       {
-        "q": "When a major project succeeds, how do you handle the recognition?",
+        "q": "When a major project you led succeeds, how do you handle the recognition?",
         "options": [
           ["I highlight the specific individuals who drove the results and ensure they receive individual rewards.", 1],
           ["I acknowledge the key contributors, while briefly noting the team's general support.", 2],
@@ -442,7 +443,7 @@
           ["I genuinely consider their idea, ask clarifying questions, and am willing to adjust my strategy if their point is valid.", 4],
           ["I actively encourage them to elaborate, and I am highly likely to adopt their idea if it improves our outcome.", 5],
           ["I champion their idea to the rest of the group, demonstrating that diverse perspectives can actively shape our direction.", 6],
-          ["I enthusiastically welcome the challenge to my strategy, since robust debate and diverse input are essential for optimal outcomes.", 7]
+          ["I welcome the challenge to my strategy, since debate and diverse input are essential for optimal outcomes.", 7]
         ]
       },
       {
